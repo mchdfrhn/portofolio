@@ -18,11 +18,11 @@ export const translations = {
     "about.badge": "Who I Am",
     "about.title": "About Me",
     "about.description":
-      "DevOps Engineer & Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies.",
+      "Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies.",
     "about.location.title": "Jakarta, Indonesia",
     "about.location.subtitle": "Based & Operating 🇮🇩",
     "about.current": "Currently",
-    "about.experience.title": "Intern DevOps Engineer",
+    "about.experience.title": "Intern Fullstack Developer",
     "about.experience.company": "Pusdatin, Kementerian PU",
     "about.experience.description":
       "Managing CI/CD pipelines, cloud infrastructure (AWS), containerization (Docker, Kubernetes), and building enterprise-grade administrative systems with modern web technologies.",
@@ -32,10 +32,10 @@ export const translations = {
     "about.interest.system": "System Design",
     "about.years.label": "Years Coding",
     "experience.section.title": "Experience & Education",
-    "experience.job.title": "Intern DevOps Engineer",
+    "experience.job.title": "Intern Fullstack Developer",
     "experience.job.company": "Pusdatin, Kementerian PUPR",
     "experience.job.description":
-      "Managing CI/CD pipelines and cloud infrastructure (AWS) for the Ministry of Public Works. Containerizing applications using Docker and Kubernetes for scalability. Optimizing deployment processes reducing deployment time by 40%. Collaborating on enterprise-grade administrative systems using React, Node.js, and Go.",
+      "Architected a sophisticated personnel and functional position management system utilizing Next.js, leveraging Server-Side Rendering (SSR) to ensure high-performance access to complex bureaucratic datasets. The integration of Next.js and PostgreSQL for backend services ensured that intricate credit point calculations and organizational hierarchies were handled with maximum precision and scalable efficiency.",
     "experience.education.title": "Informatics Engineering",
     "experience.education.school": "STT Pekerjaan Umum",
     "experience.education.description":
@@ -43,7 +43,7 @@ export const translations = {
     "aboutDescription.badge": "Expertise",
     "aboutDescription.heading": "What I Do",
     "aboutDescription.lead":
-      "As a dedicated DevOps Engineer and Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally.",
+      "As a dedicated Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally.",
     "aboutDescription.backend.title": "Backend Development",
     "aboutDescription.backend.text":
       "Proficient in building scalable backend systems and efficient APIs with Go, Node.js, and Laravel. Strong focus on developing responsive interfaces and optimizing application performance.",
@@ -125,7 +125,7 @@ export const translations = {
     "hero.title.2": "Aplikasi Modern yang Skalabel",
     "hero.title.3": "& Infrastruktur Cloud.",
     "hero.subtitle":
-      "Fullstack Developer & DevOps Engineer yang fokus di Go, Node.js, React, dan Laravel — dari code sampai infrastruktur cloud, CI/CD, sampai sistem siap produksi.",
+      "Fullstack Developer & Fullstack Developer yang fokus di Go, Node.js, React, dan Laravel — dari code sampai infrastruktur cloud, CI/CD, sampai sistem siap produksi.",
     "hero.cta.projects": "Lihat Karya Terpilih",
     "hero.cta.resume": "Unduh CV",
     "hero.status.available": "Terbuka untuk proyek freelance",
@@ -133,11 +133,11 @@ export const translations = {
     "about.badge": "Siapa Saya",
     "about.title": "Tentang Saya",
     "about.description":
-      "DevOps Engineer & Fullstack Developer yang senang membangun sistem yang efisien, skalabel, dan tahan banting — mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika.",
+      "Fullstack Developer & Fullstack Developer yang senang membangun sistem yang efisien, skalabel, dan tahan banting — mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika.",
     "about.location.title": "Jakarta, Indonesia",
     "about.location.subtitle": "Berdomisili & Bekerja di 🇮🇩",
     "about.current": "Saat ini",
-    "about.experience.title": "Magang DevOps Engineer",
+    "about.experience.title": "Magang Fullstack Developer",
     "about.experience.company": "Pusdatin, Kementerian PU",
     "about.experience.description":
       "Ngelola pipeline CI/CD, infrastruktur AWS, containerisasi Docker & Kubernetes, plus bangun sistem administrasi internal berbasis web modern.",
@@ -147,10 +147,10 @@ export const translations = {
     "about.interest.system": "Desain Sistem",
     "about.years.label": "Tahun Coding",
     "experience.section.title": "Pengalaman & Pendidikan",
-    "experience.job.title": "Magang DevOps Engineer",
+    "experience.job.title": "Magang Fullstack Developer",
     "experience.job.company": "Pusdatin, Kementerian PUPR",
     "experience.job.description":
-      "Mengelola pipeline CI/CD dan infrastruktur cloud (AWS) untuk Kementerian Pekerjaan Umum. Mengcontainerisasi aplikasi dengan Docker dan Kubernetes untuk skalabilitas. Mengoptimalkan proses deployment sehingga waktu rilis lebih cepat. Kolaborasi membangun sistem administrasi internal dengan React, Node.js, dan Go.",
+      "Mengarsiteki sistem kepegawaian dan manajemen jabatan fungsional berbasis Next.js yang dioptimalkan melalui Server-Side Rendering (SSR) untuk menjamin efisiensi akses data birokrasi yang kompleks. Integrasi backend yang dibangun dengan Next.js dan PostgreSQL memastikan logika perhitungan angka kredit serta hierarki jabatan berjalan dengan performa tinggi dan skalabilitas yang terukur.",
     "experience.education.title": "Teknik Informatika",
     "experience.education.school": "STT Pekerjaan Umum",
     "experience.education.description":
