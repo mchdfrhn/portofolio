@@ -176,3 +176,4 @@ MIT License - feel free to use this as a template for your portfolio.
 - **GitHub**: https://github.com/mchdfrhn
 - **LinkedIn**: https://www.linkedin.com/in/mchdfrhn
 - **Email**: mochamadfarhanali@gmail.com
+- **Contact**: https://api.whatsapp.com/send/?phone=6285771826637&text&type=phone_number&app_absent=0
