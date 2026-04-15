@@ -1,0 +1,178 @@
+---
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Download } from "lucide-react";
+import { motion } from "framer-motion";
+
+---
+
+<section id="hero" class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 py-10 lg:py-20 relative overflow-hidden">
+    
+
+    <div class="flex-1 space-y-8 relative z-10 w-full">
+        <div class="space-y-4">
+            <h1 class="text-[2.5rem] leading-[1.05] sm:text-5xl md:text-7xl font-bold tracking-tighter">
+                <span class="reveal-text inline-block" data-splitting>Building</span> <br />
+                <span class="hero-blue-text inline-block py-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-primary-neon to-cyan-400 animate-gradient-x drop-shadow-md font-extrabold neon-glow-blue">
+                    Scalable Web Apps
+                </span> <br class="hidden sm:block" />
+                <span class="reveal-text inline-block" data-splitting>& Intelligent Systems.</span>
+            </h1>
+            <p class="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                Fullstack Developer specializing in React, Laravel, and Modern Web Architecture. 
+                Transforming complex problems into clean, efficient code.
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#projects" class="w-full sm:w-auto">
+                <Button size="lg" className="h-12 w-full px-8 text-base bg-primary-neon text-black hover:bg-primary-neon/90 shadow-neon border-none font-bold">
+                    View Selected Works
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+            </a>
+            <a href="/resume.pdf" target="_blank" class="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base border-white/10 hover:bg-white/5">
+                    Download CV
+                    <Download className="ml-2 w-4 h-4" />
+                </Button>
+            </a>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-sm text-muted-foreground hero-footer">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+                Available for freelance projects
+            </div>
+            <span class="hidden sm:block opacity-30">•</span>
+            <div class="flex items-center gap-2">
+                <span class="sm:hidden w-2 h-2 rounded-full bg-blue-500/40"></span>
+                Based in Jakarta, ID
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Side Visual: Code Snippet / Terminal -->
+    <div class="flex-1 w-full max-w-xl relative hidden lg:block hero-visual opacity-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-neon/20 to-secondary-neon/20 blur-xl transform rotate-6 -z-10 rounded-3xl"></div>
+        <div class="bg-[#1e1e1e]/90 backdrop-blur-sm border border-primary-neon/30 rounded-2xl p-6 shadow-neon-strong rotate-3 hover:rotate-0 transition-transform duration-500 group">
+            <div class="flex items-center gap-2 mb-4 border-b border-white/5 pb-4">
+                <div class="flex gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <div class="text-xs text-muted-foreground ml-2 font-mono">developer.tsx</div>
+            </div>
+            <div class="space-y-2 font-mono text-sm leading-relaxed">
+                <div class="flex">
+                    <span class="text-purple-400 mr-2">const</span>
+                    <span class="text-yellow-200">developer</span>
+                    <span class="text-white mx-2">=</span>
+                    <span class="text-white">{`{`}</span>
+                </div>
+                <div class="pl-4 flex">
+                    <span class="text-blue-300 mr-2">name:</span>
+                    <span class="text-green-300">"Mochamad Farhan Ali"</span>,
+                </div>
+                <div class="pl-4 flex">
+                    <span class="text-blue-300 mr-2">role:</span>
+                    <span class="text-green-300">"Fullstack Engineer"</span>,
+                </div>
+                <div class="pl-4 flex">
+                    <span class="text-blue-300 mr-2">stack:</span>
+                    <span class="text-white">[</span>
+                    <span class="text-green-300">"Laravel"</span>,
+                    <span class="text-green-300">"Next.js"</span>,
+                    <span class="text-green-300">"React"</span>,
+                    <span class="text-green-300">"PostgreSQL"</span>,
+                    <span class="text-green-300">"Docker"</span>
+                    <span class="text-white">]</span>,
+                </div>
+                <div class="pl-4 flex">
+                    <span class="text-blue-300 mr-2">hardWorker:</span>
+                    <span class="text-orange-400">true</span>,
+                </div>
+                <div class="pl-4 flex">
+                    <span class="text-blue-300 mr-2">problemSolver:</span>
+                    <span class="text-orange-400">true</span>
+                </div>
+                <div class="flex">
+                    <span class="text-white">{`}`}</span>
+                </div>
+                
+                 <div class="flex mt-4 animate-pulse">
+                    <span class="text-purple-400 mr-2">await</span>
+                    <span class="text-blue-300">developer</span>.
+                    <span class="text-yellow-200">buildFuture</span>()
+                    <span class="text-white">;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import gsap from 'gsap';
+    
+    const initHeroAnim = () => {
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        
+        // Letter animation with Splitting
+        tl.from(".reveal-text .char", {
+            y: 100,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.02,
+            delay: 0.2
+        })
+        .from(".hero-blue-text", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            filter: "blur(15px)",
+            ease: "power2.out"
+        }, "-=0.6")
+        .from("p", {
+            y: 20,
+            opacity: 0,
+            duration: 0.6
+        }, "-=0.4")
+        .from(".flex-wrap > a", {
+            y: 20,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1
+        }, "-=0.4")
+        .to(".hero-footer", {
+            opacity: 1,
+            y: 0,
+            duration: 0.6
+        }, "-=0.2")
+        .to(".hero-visual", {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "back.out(1.7)"
+        }, "-=0.8");
+
+        // Float animation for visual
+        gsap.to(".hero-visual", {
+            y: 15,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    };
+
+    // Run on mount
+    document.addEventListener('DOMContentLoaded', initHeroAnim);
+    // Handle Astro View Transitions
+    document.addEventListener('astro:after-swap', initHeroAnim);
+</script>
+
+<style>
+    .reveal-text .char {
+        display: inline-block;
+    }
+</style>

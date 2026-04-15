@@ -1,0 +1,62 @@
+---
+const stack = [
+  { name: "Laravel", slug: "laravel" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "React", slug: "react" },
+  { name: "Tailwind CSS", slug: "tailwindcss" },
+  { name: "Go", slug: "go" },
+  { name: "Python", slug: "python" },
+  { name: "PostgreSQL", slug: "postgresql" },
+  { name: "MongoDB", slug: "mongodb" },
+  { name: "Docker", slug: "docker" },
+  { name: "Kubernetes", slug: "kubernetes" },
+];
+---
+
+<section class="py-4 border-y border-primary-neon/20 bg-gradient-to-b from-transparent via-card/60 to-transparent backdrop-blur-xl overflow-hidden relative group/marquee transition-colors hover:via-card/80">
+    <div class="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-background/80 via-background/40 to-transparent pointer-events-none z-10"></div>
+    <div class="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-background/80 via-background/40 to-transparent pointer-events-none z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-neon/10 via-transparent to-primary-neon/10 opacity-40 animate-gradient-x pointer-events-none blur-sm shadow-neon"></div>
+    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+    
+    <div class="flex overflow-hidden group">
+        <div class="flex animate-marquee group-hover:pause items-center">
+            {stack.map((item) => (
+                <div class="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 text-muted-foreground/30 hover:text-primary-neon hover:scale-125 transition-all duration-500 cursor-default grayscale hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(0,243,255,0.5)] mr-12">
+                    <img 
+                      src={`https://cdn.simpleicons.org/${item.slug}/currentColor`} 
+                      alt={item.name} 
+                      title={item.name}
+                      class="w-10 h-10 md:w-12 md:h-12 object-contain" 
+                    />
+                </div>
+            ))}
+        </div>
+        <div class="flex animate-marquee group-hover:pause items-center" aria-hidden="true">
+            {stack.map((item) => (
+                <div class="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 text-muted-foreground/30 hover:text-primary-neon hover:scale-125 transition-all duration-500 cursor-default grayscale hover:grayscale-0 hover:drop-shadow-[0_0_20px_rgba(0,243,255,0.5)] mr-12">
+                    <img 
+                      src={`https://cdn.simpleicons.org/${item.slug}/currentColor`} 
+                      alt={item.name} 
+                      title={item.name}
+                      class="w-10 h-10 md:w-12 md:h-12 object-contain" 
+                    />
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+        animation: marquee 30s linear infinite;
+    }
+    .group:hover .group-hover\:pause {
+        animation-play-state: paused;
+    }
+</style>

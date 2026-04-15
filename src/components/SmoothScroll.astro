@@ -1,0 +1,109 @@
+---
+---
+<script>
+  import Lenis from 'lenis';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Splitting from 'splitting';
+  import 'splitting/dist/splitting.css';
+  import 'splitting/dist/splitting-cells.css';
+
+  // Register GSAP plugins
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize Splitting for text animations
+  const initSplitting = () => {
+    Splitting();
+  };
+
+  const initSmoothScroll = () => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
+    });
+
+    // Synchronize Lenis with ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Global smooth scroll for navigation anchors
+    const handleAnchorClick = (e: any) => {
+      const target = e.target.closest('a');
+      if (target) {
+        const href = target.getAttribute('href');
+        if (href && href.startsWith('#') && href !== '#') {
+          e.preventDefault();
+          lenis.scrollTo(href, { offset: -80 });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
+    // Reset scroll to top only on initial load
+    const isInitialVisit = !document.documentElement.classList.contains('is-loaded');
+    if (isInitialVisit) {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+      lenis.scrollTo(0, { immediate: true });
+      document.documentElement.classList.add('is-loaded');
+    }
+
+    return lenis;
+  };
+
+  // Initial load
+  initSplitting();
+  let lenis = initSmoothScroll();
+
+  // Handle Astro View Transitions (Life cycle management)
+  document.addEventListener('astro:after-swap', () => {
+    if (lenis) {
+      lenis.destroy();
+    }
+    lenis = initSmoothScroll();
+    initSplitting();
+    ScrollTrigger.refresh();
+  });
+
+  // Expose Lenis to window for global access if needed
+  (window as any).lenis = lenis;
+</script>
+
+<style is:global>
+  /* Base styles for Smooth Scrolling */
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  /* Splitting.js basic styles */
+  .splitting {
+    display: inline-block;
+  }
+</style>

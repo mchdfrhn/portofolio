@@ -1,0 +1,58 @@
+---
+import { Button } from "@/components/ui/button";
+import { Mail, Linkedin, Github } from "lucide-react";
+---
+
+<section id="contact" class="py-24 relative">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary-neon/10 blur-[150px] rounded-full -z-10 opacity-30 pointer-events-none animate-pulse shadow-neon"></div>
+
+    <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
+        <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Currently interested in freelance opportunities or full-time positions. 
+            Have a project in mind or just want to say hi? Hit me up.
+        </p>
+
+        <form id="contact-form" class="max-w-xl mx-auto space-y-4 text-left" name="contact" method="POST" data-netlify="true">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Name</label>
+                    <input type="text" id="name" name="name" class="flex h-10 w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="Your Name" required />
+                </div>
+                <div class="space-y-2">
+                    <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
+                    <input type="email" id="email" name="email" class="flex h-10 w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="your@email.com" required />
+                </div>
+            </div>
+            <div class="space-y-2">
+                <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Message</label>
+                <textarea id="message" name="message" class="flex min-h-[120px] w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            
+            <Button id="submit-btn" type="submit" size="lg" className="w-full bg-primary-neon text-black hover:bg-primary-neon/90 shadow-neon border-none font-bold">
+                Send Message
+                <Mail className="ml-2 w-4 h-4" />
+            </Button>
+        </form>
+
+        <script>
+            import confetti from 'canvas-confetti';
+
+            const form = document.getElementById('contact-form') as HTMLFormElement;
+            const btn = document.getElementById('submit-btn');
+
+            if (form && btn) {
+                form.addEventListener('submit', (e) => {
+                    // For demo purposes, we trigger confetti. 
+                    // In a real netlify form, you might wait for the success response.
+                    confetti({
+                        particleCount: 150,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: ['#00f3ff', '#bc13fe', '#ff00ff']
+                    });
+                });
+            }
+        </script>
+    </div>
+</section>
