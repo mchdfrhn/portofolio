@@ -1,0 +1,49 @@
+name: Deployment Portofolio
+
+on:
+  push:
+    branches: [ "main" ] # Pipeline jalan setiap kali kamu push ke branch main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          # Menggunakan format username/nama-image
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/porto-fe:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to Ubuntu and Update Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ubuntu # Pastikan ini user SSH kamu (ubuntu/root)
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Login ke Docker Hub di server (opsional jika repo publik)
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+            
+            # Tarik image terbaru
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/porto-fe:latest
+            
+            # Hentikan dan hapus kontainer lama jika ada
+            docker rm -f portofolio || true
+            
+            # Jalankan kontainer baru
+            docker run -d -p 4321:4321 --name portofolio ${{ secrets.DOCKERHUB_USERNAME }}/porto-fe:latest
