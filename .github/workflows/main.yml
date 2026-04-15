@@ -46,4 +46,4 @@ jobs:
             docker rm -f portofolio || true
             
             # Jalankan kontainer baru
-            docker run -d -p 4321:4321 --name portofolio ${{ secrets.DOCKERHUB_USERNAME }}/porto-fe:latest
+            docker run -d -p 4321:80 --name portofolio ${{ secrets.DOCKERHUB_USERNAME }}/porto-fe:latest
