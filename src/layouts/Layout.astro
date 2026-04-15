@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/globals.css';
 import SmoothScroll from '../components/SmoothScroll.astro';
 import { ScrollProgress } from '../components/ScrollProgress';
+import LanguageLoader from '../components/LanguageLoader';
 import { SITE_DESCRIPTION, OG_IMAGE } from '../lib/config';
 
 interface Props {
@@ -64,6 +65,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 	<body class="bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground font-sans">
 		<div class="relative flex min-h-screen flex-col">
             <ScrollProgress client:load />
+            <LanguageLoader client:load />
 			<slot />
 		</div>
 		<SmoothScroll />

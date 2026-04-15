@@ -71,7 +71,8 @@
     @apply border-border;
     box-sizing: border-box;
   }
-  html, body {
+  html,
+  body {
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
@@ -81,9 +82,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
-        radial-gradient(at 100% 0%, hsla(280, 80%, 50%, 0.05) 0, transparent 50%);
+    background-image:
+      radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(280, 80%, 50%, 0.05) 0, transparent 50%);
     background-attachment: fixed;
   }
 }
@@ -94,7 +95,8 @@
 }
 
 @keyframes gradient-x {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -104,13 +106,17 @@
 
 @layer utilities {
   .neon-glow-blue {
-    text-shadow: 0 0 7px rgba(0, 243, 255, 0.5), 0 0 10px rgba(0, 243, 255, 0.3);
+    text-shadow:
+      0 0 7px rgba(0, 136, 255, 0.5),
+      0 0 10px rgba(0, 136, 255, 0.3);
   }
   .neon-glow-purple {
-    text-shadow: 0 0 7px rgba(188, 19, 254, 0.5), 0 0 10px rgba(188, 19, 254, 0.3);
+    text-shadow:
+      0 0 7px rgba(188, 19, 254, 0.5),
+      0 0 10px rgba(188, 19, 254, 0.3);
   }
   .neon-border-blue {
-    @apply border-primary-neon/50 shadow-[0_0_15px_rgba(0,243,255,0.2)];
+    @apply border-primary-neon/50 shadow-[0_0_15px_rgba(0,136,255,0.2)];
   }
   .neon-border-purple {
     @apply border-secondary-neon/50 shadow-[0_0_15px_rgba(188,19,254,0.2)];

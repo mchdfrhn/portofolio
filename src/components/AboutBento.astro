@@ -4,56 +4,60 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
 ---
 
 <section id="about" class="pt-10 md:pt-20 pb-6 md:pb-12">
-    <div class="mb-8 md:mb-12">
-        <h2 class="text-3xl md:text-5xl font-bold mb-4">About Me</h2>
-        <p class="text-muted-foreground text-lg">Blending technical expertise with creative problem solving.</p>
+    <div class="mb-12 md:mb-16">
+        <div class="space-y-4">
+            <div class="inline-block">
+                <span class="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30" data-i18n-key="about.badge">Who I Am</span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-foreground" data-i18n-key="about.title">About Me</h2>
+            <p class="text-lg text-muted-foreground max-w-2xl leading-relaxed" data-i18n-key="about.description">DevOps Engineer & Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies.</p>
+        </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(160px,auto)]">
         
         <!-- Location Block -->
-        <Card className="md:col-span-1 bg-gradient-to-br from-card/80 to-primary-neon/5 neon-card relative overflow-hidden group hover:border-primary-neon/50 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <Card className="md:col-span-1 bg-gradient-to-br from-card/80 to-primary/5 neon-card relative overflow-hidden group hover:border-primary/50 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <CardContent className="p-5 md:p-6 h-full flex flex-col justify-between relative z-10">
-                <div class="w-12 h-12 rounded-full bg-primary-neon/10 flex items-center justify-center mb-4 text-primary-neon group-hover:bg-primary-neon group-hover:text-black transition-colors shadow-neon">
+                <div class="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
                     <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-1">Based in Jakarta</h3>
-                    <p class="text-muted-foreground">Indonesia 🇮🇩</p>
+                    <h3 class="text-xl font-bold mb-1" data-i18n-key="about.location.title">Jakarta, Indonesia</h3>
+                    <p class="text-muted-foreground text-sm" data-i18n-key="about.location.subtitle">Based & Operating 🇮🇩</p>
                 </div>
             </CardContent>
-            <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
         </Card>
 
         <!-- Experience Block -->
-        <Card className="md:col-span-2 group neon-card overflow-hidden bg-gradient-to-br from-card/80 to-primary-neon/5 hover:border-primary-neon/50 transition-all duration-500 relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <Card className="md:col-span-2 group neon-card overflow-hidden bg-gradient-to-br from-card/80 to-primary/5 hover:border-primary/50 transition-all duration-500 relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <CardContent className="p-5 md:p-6 h-full flex flex-col justify-center">
                  <div class="flex items-start justify-between mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary-neon/10 flex items-center justify-center text-primary-neon md:mb-0 shadow-neon">
+                    <div class="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center text-primary md:mb-0 shadow-sm">
                         <Briefcase className="w-6 h-6" />
                     </div>
-                    <span class="text-xs font-mono py-1 px-3 rounded-full bg-secondary text-secondary-foreground">Current</span>
+                    <span class="text-xs font-mono py-1 px-3 rounded-full bg-primary/20 text-primary border border-primary/30" data-i18n-key="about.current">Currently</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Intern Fullstack Developer</h3>
-                <p class="text-lg text-primary-neon mb-1 group-hover:neon-glow-blue transition-all">Pusdatin, Kementerian PUPR</p>
-                <p class="text-muted-foreground text-sm">Building enterprise-grade administrative systems and optimizing workflows using modern web technologies.</p>
+                <h3 class="text-2xl font-bold mb-2" data-i18n-key="about.experience.title">Intern DevOps Engineer</h3>
+                <p class="text-lg text-primary mb-1 font-semibold" data-i18n-key="about.experience.company">Pusdatin, Kementerian PUPR</p>
+                <p class="text-muted-foreground text-sm" data-i18n-key="about.experience.description">Managing CI/CD pipelines, cloud infrastructure (AWS), containerization (Docker, Kubernetes), and building enterprise-grade administrative systems with modern web technologies.</p>
             </CardContent>
         </Card>
 
         <!-- Tech Stack Block -->
-        <Card className="md:col-span-2 md:row-span-2 neon-card group relative overflow-hidden bg-gradient-to-b from-card/80 to-secondary-neon/5 hover:border-secondary-neon/50 transition-all duration-500">
-             <div class="absolute inset-0 bg-gradient-to-br from-secondary-neon/10 to-primary-neon/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <Card className="md:col-span-2 md:row-span-2 neon-card group relative overflow-hidden bg-gradient-to-b from-card/80 to-primary/5 hover:border-primary/50 transition-all duration-500">
+             <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                    <Code2 className="w-6 h-6 text-secondary-neon neon-glow-purple" />
-                    Tech Stack
+                    <Code2 className="w-6 h-6 text-primary" />
+                    <span data-i18n-key="about.tech.title">Tech Stack</span>
                 </CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 pt-0">
-                {['Gin', 'Laravel', 'Next.js', 'React', 'Tailwind', 'PostgreSQL', 'MySQL', 'MongoDB', 'Python', 'Docker', 'Kubernetes', 'AWS'].map((tech) => (
-                   <div class="flex flex-col items-center justify-center p-3 rounded-lg bg-secondary/50 hover:bg-primary-neon/10 hover:text-primary-neon transition-all duration-300 border border-white/10 group/item hover:border-primary-neon/30">
+                {['Go', 'Node.js', 'PHP', 'Gin', 'React', 'Next.js', 'Laravel', 'Tailwind', 'PostgreSQL', 'MySQL', 'MongoDB', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Gihub Action'].map((tech) => (
+                   <div class="flex flex-col items-center justify-center p-3 rounded-lg bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all duration-300 border border-primary/20 group-hover/item:border-primary/40">
                         <span class="font-medium text-xs sm:text-sm group-hover/item:scale-110 transition-transform">{tech}</span>
                    </div>
                ))}
@@ -61,37 +65,35 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
         </Card>
 
         <!-- Interests Block -->
-        <Card className="md:col-span-1 border-white/10 bg-gradient-to-tl from-card/80 to-secondary-neon/5 hover:border-secondary-neon/30 transition-all duration-500 neon-card">
+        <Card className="md:col-span-1 border-primary/20 bg-gradient-to-tl from-card/80 to-primary/5 hover:border-primary/50 transition-all duration-500 neon-card">
             <CardContent className="p-5 md:p-6 h-full flex flex-col justify-center gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="p-2 rounded-lg bg-primary-neon/10 text-primary-neon shadow-neon">
-                        <LineChart className="w-5 h-5" />
-                    </div>
-                    <span class="font-medium">Algo Trading</span>
-                </div>
-                 <div class="flex items-center gap-3">
-                    <div class="p-2 rounded-lg bg-secondary-neon/10 text-secondary-neon shadow-neon-purple">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary shadow-sm">
                         <Globe className="w-5 h-5" />
                     </div>
-                    <span class="font-medium">Web Architecture</span>
+                    <span class="font-medium" data-i18n-key="about.interest.cloud">Cloud Infrastructure</span>
                 </div>
                  <div class="flex items-center gap-3">
-                    <div class="p-2 rounded-lg bg-accent-neon/10 text-accent-neon shadow-neon-pink">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary shadow-sm">
+                        <LineChart className="w-5 h-5" />
+                    </div>
+                    <span class="font-medium" data-i18n-key="about.interest.cicd">CI/CD Automation</span>
+                </div>
+                 <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 tWhat I Doext-primary shadow-sm">
                         <Trophy className="w-5 h-5" />
                     </div>
-                    <span class="font-medium">System Design</span>
+                    <span class="font-medium" data-i18n-key="about.interest.system">System Design</span>
                 </div>
             </CardContent>
         </Card>
         
         <!-- Education / Stat Block -->
-         <Card className="md:col-span-1 neon-card relative overflow-hidden bg-gradient-to-tr from-card/80 to-accent-neon/5 hover:border-accent-neon/50 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-tr from-accent-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+         <Card className="md:col-span-1 neon-card relative overflow-hidden bg-gradient-to-tr from-card/80 to-primary/5 hover:border-primary/50 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <CardContent className="p-5 md:p-6 h-full flex flex-col justify-center text-center">
-                <div class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-neon to-secondary-neon mb-1 neon-glow-blue">
-                    3+
-                </div>
-                <p class="text-sm text-muted-foreground font-medium uppercase tracking-wider">Years Coding</p>
+                <div class="text-4xl font-bold text-primary mb-1 font-mono">3+</div>
+                <p class="text-sm text-muted-foreground font-medium uppercase tracking-wider" data-i18n-key="about.years.label">Years Coding</p>
             </CardContent>
         </Card>
 

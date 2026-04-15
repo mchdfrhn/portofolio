@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Github, Linkedin, Mail, Code } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { key: "nav.about", name: "About", href: "#about" },
+  { key: "nav.expertise", name: "Expertise", href: "#about-description" },
+  { key: "nav.projects", name: "Projects", href: "#projects" },
+  { key: "nav.experience", name: "Experience", href: "#experience" },
+  { key: "nav.contact", name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
@@ -24,7 +26,10 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     e.preventDefault();
     const lenis = (window as any).lenis;
     if (lenis) {
@@ -43,7 +48,7 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-primary-neon/20 py-4 shadow-[0_4px_20px_rgba(0,243,255,0.1)]"
+          ? "bg-background/80 backdrop-blur-md border-b border-primary-neon/20 py-4 shadow-[0_4px_20px_rgba(0,136,255,0.1)]"
           : "bg-transparent py-6",
       )}
     >
@@ -53,11 +58,9 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="group flex items-center gap-0.5 text-2xl font-bold tracking-tighter"
+          className="group flex items-center gap-2 text-2xl font-bold tracking-tighter"
         >
-          <span className="text-primary font-mono text-xl group-hover:rotate-12 transition-transform duration-300 mr-1">
-            &gt;
-          </span>
+          <Code className="text-primary w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
           <div className="relative overflow-hidden">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-foreground/90 to-muted-foreground group-hover:from-primary-neon group-hover:to-blue-400 group-hover:neon-glow-blue transition-all duration-700">
               frhn
@@ -70,28 +73,31 @@ export const Navbar = () => {
         </motion.a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-4">
           {navLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.key}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4"
+              data-i18n-key={link.key}
             >
               {link.name}
             </a>
           ))}
           <ThemeToggle />
+          <LanguageToggle />
           <Button
             variant="outline"
-            className="ml-4 border-primary/20 hover:bg-primary/10"
+            className="ml-2 border-primary/20 hover:bg-primary/10"
           >
-            Resume
+            <span data-i18n-key="nav.resume">Resume</span>
           </Button>
         </div>
 
         {/* Mobile Actions */}
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             className="text-foreground p-2"

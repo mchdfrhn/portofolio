@@ -1,0 +1,157 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Cloud, Zap, Database, Layout, Shield } from "lucide-react";
+---
+
+<section id="about-description" class="py-16 md:py-24">
+    <div class="mb-12 md:mb-16">
+        <span class="text-xs font-mono px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30 mb-4 inline-block" data-i18n-key="aboutDescription.badge">Expertise</span>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="aboutDescription.heading">What I Do</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl leading-relaxed" data-i18n-key="aboutDescription.lead">
+            As a dedicated Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Backend Development -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Layout className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.backend.title">Backend Development</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground">
+                <p data-i18n-key="aboutDescription.backend.text">Proficient in building scalable backend systems and efficient APIs with Go, Node.js, and Laravel. Strong focus on developing responsive interfaces and optimizing application performance.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.backend.tag1">Gin</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.backend.tag2">Express.js</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.backend.tag3">Laravel</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.backend.tag4">REST APIs</span>
+                    
+                </div>
+            </CardContent>
+        </Card>
+
+        <!-- Frontend Development -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Zap className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.frontend.title">Frontend Development</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground">
+                <p data-i18n-key="aboutDescription.frontend.text">Expert in creating interactive and responsive user interfaces with React 19 and Next.js. Specializing in modern web technologies and CSS frameworks to deliver seamless user experiences.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.frontend.tag1">React 19</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.frontend.tag2">Next.js</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.frontend.tag3">TypeScript</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.frontend.tag4">Tailwind CSS</span>
+                </div>
+            </CardContent>
+        </Card>
+
+        <!-- Cloud Infrastructure -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Cloud className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.cloud.title">Cloud Infrastructure</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground">
+                <p data-i18n-key="aboutDescription.cloud.text">Experienced in deploying and managing cloud infrastructure on AWS. Strong expertise in containerization using Docker and orchestration with Kubernetes for scalable, resilient systems.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cloud.tag1">AWS</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cloud.tag2">Docker</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cloud.tag3">Kubernetes</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cloud.tag4">Infrastructure</span>
+                </div>
+            </CardContent>
+        </Card>
+
+        <!-- CI/CD & DevOps -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Shield className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.cicd.title">CI/CD & Automation</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground">
+                <p data-i18n-key="aboutDescription.cicd.text">Proficient in setting up and maintaining CI/CD pipelines for automated testing, building, and deployment. Reducing deployment time and ensuring reliable, continuous delivery of applications.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cicd.tag1">Jenkins</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cicd.tag2">GitLab CI</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cicd.tag3">Automation</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.cicd.tag4">Deployment</span>
+                </div>
+            </CardContent>
+        </Card>
+
+        <!-- Database Management -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Database className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.database.title">Database Design</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground">
+                <p data-i18n-key="aboutDescription.database.text">Skilled in designing and optimizing database architectures for performance. Experience with both relational databases (PostgreSQL, MySQL) and NoSQL solutions (MongoDB) for various use cases.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.database.tag1">PostgreSQL</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.database.tag2">MySQL</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.database.tag3">MongoDB</span>
+                    <span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary" data-i18n-key="aboutDescription.database.tag4">Optimization</span>
+                </div>
+            </CardContent>
+        </Card>
+
+        <!-- Key Achievements -->
+        <Card className="bg-gradient-to-br from-card/80 to-primary/5 border-primary/20 hover:border-primary/50 transition-all duration-300 group md:col-span-1">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3">
+                    <div class="p-2 rounded-lg bg-primary/15 text-primary">
+                        <Zap className="w-6 h-6" />
+                    </div>
+                    <span data-i18n-key="aboutDescription.achievements.title">Key Achievements</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-muted-foreground text-sm">
+                <div className="space-y-2">
+                    <div className="flex gap-2">
+                        <span className="text-primary font-bold">✓</span>
+                        <span data-i18n-key="aboutDescription.achievements.item1">Reduced deployment time by 40% through CI/CD optimization</span>
+                    </div>
+                    <div className="flex gap-2">
+                        <span className="text-primary font-bold">✓</span>
+                        <span data-i18n-key="aboutDescription.achievements.item2">Managed containerized microservices on Kubernetes</span>
+                    </div>
+                    <div className="flex gap-2">
+                        <span className="text-primary font-bold">✓</span>
+                        <span data-i18n-key="aboutDescription.achievements.item3">Built scalable systems supporting production workloads</span>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    </div>
+
+    <div class="mt-12 p-6 md:p-8 rounded-lg border border-primary/20 bg-primary/5">
+        <p class="text-muted-foreground leading-relaxed" data-i18n-key="aboutDescription.note">
+            I am always open to discussing emerging technologies and exciting challenges. Feel free to reach out to explore how I can bring value to your team through efficient development practices, robust infrastructure, and innovative solutions.
+        </p>
+    </div>
+</section>
