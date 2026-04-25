@@ -59,10 +59,24 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"></noscript>
+        
+        <!-- JSON-LD Structured Data Schema -->
+        <script type="application/ld+json" set:html={`
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "url": "${Astro.url.origin}",
+          "name": "Mochamad Farhan Ali",
+          "jobTitle": "Fullstack Developer",
+          "knowsAbout": ["Next.js", "Laravel", "Go", "PostgreSQL", "React", "Docker"]
+        }
+        `}></script>
+        
 		<ClientRouter />
 	</head>
-	<body class="bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground font-sans">
+	<body class="bg-background text-foreground antialiased selection:bg-primary-neon selection:text-black font-sans">
 		<div class="relative flex min-h-screen flex-col">
             <ScrollProgress client:load />
             <LanguageLoader client:load />
@@ -74,7 +88,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 <style is:global>
 	:root {
-		--font-sans: 'Inter', sans-serif;
+		--font-sans: 'Geist', sans-serif;
 	}
     html {
         font-family: var(--font-sans);

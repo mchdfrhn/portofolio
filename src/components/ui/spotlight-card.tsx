@@ -50,7 +50,7 @@ export const SpotlightCard: React.FC<Props> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden rounded-xl border border-white/10 bg-card/50 px-8 py-10 shadow-2xl transition-all duration-300 hover:border-white/20 hover:shadow-primary/5",
+        "relative overflow-hidden rounded-xl border border-border bg-card/50 px-8 py-10 shadow-2xl transition-all duration-300 hover:border-primary-neon/20 hover:shadow-primary/5",
         className,
       )}
       {...props}
@@ -59,7 +59,7 @@ export const SpotlightCard: React.FC<Props> = ({
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.1), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, var(--spotlight-color), transparent 40%)`,
         }}
       />
       <div className="relative z-10">{children}</div>

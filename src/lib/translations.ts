@@ -11,10 +11,18 @@ export const translations = {
     "hero.title.3": "& Cloud Infrastructure.",
     "hero.subtitle":
       "Fullstack Developer specializing in Go, Node.js, React, and Laravel. Building production-grade systems with cloud infrastructure, CI/CD automation, and scalable architectures.",
-    "hero.cta.projects": "View Selected Works",
-    "hero.cta.resume": "Download CV",
+    "hero.badge": "Available for new opportunities",
+    "hero.cta.contact": "Hire Me",
+    "hero.cta.projects": "Projects",
+    "hero.code.role": '"Solving architecture bottlenecks"',
+    "hero.code.skill1": '"Backend"',
+    "hero.code.skill2": '"Cloud Deployments"',
+    "hero.code.impact": '"Faster business operations"',
+    "hero.code.delivery": '"On Time & Robust"',
     "hero.status.available": "Available for freelance projects",
     "hero.status.location": "Based in Jakarta, ID",
+    "about.profile.name": "Mochamad Farhan Ali",
+    "about.profile.title": "Fullstack Developer",
     "about.badge": "Who I Am",
     "about.title": "About Me",
     "about.description":
@@ -33,7 +41,7 @@ export const translations = {
     "about.years.label": "Years Coding",
     "experience.section.title": "Experience & Education",
     "experience.job.title": "Intern Fullstack Developer",
-    "experience.job.company": "Pusdatin, Kementerian PUPR",
+    "experience.job.company": "Pusdatin, Kementerian PU",
     "experience.job.description":
       "Architected a sophisticated personnel and functional position management system utilizing Next.js, leveraging Server-Side Rendering (SSR) to ensure high-performance access to complex bureaucratic datasets. The integration of Next.js and PostgreSQL for backend services ensured that intricate credit point calculations and organizational hierarchies were handled with maximum precision and scalable efficiency.",
     "experience.education.title": "Informatics Engineering",
@@ -91,15 +99,15 @@ export const translations = {
     "projects.title": "Selected Works",
     "projects.description":
       "A collection of projects demonstrating expertise in full-stack development, system architecture, and algorithmic solutions.",
-    "projects.campusfix.tagline": "University Entrepreneurship Platform",
-    "projects.campusfix.description":
-      "A full-stack solution for managing campus facility repairs. Streamlines ticket submission, tracking, and resolution workflows for university maintenance teams.",
+    "projects.pegawai.tagline": "Employee Management Dashboard",
+    "projects.pegawai.description":
+      "Administrative dashboard enabling efficient tracking and updates of personnel data through automated XLSX ingestion and RBAC.",
     "projects.sipekad.tagline": "Administrative Management System",
     "projects.sipekad.description":
       "Robust information system with complex database migrations and role-based access control. Deployed on Railway for high availability.",
-    "projects.trading.tagline": "Financial Automation",
-    "projects.trading.description":
-      "Automated trading strategies handling real-time market data using Freqtrade. Implements machine learning models for trend prediction.",
+    "projects.jafung.tagline": "Functional Position System",
+    "projects.jafung.description":
+      "A comprehensive dashboard for managing civil servant functional positions, integrating Next.js with complex role-based PostgreSQL tracking.",
     "contact.title": "Let's Work Together",
     "contact.description":
       "Currently interested in freelance opportunities or full-time positions. Have a project in mind or just want to say hi? Hit me up.",
@@ -126,10 +134,19 @@ export const translations = {
     "hero.title.3": "& Infrastruktur Cloud.",
     "hero.subtitle":
       "Fullstack Developer & Fullstack Developer yang fokus di Go, Node.js, React, dan Laravel — dari code sampai infrastruktur cloud, CI/CD, sampai sistem siap produksi.",
-    "hero.cta.projects": "Lihat Karya Terpilih",
+    "hero.badge": "Terbuka untuk kolaborasi",
+    "hero.cta.contact": "Mari Bekerja Bersama",
+    "hero.cta.projects": "Proyek",
     "hero.cta.resume": "Unduh CV",
+    "hero.code.role": '"Menyelesaikan bottleneck arsitektur"',
+    "hero.code.skill1": '"Backend API"',
+    "hero.code.skill2": '"Cloud Deployments"',
+    "hero.code.impact": '"Proses bisnis lebih cepat"',
+    "hero.code.delivery": '"Tepat Waktu & Tangguh"',
     "hero.status.available": "Terbuka untuk proyek freelance",
     "hero.status.location": "Berdomisili di Jakarta, ID",
+    "about.profile.name": "Mochamad Farhan Ali",
+    "about.profile.title": "Fullstack Developer",
     "about.badge": "Siapa Saya",
     "about.title": "Tentang Saya",
     "about.description":
@@ -148,7 +165,7 @@ export const translations = {
     "about.years.label": "Tahun Coding",
     "experience.section.title": "Pengalaman & Pendidikan",
     "experience.job.title": "Magang Fullstack Developer",
-    "experience.job.company": "Pusdatin, Kementerian PUPR",
+    "experience.job.company": "Pusdatin, Kementerian PU",
     "experience.job.description":
       "Mengarsiteki sistem kepegawaian dan manajemen jabatan fungsional berbasis Next.js yang dioptimalkan melalui Server-Side Rendering (SSR) untuk menjamin efisiensi akses data birokrasi yang kompleks. Integrasi backend yang dibangun dengan Next.js dan PostgreSQL memastikan logika perhitungan angka kredit serta hierarki jabatan berjalan dengan performa tinggi dan skalabilitas yang terukur.",
     "experience.education.title": "Teknik Informatika",
@@ -206,15 +223,15 @@ export const translations = {
     "projects.title": "Karya Terpilih",
     "projects.description":
       "Beberapa proyek yang mencerminkan cara saya kerja — dari arsitektur sistem sampai detail implementasi.",
-    "projects.campusfix.tagline": "Platform Kewirausahaan Kampus",
-    "projects.campusfix.description":
-      "Platform full-stack untuk pelaporan dan pengelolaan perbaikan fasilitas kampus — dari submit tiket, tracking, sampai resolusi oleh tim maintenance.",
-    "projects.sipekad.tagline": "Sistem Manajemen Administrasi",
+    "projects.pegawai.tagline": "Dashboard Manajemen Pegawai",
+    "projects.pegawai.description":
+      "Dashboard administratif yang memungkinkan pelacakan dan pembaruan data kepegawaian yang efisien melalui impor XLSX otomatis dan sinkronisasi role-based (RBAC).",
+    "projects.sipekad.tagline": "Sistem Informasi Manajemen",
     "projects.sipekad.description":
-      "Sistem informasi administrasi dengan migrasi database yang kompleks dan role-based access control. Di-deploy di Railway dengan uptime yang terjaga.",
-    "projects.trading.tagline": "Otomatisasi Keuangan",
-    "projects.trading.description":
-      "Bot trading otomatis berbasis Freqtrade yang memproses data pasar real-time, dilengkapi model ML untuk prediksi arah tren.",
+      "Sistem informasi administrasi dengan migrasi database yang kompleks dan role-based access control. Di-deploy di Railway dengan koneksi bot WA otomatis.",
+    "projects.jafung.tagline": "Sistem Jabatan Fungsional",
+    "projects.jafung.description":
+      "Dashboard komprehensif untuk mengelola jabatan fungsional ASN birokrasi, mengintegrasikan SSR Next.js dengan pelacakan PostgreSQL relasional secara terukur.",
     "contact.title": "Mari Bekerja Bersama",
     "contact.description":
       "Lagi terbuka untuk freelance maupun posisi full-time. Ada proyek atau cuma mau ngobrol? Reach out aja.",

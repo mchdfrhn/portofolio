@@ -26,17 +26,17 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          neon: "#0088ff",
+          neon: "hsl(var(--primary-neon))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          neon: "#bc13fe",
+          neon: "hsl(var(--secondary-neon))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-          neon: "#ff00ff",
+          neon: "hsl(var(--accent-neon))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -56,13 +56,13 @@ export default {
         },
       },
       boxShadow: {
-        neon: '0 0 5px theme("colors.primary.neon"), 0 0 20px theme("colors.primary.neon")',
+        neon: '0 0 5px theme("colors.primary.neon"), 0 4px 20px theme("colors.primary.neon")',
         "neon-strong":
-          '0 0 10px theme("colors.primary.neon"), 0 0 40px theme("colors.primary.neon")',
+          '0 0 10px theme("colors.primary.neon"), 0 4px 40px theme("colors.primary.neon")',
         "neon-purple":
-          '0 0 5px theme("colors.secondary.neon"), 0 0 20px theme("colors.secondary.neon")',
+          '0 0 5px theme("colors.accent.neon"), 0 4px 20px theme("colors.accent.neon")',
         "neon-pink":
-          '0 0 5px theme("colors.accent.neon"), 0 0 20px theme("colors.accent.neon")',
+          '0 0 5px theme("colors.accent.neon"), 0 4px 20px theme("colors.accent.neon")',
       },
       borderRadius: {
         lg: "var(--radius)",

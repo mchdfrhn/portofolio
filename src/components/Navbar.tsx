@@ -48,7 +48,7 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-primary-neon/20 py-4 shadow-[0_4px_20px_rgba(0,136,255,0.1)]"
+          ? "bg-background/60 backdrop-blur-xl border-b border-primary-neon/20 py-4 shadow-lg"
           : "bg-transparent py-6",
       )}
     >
@@ -58,18 +58,18 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="group flex items-center gap-2 text-2xl font-bold tracking-tighter"
+          className="group flex items-center text-3xl font-bold tracking-tighter"
         >
-          <Code className="text-primary w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
-          <div className="relative overflow-hidden">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-foreground/90 to-muted-foreground group-hover:from-primary-neon group-hover:to-blue-400 group-hover:neon-glow-blue transition-all duration-700">
+          <Code className="text-primary-neon w-7 h-7 mr-2.5 transition-transform duration-300 group-hover:rotate-12" />
+          <div className="relative overflow-hidden flex items-baseline">
+            <span className="text-foreground group-hover:text-primary-neon transition-colors duration-500">
               frhn
             </span>
-            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <span className="text-muted-foreground group-hover:text-foreground font-mono text-xl translate-y-[1px] ml-[2px] transition-colors duration-500">
+              .dev
+            </span>
+            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary-neon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
-          <span className="text-muted-foreground group-hover:text-primary font-mono text-sm translate-y-[1px] transition-colors duration-500">
-            .dev
-          </span>
         </motion.a>
 
         {/* Desktop Menu */}
@@ -89,9 +89,12 @@ export const Navbar = () => {
           <LanguageToggle />
           <Button
             variant="outline"
-            className="ml-2 border-primary/20 hover:bg-primary/10"
+            className="ml-2 border-primary-neon/20 hover:bg-primary-neon/10 hover:text-primary-neon transition-colors"
+            asChild
           >
-            <span data-i18n-key="nav.resume">Resume</span>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span data-i18n-key="nav.resume">Resume</span>
+            </a>
           </Button>
         </div>
 
@@ -115,20 +118,24 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
             <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-medium text-foreground/80 hover:text-primary"
+                  className="text-lg font-medium text-foreground/80 hover:text-primary-neon"
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.name}
                 </a>
               ))}
-              <Button className="w-full mt-4">Download CV</Button>
+              <Button asChild className="w-full mt-4 bg-primary-neon hover:bg-primary-neon/90 text-white dark:text-slate-950 font-bold">
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Download CV
+                </a>
+              </Button>
             </div>
           </motion.div>
         )}

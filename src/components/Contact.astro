@@ -3,35 +3,36 @@ import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github } from "lucide-react";
 ---
 
-<section id="contact" class="py-24 relative">
+<section id="contact" class="py-16 md:py-24 relative">
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary-neon/10 blur-[150px] rounded-full -z-10 opacity-30 pointer-events-none animate-pulse shadow-neon"></div>
 
     <div class="max-w-4xl mx-auto text-center px-4">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="contact.title">Let's Work Together</h2>
-        <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto" data-i18n-key="contact.description">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-foreground" data-i18n-key="contact.title">Let's Work Together</h2>
+        <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)] mx-auto mb-8"></div>
+        <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed" data-i18n-key="contact.description">
             Currently interested in freelance opportunities or full-time positions. 
             Have a project in mind or just want to say hi? Hit me up.
         </p>
 
-        <form id="contact-form" class="max-w-xl mx-auto space-y-4 text-left" name="contact" method="POST" data-netlify="true">
-            <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-2">
-                    <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-i18n-key="contact.name.label">Name</label>
-                    <input type="text" id="name" name="name" class="flex h-10 w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="Your Name" data-i18n-key="contact.name.placeholder" required />
+        <form id="contact-form" class="max-w-xl mx-auto space-y-6 text-left p-8 rounded-2xl bg-card/40 border border-border shadow-2xl backdrop-blur-xl" name="contact" method="POST" data-netlify="true">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-2 relative">
+                    <label for="name" class="text-sm font-semibold text-foreground/90 leading-none" data-i18n-key="contact.name.label">Name</label>
+                    <input type="text" id="name" name="name" class="flex h-12 w-full rounded-lg border border-border bg-background/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:border-primary-neon transition-all" placeholder="Your Name" data-i18n-key="contact.name.placeholder" required />
                 </div>
-                <div class="space-y-2">
-                    <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-i18n-key="contact.email.label">Email</label>
-                    <input type="email" id="email" name="email" class="flex h-10 w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="your@email.com" data-i18n-key="contact.email.placeholder" required />
+                <div class="space-y-2 relative">
+                    <label for="email" class="text-sm font-semibold text-foreground/90 leading-none" data-i18n-key="contact.email.label">Email</label>
+                    <input type="email" id="email" name="email" class="flex h-12 w-full rounded-lg border border-border bg-background/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:border-primary-neon transition-all" placeholder="your@email.com" data-i18n-key="contact.email.placeholder" required />
                 </div>
             </div>
-            <div class="space-y-2">
-                <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-i18n-key="contact.message.label">Message</label>
-                <textarea id="message" name="message" class="flex min-h-[120px] w-full rounded-md border border-white/10 bg-background/50 backdrop-blur-sm px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 focus-visible:shadow-neon disabled:cursor-not-allowed disabled:opacity-50 transition-all" placeholder="Tell me about your project..." data-i18n-key="contact.message.placeholder" required></textarea>
+            <div class="space-y-2 relative">
+                <label for="message" class="text-sm font-semibold text-foreground/90 leading-none" data-i18n-key="contact.message.label">Message</label>
+                <textarea id="message" name="message" class="flex min-h-[140px] w-full rounded-lg border border-border bg-background/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:border-primary-neon transition-all resize-y" placeholder="Tell me about your project..." data-i18n-key="contact.message.placeholder" required></textarea>
             </div>
             
-            <Button id="submit-btn" type="submit" size="lg" className="w-full bg-primary-neon text-black hover:bg-primary-neon/90 shadow-neon border-none font-bold">
+            <Button id="submit-btn" type="submit" size="lg" className="w-full h-14 bg-primary-neon text-white dark:text-slate-900 hover:bg-primary-neon/90 hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] hover:-translate-y-1 transition-all duration-300 border-none font-bold text-base mt-4 rounded-xl">
                 <span data-i18n-key="contact.submit">Send Message</span>
-                <Mail className="ml-2 w-4 h-4" />
+                <Mail className="ml-2 w-5 h-5" />
             </Button>
         </form>
 
@@ -49,7 +50,7 @@ import { Mail, Linkedin, Github } from "lucide-react";
                         particleCount: 150,
                         spread: 70,
                         origin: { y: 0.6 },
-                        colors: ['#0088ff', '#bc13fe', '#ff00ff']
+                        colors: ['#38BDF8', '#A78BFA', '#0F172A']
                     });
                 });
             }

@@ -4,65 +4,79 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 230 30% 10%;
+    /* Light Mode - Premium Clean Aesthetic */
+    --background: 210 40% 98%;      /* Very light blue-gray */
+    --foreground: 222 47% 11%;      /* Dark slate */
 
-    --card: 0 0% 100%;
-    --card-foreground: 230 30% 10%;
+    --card: 0 0% 100%;             /* Pure white */
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 230 30% 10%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 221 83% 53%;
+    --primary: 199 89% 48%;        /* Slightly deeper sky blue for light mode */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96%;      /* Lightest gray */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 215 16% 47%;          /* Gray for description */
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 255 92% 76%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
 
     --radius: 0.75rem;
+    --spotlight-color: rgba(56, 189, 248, 0.1);
+
+    /* Neon Colors as variables for theme-aware opacity */
+    --primary-neon: 198 93% 60%;    /* #38BDF8 */
+    --secondary-neon: 255 92% 76%;  /* #A78BFA */
+    --accent-neon: 255 92% 76%;
   }
 
   .dark {
-    --background: 230 25% 4%;
+    /* Dark Mode Pro */
+    --background: 222 47% 11%;     /* #0F172A */
     --foreground: 210 40% 98%;
 
-    --card: 230 25% 7%;
+    --card: 222 47% 13%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 230 25% 4%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 198 93% 60%;       /* #38BDF8 */
+    --primary-foreground: 222.2 47.4% 11.2%; 
 
-    --secondary: 230 25% 12%;
+    --secondary: 222 47% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 230 25% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 20% 65%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 230 25% 12%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 255 92% 76%;        /* #A78BFA */
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 25% 12%;
-    --input: 230 25% 12%;
-    --ring: 217 91% 60%;
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 198 93% 60%;
+    --spotlight-color: rgba(255, 255, 255, 0.1);
+
+    /* Same neon colors but could be tweaked if needed */
+    --primary-neon: 198 93% 60%;
+    --secondary-neon: 255 92% 76%;
+    --accent-neon: 255 92% 76%;
   }
 }
 
@@ -114,6 +128,17 @@
     text-shadow:
       0 0 7px rgba(188, 19, 254, 0.5),
       0 0 10px rgba(188, 19, 254, 0.3);
+  }
+  .text-glow-primary {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  .btn-gradient-glow {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    transition: all 0.3s ease;
+  }
+  .btn-gradient-glow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
   }
   .neon-border-blue {
     @apply border-primary-neon/50 shadow-[0_0_15px_rgba(0,136,255,0.2)];
