@@ -4,42 +4,42 @@
 
 @layer base {
   :root {
-    /* Light Mode - Premium Clean Aesthetic */
-    --background: 210 40% 98%;      /* Very light blue-gray */
-    --foreground: 222 47% 11%;      /* Dark slate */
+    /* Light Mode - Pure White Clean Professional */
+    --background: 0 0% 100%;        /* Pure white */
+    --foreground: 220 25% 12%;      /* Very dark navy-slate for maximum contrast */
 
-    --card: 0 0% 100%;             /* Pure white */
-    --card-foreground: 222 47% 11%;
+    --card: 0 0% 98%;              /* Off-white cards — subtle depth on white bg */
+    --card-foreground: 220 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 25% 12%;
 
-    --primary: 199 89% 48%;        /* Slightly deeper sky blue for light mode */
-    --primary-foreground: 210 40% 98%;
+    --primary: 199 80% 42%;        /* Sky blue, slightly darkened for contrast on white */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;      /* Lightest gray */
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 210 60% 97%;      /* Very light icy blue — almost white, not gray */
+    --secondary-foreground: 220 25% 12%;
 
-    --muted: 215 16% 47%;          /* Gray for description */
-    --muted-foreground: 215 16% 47%;
+    --muted: 215 15% 50%;          /* Medium gray — readable muted text */
+    --muted-foreground: 215 15% 50%;
 
-    --accent: 255 92% 76%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 255 70% 60%;         /* Purple — desaturated/darker for light legibility */
+    --accent-foreground: 220 25% 12%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 199 89% 48%;
+    --border: 215 20% 88%;         /* Subtle cool-gray border */
+    --input: 215 20% 88%;
+    --ring: 199 80% 42%;
 
     --radius: 0.75rem;
-    --spotlight-color: rgba(56, 189, 248, 0.1);
+    --spotlight-color: rgba(56, 189, 248, 0.06);  /* Very subtle spotlight */
 
-    /* Neon Colors as variables for theme-aware opacity */
-    --primary-neon: 198 93% 60%;    /* #38BDF8 */
-    --secondary-neon: 255 92% 76%;  /* #A78BFA */
-    --accent-neon: 255 92% 76%;
+    /* Neon Colors — reduced saturation/opacity for light mode appropriateness */
+    --primary-neon: 199 80% 42%;    /* Matches primary — darker sky blue */
+    --secondary-neon: 255 70% 60%;  /* Matches accent — slightly muted purple */
+    --accent-neon: 255 70% 60%;
   }
 
   .dark {
@@ -96,10 +96,21 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-attachment: fixed;
+  }
+
+  /* Light mode: extremely subtle tints so pure white doesn't feel flat */
+  html:not(.dark) body {
+    background-image:
+      radial-gradient(at 0% 0%, hsla(199, 80%, 60%, 0.04) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(255, 70%, 65%, 0.03) 0, transparent 50%);
+  }
+
+  /* Dark mode: the original richer gradients */
+  html.dark body {
     background-image:
       radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
       radial-gradient(at 100% 0%, hsla(280, 80%, 50%, 0.05) 0, transparent 50%);
-    background-attachment: fixed;
   }
 }
 
@@ -119,19 +130,36 @@
 }
 
 @layer utilities {
-  .neon-glow-blue {
+  /* Dark mode: full neon glow intensity */
+  .dark .neon-glow-blue {
     text-shadow:
       0 0 7px rgba(0, 136, 255, 0.5),
       0 0 10px rgba(0, 136, 255, 0.3);
   }
-  .neon-glow-purple {
+  .dark .neon-glow-purple {
     text-shadow:
       0 0 7px rgba(188, 19, 254, 0.5),
       0 0 10px rgba(188, 19, 254, 0.3);
   }
-  .text-glow-primary {
+  .dark .text-glow-primary {
     text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   }
+
+  /* Light mode: very subtle glow so text stays crisp on white */
+  html:not(.dark) .neon-glow-blue {
+    text-shadow:
+      0 0 4px rgba(0, 100, 200, 0.15),
+      0 0 8px rgba(0, 100, 200, 0.08);
+  }
+  html:not(.dark) .neon-glow-purple {
+    text-shadow:
+      0 0 4px rgba(110, 50, 180, 0.15),
+      0 0 8px rgba(110, 50, 180, 0.08);
+  }
+  html:not(.dark) .text-glow-primary {
+    text-shadow: 0 0 12px rgba(10, 110, 170, 0.12);
+  }
+
   .btn-gradient-glow {
     background: linear-gradient(135deg, #3b82f6, #06b6d4);
     transition: all 0.3s ease;
@@ -146,7 +174,35 @@
   .neon-border-purple {
     @apply border-secondary-neon/50 shadow-[0_0_15px_rgba(188,19,254,0.2)];
   }
-  .neon-card {
+  /* Dark mode: semi-transparent glass effect with white border tint */
+  .dark .neon-card {
     @apply bg-background/40 backdrop-blur-xl border border-white/10 hover:border-primary-neon/50 transition-all duration-300;
+  }
+
+  /* Light mode: opaque card surface with proper border so it's visible on white */
+  html:not(.dark) .neon-card {
+    @apply bg-card backdrop-blur-xl border border-border hover:border-primary-neon/50 transition-all duration-300;
+  }
+
+  /*
+   * Light mode card surface fix:
+   * bg-card/40 on a pure white background is nearly transparent (off-white @ 40% opacity).
+   * Override all semi-transparent card/background surfaces to be solid in light mode.
+   */
+  html:not(.dark) .bg-card\/40,
+  html:not(.dark) .bg-card\/50,
+  html:not(.dark) .bg-card\/60,
+  html:not(.dark) .bg-card\/70 {
+    background-color: hsl(var(--card));
+  }
+
+  html:not(.dark) .bg-background\/40,
+  html:not(.dark) .bg-background\/50,
+  html:not(.dark) .bg-background\/60 {
+    background-color: hsl(var(--background));
+  }
+
+  html:not(.dark) .bg-background\/95 {
+    background-color: hsl(var(--background) / 0.97);
   }
 }
