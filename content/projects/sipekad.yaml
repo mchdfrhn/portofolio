@@ -1,0 +1,22 @@
+title:
+  name: SIPEKAD
+  slug: sipekad
+icon: Database
+image: sistem-sipekad.png
+github: ''
+demo: ''
+tech:
+  - React
+  - Express.js
+  - Redis
+  - Railway
+en:
+  tagline: Administrative System & WA Notification
+  problem: Inefficient manual administrative handling and lack of instant feedback for users.
+  solution: Built a robust information system connected to a WhatsApp gateway (Baileys) via Redis.
+  impact: Automated 10k+ notifications and deployed high-availability microservices.
+id:
+  tagline: Sistem Informasi Manajemen
+  problem: Penanganan administrasi manual yang tidak efisien dan tidak adanya notifikasi instan untuk pengguna.
+  solution: Membangun sistem informasi yang terhubung dengan gateway WhatsApp (Baileys) melalui Redis.
+  impact: Mengotomatiskan 10k+ notifikasi dan men-deploy microservice dengan ketersediaan tinggi.

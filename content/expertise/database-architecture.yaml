@@ -1,0 +1,18 @@
+name:
+  name: Database Architecture
+  slug: database-architecture
+order: 4
+icon: Database
+colorTheme: orange
+fullWidth: false
+tech:
+  - PostgreSQL
+  - MySQL
+  - MongoDB
+  - Redis
+en:
+  title: Database Architecture
+  description: Ensuring sub-second queries by optimizing indexing and architectures in relational (PostgreSQL, MySQL) and NoSQL (MongoDB) data stores.
+id:
+  title: Desain Database
+  description: Rancang dan optimalkan arsitektur database — baik relasional (PostgreSQL, MySQL) maupun NoSQL (MongoDB), disesuaikan dengan kebutuhan sistem.

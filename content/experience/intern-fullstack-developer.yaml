@@ -1,0 +1,26 @@
+name:
+  name: Intern Fullstack Developer
+  slug: intern-fullstack-developer
+type: work
+period: '2025 - Present'
+order: 1
+en:
+  title: Intern Fullstack Developer
+  company: Pusdatin, Kementerian PU
+  description: >-
+    Architected a sophisticated personnel and functional position management
+    system utilizing Next.js, leveraging Server-Side Rendering (SSR) to ensure
+    high-performance access to complex bureaucratic datasets. The integration of
+    Next.js and PostgreSQL for backend services ensured that intricate credit
+    point calculations and organizational hierarchies were handled with maximum
+    precision and scalable efficiency.
+id:
+  title: Magang Fullstack Developer
+  company: Pusdatin, Kementerian PU
+  description: >-
+    Mengarsiteki sistem kepegawaian dan manajemen jabatan fungsional berbasis
+    Next.js yang dioptimalkan melalui Server-Side Rendering (SSR) untuk
+    menjamin efisiensi akses data birokrasi yang kompleks. Integrasi backend
+    yang dibangun dengan Next.js dan PostgreSQL memastikan logika perhitungan
+    angka kredit serta hierarki jabatan berjalan dengan performa tinggi dan
+    skalabilitas yang terukur.

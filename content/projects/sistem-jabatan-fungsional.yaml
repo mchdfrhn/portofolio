@@ -1,0 +1,21 @@
+title:
+  name: Sistem Jabatan Fungsional
+  slug: sistem-jabatan-fungsional
+icon: LayoutTemplate
+image: sistem-jafung.png
+github: ''
+demo: ''
+tech:
+  - Next.js
+  - PostgreSQL
+  - Supabase
+en:
+  tagline: Functional Position System
+  problem: Complex functional credit tracking causing severe assessment and promotion delays.
+  solution: Developed an SSR Next.js application that seamlessly calculates performance credit points.
+  impact: Boosted assessment efficiency and drastically reduced manual calculation errors.
+id:
+  tagline: Sistem Jabatan Fungsional
+  problem: Pelacakan angka kredit jabatan fungsional yang kompleks menyebabkan keterlambatan penilaian dan promosi.
+  solution: Membangun aplikasi Next.js berbasis SSR yang menghitung angka kredit kinerja secara otomatis.
+  impact: Meningkatkan efisiensi penilaian dan mengurangi kesalahan perhitungan manual secara drastis.

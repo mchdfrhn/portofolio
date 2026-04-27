@@ -1,0 +1,20 @@
+name:
+  name: Informatics Engineering
+  slug: informatics-engineering
+type: education
+period: '2023 - Present'
+order: 2
+en:
+  title: Informatics Engineering
+  company: STT Pekerjaan Umum
+  description: >-
+    Focusing on Software Engineering, Data Structures, and Algorithm Design.
+    Active member of the university coding club. Relevant Coursework: Web
+    Development, Database Systems, Artificial Intelligence.
+id:
+  title: Teknik Informatika
+  company: STT Pekerjaan Umum
+  description: >-
+    Fokus pada Rekayasa Perangkat Lunak, Struktur Data, dan Desain Algoritma.
+    Aktif di klub coding kampus. Mata kuliah relevan: Pengembangan Web,
+    Sistem Basis Data, Kecerdasan Buatan.

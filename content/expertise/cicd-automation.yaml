@@ -1,0 +1,18 @@
+name:
+  name: CI/CD & Automation
+  slug: cicd-automation
+order: 3
+icon: Shield
+colorTheme: green
+fullWidth: false
+tech:
+  - Jenkins
+  - GitLab CI
+  - Automation
+  - GitHub Actions
+en:
+  title: CI/CD & Automation
+  description: Reducing deployment time by 40% through automated testing and continuous delivery pipelines utilizing Jenkins and GitLab CI.
+id:
+  title: CI/CD & Otomatisasi
+  description: Setup dan maintain pipeline CI/CD untuk otomatisasi testing, build, dan deployment — supaya rilis lebih cepat dan konsisten tanpa drama.

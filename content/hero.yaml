@@ -1,0 +1,33 @@
+stats:
+  - emoji: 🚀
+    label: 3+ Production Projects
+  - emoji: ⚙️
+    label: REST API
+  - emoji: 🐘
+    label: PostgreSQL
+  - emoji: 🐳
+    label: Docker
+en:
+  badge: Available for new opportunities
+  title1: Fullstack Developer
+  title2: (Next.js + Laravel + Go)
+  subtitle: I Build Scalable Backend Systems That Handle Real-World Traffic.
+  ctaContact: Hire Me
+  ctaProjects: Projects
+  codeRole: '"Solving architecture bottlenecks"'
+  codeSkill1: '"Backend"'
+  codeSkill2: '"Cloud Deployments"'
+  codeImpact: '"Faster business operations"'
+  codeDelivery: '"On Time & Robust"'
+id:
+  badge: Terbuka untuk kolaborasi
+  title1: Fullstack Developer
+  title2: (Next.js + Laravel + Go)
+  subtitle: Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi.
+  ctaContact: Mari Bekerja Bersama
+  ctaProjects: Proyek
+  codeRole: '"Menyelesaikan bottleneck arsitektur"'
+  codeSkill1: '"Backend API"'
+  codeSkill2: '"Cloud Deployments"'
+  codeImpact: '"Proses bisnis lebih cepat"'
+  codeDelivery: '"Tepat Waktu & Tangguh"'
