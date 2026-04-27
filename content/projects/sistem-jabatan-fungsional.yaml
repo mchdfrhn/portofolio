@@ -1,10 +1,8 @@
-title:
-  name: Sistem Jabatan Fungsional
-  slug: sistem-jabatan-fungsional
+title: Sistem Jabatan Fungsional
 icon: LayoutTemplate
 image: sistem-jafung.png
-github: ''
-demo: ''
+github: https://github.com/mchdfrhn/pusdatin-jafung
+demo: https://jafung-pusdatin.vercel.app
 tech:
   - Next.js
   - PostgreSQL

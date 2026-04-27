@@ -1,6 +1,4 @@
-name:
-  name: Cloud Infrastructure
-  slug: cloud-infrastructure
+name: Cloud Infrastructure
 order: 2
 icon: Cloud
 colorTheme: secondary

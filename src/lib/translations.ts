@@ -1,16 +1,17 @@
 export const translations = {
   en: {
+    // Navigation
     "nav.about": "About",
     "nav.expertise": "Expertise",
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
     "nav.resume": "Resume",
-    "hero.title.1": "Building",
-    "hero.title.2": "Modern, Scalable Applications",
-    "hero.title.3": "& Cloud Infrastructure.",
-    "hero.subtitle":
-      "Fullstack Developer specializing in Go, Node.js, React, and Laravel. Building production-grade systems with cloud infrastructure, CI/CD automation, and scalable architectures.",
+
+    // Hero
+    "hero.title.1": "Fullstack Developer",
+    "hero.title.2": "(Next.js + Laravel + Go)",
+    "hero.subtitle": "I Build Scalable Backend Systems That Handle Real-World Traffic.",
     "hero.badge": "Available for new opportunities",
     "hero.cta.contact": "Hire Me",
     "hero.cta.projects": "Projects",
@@ -19,16 +20,14 @@ export const translations = {
     "hero.code.skill2": '"Cloud Deployments"',
     "hero.code.impact": '"Faster business operations"',
     "hero.code.delivery": '"On Time & Robust"',
-    "hero.status.available": "Available for freelance projects",
-    "hero.status.location": "Based in Jakarta, ID",
-    "about.profile.name": "Mochamad Farhan Ali",
-    "about.profile.title": "Fullstack Developer",
+
+    // About
     "about.badge": "Who I Am",
     "about.title": "About Me",
     "about.description":
       "Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies.",
-    "about.location.title": "Jakarta, Indonesia",
-    "about.location.subtitle": "Based & Operating 🇮🇩",
+    "about.profile.name": "Mochamad Farhan Ali",
+    "about.profile.title": "Backend & DevOps Engineer",
     "about.current": "Currently",
     "about.experience.title": "Intern Fullstack Developer",
     "about.experience.company": "Pusdatin, Kementerian PU",
@@ -39,75 +38,24 @@ export const translations = {
     "about.interest.cicd": "CI/CD Automation",
     "about.interest.system": "System Design",
     "about.years.label": "Years Coding",
-    "experience.section.title": "Experience & Education",
-    "experience.job.title": "Intern Fullstack Developer",
-    "experience.job.company": "Pusdatin, Kementerian PU",
-    "experience.job.description":
-      "Architected a sophisticated personnel and functional position management system utilizing Next.js, leveraging Server-Side Rendering (SSR) to ensure high-performance access to complex bureaucratic datasets. The integration of Next.js and PostgreSQL for backend services ensured that intricate credit point calculations and organizational hierarchies were handled with maximum precision and scalable efficiency.",
-    "experience.education.title": "Informatics Engineering",
-    "experience.education.school": "STT Pekerjaan Umum",
-    "experience.education.description":
-      "Focusing on Software Engineering, Data Structures, and Algorithm Design. Active member of the university coding club. Relevant Coursework: Web Development, Database Systems, Artificial Intelligence.",
+
+    // Expertise section header (card content managed by CMS)
     "aboutDescription.badge": "Expertise",
     "aboutDescription.heading": "What I Do",
     "aboutDescription.lead":
       "As a dedicated Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally.",
-    "aboutDescription.backend.title": "Backend Development",
-    "aboutDescription.backend.text":
-      "Proficient in building scalable backend systems and efficient APIs with Go, Node.js, and Laravel. Strong focus on developing responsive interfaces and optimizing application performance.",
-    "aboutDescription.backend.tag1": "Go",
-    "aboutDescription.backend.tag2": "Node.js",
-    "aboutDescription.backend.tag3": "Laravel",
-    "aboutDescription.backend.tag4": "REST APIs",
-    "aboutDescription.frontend.title": "Frontend Development",
-    "aboutDescription.frontend.text":
-      "Expert in creating interactive and responsive user interfaces with React 19 and Next.js. Specializing in modern web technologies and CSS frameworks to deliver seamless user experiences.",
-    "aboutDescription.frontend.tag1": "React 19",
-    "aboutDescription.frontend.tag2": "Next.js",
-    "aboutDescription.frontend.tag3": "TypeScript",
-    "aboutDescription.frontend.tag4": "Tailwind CSS",
-    "aboutDescription.cloud.title": "Cloud Infrastructure",
-    "aboutDescription.cloud.text":
-      "Experienced in deploying and managing cloud infrastructure on AWS. Strong expertise in containerization using Docker and orchestration with Kubernetes for scalable, resilient systems.",
-    "aboutDescription.cloud.tag1": "AWS",
-    "aboutDescription.cloud.tag2": "Docker",
-    "aboutDescription.cloud.tag3": "Kubernetes",
-    "aboutDescription.cloud.tag4": "Infrastructure",
-    "aboutDescription.cicd.title": "CI/CD & Automation",
-    "aboutDescription.cicd.text":
-      "Proficient in setting up and maintaining CI/CD pipelines for automated testing, building, and deployment. Reducing deployment time and ensuring reliable, continuous delivery of applications.",
-    "aboutDescription.cicd.tag1": "Jenkins",
-    "aboutDescription.cicd.tag2": "GitLab CI",
-    "aboutDescription.cicd.tag3": "Automation",
-    "aboutDescription.cicd.tag4": "Deployment",
-    "aboutDescription.database.title": "Database Design",
-    "aboutDescription.database.text":
-      "Skilled in designing and optimizing database architectures for performance. Experience with both relational databases (PostgreSQL, MySQL) and NoSQL solutions (MongoDB) for various use cases.",
-    "aboutDescription.database.tag1": "PostgreSQL",
-    "aboutDescription.database.tag2": "MySQL",
-    "aboutDescription.database.tag3": "MongoDB",
-    "aboutDescription.database.tag4": "Optimization",
-    "aboutDescription.achievements.title": "Key Achievements",
-    "aboutDescription.achievements.item1":
-      "Reduced deployment time by 40% through CI/CD optimization",
-    "aboutDescription.achievements.item2":
-      "Managed containerized microservices on Kubernetes",
-    "aboutDescription.achievements.item3":
-      "Built scalable systems supporting production workloads",
     "aboutDescription.note":
       "I am always open to discussing emerging technologies and exciting challenges. Feel free to reach out to explore how I can bring value to your team through efficient development practices, robust infrastructure, and innovative solutions.",
+
+    // Experience section header (items managed by CMS)
+    "experience.section.title": "Experience & Education",
+
+    // Projects section header (items managed by CMS)
     "projects.title": "Selected Works",
     "projects.description":
       "A collection of projects demonstrating expertise in full-stack development, system architecture, and algorithmic solutions.",
-    "projects.pegawai.tagline": "Employee Management Dashboard",
-    "projects.pegawai.description":
-      "Administrative dashboard enabling efficient tracking and updates of personnel data through automated XLSX ingestion and RBAC.",
-    "projects.sipekad.tagline": "Administrative Management System",
-    "projects.sipekad.description":
-      "Robust information system with complex database migrations and role-based access control. Deployed on Railway for high availability.",
-    "projects.jafung.tagline": "Functional Position System",
-    "projects.jafung.description":
-      "A comprehensive dashboard for managing civil servant functional positions, integrating Next.js with complex role-based PostgreSQL tracking.",
+
+    // Contact
     "contact.title": "Let's Work Together",
     "contact.description":
       "Currently interested in freelance opportunities or full-time positions. Have a project in mind or just want to say hi? Hit me up.",
@@ -118,41 +66,41 @@ export const translations = {
     "contact.email.placeholder": "your@email.com",
     "contact.message.placeholder": "Tell me about your project...",
     "contact.submit": "Send Message",
+
+    // Footer
     "footer.builtWith": "Built with Astro, React & Tailwind.",
     "footer.rights": "All rights reserved.",
-    "language.label": "ID",
   },
   id: {
+    // Navigation
     "nav.about": "Tentang",
     "nav.expertise": "Keahlian",
     "nav.projects": "Proyek",
     "nav.experience": "Pengalaman",
     "nav.contact": "Kontak",
     "nav.resume": "Resume",
-    "hero.title.1": "Membangun",
-    "hero.title.2": "Aplikasi Modern yang Skalabel",
-    "hero.title.3": "& Infrastruktur Cloud.",
+
+    // Hero
+    "hero.title.1": "Fullstack Developer",
+    "hero.title.2": "(Next.js + Laravel + Go)",
     "hero.subtitle":
-      "Fullstack Developer & Fullstack Developer yang fokus di Go, Node.js, React, dan Laravel — dari code sampai infrastruktur cloud, CI/CD, sampai sistem siap produksi.",
+      "Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi.",
     "hero.badge": "Terbuka untuk kolaborasi",
     "hero.cta.contact": "Mari Bekerja Bersama",
     "hero.cta.projects": "Proyek",
-    "hero.cta.resume": "Unduh CV",
     "hero.code.role": '"Menyelesaikan bottleneck arsitektur"',
     "hero.code.skill1": '"Backend API"',
     "hero.code.skill2": '"Cloud Deployments"',
     "hero.code.impact": '"Proses bisnis lebih cepat"',
     "hero.code.delivery": '"Tepat Waktu & Tangguh"',
-    "hero.status.available": "Terbuka untuk proyek freelance",
-    "hero.status.location": "Berdomisili di Jakarta, ID",
-    "about.profile.name": "Mochamad Farhan Ali",
-    "about.profile.title": "Fullstack Developer",
+
+    // About
     "about.badge": "Siapa Saya",
     "about.title": "Tentang Saya",
     "about.description":
-      "Fullstack Developer & Fullstack Developer yang senang membangun sistem yang efisien, skalabel, dan tahan banting — mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika.",
-    "about.location.title": "Jakarta, Indonesia",
-    "about.location.subtitle": "Berdomisili & Bekerja di 🇮🇩",
+      "Fullstack Developer yang senang membangun sistem efisien, skalabel, dan tahan banting — mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika.",
+    "about.profile.name": "Mochamad Farhan Ali",
+    "about.profile.title": "Backend & DevOps Engineer",
     "about.current": "Saat ini",
     "about.experience.title": "Magang Fullstack Developer",
     "about.experience.company": "Pusdatin, Kementerian PU",
@@ -163,75 +111,24 @@ export const translations = {
     "about.interest.cicd": "Otomatisasi CI/CD",
     "about.interest.system": "Desain Sistem",
     "about.years.label": "Tahun Coding",
-    "experience.section.title": "Pengalaman & Pendidikan",
-    "experience.job.title": "Magang Fullstack Developer",
-    "experience.job.company": "Pusdatin, Kementerian PU",
-    "experience.job.description":
-      "Mengarsiteki sistem kepegawaian dan manajemen jabatan fungsional berbasis Next.js yang dioptimalkan melalui Server-Side Rendering (SSR) untuk menjamin efisiensi akses data birokrasi yang kompleks. Integrasi backend yang dibangun dengan Next.js dan PostgreSQL memastikan logika perhitungan angka kredit serta hierarki jabatan berjalan dengan performa tinggi dan skalabilitas yang terukur.",
-    "experience.education.title": "Teknik Informatika",
-    "experience.education.school": "STT Pekerjaan Umum",
-    "experience.education.description":
-      "Fokus pada Rekayasa Perangkat Lunak, Struktur Data, dan Desain Algoritma. Aktif di klub coding kampus. Mata kuliah relevan: Pengembangan Web, Sistem Basis Data, Kecerdasan Buatan.",
+
+    // Expertise section header (card content managed by CMS)
     "aboutDescription.badge": "Keahlian",
     "aboutDescription.heading": "Apa yang Saya Lakukan",
     "aboutDescription.lead":
       "Saya percaya bahwa software yang baik bukan cuma soal fitur, tapi juga soal bagaimana dia jalan di produksi — stabil, cepat, dan mudah di-maintain. Dari nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya.",
-    "aboutDescription.backend.title": "Pengembangan Backend",
-    "aboutDescription.backend.text":
-      "Bangun backend yang skalabel dan API yang bersih pakai Go, Node.js, dan Laravel. Fokus ke performa dan struktur kode yang gampang dikembangin.",
-    "aboutDescription.backend.tag1": "Go",
-    "aboutDescription.backend.tag2": "Node.js",
-    "aboutDescription.backend.tag3": "Laravel",
-    "aboutDescription.backend.tag4": "REST API",
-    "aboutDescription.frontend.title": "Pengembangan Frontend",
-    "aboutDescription.frontend.text":
-      "Bikin UI yang interaktif dan responsif pakai React 19 dan Next.js. Prioritas di user experience yang mulus dan performa render yang optimal.",
-    "aboutDescription.frontend.tag1": "React 19",
-    "aboutDescription.frontend.tag2": "Next.js",
-    "aboutDescription.frontend.tag3": "TypeScript",
-    "aboutDescription.frontend.tag4": "Tailwind CSS",
-    "aboutDescription.cloud.title": "Infrastruktur Cloud",
-    "aboutDescription.cloud.text":
-      "Deploy dan kelola infrastruktur di AWS — dari containerisasi dengan Docker sampai orkestrasi skala besar pakai Kubernetes.",
-    "aboutDescription.cloud.tag1": "AWS",
-    "aboutDescription.cloud.tag2": "Docker",
-    "aboutDescription.cloud.tag3": "Kubernetes",
-    "aboutDescription.cloud.tag4": "Infrastruktur",
-    "aboutDescription.cicd.title": "CI/CD & Otomatisasi",
-    "aboutDescription.cicd.text":
-      "Setup dan maintain pipeline CI/CD untuk otomatisasi testing, build, dan deployment — supaya rilis lebih cepat dan konsisten tanpa drama.",
-    "aboutDescription.cicd.tag1": "Jenkins",
-    "aboutDescription.cicd.tag2": "GitLab CI",
-    "aboutDescription.cicd.tag3": "Otomatisasi",
-    "aboutDescription.cicd.tag4": "Deployment",
-    "aboutDescription.database.title": "Desain Database",
-    "aboutDescription.database.text":
-      "Rancang dan optimalkan arsitektur database — baik relasional (PostgreSQL, MySQL) maupun NoSQL (MongoDB), disesuaikan dengan kebutuhan sistem.",
-    "aboutDescription.database.tag1": "PostgreSQL",
-    "aboutDescription.database.tag2": "MySQL",
-    "aboutDescription.database.tag3": "MongoDB",
-    "aboutDescription.database.tag4": "Optimasi",
-    "aboutDescription.achievements.title": "Pencapaian Utama",
-    "aboutDescription.achievements.item1":
-      "Mengurangi waktu deployment sebesar 40% lewat optimasi CI/CD",
-    "aboutDescription.achievements.item2":
-      "Mengelola microservice terkontainerisasi di Kubernetes",
-    "aboutDescription.achievements.item3":
-      "Membangun sistem skalabel yang mendukung beban produksi",
     "aboutDescription.note":
       "Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti dari sisi code sekaligus infrastruktur — yuk ngobrol.",
+
+    // Experience section header (items managed by CMS)
+    "experience.section.title": "Pengalaman & Pendidikan",
+
+    // Projects section header (items managed by CMS)
     "projects.title": "Karya Terpilih",
     "projects.description":
       "Beberapa proyek yang mencerminkan cara saya kerja — dari arsitektur sistem sampai detail implementasi.",
-    "projects.pegawai.tagline": "Dashboard Manajemen Pegawai",
-    "projects.pegawai.description":
-      "Dashboard administratif yang memungkinkan pelacakan dan pembaruan data kepegawaian yang efisien melalui impor XLSX otomatis dan sinkronisasi role-based (RBAC).",
-    "projects.sipekad.tagline": "Sistem Informasi Manajemen",
-    "projects.sipekad.description":
-      "Sistem informasi administrasi dengan migrasi database yang kompleks dan role-based access control. Di-deploy di Railway dengan koneksi bot WA otomatis.",
-    "projects.jafung.tagline": "Sistem Jabatan Fungsional",
-    "projects.jafung.description":
-      "Dashboard komprehensif untuk mengelola jabatan fungsional ASN birokrasi, mengintegrasikan SSR Next.js dengan pelacakan PostgreSQL relasional secara terukur.",
+
+    // Contact
     "contact.title": "Mari Bekerja Bersama",
     "contact.description":
       "Lagi terbuka untuk freelance maupun posisi full-time. Ada proyek atau cuma mau ngobrol? Reach out aja.",
@@ -242,8 +139,9 @@ export const translations = {
     "contact.email.placeholder": "email@anda.com",
     "contact.message.placeholder": "Ceritain proyeknya...",
     "contact.submit": "Kirim Pesan",
+
+    // Footer
     "footer.builtWith": "Dibangun dengan Astro, React & Tailwind.",
     "footer.rights": "Hak cipta dilindungi.",
-    "language.label": "EN",
   },
 };

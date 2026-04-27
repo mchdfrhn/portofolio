@@ -1,4 +1,9 @@
 ---
+import { reader } from "@/lib/reader";
+
+const rawExperience = await reader.collections.experience.all();
+const experience = rawExperience
+  .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
 ---
 
 <section id="experience" class="py-24 relative overflow-hidden">
@@ -7,40 +12,41 @@
     </div>
 
     <div class="relative border-l border-primary-neon/10 ml-4 md:ml-12 space-y-12">
-        
-        <!-- Experience Item 1 -->
-        <div class="relative pl-8 md:pl-12">
-            <!-- Timeline Dot -->
-             <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-primary-neon shadow-neon ring-4 ring-background"></div>
-             
-             <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                <h3 class="text-2xl font-bold" data-i18n-key="experience.job.title">Intern Fullstack Developer</h3>
-                <span class="text-xs font-mono text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full w-fit shadow-[0_0_10px_rgba(0,136,255,0.1)] neon-glow-blue border border-primary-neon/20">2025 - Present</span>
-             </div>
-             <div class="text-lg text-primary-neon mb-4 font-bold opacity-90" data-i18n-key="experience.job.company">Pusdatin, Kementerian PU</div>
-             <p class="text-muted-foreground max-w-3xl" data-i18n-key="experience.job.description">
-                 Managing CI/CD pipelines and cloud infrastructure (AWS) for the Ministry of Public Works. 
-                 Containerizing applications using Docker and Kubernetes for scalability. 
-                 Optimizing deployment processes reducing deployment time by 40%. 
-                 Collaborating on enterprise-grade administrative systems using React, Node.js, and Go.
-             </p>
-        </div>
+        {experience.map(({ slug, entry }) => {
+            const isWork = entry.type === "work";
+            const dotColor = isWork
+                ? "bg-primary-neon shadow-neon ring-4 ring-background"
+                : "bg-secondary-neon shadow-neon-purple ring-4 ring-background";
+            const periodColor = isWork
+                ? "text-primary-neon bg-primary-neon/10 shadow-[0_0_10px_rgba(0,136,255,0.1)] border-primary-neon/20"
+                : "text-secondary-neon bg-secondary-neon/10 shadow-[0_0_10px_rgba(188,19,254,0.1)] border-secondary-neon/20";
+            const companyColor = isWork ? "text-primary-neon" : "text-secondary-neon";
 
-        <!-- Education Item -->
-         <div class="relative pl-8 md:pl-12">
-            <!-- Timeline Dot -->
-             <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-secondary-neon shadow-neon-purple ring-4 ring-background"></div>
-             
-             <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                <h3 class="text-2xl font-bold" data-i18n-key="experience.education.title">Informatics Engineering</h3>
-                <span class="text-xs font-mono text-secondary-neon bg-secondary-neon/10 px-3 py-1 rounded-full w-fit shadow-[0_0_10px_rgba(188,19,254,0.1)] neon-glow-purple border border-secondary-neon/20">2023 - Present</span>
-             </div>
-             <div class="text-lg text-secondary-neon mb-4 font-bold opacity-90" data-i18n-key="experience.education.school">STT Pekerjaan Umum</div>
-             <p class="text-muted-foreground max-w-3xl" data-i18n-key="experience.education.description">
-                 Focusing on Software Engineering, Data Structures, and Algorithm Design. 
-                 Active member of the university coding club. 
-                 Relevant Coursework: Web Development, Database Systems, Artificial Intelligence.
-             </p>
-        </div>
+            return (
+                <div class="relative pl-8 md:pl-12">
+                    <div class={`absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full ${dotColor}`}></div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                        <h3 class="text-2xl font-bold">
+                            <span data-lang="en">{entry.en.title}</span>
+                            <span data-lang="id" hidden>{entry.id.title}</span>
+                        </h3>
+                        <span class={`text-xs font-mono px-3 py-1 rounded-full w-fit neon-glow-blue border ${periodColor}`}>
+                            {entry.period}
+                        </span>
+                    </div>
+
+                    <div class={`text-lg mb-4 font-bold opacity-90 ${companyColor}`}>
+                        <span data-lang="en">{entry.en.company}</span>
+                        <span data-lang="id" hidden>{entry.id.company}</span>
+                    </div>
+
+                    <p class="text-muted-foreground max-w-3xl">
+                        <span data-lang="en">{entry.en.description}</span>
+                        <span data-lang="id" hidden>{entry.id.description}</span>
+                    </p>
+                </div>
+            );
+        })}
     </div>
 </section>

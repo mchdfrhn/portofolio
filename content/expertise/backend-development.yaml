@@ -1,6 +1,4 @@
-name:
-  name: Backend Development
-  slug: backend-development
+name: Backend Development
 order: 1
 icon: Layout
 colorTheme: primary

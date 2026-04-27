@@ -1,6 +1,16 @@
 ---
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react";
+import { reader } from "@/lib/reader";
+
+const profile = await reader.singletons.profile.read();
+
+const techStack = profile?.techStack ?? [
+  'Go', 'Node.js', 'PHP', 'Gin', 'React', 'Next.js', 'Laravel', 'Tailwind',
+  'PostgreSQL', 'MySQL', 'MongoDB', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'GitHub Actions',
+];
+const location = profile?.location ?? "Jakarta, ID (Remote Ready)";
+const yearsExp = profile?.yearsExp ?? "3+";
 ---
 
 <section id="about" class="pt-10 md:pt-20 pb-6 md:pb-12">
@@ -18,7 +28,7 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-        
+
         <!-- Profile Block -->
         <Card className="md:col-span-1 bg-card/40 backdrop-blur-md rounded-2xl border border-border relative overflow-hidden group hover:border-primary-neon/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(56,189,248,0.2)] transition-all duration-300">
             <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -28,16 +38,21 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
                 </div>
                 <div class="px-6 pb-6 pt-0 relative flex-1 flex flex-col">
                     <div class="w-20 h-20 rounded-full bg-muted border-4 border-card -mt-10 overflow-hidden relative z-20 shadow-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
-                        <!-- TODO: Replace with Real Photo Avatar -->
                         <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/20 to-secondary-neon/20 mix-blend-overlay"></div>
                         <span class="text-3xl font-extrabold text-foreground/50">FA</span>
                     </div>
                     <div class="mt-4">
-                        <h3 class="text-xl font-bold mb-1 text-foreground flex items-center gap-2"><span data-i18n-key="about.profile.name">Farhan Ali</span> <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span></h3>
-                        <p class="text-primary-neon text-sm font-medium mb-3" data-i18n-key="about.profile.title">Backend & DevOps Engineer</p>
+                        <h3 class="text-xl font-bold mb-1 text-foreground flex items-center gap-2">
+                            <span data-i18n-key="about.profile.name">{profile?.name ?? "Farhan Ali"}</span>
+                            {profile?.availability && <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>}
+                        </h3>
+                        <p class="text-primary-neon text-sm font-medium mb-3">
+                            <span data-lang="en">{profile?.titleEn ?? "Backend & DevOps Engineer"}</span>
+                            <span data-lang="id" hidden>{profile?.titleId ?? "Backend & DevOps Engineer"}</span>
+                        </p>
                         <div class="flex items-center gap-1.5 text-muted-foreground text-xs font-medium bg-secondary px-2.5 py-1.5 rounded-md w-fit border border-border">
                             <MapPin className="w-3.5 h-3.5" />
-                            <span>Jakarta, ID (Remote Ready)</span>
+                            <span>{location}</span>
                         </div>
                     </div>
                 </div>
@@ -70,7 +85,7 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
                 </CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-6 pt-2 relative z-10">
-                {['Go', 'Node.js', 'PHP', 'Gin', 'React', 'Next.js', 'Laravel', 'Tailwind', 'PostgreSQL', 'MySQL', 'MongoDB', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Gihub Action'].map((tech) => (
+                {techStack.map((tech) => (
                    <div class="flex flex-col items-center justify-center p-3 rounded-xl bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-primary-neon transition-all duration-300 border border-border hover:border-primary-neon/30 hover:-translate-y-1 hover:shadow-md">
                         <span class="font-semibold text-xs sm:text-sm transition-transform">{tech}</span>
                    </div>
@@ -101,12 +116,12 @@ import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react
                 </div>
             </CardContent>
         </Card>
-        
-        <!-- Education / Stat Block -->
+
+        <!-- Years Exp Block -->
          <Card className="md:col-span-1 relative overflow-hidden bg-primary-neon/5 backdrop-blur-md rounded-2xl border border-primary-neon/10 group hover:border-primary-neon/40 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300">
             <div class="absolute inset-0 bg-gradient-to-tr from-primary-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <CardContent className="p-6 h-full flex flex-col justify-center text-center relative z-10">
-                <div class="text-5xl font-extrabold text-primary-neon mb-3 tracking-tighter">3+</div>
+                <div class="text-5xl font-extrabold text-primary-neon mb-3 tracking-tighter">{yearsExp}</div>
                 <p class="text-sm text-secondary-neon font-bold uppercase tracking-widest" data-i18n-key="about.years.label">Years Coding</p>
             </CardContent>
         </Card>

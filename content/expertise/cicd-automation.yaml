@@ -1,6 +1,4 @@
-name:
-  name: CI/CD & Automation
-  slug: cicd-automation
+name: CI/CD & Automation
 order: 3
 icon: Shield
 colorTheme: green

@@ -1,10 +1,8 @@
-title:
-  name: Sistem Kepegawaian Pusdatin
-  slug: sistem-kepegawaian-pusdatin
+title: Sistem Kepegawaian Pusdatin
 icon: Database
 image: sistem-pegawai.png
-github: ''
-demo: ''
+github: https://github.com/mchdfrhn/pusdatin-karyawan
+demo: https://pegawai-pusdatin.vercel.app
 tech:
   - Next.js
   - PostgreSQL

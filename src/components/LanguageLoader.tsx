@@ -7,7 +7,15 @@ const getLanguage = () => {
 };
 
 const translate = (key: string, lang: "en" | "id") => {
-  return translations[lang]?.[key] ?? translations.en[key] ?? key;
+  const t = translations[lang] as Record<string, string>;
+  const fallback = translations.en as Record<string, string>;
+  return t?.[key] ?? fallback[key] ?? key;
+};
+
+const applyLangVisibility = (lang: "en" | "id") => {
+  document.querySelectorAll<HTMLElement>("[data-lang]").forEach((el) => {
+    el.hidden = el.dataset.lang !== lang;
+  });
 };
 
 const applyLanguage = (lang: "en" | "id") => {
@@ -31,6 +39,8 @@ const applyLanguage = (lang: "en" | "id") => {
 
       element.textContent = translation;
     });
+
+  applyLangVisibility(lang);
 };
 
 export default function LanguageLoader() {

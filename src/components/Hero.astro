@@ -2,7 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { reader } from "@/lib/reader";
 
+const hero = await reader.singletons.hero.read();
+const stats = hero?.stats ?? [
+  { emoji: "🚀", label: "3+ Production Projects" },
+  { emoji: "⚙️", label: "REST API" },
+  { emoji: "🐘", label: "PostgreSQL" },
+  { emoji: "🐳", label: "Docker" },
+];
 ---
 
 <section id="hero" class="min-h-screen flex flex-col justify-center relative overflow-hidden">
@@ -29,24 +37,14 @@ import { motion } from "framer-motion";
                     I Build Scalable Backend Systems That Handle Real-World Traffic.
                 </p>
                 
-                <!-- Quick Impact / Stats -->
+                <!-- Quick Impact / Stats (from CMS) -->
                 <div class="flex flex-wrap gap-4 pt-2 pb-4">
-                    <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
-                        <span class="text-lg drop-shadow-md">🚀</span>
-                        <span class="font-medium text-foreground/90">3+ Production Projects</span>
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
-                        <span class="text-secondary-neon drop-shadow-[0_0_10px_rgba(167,139,250,0.3)]">⚙️</span>
-                        <span class="font-medium text-foreground/90">REST API</span>
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
-                        <span class="text-primary-neon drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]">🐘</span>
-                        <span class="font-medium text-foreground/90">PostgreSQL</span>
-                    </div>
-                    <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
-                        <span class="text-blue-500 drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">🐳</span>
-                        <span class="font-medium text-foreground/90">Docker</span>
-                    </div>
+                    {stats.map((stat) => (
+                        <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
+                            <span class="text-lg drop-shadow-md">{stat.emoji}</span>
+                            <span class="font-medium text-foreground/90">{stat.label}</span>
+                        </div>
+                    ))}
                 </div>
             </div>
 

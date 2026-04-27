@@ -1,6 +1,4 @@
-name:
-  name: Frontend Integrations
-  slug: frontend-integrations
+name: Frontend Integrations
 order: 5
 icon: Zap
 colorTheme: accent

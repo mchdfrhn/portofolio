@@ -1,6 +1,4 @@
-name:
-  name: Database Architecture
-  slug: database-architecture
+name: Database Architecture
 order: 4
 icon: Database
 colorTheme: orange
