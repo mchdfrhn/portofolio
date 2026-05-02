@@ -22,9 +22,9 @@ const id = hero?.id;
     <div class="w-full max-w-none md:max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
         <div class="flex-1 space-y-10 relative z-10 w-full pl-0">
             <!-- Role / Tagline Badge -->
-            <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:border-primary-neon/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all">
+            <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:bg-primary-neon/25 hover:border-primary-neon/70 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all duration-300 cursor-default">
                 <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
-                <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase">
+                <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]">
                     <span data-lang="en">{en?.badge ?? "Available for new opportunities"}</span>
                     <span data-lang="id" hidden>{id?.badge ?? "Terbuka untuk kolaborasi"}</span>
                 </span>
@@ -51,16 +51,16 @@ const id = hero?.id;
                 <!-- Quick Impact / Stats (from CMS) -->
                 <div class="hero-stats flex flex-wrap gap-4 pt-2 pb-4">
                     {stats.map((stat) => (
-                        <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
-                            <span class="text-lg drop-shadow-md">{stat.emoji}</span>
-                            <span class="font-medium text-foreground/90">{stat.label}</span>
+                        <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-card border border-border backdrop-blur-sm">
+                            <span class="text-sm">{stat.emoji}</span>
+                            <span class="text-xs font-medium text-foreground/70">{stat.label}</span>
                         </div>
                     ))}
                 </div>
             </div>
 
             <!-- CTA Section -->
-            <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
                 <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide">
                     <span data-lang="en">{en?.ctaContact ?? "Hire Me"}</span>
                     <span data-lang="id" hidden>{id?.ctaContact ?? "Mari Bekerja Bersama"}</span>
@@ -173,6 +173,14 @@ const id = hero?.id;
             opacity: 0,
             duration: 0.8
         }, "-=0.6")
+        .from(heroEl.querySelectorAll(".hero-stats > div"), {
+            opacity: 0,
+            scale: 0.5,
+            y: 10,
+            duration: 0.25,
+            stagger: 0.12,
+            ease: "back.out(2.5)"
+        }, "-=0.3")
         .from(heroEl.querySelector(".hero-visual"), {
             opacity: 0,
             x: 20,

@@ -9,8 +9,8 @@ stats:
     label: Docker
 en:
   badge: Available for new opportunities
-  title1: Fullstack Developerrrr
-  title2: (Next.js + Go)
+  title1: Fullstack Developer
+  title2: (Next + Laravel)
   subtitle: I Build Scalable Backend Systems That Handle Real-World Traffic.
   ctaContact: Hire Me
   ctaProjects: Projects
@@ -22,7 +22,7 @@ en:
 id:
   badge: Terbuka untuk kolaborasi
   title1: Fullstack Developer
-  title2: (Next.js + Laravel + Go)
+  title2: (Next + Laravel)
   subtitle: Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi.
   ctaContact: Mari Bekerja Bersama
   ctaProjects: Proyek

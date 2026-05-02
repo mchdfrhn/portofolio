@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Github, Linkedin, Mail, Code } from "lucide-react";
+import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
@@ -71,17 +71,18 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="group flex items-center text-3xl font-bold tracking-tighter"
+          className="group flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
         >
-          <Code className="text-primary-neon w-7 h-7 mr-2.5 transition-transform duration-300 group-hover:rotate-12" />
-          <div className="relative overflow-hidden flex items-baseline">
-            <span className="text-foreground group-hover:text-primary-neon transition-colors duration-500">
+          <span className="font-mono text-xl font-bold text-primary-neon tracking-tight drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]">
+            &gt;_
+          </span>
+          <div className="flex items-baseline">
+            <span className="font-mono text-xl font-bold tracking-wide text-foreground group-hover:text-primary-neon transition-colors duration-300">
               frhn
             </span>
-            <span className="text-muted-foreground group-hover:text-foreground font-mono text-xl translate-y-[1px] ml-[2px] transition-colors duration-500">
+            <span className="font-mono text-xl font-bold tracking-wide text-primary-neon/60 group-hover:text-primary-neon transition-colors duration-300">
               .dev
             </span>
-            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary-neon scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
         </motion.a>
 
