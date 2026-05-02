@@ -18,9 +18,12 @@ export interface ExpertiseItem {
 export interface ProjectItem {
   title: string
   tech: string[]
+  tagline: string
   problem: string
+  solution: string
   impact: string
   github?: string
+  demo?: string
 }
 
 export interface CvData {
@@ -30,8 +33,11 @@ export interface CvData {
   email: string
   github: string
   linkedin: string
+  softwareHouseName: string
+  softwareHouseUrl: string
   yearsExp: string
   techStack: string[]
+  summary: string
   workExperience: ExperienceItem[]
   education: ExperienceItem[]
   expertise: ExpertiseItem[]
@@ -39,8 +45,9 @@ export interface CvData {
 }
 
 export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
-  const [profile, experienceEntries, expertiseEntries, projectEntries] = await Promise.all([
+  const [profile, about, experienceEntries, expertiseEntries, projectEntries] = await Promise.all([
     reader.singletons.profile.read(),
+    reader.singletons.about.read(),
     reader.collections.experience.all(),
     reader.collections.expertise.all(),
     reader.collections.projects.all(),
@@ -91,11 +98,16 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
     return {
       title: p.entry.title ?? '',
       tech: [...p.entry.tech],
+      tagline: l.tagline ?? '',
       problem: l.problem ?? '',
+      solution: l.solution ?? '',
       impact: l.impact ?? '',
       github: p.entry.github || undefined,
+      demo: p.entry.demo || undefined,
     }
   })
+
+  const aboutLang = about ? pickLang(about, lang) : undefined
 
   return {
     name: profile?.name ?? 'Mochamad Farhan Ali',
@@ -104,8 +116,11 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
     email: profile?.email ?? '',
     github: profile?.github ?? '',
     linkedin: profile?.linkedin ?? '',
+    softwareHouseName: profile?.softwareHouseName ?? '',
+    softwareHouseUrl: profile?.softwareHouseUrl ?? '',
     yearsExp: profile?.yearsExp ?? '',
     techStack: [...(profile?.techStack ?? [])],
+    summary: aboutLang?.description ?? '',
     workExperience,
     education,
     expertise,
