@@ -1,0 +1,26 @@
+name: Fullstack Development
+order: 1
+icon: Layout
+colorTheme: primary
+fullWidth: false
+tech:
+  - Express.js
+  - Laravel
+  - REST APIs
+  - Next.js
+  - React
+  - Postgres
+  - Docker
+  - Tailwind
+en:
+  title: Fullstack Development
+  description: >-
+    Engineered robust end-to-end applications handling 10k+ daily requests.
+    Bridged high-performance backends (Go, Express, Laravel) with responsive
+    interfaces, focusing on database optimization and tight security.
+id:
+  title: Pengembangan Fullstack
+  description: >-
+    Membangun aplikasi end-to-end tangguh dengan beban 10rb+ permintaan harian.
+    Mengintegrasikan backend performa tinggi (Go, Express, Laravel) dengan
+    antarmuka responsif, fokus pada optimasi database dan keamanan ketat.

@@ -8,9 +8,14 @@ tech:
   - Docker
   - Kubernetes
   - Linux
+  - Vercel
 en:
   title: Cloud & Infrastructure
-  description: Experienced in deploying auto-scaling infrastructure ensuring 99.9% uptime. Strong expertise in Docker containerization and Kubernetes orchestration.
+  description: >-
+    Experienced in deploying auto-scaling infrastructure ensuring 99.9% uptime.
+    Strong expertise in Docker containerization and Kubernetes orchestration.
 id:
   title: Infrastruktur Cloud
-  description: Deploy dan kelola infrastruktur di AWS — dari containerisasi dengan Docker sampai orkestrasi skala besar pakai Kubernetes.
+  description: >-
+    Deploy dan kelola infrastruktur di AWS — dari containerisasi dengan Docker
+    sampai orkestrasi skala besar pakai Kubernetes.

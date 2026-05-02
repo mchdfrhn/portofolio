@@ -1,6 +1,6 @@
 title: Sistem Kepegawaian Pusdatin
 icon: Database
-image: sistem-pegawai.png
+image: /images/projects/sistem-kepegawaian-pusdatin/image.jpeg
 github: https://github.com/mchdfrhn/pusdatin-karyawan
 demo: https://pegawai-pusdatin.vercel.app
 tech:
@@ -10,11 +10,23 @@ tech:
   - Tailwind
 en:
   tagline: Employee Management Dashboard
-  problem: Manual processing of massive bureaucratic employee records and hierarchy changes.
-  solution: Engineered an automated HR dashboard handling streamlined XLSX data ingestion with granular RBAC.
-  impact: Centralized tracking for thousands of active civil servants, cutting admin work by hours.
+  problem: >-
+    Manual processing of massive bureaucratic employee records and hierarchy
+    changes.
+  solution: >-
+    Engineered an automated HR dashboard handling streamlined XLSX data
+    ingestion with granular RBAC.
+  impact: >-
+    Centralized tracking for thousands of active civil servants, cutting admin
+    work by hours.
 id:
   tagline: Dashboard Manajemen Pegawai
-  problem: Pengolahan manual ribuan data kepegawaian birokrasi dan perubahan hierarki yang memakan waktu.
-  solution: Membangun dashboard HR otomatis dengan fitur impor data XLSX dan kontrol akses berbasis peran (RBAC).
-  impact: Sentralisasi data ribuan ASN aktif, memangkas pekerjaan administratif secara signifikan.
+  problem: >-
+    Pengolahan manual ribuan data kepegawaian birokrasi dan perubahan hierarki
+    yang memakan waktu.
+  solution: >-
+    Membangun dashboard HR otomatis dengan fitur impor data XLSX dan kontrol
+    akses berbasis peran (RBAC).
+  impact: >-
+    Sentralisasi data ribuan ASN aktif, memangkas pekerjaan administratif secara
+    signifikan.

@@ -4,6 +4,8 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
 import keystatic from "@keystatic/astro";
 
+const isDev = process.env.NODE_ENV === "development";
+
 // https://astro.build/config
 export default defineConfig({
   adapter: vercel(),
@@ -12,6 +14,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    keystatic(),
+    ...(isDev ? [keystatic()] : []),
   ],
 });

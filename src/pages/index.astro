@@ -17,7 +17,7 @@ const projectsData: ProjectData[] = rawProjects.map(({ slug, entry }) => ({
   slug,
   title: entry.title,
   icon: entry.icon,
-  image: entry.image ? `/images/projects/${entry.image}` : null,
+  image: entry.image ?? null,
   github: entry.github,
   demo: entry.demo,
   tech: [...entry.tech],

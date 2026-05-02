@@ -144,6 +144,81 @@ export default config({
   },
 
   singletons: {
+    about: singleton({
+      label: 'About Section',
+      path: 'content/about',
+      format: { data: 'yaml' },
+      schema: {
+        en: fields.object(
+          {
+            badge: fields.text({ label: 'Badge Text' }),
+            title: fields.text({ label: 'Section Title' }),
+            description: fields.text({ label: 'Description', multiline: true }),
+            currentLabel: fields.text({ label: 'Current Card Label' }),
+            currentTitle: fields.text({ label: 'Current Role Title' }),
+            currentCompany: fields.text({ label: 'Current Company' }),
+            currentDescription: fields.text({ label: 'Current Description', multiline: true }),
+            techTitle: fields.text({ label: 'Tech Stack Title' }),
+            yearsLabel: fields.text({ label: 'Years Label' }),
+            expertiseBadge: fields.text({ label: 'Expertise Badge' }),
+            expertiseHeading: fields.text({ label: 'Expertise Heading' }),
+            expertiseLead: fields.text({ label: 'Expertise Lead', multiline: true }),
+            expertiseNote: fields.text({ label: 'Expertise Note', multiline: true }),
+          },
+          { label: 'English Content' }
+        ),
+        id: fields.object(
+          {
+            badge: fields.text({ label: 'Badge Text' }),
+            title: fields.text({ label: 'Section Title' }),
+            description: fields.text({ label: 'Description', multiline: true }),
+            currentLabel: fields.text({ label: 'Current Card Label' }),
+            currentTitle: fields.text({ label: 'Current Role Title' }),
+            currentCompany: fields.text({ label: 'Current Company' }),
+            currentDescription: fields.text({ label: 'Current Description', multiline: true }),
+            techTitle: fields.text({ label: 'Tech Stack Title' }),
+            yearsLabel: fields.text({ label: 'Years Label' }),
+            expertiseBadge: fields.text({ label: 'Expertise Badge' }),
+            expertiseHeading: fields.text({ label: 'Expertise Heading' }),
+            expertiseLead: fields.text({ label: 'Expertise Lead', multiline: true }),
+            expertiseNote: fields.text({ label: 'Expertise Note', multiline: true }),
+          },
+          { label: 'Indonesian Content' }
+        ),
+        interests: fields.array(
+          fields.object({
+            icon: fields.select({
+              label: 'Icon',
+              options: [
+                { label: 'Globe', value: 'Globe' },
+                { label: 'Line Chart', value: 'LineChart' },
+                { label: 'Trophy', value: 'Trophy' },
+              ],
+              defaultValue: 'Globe',
+            }),
+            colorTheme: fields.select({
+              label: 'Color Theme',
+              options: [
+                { label: 'Primary (Blue)', value: 'primary' },
+                { label: 'Secondary (Purple)', value: 'secondary' },
+                { label: 'Green', value: 'green' },
+              ],
+              defaultValue: 'primary',
+            }),
+            en: fields.object(
+              { label: fields.text({ label: 'Label' }) },
+              { label: 'English Content' }
+            ),
+            id: fields.object(
+              { label: fields.text({ label: 'Label' }) },
+              { label: 'Indonesian Content' }
+            ),
+          }),
+          { label: 'Interest Items', itemLabel: (props) => props.fields.icon.value }
+        ),
+      },
+    }),
+
     profile: singleton({
       label: 'Profile',
       path: 'content/profile',

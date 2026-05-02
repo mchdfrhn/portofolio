@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react";
 import { reader } from "@/lib/reader";
 
+const about = await reader.singletons.about.read();
 const profile = await reader.singletons.profile.read();
 
 const techStack = profile?.techStack ?? [
@@ -11,18 +12,58 @@ const techStack = profile?.techStack ?? [
 ];
 const location = profile?.location ?? "Jakarta, ID (Remote Ready)";
 const yearsExp = profile?.yearsExp ?? "3+";
+
+const iconMap = { Globe, LineChart, Trophy } as const;
+type IconName = keyof typeof iconMap;
+
+const interestThemeMap = {
+  primary: "bg-primary-neon/10 text-primary-neon",
+  secondary: "bg-secondary-neon/10 text-secondary-neon",
+  green: "bg-green-500/10 text-green-600 dark:text-green-400",
+} as const;
+type InterestTheme = keyof typeof interestThemeMap;
+
+const interests = about?.interests?.length
+  ? about.interests
+  : [
+      {
+        icon: "Globe",
+        colorTheme: "primary",
+        en: { label: "Cloud Infrastructure" },
+        id: { label: "Infrastruktur Cloud" },
+      },
+      {
+        icon: "LineChart",
+        colorTheme: "secondary",
+        en: { label: "CI/CD Automation" },
+        id: { label: "Otomatisasi CI/CD" },
+      },
+      {
+        icon: "Trophy",
+        colorTheme: "green",
+        en: { label: "System Design" },
+        id: { label: "Desain Sistem" },
+      },
+    ];
 ---
 
 <section id="about" class="pt-10 md:pt-20 pb-6 md:pb-12">
     <div class="mb-12 md:mb-16 max-w-3xl">
         <div class="space-y-6">
             <div class="inline-block">
-                <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20" data-i18n-key="about.badge">Who I Am</span>
+                <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20">
+                    <span data-lang="en">{about?.en.badge ?? "Who I Am"}</span>
+                    <span data-lang="id" hidden>{about?.id.badge ?? "Siapa Saya"}</span>
+                </span>
             </div>
-            <h2 class="text-4xl md:text-6xl font-extrabold text-foreground tracking-tight" data-i18n-key="about.title">About Me</h2>
+            <h2 class="text-4xl md:text-6xl font-extrabold text-foreground tracking-tight">
+                <span data-lang="en">{about?.en.title ?? "About Me"}</span>
+                <span data-lang="id" hidden>{about?.id.title ?? "Tentang Saya"}</span>
+            </h2>
             <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)]"></div>
-            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed font-light" data-i18n-key="about.description">
-                Starting my journey navigating complex business logic, I've transitioned deeply into backend architectures and cloud infrastructure. I thrive on solving performance bottlenecks and building scalable systems that directly impact user experiences. Currently contributing at Kementerian PU while pursuing informatics studies.
+            <p class="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+                <span data-lang="en">{about?.en.description ?? "Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies."}</span>
+                <span data-lang="id" hidden>{about?.id.description ?? "Fullstack Developer yang senang membangun sistem efisien, skalabel, dan tahan banting - mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika."}</span>
             </p>
         </div>
     </div>
@@ -43,7 +84,7 @@ const yearsExp = profile?.yearsExp ?? "3+";
                     </div>
                     <div class="mt-4">
                         <h3 class="text-xl font-bold mb-1 text-foreground flex items-center gap-2">
-                            <span data-i18n-key="about.profile.name">{profile?.name ?? "Farhan Ali"}</span>
+                            <span>{profile?.name ?? "Farhan Ali"}</span>
                             {profile?.availability && <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>}
                         </h3>
                         <p class="text-primary-neon text-sm font-medium mb-3">
@@ -67,11 +108,23 @@ const yearsExp = profile?.yearsExp ?? "3+";
                     <div class="w-12 h-12 rounded-xl bg-secondary-neon/10 flex items-center justify-center text-secondary-neon group-hover:scale-110 transition-transform duration-300">
                         <Briefcase className="w-6 h-6" />
                     </div>
-                    <span class="text-xs font-bold uppercase tracking-widest py-1.5 px-3 rounded-full bg-secondary text-foreground/80 border border-border" data-i18n-key="about.current">Currently</span>
+                    <span class="text-xs font-bold uppercase tracking-widest py-1.5 px-3 rounded-full bg-secondary text-foreground/80 border border-border">
+                        <span data-lang="en">{about?.en.currentLabel ?? "Currently"}</span>
+                        <span data-lang="id" hidden>{about?.id.currentLabel ?? "Saat ini"}</span>
+                    </span>
                 </div>
-                <h3 class="text-2xl font-bold mb-2 text-foreground" data-i18n-key="about.experience.title">Intern Fullstack Developer</h3>
-                <p class="text-primary-neon mb-3 font-semibold tracking-wide" data-i18n-key="about.experience.company">Pusdatin, Kementerian PU</p>
-                <p class="text-muted-foreground text-sm leading-relaxed" data-i18n-key="about.experience.description">Managing CI/CD pipelines, cloud infrastructure (AWS), containerization (Docker, Kubernetes), and building enterprise-grade administrative backend systems handling massive concurrent workloads.</p>
+                <h3 class="text-2xl font-bold mb-2 text-foreground">
+                    <span data-lang="en">{about?.en.currentTitle ?? "Intern Fullstack Developer"}</span>
+                    <span data-lang="id" hidden>{about?.id.currentTitle ?? "Magang Fullstack Developer"}</span>
+                </h3>
+                <p class="text-primary-neon mb-3 font-semibold tracking-wide">
+                    <span data-lang="en">{about?.en.currentCompany ?? "Pusdatin, Kementerian PU"}</span>
+                    <span data-lang="id" hidden>{about?.id.currentCompany ?? "Pusdatin, Kementerian PU"}</span>
+                </p>
+                <p class="text-muted-foreground text-sm leading-relaxed">
+                    <span data-lang="en">{about?.en.currentDescription ?? "Managing CI/CD pipelines, cloud infrastructure (AWS), containerization (Docker, Kubernetes), and building enterprise-grade administrative systems with modern web technologies."}</span>
+                    <span data-lang="id" hidden>{about?.id.currentDescription ?? "Ngelola pipeline CI/CD, infrastruktur AWS, containerisasi Docker & Kubernetes, plus bangun sistem administrasi internal berbasis web modern."}</span>
+                </p>
             </CardContent>
         </Card>
 
@@ -81,7 +134,10 @@ const yearsExp = profile?.yearsExp ?? "3+";
             <CardHeader className="pt-6 px-6 relative z-10">
                 <CardTitle className="flex items-center gap-2 text-foreground">
                     <Code2 className="w-6 h-6 text-primary-neon" />
-                    <span data-i18n-key="about.tech.title">Tech Stack</span>
+                    <span>
+                        <span data-lang="en">{about?.en.techTitle ?? "Tech Stack"}</span>
+                        <span data-lang="id" hidden>{about?.id.techTitle ?? "Stack Teknologi"}</span>
+                    </span>
                 </CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-6 pt-2 relative z-10">
@@ -96,24 +152,22 @@ const yearsExp = profile?.yearsExp ?? "3+";
         <!-- Interests Block -->
         <Card className="md:col-span-1 bg-card/40 backdrop-blur-md rounded-2xl border border-border group hover:border-primary-neon/40 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6 h-full flex flex-col justify-center gap-5">
-                <div class="flex items-center gap-3">
-                    <div class="p-2.5 rounded-xl bg-primary-neon/10 text-primary-neon group-hover:scale-110 transition-transform duration-300">
-                        <Globe className="w-5 h-5" />
-                    </div>
-                    <span class="font-semibold text-foreground/90" data-i18n-key="about.interest.cloud">Cloud Infrastructure</span>
-                </div>
-                 <div class="flex items-center gap-3">
-                    <div class="p-2.5 rounded-xl bg-secondary-neon/10 text-secondary-neon group-hover:scale-110 transition-transform duration-300">
-                        <LineChart className="w-5 h-5" />
-                    </div>
-                    <span class="font-semibold text-foreground/90" data-i18n-key="about.interest.cicd">CI/CD Automation</span>
-                </div>
-                 <div class="flex items-center gap-3">
-                    <div class="p-2.5 rounded-xl bg-green-500/10 text-green-600 dark:text-green-400 group-hover:scale-110 transition-transform duration-300">
-                        <Trophy className="w-5 h-5" />
-                    </div>
-                    <span class="font-semibold text-foreground/90" data-i18n-key="about.interest.system">System Design</span>
-                </div>
+                {interests.map((interest) => {
+                    const IconComponent = iconMap[(interest.icon as IconName) ?? "Globe"];
+                    const iconTheme = interestThemeMap[(interest.colorTheme as InterestTheme) ?? "primary"];
+
+                    return (
+                        <div class="flex items-center gap-3">
+                            <div class={`p-2.5 rounded-xl ${iconTheme} group-hover:scale-110 transition-transform duration-300`}>
+                                <IconComponent className="w-5 h-5" />
+                            </div>
+                            <span class="font-semibold text-foreground/90">
+                                <span data-lang="en">{interest.en.label}</span>
+                                <span data-lang="id" hidden>{interest.id.label}</span>
+                            </span>
+                        </div>
+                    );
+                })}
             </CardContent>
         </Card>
 
@@ -122,7 +176,10 @@ const yearsExp = profile?.yearsExp ?? "3+";
             <div class="absolute inset-0 bg-gradient-to-tr from-primary-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <CardContent className="p-6 h-full flex flex-col justify-center text-center relative z-10">
                 <div class="text-5xl font-extrabold text-primary-neon mb-3 tracking-tighter">{yearsExp}</div>
-                <p class="text-sm text-secondary-neon font-bold uppercase tracking-widest" data-i18n-key="about.years.label">Years Coding</p>
+                <p class="text-sm text-secondary-neon font-bold uppercase tracking-widest">
+                    <span data-lang="en">{about?.en.yearsLabel ?? "Years Coding"}</span>
+                    <span data-lang="id" hidden>{about?.id.yearsLabel ?? "Tahun Coding"}</span>
+                </p>
             </CardContent>
         </Card>
 

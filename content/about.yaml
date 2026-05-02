@@ -1,0 +1,73 @@
+en:
+  badge: Who I Am
+  title: About Me
+  description: >-
+    Fullstack Developer passionate about building efficient, scalable systems
+    and managing entire development lifecycles. Experienced in cloud
+    infrastructure, CI/CD automation, and high-performance applications.
+    Currently contributing at Kementerian PU while pursuing informatics studies.
+  currentLabel: Currently
+  currentTitle: Intern Fullstack Developer
+  currentCompany: Pusdatin, Kementerian PU
+  currentDescription: >-
+    Managing CI/CD pipelines, cloud infrastructure (AWS), containerization
+    (Docker, Kubernetes), and building enterprise-grade administrative systems
+    with modern web technologies.
+  techTitle: Tech Stack
+  yearsLabel: Years Coding
+  expertiseBadge: Expertise
+  expertiseHeading: What I Do
+  expertiseLead: >-
+    As a dedicated Fullstack Developer, I am passionate about building efficient
+    and scalable digital solutions. I have extensive experience managing the
+    entire development lifecycle, from code to production, ensuring systems run
+    reliably and optimally.
+  expertiseNote: >-
+    I am always open to discussing emerging technologies and exciting
+    challenges. Feel free to reach out to explore how I can bring value to your
+    team through efficient development practices, robust infrastructure, and
+    innovative solutions.
+id:
+  badge: Siapa Saya
+  title: Tentang Saya
+  description: >-
+    Fullstack Developer yang senang membangun sistem efisien, skalabel, dan
+    tahan banting - mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang
+    benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil
+    kuliah informatika.
+  currentLabel: Saat ini
+  currentTitle: Magang Fullstack Developer
+  currentCompany: Pusdatin, Kementerian PU
+  currentDescription: >-
+    Ngelola pipeline CI/CD, infrastruktur AWS, containerisasi Docker &
+    Kubernetes, plus bangun sistem administrasi internal berbasis web modern.
+  techTitle: Stack Teknologi
+  yearsLabel: Tahun Coding
+  expertiseBadge: Keahlian
+  expertiseHeading: Apa yang Saya Lakukan
+  expertiseLead: >-
+    Saya percaya bahwa software yang baik bukan cuma soal fitur, tapi juga soal
+    bagaimana dia jalan di produksi - stabil, cepat, dan mudah di-maintain. Dari
+    nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya.
+  expertiseNote: >-
+    Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti
+    dari sisi code sekaligus infrastruktur - yuk ngobrol.
+interests:
+  - icon: Globe
+    colorTheme: primary
+    en:
+      label: Cloud Infrastructure
+    id:
+      label: Infrastruktur Cloud
+  - icon: LineChart
+    colorTheme: secondary
+    en:
+      label: CI/CD Automation
+    id:
+      label: Otomatisasi CI/CD
+  - icon: Trophy
+    colorTheme: green
+    en:
+      label: System Design
+    id:
+      label: Desain Sistem

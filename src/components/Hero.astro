@@ -1,7 +1,5 @@
 ---
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail } from "lucide-react";
-import { motion } from "framer-motion";
 import { reader } from "@/lib/reader";
 
 const hero = await reader.singletons.hero.read();
@@ -21,7 +19,7 @@ const stats = hero?.stats ?? [
     <div class="w-full max-w-none md:max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
         <div class="flex-1 space-y-10 relative z-10 w-full pl-0">
             <!-- Role / Tagline Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 animate-fade-in-up hover:border-primary-neon/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all">
+            <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:border-primary-neon/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all">
                 <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
                 <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase" data-i18n-key="hero.badge">Available for new opportunities</span>
             </div>
@@ -38,7 +36,7 @@ const stats = hero?.stats ?? [
                 </p>
                 
                 <!-- Quick Impact / Stats (from CMS) -->
-                <div class="flex flex-wrap gap-4 pt-2 pb-4">
+                <div class="hero-stats flex flex-wrap gap-4 pt-2 pb-4">
                     {stats.map((stat) => (
                         <div class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-card/40 border border-border hover:bg-card/60 hover:border-primary-neon/30 transition-all shadow-sm hover:shadow-lg hover:-translate-y-1 duration-300 backdrop-blur-md">
                             <span class="text-lg drop-shadow-md">{stat.emoji}</span>
@@ -49,7 +47,7 @@ const stats = hero?.stats ?? [
             </div>
 
             <!-- CTA Section -->
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide">
                     <span data-i18n-key="hero.cta.contact">Hire Me</span>
                     <Mail className="ml-2 w-[18px] h-[18px]" />
@@ -116,34 +114,36 @@ const stats = hero?.stats ?? [
     import gsap from 'gsap';
     
     const initHeroAnim = () => {
+        const heroEl = document.querySelector("#hero");
+        if (!heroEl) return;
+
+        const targets = heroEl.querySelectorAll(
+            ".hero-badge, h1 span, h1 + p, .hero-stats > div, .hero-ctas > a, .hero-visual"
+        );
+
+        gsap.killTweensOf(targets);
+        gsap.set(targets, { clearProps: "opacity,transform" });
+
         const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-        
-        // Removed Splitting library to avoid layout shifting & generic look, using simple staggered fade-in.
-        tl.from("h1 span", {
+
+        tl.from(heroEl.querySelector(".hero-badge"), {
+            y: 16,
+            opacity: 0,
+            duration: 0.6,
+            delay: 0.1
+        })
+        .from(heroEl.querySelectorAll("h1 span"), {
             y: 40,
             opacity: 0,
             duration: 1,
-            stagger: 0.2,
-            delay: 0.1
-        })
-        .from("h1 + p", {
+            stagger: 0.2
+        }, "-=0.2")
+        .from(heroEl.querySelector("h1 + p"), {
             y: 20,
             opacity: 0,
             duration: 0.8
         }, "-=0.6")
-        .from(".flex-wrap > div", {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1
-        }, "-=0.6")
-        .from(".flex > a", {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1
-        }, "-=0.4")
-        .from(".hero-visual", {
+        .from(heroEl.querySelector(".hero-visual"), {
             opacity: 0,
             x: 20,
             scale: 0.95,
@@ -158,17 +158,4 @@ const stats = hero?.stats ?? [
 </script>
 
 <style>
-    .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 </style>

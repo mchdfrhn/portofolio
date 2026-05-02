@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Cloud, Zap, Database, Layout, Shield } from "lucide-react";
 import { reader } from "@/lib/reader";
 
+const about = await reader.singletons.about.read();
 const rawExpertise = await reader.collections.expertise.all();
 const expertise = rawExpertise
   .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
@@ -48,11 +49,18 @@ type ThemeName = keyof typeof themeMap;
 
 <section id="about-description" class="py-12 md:py-16">
     <div class="mb-10 md:mb-12">
-        <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20 mb-6 inline-block" data-i18n-key="aboutDescription.badge">Specialization</span>
-        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-foreground" data-i18n-key="aboutDescription.heading">Core Competencies</h2>
+        <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20 mb-6 inline-block">
+            <span data-lang="en">{about?.en.expertiseBadge ?? "Expertise"}</span>
+            <span data-lang="id" hidden>{about?.id.expertiseBadge ?? "Keahlian"}</span>
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-foreground">
+            <span data-lang="en">{about?.en.expertiseHeading ?? "What I Do"}</span>
+            <span data-lang="id" hidden>{about?.id.expertiseHeading ?? "Apa yang Saya Lakukan"}</span>
+        </h2>
         <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)] mb-8"></div>
-        <p class="text-lg md:text-xl text-foreground/80 max-w-3xl leading-relaxed font-light" data-i18n-key="aboutDescription.lead">
-            I don't just write code; I design systems. Specializing in high-performance backend architectures and resilient infrastructure, I focus on delivering scalable solutions that directly impact business speed and stability.
+        <p class="text-lg md:text-xl text-foreground/80 max-w-3xl leading-relaxed font-light">
+            <span data-lang="en">{about?.en.expertiseLead ?? "As a dedicated Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally."}</span>
+            <span data-lang="id" hidden>{about?.id.expertiseLead ?? "Saya percaya bahwa software yang baik bukan cuma soal fitur, tapi juga soal bagaimana dia jalan di produksi - stabil, cepat, dan mudah di-maintain. Dari nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya."}</span>
         </p>
     </div>
 
@@ -109,8 +117,9 @@ type ThemeName = keyof typeof themeMap;
     </div>
 
     <div class="mt-8 p-6 md:p-8 rounded-2xl border border-primary-neon/20 bg-primary-neon/5 backdrop-blur-md shadow-inner">
-        <p class="text-foreground/80 leading-relaxed font-medium" data-i18n-key="aboutDescription.note">
-            I am always open to discussing emerging technologies and exciting engineering challenges. Feel free to reach out to explore how I can bring measurable value to your infrastructure through efficient development practices and innovative problem solving.
+        <p class="text-foreground/80 leading-relaxed font-medium">
+            <span data-lang="en">{about?.en.expertiseNote ?? "I am always open to discussing emerging technologies and exciting challenges. Feel free to reach out to explore how I can bring value to your team through efficient development practices, robust infrastructure, and innovative solutions."}</span>
+            <span data-lang="id" hidden>{about?.id.expertiseNote ?? "Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti dari sisi code sekaligus infrastruktur - yuk ngobrol."}</span>
         </p>
     </div>
 </section>
