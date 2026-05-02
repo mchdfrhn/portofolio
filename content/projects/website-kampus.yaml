@@ -1,0 +1,33 @@
+title: Website Kampus
+order: 2
+icon: LayoutTemplate
+image: /images/projects/website-kampus/image.jpeg
+github: https://github.com/mchdfrhn/website-kampus
+demo: https://sttpu.mochamadfarhanali.my.id/
+tech:
+  - Next.js
+  - PostgreSQL
+  - Payload.js
+  - Tailwind
+en:
+  tagline: Official Institutional Website with Headless CMS
+  problem: >-
+    No modern campus website — content updates required manual code changes by
+    developers.
+  solution: >-
+    Built with Next.js and Payload CMS as headless backend, enabling staff to
+    manage content.
+  impact: >-
+    Production-ready site now serving as the official online presence of STT
+    Pekerjaan Umum Jakarta.
+id:
+  tagline: Website Resmi Institusi dengan Headless CMS
+  problem: >-
+    Kampus belum punya website modern — pembaruan konten harus dilakukan manual
+    oleh developer.
+  solution: >-
+    Dibangun dengan Next.js dan Payload CMS sebagai headless backend, staf bisa
+    kelola konten mandiri.
+  impact: >-
+    Website siap produksi yang kini menjadi kehadiran online resmi STT Pekerjaan
+    Umum Jakarta.

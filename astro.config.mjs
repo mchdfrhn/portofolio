@@ -16,4 +16,9 @@ export default defineConfig({
     }),
     ...(isDev ? [keystatic()] : []),
   ],
+  vite: {
+    ssr: {
+      external: ['pdfkit'],
+    },
+  },
 });

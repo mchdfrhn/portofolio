@@ -12,6 +12,7 @@ import Footer from '@/components/Footer.astro';
 import { reader } from '@/lib/reader';
 
 const rawProjects = await reader.collections.projects.all();
+rawProjects.sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99));
 
 const projectsData: ProjectData[] = rawProjects.map(({ slug, entry }) => ({
   slug,

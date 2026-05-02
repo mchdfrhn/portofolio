@@ -1,6 +1,7 @@
 title: Sistem Jabatan Fungsional
-icon: LayoutTemplate
-image: /images/projects/sistem-jabatan-fungsional/image.jpeg
+order: 4
+icon: Database
+image: /images/projects/dashboard-jafung/image.jpeg
 github: https://github.com/mchdfrhn/pusdatin-jafung
 demo: https://jafung-pusdatin.vercel.app
 tech:

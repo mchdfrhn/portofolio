@@ -55,10 +55,15 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
   }, []);
 
   return (
-    <section id="projects" className="py-32 relative">
+    <section id="projects" className="pb-32 relative">
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-primary-neon/5 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
 
       <div className="mb-16 max-w-3xl">
+        <div className="inline-block mb-4">
+          <span className="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20">
+            {lang === "en" ? "My Work" : "Karya Saya"}
+          </span>
+        </div>
         <h2
           className="text-4xl md:text-6xl font-extrabold mb-6 text-foreground tracking-tight"
           data-i18n-key="projects.title"

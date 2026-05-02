@@ -13,6 +13,7 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         title: fields.slug({ name: { label: 'Project Title' } }),
+        order: fields.integer({ label: 'Display Order', description: 'Lower number = shown first', defaultValue: 99 }),
         icon: fields.select({
           label: 'Icon',
           options: [
@@ -225,6 +226,11 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         name: fields.text({ label: 'Full Name' }),
+        profileImage: fields.image({
+          label: 'Profile Photo',
+          directory: 'public/images/profile',
+          publicPath: '/images/profile/',
+        }),
         titleEn: fields.text({ label: 'Job Title (EN)' }),
         titleId: fields.text({ label: 'Job Title (ID)' }),
         location: fields.text({ label: 'Location' }),

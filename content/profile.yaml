@@ -1,13 +1,11 @@
 name: Mochamad Farhan Ali
+profileImage: /images/profile/profileImage.jpeg
 titleEn: DevOps Engineer & Fullstack Developer
 titleId: DevOps Engineer & Fullstack Developer
 location: Jakarta, ID (Remote Ready)
 yearsExp: 3+
 availability: true
 techStack:
-  - Go
-  - Node.js
-  - PHP
   - Gin
   - React
   - Next.js
@@ -16,10 +14,9 @@ techStack:
   - PostgreSQL
   - MySQL
   - MongoDB
+  - Redis
   - Docker
-  - Kubernetes
   - AWS
-  - Jenkins
   - GitHub Actions
 github: https://github.com/mchdfrhn
 linkedin: https://www.linkedin.com/in/mchdfrhn

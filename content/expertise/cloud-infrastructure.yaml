@@ -7,7 +7,6 @@ tech:
   - AWS
   - Docker
   - Kubernetes
-  - Linux
   - Vercel
 en:
   title: Cloud & Infrastructure

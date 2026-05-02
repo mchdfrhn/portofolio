@@ -7,12 +7,12 @@ en:
     infrastructure, CI/CD automation, and high-performance applications.
     Currently contributing at Kementerian PU while pursuing informatics studies.
   currentLabel: Currently
-  currentTitle: Intern Fullstack Developer
-  currentCompany: Pusdatin, Kementerian PU
+  currentTitle: Junior Software Engineer
+  currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Managing CI/CD pipelines, cloud infrastructure (AWS), containerization
-    (Docker, Kubernetes), and building enterprise-grade administrative systems
-    with modern web technologies.
+    Designed and engineered SIPEKAD, an integrated academic and student
+    information system built with Next.js and PostgreSQL, digitalizing campus
+    services and automating previously manual bureaucratic processes.
   techTitle: Tech Stack
   yearsLabel: Years Coding
   expertiseBadge: Expertise
@@ -36,11 +36,12 @@ id:
     benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil
     kuliah informatika.
   currentLabel: Saat ini
-  currentTitle: Magang Fullstack Developer
-  currentCompany: Pusdatin, Kementerian PU
+  currentTitle: Junior Software Engineer
+  currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Ngelola pipeline CI/CD, infrastruktur AWS, containerisasi Docker &
-    Kubernetes, plus bangun sistem administrasi internal berbasis web modern.
+    Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan
+    terintegrasi berbasis Next.js dan PostgreSQL, yang mengdigitalkan seluruh
+    layanan kampus dan mengotomasi proses birokrasi manual.
   techTitle: Stack Teknologi
   yearsLabel: Tahun Coding
   expertiseBadge: Keahlian

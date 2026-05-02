@@ -47,7 +47,7 @@ const interests = about?.interests?.length
     ];
 ---
 
-<section id="about" class="pt-10 md:pt-20 pb-6 md:pb-12">
+<section id="about" class="pb-6 md:pb-12">
     <div class="mb-12 md:mb-16 max-w-3xl">
         <div class="space-y-6">
             <div class="inline-block">
@@ -80,7 +80,10 @@ const interests = about?.interests?.length
                 <div class="px-6 pb-6 pt-0 relative flex-1 flex flex-col">
                     <div class="w-20 h-20 rounded-full bg-muted border-4 border-card -mt-10 overflow-hidden relative z-20 shadow-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/20 to-secondary-neon/20 mix-blend-overlay"></div>
-                        <span class="text-3xl font-extrabold text-foreground/50">FA</span>
+                        {profile?.profileImage
+                          ? <img src={profile.profileImage} alt={profile.name ?? 'Profile'} class="w-full h-full object-cover" />
+                          : <span class="text-3xl font-extrabold text-foreground/50">FA</span>
+                        }
                     </div>
                     <div class="mt-4">
                         <h3 class="text-xl font-bold mb-1 text-foreground flex items-center gap-2">

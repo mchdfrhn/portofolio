@@ -6,13 +6,19 @@ const experience = rawExperience
   .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
 ---
 
-<section id="experience" class="py-24 relative overflow-hidden">
+<section id="experience" class="pb-24 relative overflow-hidden">
     <div class="mb-16 text-center md:text-left">
+        <div class="inline-block mb-4">
+            <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-secondary-neon/10 text-secondary-neon border border-secondary-neon/20">
+                <span data-lang="en">My Journey</span>
+                <span data-lang="id" hidden>Perjalanan Saya</span>
+            </span>
+        </div>
         <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="experience.section.title">Experience & Education</h2>
     </div>
 
     <div class="relative border-l border-primary-neon/10 ml-4 md:ml-12 space-y-12">
-        {experience.map(({ slug, entry }) => {
+        {experience.map(({ entry }) => {
             const isWork = entry.type === "work";
             const dotColor = isWork
                 ? "bg-primary-neon shadow-neon ring-4 ring-background"

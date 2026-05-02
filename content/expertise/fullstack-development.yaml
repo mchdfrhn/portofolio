@@ -6,11 +6,8 @@ fullWidth: false
 tech:
   - Express.js
   - Laravel
-  - REST APIs
   - Next.js
   - React
-  - Postgres
-  - Docker
   - Tailwind
 en:
   title: Fullstack Development

@@ -9,6 +9,9 @@ const stats = hero?.stats ?? [
   { emoji: "🐘", label: "PostgreSQL" },
   { emoji: "🐳", label: "Docker" },
 ];
+
+const en = hero?.en;
+const id = hero?.id;
 ---
 
 <section id="hero" class="min-h-screen flex flex-col justify-center relative overflow-hidden">
@@ -21,20 +24,30 @@ const stats = hero?.stats ?? [
             <!-- Role / Tagline Badge -->
             <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:border-primary-neon/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all">
                 <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
-                <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase" data-i18n-key="hero.badge">Available for new opportunities</span>
+                <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase">
+                    <span data-lang="en">{en?.badge ?? "Available for new opportunities"}</span>
+                    <span data-lang="id" hidden>{id?.badge ?? "Terbuka untuk kolaborasi"}</span>
+                </span>
             </div>
 
             <!-- Main Headline (Hierarchy) -->
             <div class="space-y-6">
                 <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1] text-glow-primary">
-                    <span class="block" data-i18n-key="hero.title.1">Fullstack Developer</span>
-                    <span class="block text-primary-neon mt-2 text-4xl md:text-5xl" data-i18n-key="hero.title.2">(Next.js + Laravel + Go)</span>
+                    <span class="block">
+                        <span data-lang="en">{en?.title1 ?? "Fullstack Developer"}</span>
+                        <span data-lang="id" hidden>{id?.title1 ?? "Fullstack Developer"}</span>
+                    </span>
+                    <span class="block text-primary-neon mt-2 text-4xl md:text-5xl">
+                        <span data-lang="en">{en?.title2 ?? "(Next.js + Laravel + Go)"}</span>
+                        <span data-lang="id" hidden>{id?.title2 ?? "(Next.js + Laravel + Go)"}</span>
+                    </span>
                 </h1>
-                
-                <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed font-light" data-i18n-key="hero.subtitle">
-                    I Build Scalable Backend Systems That Handle Real-World Traffic.
+
+                <p class="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed font-light">
+                    <span data-lang="en">{en?.subtitle ?? "I Build Scalable Backend Systems That Handle Real-World Traffic."}</span>
+                    <span data-lang="id" hidden>{id?.subtitle ?? "Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi."}</span>
                 </p>
-                
+
                 <!-- Quick Impact / Stats (from CMS) -->
                 <div class="hero-stats flex flex-wrap gap-4 pt-2 pb-4">
                     {stats.map((stat) => (
@@ -49,18 +62,20 @@ const stats = hero?.stats ?? [
             <!-- CTA Section -->
             <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide">
-                    <span data-i18n-key="hero.cta.contact">Hire Me</span>
+                    <span data-lang="en">{en?.ctaContact ?? "Hire Me"}</span>
+                    <span data-lang="id" hidden>{id?.ctaContact ?? "Mari Bekerja Bersama"}</span>
                     <Mail className="ml-2 w-[18px] h-[18px]" />
                 </a>
                 <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] border border-border text-foreground hover:bg-secondary hover:border-primary-neon/50 hover:-translate-y-1 transition-all duration-300 shadow-sm font-medium bg-card/50 backdrop-blur-sm">
-                    <span data-i18n-key="hero.cta.projects">Projects</span>
+                    <span data-lang="en">{en?.ctaProjects ?? "Projects"}</span>
+                    <span data-lang="id" hidden>{id?.ctaProjects ?? "Proyek"}</span>
                     <ArrowRight className="ml-2 w-[18px] h-[18px]" />
                 </a>
             </div>
         </div>
 
         <!-- Right Side Visual / Hero Card -->
-        <div class="flex-1 w-full max-w-xl relative hero-visual opacity-90 overflow-hidden">
+        <div class="hidden lg:block flex-1 w-full max-w-xl relative hero-visual opacity-90 overflow-hidden">
             <div class="bg-card/70 backdrop-blur-3xl border border-border rounded-2xl p-8 shadow-2xl rotate-2 hover:rotate-0 hover:scale-[1.02] transition-all duration-500 group hover:border-primary-neon/30">
                 <div class="flex items-center justify-between mb-8 border-b border-border pb-4">
                     <div class="flex gap-2">
@@ -70,7 +85,7 @@ const stats = hero?.stats ?? [
                     </div>
                     <div class="text-xs text-muted-foreground font-mono tracking-widest uppercase">focus.ts</div>
                 </div>
-                
+
                 <div class="space-y-4 font-mono text-sm sm:text-base leading-relaxed text-foreground/70">
                     <div class="flex">
                         <span class="text-secondary-neon mr-2">const</span>
@@ -81,25 +96,40 @@ const stats = hero?.stats ?? [
                     <div class="pl-6 flex flex-col gap-2">
                         <div>
                             <span class="text-muted-foreground mr-2">role:</span>
-                            <span class="text-green-600/80 dark:text-green-400/80" data-i18n-key="hero.code.role">"Solving architecture bottlenecks"</span><span class="text-muted-foreground/30">,</span>
+                            <span class="text-green-600/80 dark:text-green-400/80">
+                                <span data-lang="en">{en?.codeRole ?? '"Solving architecture bottlenecks"'}</span>
+                                <span data-lang="id" hidden>{id?.codeRole ?? '"Menyelesaikan bottleneck arsitektur"'}</span>
+                            </span><span class="text-muted-foreground/30">,</span>
                         </div>
                         <div>
                             <span class="text-muted-foreground mr-2">skillUtama:</span>
-                            <span class="text-foreground/60">[</span><span class="text-orange-600/80 dark:text-orange-400/80" data-i18n-key="hero.code.skill1">"Backend"</span><span class="text-muted-foreground/30">, </span><span class="text-orange-600/80 dark:text-orange-400/80" data-i18n-key="hero.code.skill2">"Cloud Deployments"</span><span class="text-foreground/60">]</span><span class="text-muted-foreground/30">,</span>
+                            <span class="text-foreground/60">[</span><span class="text-orange-600/80 dark:text-orange-400/80">
+                                <span data-lang="en">{en?.codeSkill1 ?? '"Backend"'}</span>
+                                <span data-lang="id" hidden>{id?.codeSkill1 ?? '"Backend API"'}</span>
+                            </span><span class="text-muted-foreground/30">, </span><span class="text-orange-600/80 dark:text-orange-400/80">
+                                <span data-lang="en">{en?.codeSkill2 ?? '"Cloud Deployments"'}</span>
+                                <span data-lang="id" hidden>{id?.codeSkill2 ?? '"Cloud Deployments"'}</span>
+                            </span><span class="text-foreground/60">]</span><span class="text-muted-foreground/30">,</span>
                         </div>
                         <div>
                             <span class="text-muted-foreground mr-2">impact:</span>
-                            <span class="text-green-600/80 dark:text-green-400/80" data-i18n-key="hero.code.impact">"Faster business operations"</span><span class="text-muted-foreground/30">,</span>
+                            <span class="text-green-600/80 dark:text-green-400/80">
+                                <span data-lang="en">{en?.codeImpact ?? '"Faster business operations"'}</span>
+                                <span data-lang="id" hidden>{id?.codeImpact ?? '"Proses bisnis lebih cepat"'}</span>
+                            </span><span class="text-muted-foreground/30">,</span>
                         </div>
                         <div>
                             <span class="text-muted-foreground mr-2">delivery:</span>
-                            <span class="text-secondary-neon/80" data-i18n-key="hero.code.delivery">"On Time & Robust"</span>
+                            <span class="text-secondary-neon/80">
+                                <span data-lang="en">{en?.codeDelivery ?? '"On Time & Robust"'}</span>
+                                <span data-lang="id" hidden>{id?.codeDelivery ?? '"Tepat Waktu & Tangguh"'}</span>
+                            </span>
                         </div>
                     </div>
                     <div class="flex mt-2">
                         <span class="text-foreground/60">{`}`}</span><span class="text-muted-foreground/30">;</span>
                     </div>
-                    
+
                     <div class="flex mt-6 items-center gap-3 pt-6 border-t border-border opacity-50 group-hover:opacity-100 transition-opacity">
                         <span class="w-2 h-2 rounded-full bg-primary-neon animate-ping"></span>
                         <span class="text-xs text-primary-neon uppercase tracking-widest font-semibold flex-1">System is running securely</span>
@@ -112,13 +142,13 @@ const stats = hero?.stats ?? [
 
 <script>
     import gsap from 'gsap';
-    
+
     const initHeroAnim = () => {
         const heroEl = document.querySelector("#hero");
         if (!heroEl) return;
 
         const targets = heroEl.querySelectorAll(
-            ".hero-badge, h1 span, h1 + p, .hero-stats > div, .hero-ctas > a, .hero-visual"
+            ".hero-badge, h1 > span, h1 + p, .hero-stats > div, .hero-ctas > a, .hero-visual"
         );
 
         gsap.killTweensOf(targets);
@@ -132,7 +162,7 @@ const stats = hero?.stats ?? [
             duration: 0.6,
             delay: 0.1
         })
-        .from(heroEl.querySelectorAll("h1 span"), {
+        .from(heroEl.querySelectorAll("h1 > span"), {
             y: 40,
             opacity: 0,
             duration: 1,

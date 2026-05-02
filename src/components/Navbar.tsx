@@ -17,6 +17,7 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState<"en" | "id">("en");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,18 @@ export const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("lang");
+    if (saved === "id") setLang("id");
+
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      if (detail === "en" || detail === "id") setLang(detail);
+    };
+    window.addEventListener("languagechange", handler);
+    return () => window.removeEventListener("languagechange", handler);
   }, []);
 
   const handleNavClick = (
@@ -92,8 +105,11 @@ export const Navbar = () => {
             className="ml-2 border-primary-neon/20 hover:bg-primary-neon/10 hover:text-primary-neon transition-colors"
             asChild
           >
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href={`/api/cv?lang=${lang}`} download className="flex items-center gap-2">
               <span data-i18n-key="nav.resume">Resume</span>
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary-neon/15 text-primary-neon leading-none">
+                {lang.toUpperCase()}
+              </span>
             </a>
           </Button>
         </div>
@@ -132,8 +148,11 @@ export const Navbar = () => {
                 </a>
               ))}
               <Button asChild className="w-full mt-4 bg-primary-neon hover:bg-primary-neon/90 text-white dark:text-slate-950 font-bold">
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  Download CV
+                <a href={`/api/cv?lang=${lang}`} download className="flex items-center justify-center gap-2">
+                  <span>Download CV</span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-white/20 leading-none">
+                    {lang.toUpperCase()}
+                  </span>
                 </a>
               </Button>
             </div>

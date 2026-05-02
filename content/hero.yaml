@@ -1,16 +1,16 @@
 stats:
   - emoji: 🚀
     label: 3+ Production Projects
-  - emoji: ⚙️
-    label: REST API
+  - emoji: 🇳
+    label: Next.js
   - emoji: 🐘
     label: PostgreSQL
   - emoji: 🐳
     label: Docker
 en:
   badge: Available for new opportunities
-  title1: Fullstack Developer
-  title2: (Next.js + Laravel + Go)
+  title1: Fullstack Developerrrr
+  title2: (Next.js + Go)
   subtitle: I Build Scalable Backend Systems That Handle Real-World Traffic.
   ctaContact: Hire Me
   ctaProjects: Projects

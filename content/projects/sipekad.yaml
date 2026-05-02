@@ -1,4 +1,5 @@
-title: SIPEKAD
+title: Sistem Pengajuan Akademik
+order: 1
 icon: Database
 image: /images/projects/sipekad/image.jpeg
 github: https://github.com/mchdfrhn/sipekad-fe
