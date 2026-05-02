@@ -1,5 +1,5 @@
 import PDFDocument from 'pdfkit';
-import { r as reader } from '../../chunks/reader_CkhymmSE.mjs';
+import { r as reader } from '../../chunks/reader_B6WeqXht.mjs';
 export { renderers } from '../../renderers.mjs';
 
 async function getCvData(lang = "en") {

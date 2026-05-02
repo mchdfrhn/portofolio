@@ -1,6 +1,6 @@
 ---
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy } from "lucide-react";
+import { MapPin, Briefcase, Code2, LineChart, Globe, Trophy, Building2 } from "lucide-react";
 import { reader } from "@/lib/reader";
 
 const about = await reader.singletons.about.read();
@@ -12,6 +12,9 @@ const techStack = profile?.techStack ?? [
 ];
 const location = profile?.location ?? "Jakarta, ID (Remote Ready)";
 const yearsExp = profile?.yearsExp ?? "3+";
+const softwareHouseName = profile?.softwareHouseName ?? "Surupan Software House";
+const softwareHouseShortName = profile?.softwareHouseShortName ?? "SSH";
+const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 
 const iconMap = { Globe, LineChart, Trophy } as const;
 type IconName = keyof typeof iconMap;
@@ -171,6 +174,35 @@ const interests = about?.interests?.length
                         </div>
                     );
                 })}
+            </CardContent>
+        </Card>
+
+        <!-- Software House Block -->
+        <Card className="md:col-span-1 relative overflow-hidden bg-card/40 backdrop-blur-md rounded-2xl border border-border group hover:border-primary-neon/40 hover:-translate-y-1 hover:shadow-[0_12px_35px_-16px_rgba(56,189,248,0.35)] transition-all duration-300">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-neon/10 via-secondary-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <CardContent className="p-6 h-full flex flex-col justify-between gap-5 relative z-10">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary-neon/10 flex items-center justify-center text-primary-neon group-hover:scale-110 transition-transform duration-300">
+                        <Building2 className="w-6 h-6" />
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest py-1.5 px-3 rounded-full bg-secondary text-foreground/80 border border-border">{softwareHouseShortName}</span>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2 text-foreground">
+                        <a href={softwareHouseUrl} target={softwareHouseUrl === "#" ? undefined : "_blank"} rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"} class="hover:text-primary-neon transition-colors">
+                            {softwareHouseName}
+                        </a>
+                    </h3>
+                    <p class="text-muted-foreground text-sm leading-relaxed">
+                        <span data-lang="en">My independent software studio for building reliable business systems, internal platforms, automation workflows, and cloud-ready web applications.</span>
+                        <span data-lang="id" hidden>Software house independen saya untuk membangun sistem bisnis, platform internal, workflow automation, dan aplikasi web yang siap berjalan di cloud.</span>
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    {["Web Apps", "Internal Systems", "Automation"].map((item) => (
+                        <span class="text-[11px] font-semibold text-primary-neon bg-primary-neon/10 border border-primary-neon/20 rounded-full px-2.5 py-1">{item}</span>
+                    ))}
+                </div>
             </CardContent>
         </Card>
 

@@ -1,6 +1,11 @@
 ---
-import { Github, Linkedin, Mail, Code, Heart, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, Code, ArrowUp } from "lucide-react";
 import { GITHUB_URL, LINKEDIN_URL, EMAIL, WHATSAPP_URL, SITE_TITLE, SITE_DESCRIPTION } from "../lib/config";
+import { reader } from "@/lib/reader";
+
+const profile = await reader.singletons.profile.read();
+const softwareHouseName = profile?.softwareHouseName ?? "Surupan Software House";
+const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
 <footer class="bg-background border-t border-border py-16 mt-20 relative overflow-hidden">
@@ -99,9 +104,14 @@ import { GITHUB_URL, LINKEDIN_URL, EMAIL, WHATSAPP_URL, SITE_TITLE, SITE_DESCRIP
         &copy; {new Date().getFullYear()} <span data-i18n-key="footer.rights">All rights reserved.</span>
       </p>
       <div class="flex items-center gap-2 text-sm text-muted-foreground">
-        <span>Made with</span>
-        <Heart class="w-4 h-4 text-red-500 fill-current" />
-        <span>by Mochamad Farhan Ali</span>
+        <a
+          href={softwareHouseUrl}
+          target={softwareHouseUrl === "#" ? undefined : "_blank"}
+          rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"}
+          class="font-semibold text-foreground/80 hover:text-primary-neon transition-colors"
+        >
+          {softwareHouseName}
+        </a>
       </div>
     </div>
 

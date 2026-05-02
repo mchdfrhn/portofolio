@@ -1,8 +1,9 @@
 ---
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Building2, Mail } from "lucide-react";
 import { reader } from "@/lib/reader";
 
 const hero = await reader.singletons.hero.read();
+const profile = await reader.singletons.profile.read();
 const stats = hero?.stats ?? [
   { emoji: "🚀", label: "3+ Production Projects" },
   { emoji: "⚙️", label: "REST API" },
@@ -12,6 +13,9 @@ const stats = hero?.stats ?? [
 
 const en = hero?.en;
 const id = hero?.id;
+const softwareHouseName = profile?.softwareHouseName ?? "Surupan Software House";
+const softwareHouseShortName = profile?.softwareHouseShortName ?? "SSH";
+const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
 <section id="hero" class="min-h-screen flex flex-col justify-center relative overflow-hidden">
@@ -21,13 +25,24 @@ const id = hero?.id;
 
     <div class="w-full max-w-none md:max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
         <div class="flex-1 space-y-10 relative z-10 w-full pl-0">
-            <!-- Role / Tagline Badge -->
-            <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:bg-primary-neon/25 hover:border-primary-neon/70 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all duration-300 cursor-default">
-                <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
-                <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]">
-                    <span data-lang="en">{en?.badge ?? "Available for new opportunities"}</span>
-                    <span data-lang="id" hidden>{id?.badge ?? "Terbuka untuk kolaborasi"}</span>
-                </span>
+            <!-- Role / Tagline Badges -->
+            <div class="hero-badges flex flex-wrap items-center gap-3">
+                <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:bg-primary-neon/25 hover:border-primary-neon/70 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all duration-300 cursor-default">
+                    <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
+                    <span class="text-xs sm:text-sm font-bold tracking-widest text-primary-neon uppercase drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]">
+                        <span data-lang="en">{en?.badge ?? "Available for new opportunities"}</span>
+                        <span data-lang="id" hidden>{id?.badge ?? "Terbuka untuk kolaborasi"}</span>
+                    </span>
+                </div>
+                <a href={softwareHouseUrl} target={softwareHouseUrl === "#" ? undefined : "_blank"} rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"} class="hero-badge inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3.5 py-2 text-xs sm:text-sm font-semibold text-foreground/80 shadow-sm backdrop-blur-xl hover:border-secondary-neon/40 hover:text-foreground hover:shadow-[0_10px_30px_-18px_rgba(167,139,250,0.55)] transition-all duration-300">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-secondary-neon/10 text-secondary-neon">
+                        <Building2 className="h-3.5 w-3.5" />
+                    </span>
+                    <span class="font-extrabold text-secondary-neon">{softwareHouseShortName}</span>
+                    <span class="hidden h-1 w-1 rounded-full bg-muted-foreground/40 sm:block"></span>
+                    <span data-lang="en">Founder, {softwareHouseName}</span>
+                    <span data-lang="id" hidden>Founder, {softwareHouseName}</span>
+                </a>
             </div>
 
             <!-- Main Headline (Hierarchy) -->
