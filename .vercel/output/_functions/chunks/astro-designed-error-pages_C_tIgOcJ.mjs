@@ -12,7 +12,7 @@ const ACTION_QUERY_PARAMS$1 = {
   actionName: "_action"};
 const ACTION_RPC_ROUTE_PATTERN = "/_actions/[...path]";
 
-const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_EMAIL": "mochamadfarhanali@gmail.com", "PUBLIC_GITHUB_URL": "https://github.com/mchdfrhn", "PUBLIC_LINKEDIN_URL": "https://www.linkedin.com/in/mchdfrhn", "PUBLIC_OG_IMAGE": "/og-image.png", "PUBLIC_SITE_DESCRIPTION": "Fullstack Developer & Informatics Student based in Jakarta.", "PUBLIC_SITE_TITLE": "frhn.dev", "SITE": undefined, "SSR": true};
+const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_EMAIL": "mochamadfarhanali@gmail.com", "PUBLIC_GITHUB_URL": "https://github.com/mchdfrhn", "PUBLIC_LINKEDIN_URL": "https://www.linkedin.com/in/mchdfrhn", "PUBLIC_OG_IMAGE": "/og-image.png", "PUBLIC_SITE_DESCRIPTION": "Fullstack Developer & Informatics Student based in Jakarta.", "PUBLIC_SITE_TITLE": "frhn.dev", "PUBLIC_WHATSAPP_URL": "https://wa.me/6285771826637", "SITE": undefined, "SSR": true};
 const ACTION_QUERY_PARAMS = ACTION_QUERY_PARAMS$1;
 const codeToStatusMap = {
   // Implemented from IANA HTTP Status Code Registry

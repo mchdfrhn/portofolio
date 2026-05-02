@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    /* Light Mode - Frosted Graphite */
-    --background: 220 33% 97%;      /* #F6F8FB */
+    /* Light Mode - Arctic Porcelain */
+    --background: 210 40% 98%;      /* #F8FAFC */
     --foreground: 220 25% 12%;      /* Very dark navy-slate for maximum contrast */
 
     --card: 0 0% 98%;              /* Off-white cards — subtle depth on white bg */
     --card-foreground: 220 25% 12%;
 
-    --popover: 220 33% 97%;
+    --popover: 210 40% 98%;
     --popover-foreground: 220 25% 12%;
 
     --primary: 199 80% 42%;        /* Sky blue, slightly darkened for contrast on white */
@@ -43,14 +43,14 @@
   }
 
   .dark {
-    /* Dark Mode - Frosted Graphite */
-    --background: 224 34% 10%;     /* #111827 */
+    /* Dark Mode - Arctic Porcelain */
+    --background: 222 47% 8%;      /* #070C16 */
     --foreground: 210 40% 98%;
 
     --card: 222 47% 13%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 34% 10%;
+    --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 198 93% 60%;       /* #38BDF8 */
