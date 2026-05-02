@@ -34,7 +34,7 @@ const copy = {
 } as const;
 
 const formVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.98 },
+  hidden: { opacity: 1, y: 28, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
@@ -49,7 +49,7 @@ const formVariants = {
 };
 
 const fieldVariants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 1, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
@@ -167,7 +167,7 @@ export const ContactForm = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       onSubmit={handleSubmit}
-      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border bg-card/40 p-5 text-left shadow-2xl backdrop-blur-xl sm:space-y-6 sm:p-8"
+      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border bg-card p-5 text-left shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:space-y-6 sm:p-8 dark:bg-card/40 dark:shadow-2xl"
     >
       <input
         type="text"
@@ -184,7 +184,7 @@ export const ContactForm = () => {
             type="text"
             id="name"
             name="name"
-            className="flex h-12 w-full rounded-lg border border-border bg-background/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon"
+            className="flex h-12 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon dark:bg-background/50"
             placeholder={text.namePlaceholder}
             required
           />
@@ -195,7 +195,7 @@ export const ContactForm = () => {
             type="email"
             id="email"
             name="email"
-            className="flex h-12 w-full rounded-lg border border-border bg-background/50 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon"
+            className="flex h-12 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon dark:bg-background/50"
             placeholder={text.emailPlaceholder}
             required
           />
@@ -206,7 +206,7 @@ export const ContactForm = () => {
         <textarea
           id="message"
           name="message"
-          className="flex min-h-[140px] w-full resize-y rounded-lg border border-border bg-background/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon"
+          className="flex min-h-[140px] w-full resize-y rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground transition-all focus-visible:border-primary-neon focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon dark:bg-background/50"
           placeholder={text.messagePlaceholder}
           required
         />

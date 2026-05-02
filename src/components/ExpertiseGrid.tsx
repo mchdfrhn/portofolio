@@ -78,7 +78,7 @@ const gridVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.98 },
+  hidden: { opacity: 1, y: 28, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
@@ -98,7 +98,7 @@ const tagWrapVariants = {
 };
 
 const tagVariants = {
-  hidden: { opacity: 0, y: 8, scale: 0.96 },
+  hidden: { opacity: 1, y: 8, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
@@ -149,7 +149,7 @@ export const ExpertiseGrid = ({ expertise }: { expertise: ExpertiseItem[] }) => 
             className={entry.fullWidth ? "md:col-span-2" : undefined}
           >
             <Card
-              className={`group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-xl transition-all duration-500 ${theme.cardHover}`}
+              className={`group relative h-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-500 dark:bg-card/40 dark:shadow-none ${theme.cardHover}`}
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}

@@ -70,7 +70,7 @@ const gridVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 26, scale: 0.98 },
+  hidden: { opacity: 1, y: 26, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
@@ -80,7 +80,7 @@ const cardVariants = {
 };
 
 const chipVariants = {
-  hidden: { opacity: 0, y: 10, scale: 0.94 },
+  hidden: { opacity: 1, y: 10, scale: 0.94 },
   visible: {
     opacity: 1,
     y: 0,
@@ -186,7 +186,7 @@ export const AboutBentoGrid = ({
         className="about-bento-grid grid gap-5 md:gap-6"
       >
       <MotionCard className="about-bento-profile min-h-[220px] md:min-h-0">
-        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_10px_30px_-10px_rgba(56,189,248,0.2)]">
+        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_10px_30px_-10px_rgba(56,189,248,0.2)] dark:bg-card/40 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-neon/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col p-0">
             <div className="relative h-24 w-full shrink-0 overflow-hidden bg-muted/30 lg:h-24">
@@ -231,7 +231,7 @@ export const AboutBentoGrid = ({
       </MotionCard>
 
       <MotionCard className="about-bento-current min-h-[210px] md:min-h-0">
-        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg">
+        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg dark:bg-card/40 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary-neon/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col justify-center p-5 sm:p-6 lg:p-7">
             <div className="mb-4 flex items-start justify-between">
@@ -259,7 +259,7 @@ export const AboutBentoGrid = ({
       </MotionCard>
 
       <MotionCard className="about-bento-tech min-h-[290px] md:min-h-0">
-        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40">
+        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 dark:bg-card/40 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardHeader className="relative z-10 px-5 pb-3 pt-5 sm:px-6 sm:pt-6 lg:px-7 lg:pt-6">
             <CardTitle className="flex items-center gap-2 text-foreground">
@@ -283,7 +283,7 @@ export const AboutBentoGrid = ({
       </MotionCard>
 
       <MotionCard className="about-bento-interests min-h-[200px] md:min-h-0">
-        <Card className="group h-full rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg">
+        <Card className="group h-full rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg dark:bg-card/40 dark:shadow-none">
           <CardContent className="flex h-full flex-col justify-center gap-4 p-5 sm:p-6 lg:gap-6 lg:p-7">
             {interests.map((interest) => {
               const IconComponent =
@@ -318,7 +318,7 @@ export const AboutBentoGrid = ({
       </MotionCard>
 
       <MotionCard className="about-bento-studio min-h-[220px] md:min-h-0">
-        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_12px_35px_-16px_rgba(56,189,248,0.35)]">
+        <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_12px_35px_-16px_rgba(56,189,248,0.35)] dark:bg-card/40 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-neon/10 via-secondary-neon/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col justify-between gap-5 p-5 sm:p-6 lg:p-7">
             <div className="flex items-start justify-between gap-4">
@@ -369,7 +369,7 @@ export const AboutBentoGrid = ({
       </MotionCard>
 
       <MotionCard className="about-bento-years min-h-[150px] md:min-h-0">
-        <Card className="group relative h-full overflow-hidden rounded-2xl border border-primary-neon/10 bg-primary-neon/5 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]">
+        <Card className="group relative h-full overflow-hidden rounded-2xl border border-primary-neon/20 bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] dark:border-primary-neon/10 dark:bg-primary-neon/5 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary-neon/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col justify-center p-5 text-center sm:p-6">
             <motion.div

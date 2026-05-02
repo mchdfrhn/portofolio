@@ -22,7 +22,7 @@ export interface ExperienceTimelineItem {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -18, y: 18 },
+  hidden: { opacity: 1, x: -18, y: 18 },
   visible: { opacity: 1, x: 0, y: 0 },
 };
 
@@ -62,12 +62,12 @@ export const ExperienceTimeline = ({
   return (
     <div
       ref={timelineRef}
-      className="relative ml-3 space-y-10 md:ml-12 md:space-y-12"
+      className="relative ml-3 space-y-10 text-foreground md:ml-12 md:space-y-12"
       aria-label="Experience timeline"
     >
-      <div className="absolute left-0 top-0 h-full w-px bg-primary-neon/10" />
+      <div className="absolute left-0 top-0 h-full w-px bg-primary-neon/25 dark:bg-primary-neon/10" />
       <motion.div
-        className="absolute left-0 top-0 h-full w-px origin-top bg-gradient-to-b from-primary-neon via-secondary-neon to-primary-neon shadow-[0_0_18px_rgba(56,189,248,0.45)]"
+        className="absolute left-0 top-0 h-full w-px origin-top bg-gradient-to-b from-primary-neon via-secondary-neon to-primary-neon shadow-[0_0_12px_rgba(14,116,144,0.25)] dark:shadow-[0_0_18px_rgba(56,189,248,0.45)]"
         style={{ scaleY: shouldReduceMotion ? 1 : lineScale }}
       />
 
@@ -105,7 +105,7 @@ export const ExperienceTimeline = ({
               transition={{ type: "spring", stiffness: 360, damping: 20 }}
             />
 
-            <div className="rounded-xl border border-transparent p-0 transition-colors duration-300 group-hover:border-primary-neon/10 group-hover:bg-card/20 md:p-4 md:-m-4">
+            <div className="rounded-xl border border-transparent p-0 transition-colors duration-300 group-hover:border-primary-neon/20 group-hover:bg-card/60 md:-m-4 md:p-4 dark:group-hover:border-primary-neon/10 dark:group-hover:bg-card/20">
               <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
                 <h3 className="text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary-neon sm:text-2xl">
                   {content.title}
