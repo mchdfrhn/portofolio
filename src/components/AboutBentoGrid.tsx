@@ -138,6 +138,13 @@ export const AboutBentoGrid = ({
       <style>{`
         .about-bento-grid {
           grid-template-columns: minmax(0, 1fr);
+          grid-template-areas:
+            "profile"
+            "current"
+            "tech"
+            "interests"
+            "studio"
+            "years";
           grid-auto-rows: minmax(180px, auto);
         }
 
@@ -178,7 +185,7 @@ export const AboutBentoGrid = ({
         viewport={{ once: true, amount: 0.18 }}
         className="about-bento-grid grid gap-5 md:gap-6"
       >
-      <MotionCard className="about-bento-profile min-h-[230px] md:min-h-0">
+      <MotionCard className="about-bento-profile min-h-[220px] md:min-h-0">
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_10px_30px_-10px_rgba(56,189,248,0.2)]">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-neon/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col p-0">
@@ -223,10 +230,10 @@ export const AboutBentoGrid = ({
         </Card>
       </MotionCard>
 
-      <MotionCard className="about-bento-current min-h-[220px] md:min-h-0">
+      <MotionCard className="about-bento-current min-h-[210px] md:min-h-0">
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary-neon/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <CardContent className="relative z-10 flex h-full flex-col justify-center p-6 lg:p-7">
+          <CardContent className="relative z-10 flex h-full flex-col justify-center p-5 sm:p-6 lg:p-7">
             <div className="mb-4 flex items-start justify-between">
               <motion.div
                 whileHover={shouldReduceMotion ? undefined : { rotate: -4, scale: 1.08 }}
@@ -238,7 +245,7 @@ export const AboutBentoGrid = ({
                 {copy.currentLabel}
               </span>
             </div>
-            <h3 className="mb-2 text-2xl font-bold text-foreground">
+            <h3 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
               {copy.currentTitle}
             </h3>
             <p className="mb-3 font-semibold tracking-wide text-primary-neon">
@@ -251,16 +258,16 @@ export const AboutBentoGrid = ({
         </Card>
       </MotionCard>
 
-      <MotionCard className="about-bento-tech min-h-[310px] md:min-h-0">
+      <MotionCard className="about-bento-tech min-h-[290px] md:min-h-0">
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40">
           <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <CardHeader className="relative z-10 px-6 pb-3 pt-6 lg:px-7 lg:pt-6">
+          <CardHeader className="relative z-10 px-5 pb-3 pt-5 sm:px-6 sm:pt-6 lg:px-7 lg:pt-6">
             <CardTitle className="flex items-center gap-2 text-foreground">
               <Code2 className="h-6 w-6 text-primary-neon" />
               <span>{copy.techTitle}</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="relative z-10 grid grid-cols-2 gap-2.5 p-6 pt-0 sm:grid-cols-4 lg:p-7 lg:pt-0">
+          <CardContent className="relative z-10 grid grid-cols-2 gap-2.5 p-5 pt-0 sm:grid-cols-4 sm:p-6 sm:pt-0 lg:p-7 lg:pt-0">
             {techStack.map((tech) => (
               <motion.div
                 key={tech}
@@ -275,9 +282,9 @@ export const AboutBentoGrid = ({
         </Card>
       </MotionCard>
 
-      <MotionCard className="about-bento-interests min-h-[220px] md:min-h-0">
+      <MotionCard className="about-bento-interests min-h-[200px] md:min-h-0">
         <Card className="group h-full rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-lg">
-          <CardContent className="flex h-full flex-col justify-center gap-5 p-6 lg:gap-6 lg:p-7">
+          <CardContent className="flex h-full flex-col justify-center gap-4 p-5 sm:p-6 lg:gap-6 lg:p-7">
             {interests.map((interest) => {
               const IconComponent =
                 iconMap[(interest.icon as InterestIcon) ?? "Globe"] ?? Globe;
@@ -310,10 +317,10 @@ export const AboutBentoGrid = ({
         </Card>
       </MotionCard>
 
-      <MotionCard className="about-bento-studio min-h-[235px] md:min-h-0">
+      <MotionCard className="about-bento-studio min-h-[220px] md:min-h-0">
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_12px_35px_-16px_rgba(56,189,248,0.35)]">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-neon/10 via-secondary-neon/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <CardContent className="relative z-10 flex h-full flex-col justify-between gap-5 p-6 lg:p-7">
+          <CardContent className="relative z-10 flex h-full flex-col justify-between gap-5 p-5 sm:p-6 lg:p-7">
             <div className="flex items-start justify-between gap-4">
               <motion.div
                 whileHover={shouldReduceMotion ? undefined : { rotate: 4, scale: 1.08 }}
@@ -326,7 +333,7 @@ export const AboutBentoGrid = ({
               </span>
             </div>
             <div>
-              <h3 className="mb-2 text-2xl font-bold text-foreground">
+              <h3 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
                 <a
                   href={profile.softwareHouseUrl}
                   target={profile.softwareHouseUrl === "#" ? undefined : "_blank"}
@@ -361,10 +368,10 @@ export const AboutBentoGrid = ({
         </Card>
       </MotionCard>
 
-      <MotionCard className="about-bento-years min-h-[170px] md:min-h-0">
+      <MotionCard className="about-bento-years min-h-[150px] md:min-h-0">
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-primary-neon/10 bg-primary-neon/5 backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary-neon/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <CardContent className="relative z-10 flex h-full flex-col justify-center p-6 text-center">
+          <CardContent className="relative z-10 flex h-full flex-col justify-center p-5 text-center sm:p-6">
             <motion.div
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.85 }}
               whileInView={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}

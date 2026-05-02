@@ -1,7 +1,7 @@
 import React from "react";
 import confetti from "canvas-confetti";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CheckCircle2, Loader2, Mail, Send, XCircle } from "lucide-react";
+import { CheckCircle2, Loader2, Send, XCircle } from "lucide-react";
 
 type Lang = "en" | "id";
 type Status = "idle" | "success" | "error";
@@ -167,7 +167,7 @@ export const ContactForm = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       onSubmit={handleSubmit}
-      className="mx-auto max-w-xl space-y-6 rounded-2xl border border-border bg-card/40 p-8 text-left shadow-2xl backdrop-blur-xl"
+      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border bg-card/40 p-5 text-left shadow-2xl backdrop-blur-xl sm:space-y-6 sm:p-8"
     >
       <input
         type="text"
@@ -178,7 +178,7 @@ export const ContactForm = () => {
         aria-hidden="true"
       />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
         <FieldShell label={text.nameLabel} htmlFor="name">
           <input
             type="text"
@@ -218,7 +218,7 @@ export const ContactForm = () => {
         variants={shouldReduceMotion ? undefined : fieldVariants}
         whileHover={shouldReduceMotion || isSubmitting ? undefined : { y: -3 }}
         whileTap={shouldReduceMotion || isSubmitting ? undefined : { scale: 0.98 }}
-        className="mt-4 inline-flex h-14 w-full items-center justify-center rounded-xl border-none bg-primary-neon px-8 text-base font-bold text-white transition-colors duration-300 hover:bg-primary-neon/90 hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-70 dark:text-slate-900"
+        className="mt-3 inline-flex h-12 w-full items-center justify-center rounded-xl border-none bg-primary-neon px-6 text-base font-bold text-white transition-colors duration-300 hover:bg-primary-neon/90 hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-neon focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-70 dark:text-slate-900 sm:mt-4 sm:h-14 sm:px-8"
       >
         <AnimatePresence mode="wait" initial={false}>
           {isSubmitting ? (

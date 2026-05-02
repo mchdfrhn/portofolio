@@ -63,8 +63,8 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/35 backdrop-blur-xl border-b border-primary-neon/20 py-4 shadow-lg md:bg-background/60"
-          : "bg-background/45 backdrop-blur-md border-b border-border/40 py-5 md:bg-transparent md:backdrop-blur-none md:border-transparent md:py-6",
+          ? "bg-background/35 backdrop-blur-xl border-b border-primary-neon/20 py-3 shadow-lg md:bg-background/60 md:py-4"
+          : "bg-background/45 backdrop-blur-md border-b border-border/40 py-3.5 md:bg-transparent md:backdrop-blur-none md:border-transparent md:py-6",
       )}
     >
       <div className="w-full max-w-none md:max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 flex items-center justify-between">
@@ -73,16 +73,16 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="group flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
+          className="group flex items-center gap-1.5 rounded-lg px-2 py-1.5 transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] sm:gap-2 sm:px-3"
         >
-          <span className="font-mono text-xl font-bold text-primary-neon tracking-tight drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]">
+          <span className="font-mono text-lg font-bold text-primary-neon tracking-tight drop-shadow-[0_0_8px_rgba(56,189,248,0.6)] sm:text-xl">
             &gt;_
           </span>
           <div className="flex items-baseline">
-            <span className="font-mono text-xl font-bold tracking-wide text-foreground group-hover:text-primary-neon transition-colors duration-300">
+            <span className="font-mono text-lg font-bold tracking-wide text-foreground group-hover:text-primary-neon transition-colors duration-300 sm:text-xl">
               frhn
             </span>
-            <span className="font-mono text-xl font-bold tracking-wide text-primary-neon/60 group-hover:text-primary-neon transition-colors duration-300">
+            <span className="font-mono text-lg font-bold tracking-wide text-primary-neon/60 group-hover:text-primary-neon transition-colors duration-300 sm:text-xl">
               .dev
             </span>
           </div>
@@ -134,7 +134,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Actions */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-1.5 md:hidden">
           <LanguageToggle />
           <ThemeToggle />
           <button

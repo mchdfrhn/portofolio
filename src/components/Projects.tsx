@@ -55,10 +55,10 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
   }, []);
 
   return (
-    <section id="projects" className="pb-32 relative">
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-primary-neon/5 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
+    <section id="projects" className="relative pb-20 md:pb-32">
+      <div className="absolute right-0 top-1/2 -z-10 h-[320px] w-[320px] -translate-y-1/2 rounded-full bg-primary-neon/5 blur-[110px] pointer-events-none md:h-[600px] md:w-[600px] md:blur-[150px]"></div>
 
-      <div className="mb-16 max-w-3xl">
+      <div className="mb-10 max-w-3xl md:mb-16">
         <div className="inline-block mb-4">
           <span className="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20">
             {lang === "en" ? "My Work" : "Karya Saya"}
@@ -70,7 +70,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
         >
           Selected Works
         </h2>
-        <div className="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)] mb-8"></div>
+        <div className="mb-6 h-1.5 w-24 rounded-full bg-primary-neon shadow-[0_0_15px_rgba(56,189,248,0.5)] md:mb-8"></div>
         <p
           className="text-muted-foreground text-lg md:text-xl leading-relaxed"
           data-i18n-key="projects.description"
@@ -81,7 +81,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-5 md:gap-8 lg:grid-cols-3">
         {projects.map((project, index) => {
           const content = project[lang];
           const IconComponent =
@@ -96,10 +96,10 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
               viewport={{ once: true }}
               className="h-full"
             >
-              <SpotlightCard className="h-full flex flex-col justify-between group bg-card/50 backdrop-blur-xl border border-border hover:border-primary-neon/40 hover:-translate-y-2 transition-all duration-300 rounded-xl p-8 shadow-lg hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)]">
+              <SpotlightCard className="group flex h-full flex-col justify-between rounded-xl border border-border bg-card/50 p-5 shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary-neon/40 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)] sm:p-6 lg:p-8">
                 <div>
                   {project.image && (
-                    <div className="w-full h-48 mb-8 overflow-hidden rounded-xl border border-border relative bg-muted/20">
+                    <div className="relative mb-6 h-40 w-full overflow-hidden rounded-xl border border-border bg-muted/20 md:h-48 lg:mb-8">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -109,7 +109,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
                     </div>
                   )}
 
-                  <div className="mb-8 flex items-center justify-between mt-2">
+                  <div className="mb-6 mt-2 flex items-center justify-between lg:mb-8">
                     <div className="p-3.5 bg-primary-neon/10 rounded-xl text-primary-neon shadow-[0_0_15px_rgba(56,189,248,0.15)] group-hover:scale-110 transition-transform duration-300">
                       <IconComponent size={26} strokeWidth={2} />
                     </div>
@@ -137,14 +137,14 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary-neon transition-colors">
+                  <h3 className="mb-2 text-xl font-bold text-foreground transition-colors group-hover:text-primary-neon sm:text-2xl">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-secondary-neon mb-6 font-medium tracking-wide">
+                  <p className="mb-5 text-sm font-medium tracking-wide text-secondary-neon lg:mb-6">
                     {content.tagline}
                   </p>
 
-                  <div className="space-y-4 mb-8">
+                  <div className="mb-6 space-y-4 lg:mb-8">
                     <div className="relative pl-6">
                       <AlertCircle className="w-4 h-4 text-orange-600 dark:text-orange-400 absolute left-0 top-1" />
                       <span className="text-sm font-semibold text-foreground/90 block mb-1">
@@ -174,7 +174,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-border">
+                <div className="border-t border-border pt-5 lg:pt-6">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <span

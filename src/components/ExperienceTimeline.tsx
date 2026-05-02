@@ -62,7 +62,7 @@ export const ExperienceTimeline = ({
   return (
     <div
       ref={timelineRef}
-      className="relative ml-4 space-y-12 md:ml-12"
+      className="relative ml-3 space-y-10 md:ml-12 md:space-y-12"
       aria-label="Experience timeline"
     >
       <div className="absolute left-0 top-0 h-full w-px bg-primary-neon/10" />
@@ -94,7 +94,7 @@ export const ExperienceTimeline = ({
               delay: shouldReduceMotion ? 0 : index * 0.08,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="group relative pl-8 md:pl-12"
+            className="group relative pl-6 md:pl-12"
           >
             <motion.div
               className={`absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full ring-4 ring-background ${dotClass}`}
@@ -107,7 +107,7 @@ export const ExperienceTimeline = ({
 
             <div className="rounded-xl border border-transparent p-0 transition-colors duration-300 group-hover:border-primary-neon/10 group-hover:bg-card/20 md:p-4 md:-m-4">
               <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
-                <h3 className="text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary-neon">
+                <h3 className="text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary-neon sm:text-2xl">
                   {content.title}
                 </h3>
                 <motion.span
@@ -119,11 +119,11 @@ export const ExperienceTimeline = ({
                 </motion.span>
               </div>
 
-              <div className={`mb-4 text-lg font-bold opacity-90 ${companyClass}`}>
+              <div className={`mb-3 text-base font-bold opacity-90 sm:mb-4 sm:text-lg ${companyClass}`}>
                 {content.company}
               </div>
 
-              <p className="max-w-3xl text-muted-foreground">
+              <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {content.description}
               </p>
             </div>

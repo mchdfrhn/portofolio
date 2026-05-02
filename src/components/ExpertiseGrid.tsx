@@ -154,8 +154,8 @@ export const ExpertiseGrid = ({ expertise }: { expertise: ExpertiseItem[] }) => 
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
               />
-              <CardHeader className="relative z-10">
-                <CardTitle className="flex items-center gap-4">
+              <CardHeader className="relative z-10 p-5 pb-4 sm:p-6">
+                <CardTitle className="flex items-center gap-3 sm:gap-4">
                   <motion.div
                     whileHover={
                       shouldReduceMotion
@@ -163,17 +163,17 @@ export const ExpertiseGrid = ({ expertise }: { expertise: ExpertiseItem[] }) => 
                         : { rotate: -5, scale: 1.1 }
                     }
                     transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                    className={`rounded-2xl border p-3 backdrop-blur-md transition-colors duration-500 ${theme.iconWrap}`}
+                    className={`rounded-xl border p-2.5 backdrop-blur-md transition-colors duration-500 sm:rounded-2xl sm:p-3 ${theme.iconWrap}`}
                   >
-                    <IconComponent className="h-6 w-6" />
+                    <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                   </motion.div>
-                  <span className="font-bold tracking-wide text-foreground">
+                  <span className="font-bold tracking-wide text-foreground leading-snug">
                     {content.title}
                   </span>
                 </CardTitle>
               </CardHeader>
 
-              <CardContent className="relative z-10 space-y-5 text-muted-foreground">
+              <CardContent className="relative z-10 space-y-4 p-5 pt-0 text-muted-foreground sm:space-y-5 sm:p-6 sm:pt-0">
                 {entry.fullWidth ? (
                   <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                     <p className="max-w-2xl text-sm leading-relaxed text-foreground/70">
