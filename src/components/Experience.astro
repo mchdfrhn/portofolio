@@ -1,9 +1,16 @@
 ---
 import { reader } from "@/lib/reader";
+import { ExperienceTimeline } from "./ExperienceTimeline";
 
 const rawExperience = await reader.collections.experience.all();
 const experience = rawExperience
-  .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
+  .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
+  .map(({ entry }) => ({
+    type: entry.type,
+    period: entry.period,
+    en: entry.en,
+    id: entry.id,
+  }));
 ---
 
 <section id="experience" class="pb-24 relative overflow-hidden">
@@ -17,42 +24,5 @@ const experience = rawExperience
         <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="experience.section.title">Experience & Education</h2>
     </div>
 
-    <div class="relative border-l border-primary-neon/10 ml-4 md:ml-12 space-y-12">
-        {experience.map(({ entry }) => {
-            const isWork = entry.type === "work";
-            const dotColor = isWork
-                ? "bg-primary-neon shadow-neon ring-4 ring-background"
-                : "bg-secondary-neon shadow-neon-purple ring-4 ring-background";
-            const periodColor = isWork
-                ? "text-primary-neon bg-primary-neon/10 shadow-[0_0_10px_rgba(0,136,255,0.1)] border-primary-neon/20"
-                : "text-secondary-neon bg-secondary-neon/10 shadow-[0_0_10px_rgba(188,19,254,0.1)] border-secondary-neon/20";
-            const companyColor = isWork ? "text-primary-neon" : "text-secondary-neon";
-
-            return (
-                <div class="relative pl-8 md:pl-12">
-                    <div class={`absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full ${dotColor}`}></div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                        <h3 class="text-2xl font-bold">
-                            <span data-lang="en">{entry.en.title}</span>
-                            <span data-lang="id" hidden>{entry.id.title}</span>
-                        </h3>
-                        <span class={`text-xs font-mono px-3 py-1 rounded-full w-fit neon-glow-blue border ${periodColor}`}>
-                            {entry.period}
-                        </span>
-                    </div>
-
-                    <div class={`text-lg mb-4 font-bold opacity-90 ${companyColor}`}>
-                        <span data-lang="en">{entry.en.company}</span>
-                        <span data-lang="id" hidden>{entry.id.company}</span>
-                    </div>
-
-                    <p class="text-muted-foreground max-w-3xl">
-                        <span data-lang="en">{entry.en.description}</span>
-                        <span data-lang="id" hidden>{entry.id.description}</span>
-                    </p>
-                </div>
-            );
-        })}
-    </div>
+    <ExperienceTimeline client:visible experience={experience} />
 </section>

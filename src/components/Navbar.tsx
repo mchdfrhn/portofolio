@@ -17,6 +17,8 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
+  const [hoveredMobileNav, setHoveredMobileNav] = useState<string | null>(null);
   const [lang, setLang] = useState<"en" | "id">("en");
 
   useEffect(() => {
@@ -89,15 +91,31 @@ export const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-4">
           {navLinks.map((link) => (
-            <a
+            <motion.a
               key={link.key}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4"
+              onHoverStart={() => setHoveredNav(link.key)}
+              onHoverEnd={() => setHoveredNav(null)}
+              onFocus={() => setHoveredNav(link.key)}
+              onBlur={() => setHoveredNav(null)}
+              className="relative px-1.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary"
               data-i18n-key={link.key}
             >
               {link.name}
-            </a>
+              <AnimatePresence>
+                {hoveredNav === link.key && (
+                  <motion.span
+                    layoutId="desktop-nav-hover-line"
+                    className="absolute inset-x-1.5 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+                    initial={{ opacity: 0, scaleX: 0.35 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    exit={{ opacity: 0, scaleX: 0.35 }}
+                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                  />
+                )}
+              </AnimatePresence>
+            </motion.a>
           ))}
           <ThemeToggle />
           <LanguageToggle />
@@ -139,14 +157,31 @@ export const Navbar = () => {
           >
             <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
-                <a
+                <motion.a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-medium text-foreground/80 hover:text-primary-neon"
+                  className="relative w-fit pb-1 text-lg font-medium text-foreground/80 transition-colors hover:text-primary-neon focus-visible:outline-none focus-visible:text-primary-neon"
+                  onHoverStart={() => setHoveredMobileNav(link.key)}
+                  onHoverEnd={() => setHoveredMobileNav(null)}
+                  onFocus={() => setHoveredMobileNav(link.key)}
+                  onBlur={() => setHoveredMobileNav(null)}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  data-i18n-key={link.key}
                 >
                   {link.name}
-                </a>
+                  <AnimatePresence>
+                    {hoveredMobileNav === link.key && (
+                      <motion.span
+                        layoutId="mobile-nav-hover-line"
+                        className="absolute inset-x-0 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+                        initial={{ opacity: 0, scaleX: 0.25 }}
+                        animate={{ opacity: 1, scaleX: 1 }}
+                        exit={{ opacity: 0, scaleX: 0.25 }}
+                        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                      />
+                    )}
+                  </AnimatePresence>
+                </motion.a>
               ))}
               <Button asChild className="w-full mt-4 bg-primary-neon hover:bg-primary-neon/90 text-white dark:text-slate-950 font-bold">
                 <a href={`/api/cv?lang=${lang}`} download className="flex items-center justify-center gap-2">

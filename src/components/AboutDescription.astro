@@ -1,50 +1,20 @@
 ---
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cloud, Zap, Database, Layout, Shield } from "lucide-react";
 import { reader } from "@/lib/reader";
+import { ExpertiseGrid } from "./ExpertiseGrid";
 
 const about = await reader.singletons.about.read();
 const rawExpertise = await reader.collections.expertise.all();
 const expertise = rawExpertise
-  .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0));
-
-const iconMap = { Layout, Cloud, Shield, Database, Zap } as const;
-type IconName = keyof typeof iconMap;
-
-const themeMap = {
-  primary: {
-    cardHover: "hover:border-primary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(56,189,248,0.25)]",
-    gradient: "from-primary-neon/5",
-    iconWrap: "bg-primary-neon/10 text-primary-neon border-primary-neon/20 group-hover:bg-primary-neon/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]",
-    tag: "bg-primary-neon/10 text-primary-neon border-primary-neon/20",
-  },
-  secondary: {
-    cardHover: "hover:border-secondary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(167,139,250,0.25)]",
-    gradient: "from-secondary-neon/5",
-    iconWrap: "bg-secondary-neon/10 text-secondary-neon border-secondary-neon/20 group-hover:bg-secondary-neon/20 shadow-[0_0_15px_rgba(167,139,250,0.1)]",
-    tag: "bg-secondary-neon/10 text-secondary-neon border-secondary-neon/20",
-  },
-  green: {
-    cardHover: "hover:border-green-400/40 hover:shadow-[0_15px_40px_-5px_rgba(74,222,128,0.2)]",
-    gradient: "from-green-400/5",
-    iconWrap: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20 group-hover:bg-green-500/20 shadow-[0_0_15px_rgba(74,222,128,0.1)]",
-    tag: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20",
-  },
-  orange: {
-    cardHover: "hover:border-orange-400/40 hover:shadow-[0_15px_40px_-5px_rgba(251,146,60,0.2)]",
-    gradient: "from-orange-400/5",
-    iconWrap: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20 group-hover:bg-orange-500/20 shadow-[0_0_15px_rgba(251,146,60,0.1)]",
-    tag: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20",
-  },
-  accent: {
-    cardHover: "hover:border-accent-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(255,255,255,0.05)]",
-    gradient: "from-accent-neon/5",
-    iconWrap: "bg-accent-neon/10 text-accent-neon border-accent-neon/20 group-hover:bg-accent-neon/20 shadow-[0_0_15px_rgba(156,163,175,0.1)]",
-    tag: "bg-accent-neon/10 text-accent-neon border-accent-neon/20",
-  },
-} as const;
-
-type ThemeName = keyof typeof themeMap;
+  .sort((a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0))
+  .map(({ slug, entry }) => ({
+    slug,
+    icon: entry.icon,
+    colorTheme: entry.colorTheme,
+    fullWidth: entry.fullWidth,
+    tech: [...entry.tech],
+    en: entry.en,
+    id: entry.id,
+  }));
 ---
 
 <section id="about-description" class="pb-12 md:pb-16">
@@ -64,57 +34,7 @@ type ThemeName = keyof typeof themeMap;
         </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {expertise.map(({ slug, entry }) => {
-            const theme = themeMap[(entry.colorTheme as ThemeName) ?? "primary"];
-            const IconComponent = iconMap[(entry.icon as IconName) ?? "Layout"];
-            const colSpan = entry.fullWidth ? "md:col-span-2" : "";
-
-            return (
-                <Card className={`bg-card/40 backdrop-blur-xl border border-border ${theme.cardHover} hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden ${colSpan}`}>
-                    <div class={`absolute inset-0 bg-gradient-to-br ${theme.gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    <CardHeader className="relative z-10">
-                        <CardTitle className="flex items-center gap-4">
-                            <div class={`p-3 rounded-2xl backdrop-blur-md border group-hover:scale-110 transition-all duration-500 ${theme.iconWrap}`}>
-                                <IconComponent className="w-6 h-6" />
-                            </div>
-                            <span class="text-foreground font-bold tracking-wide">
-                                <span data-lang="en">{entry.en.title}</span>
-                                <span data-lang="id" hidden>{entry.id.title}</span>
-                            </span>
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-5 text-muted-foreground relative z-10">
-                        {entry.fullWidth ? (
-                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                                <p class="text-foreground/70 leading-relaxed text-sm max-w-2xl">
-                                    <span data-lang="en">{entry.en.description}</span>
-                                    <span data-lang="id" hidden>{entry.id.description}</span>
-                                </p>
-                                <div class="flex flex-wrap gap-2 shrink-0">
-                                    {entry.tech.map((tag) => (
-                                        <span class={`text-xs px-2.5 py-1 rounded border font-medium ${theme.tag}`}>{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : (
-                            <>
-                                <p class="text-foreground/70 leading-relaxed text-sm">
-                                    <span data-lang="en">{entry.en.description}</span>
-                                    <span data-lang="id" hidden>{entry.id.description}</span>
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    {entry.tech.map((tag) => (
-                                        <span class={`text-xs px-2.5 py-1 rounded border font-medium ${theme.tag}`}>{tag}</span>
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                    </CardContent>
-                </Card>
-            );
-        })}
-    </div>
+    <ExpertiseGrid client:visible expertise={expertise} />
 
     <div class="mt-8 p-6 md:p-8 rounded-2xl border border-primary-neon/20 bg-primary-neon/5 backdrop-blur-md shadow-inner">
         <p class="text-foreground/80 leading-relaxed font-medium">
