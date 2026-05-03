@@ -8,7 +8,7 @@ export function CvDownloadButton() {
   return (
     <div className="flex items-center gap-2">
       <a
-        href={`/api/cv?lang=${lang}`}
+        href={`/cv-${lang}.pdf`}
         download
         className={cn(
           'inline-flex items-center justify-center gap-2 h-[52px] px-6',

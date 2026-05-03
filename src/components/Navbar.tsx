@@ -124,7 +124,7 @@ export const Navbar = () => {
             className="ml-2 border-primary-neon/20 hover:bg-primary-neon/10 hover:text-primary-neon transition-colors"
             asChild
           >
-            <a href={`/api/cv?lang=${lang}`} download className="flex items-center gap-2">
+            <a href={`/cv-${lang}.pdf`} download className="flex items-center gap-2">
               <span data-i18n-key="nav.resume">Resume</span>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary-neon/15 text-primary-neon leading-none">
                 {lang.toUpperCase()}
@@ -184,7 +184,7 @@ export const Navbar = () => {
                 </motion.a>
               ))}
               <Button asChild className="w-full mt-4 bg-primary-neon hover:bg-primary-neon/90 text-white dark:text-slate-950 font-bold">
-                <a href={`/api/cv?lang=${lang}`} download className="flex items-center justify-center gap-2">
+                <a href={`/cv-${lang}.pdf`} download className="flex items-center justify-center gap-2">
                   <span>Download CV</span>
                   <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-white/20 leading-none">
                     {lang.toUpperCase()}
