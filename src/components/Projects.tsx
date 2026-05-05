@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import {
   ExternalLink,
   Github,
@@ -37,6 +37,54 @@ export interface ProjectData {
   en: ProjectLang;
   id: ProjectLang;
 }
+
+interface TiltCardProps {
+  children: React.ReactNode;
+  delay: number;
+}
+
+const TiltCard: React.FC<TiltCardProps> = ({ children, delay }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springRotX = useSpring(rotateX, { stiffness: 260, damping: 24 });
+  const springRotY = useSpring(rotateY, { stiffness: 260, damping: 24 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const rotX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -7;
+    const rotY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 7;
+    rotateX.set(rotX);
+    rotateY.set(rotY);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 1, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+      className="h-full"
+      style={{
+        rotateX: springRotX,
+        rotateY: springRotY,
+        transformPerspective: 800,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const Projects = ({ projects }: { projects: ProjectData[] }) => {
   const [lang, setLang] = React.useState<"en" | "id">("en");
@@ -88,14 +136,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
             iconMap[project.icon as IconName] ?? Database;
 
           return (
-            <motion.div
-              key={project.slug}
-              initial={{ opacity: 1, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="h-full"
-            >
+            <TiltCard key={project.slug} delay={index * 0.1}>
               <SpotlightCard className="group flex h-full flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary-neon/40 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)] sm:p-6 lg:p-8 dark:bg-card/50 dark:shadow-lg">
                 <div>
                   {project.image && (
@@ -187,7 +228,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
                   </div>
                 </div>
               </SpotlightCard>
-            </motion.div>
+            </TiltCard>
           );
         })}
       </div>

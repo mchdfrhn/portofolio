@@ -15,14 +15,16 @@ const experience = rawExperience
 
 <section id="experience" class="pb-24 relative overflow-hidden text-foreground">
     <div class="mb-16 text-center md:text-left">
-        <div class="inline-block mb-4">
+        <div class="inline-block mb-4" data-reveal>
             <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-secondary-neon/10 text-secondary-neon border border-secondary-neon/20">
                 <span data-lang="en">My Journey</span>
                 <span data-lang="id" hidden>Perjalanan Saya</span>
             </span>
         </div>
-        <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="experience.section.title">Experience & Education</h2>
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n-key="experience.section.title" data-reveal data-reveal-delay="0.1">Experience & Education</h2>
     </div>
 
-    <ExperienceTimeline client:visible experience={experience} />
+    <div data-reveal data-reveal-delay="0.15">
+        <ExperienceTimeline client:visible experience={experience} />
+    </div>
 </section>

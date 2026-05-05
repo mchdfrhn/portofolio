@@ -16,7 +16,7 @@
     Splitting();
   };
 
-  const initSmoothScroll = () => {
+  const initSmoothScroll = (): Lenis => {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -62,17 +62,125 @@
     return lenis;
   };
 
-  // Initial load
+  // Phase 1a — Scroll reveal
+  const initScrollReveal = (): void => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Individual [data-reveal] elements
+    gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+      const delay = parseFloat(el.dataset.revealDelay ?? '0');
+      gsap.from(el, {
+        y: 50,
+        opacity: 0,
+        duration: 0.85,
+        delay,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+
+    // [data-reveal-stagger] containers with [data-reveal-item] children
+    gsap.utils.toArray<HTMLElement>('[data-reveal-stagger]').forEach((container) => {
+      const items = container.querySelectorAll<HTMLElement>('[data-reveal-item]');
+      if (!items.length) return;
+      gsap.from(items, {
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+  };
+
+  // Phase 1b — Text split char animation
+  const initTextSplitAnim = (): void => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.utils.toArray<HTMLElement>('[data-splitting]').forEach((el) => {
+      const chars = el.querySelectorAll<HTMLElement>('.char');
+      if (!chars.length) return;
+      gsap.from(chars, {
+        opacity: 0,
+        y: 18,
+        duration: 0.55,
+        stagger: 0.018,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 92%',
+          toggleActions: 'play none none none',
+        },
+      });
+    });
+  };
+
+  // Phase 1c — Magnetic buttons
+  const initMagneticButtons = (): void => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.utils.toArray<HTMLElement>('.magnetic').forEach((btn) => {
+      const handleMouseMove = (e: MouseEvent): void => {
+        const rect = btn.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const offsetX = e.clientX - centerX;
+        const offsetY = e.clientY - centerY;
+        gsap.to(btn, {
+          x: offsetX * 0.4,
+          y: offsetY * 0.4,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      };
+
+      const handleMouseLeave = (): void => {
+        gsap.to(btn, {
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+        });
+      };
+
+      btn.addEventListener('mousemove', handleMouseMove);
+      btn.addEventListener('mouseleave', handleMouseLeave);
+    });
+  };
+
+  // Initial load — boot sequence
   initSplitting();
   let lenis = initSmoothScroll();
+  initScrollReveal();
+  initTextSplitAnim();
+  initMagneticButtons();
 
-  // Handle Astro View Transitions (Life cycle management)
+  // Handle Astro View Transitions (life cycle management)
   document.addEventListener('astro:after-swap', () => {
+    // Kill all active ScrollTrigger instances
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
+    // Destroy the existing Lenis instance
     if (lenis) {
       lenis.destroy();
     }
-    lenis = initSmoothScroll();
+
+    // Re-run the full boot sequence
     initSplitting();
+    lenis = initSmoothScroll();
+    initScrollReveal();
+    initTextSplitAnim();
+    initMagneticButtons();
+
     ScrollTrigger.refresh();
   });
 
@@ -105,5 +213,16 @@
   /* Splitting.js basic styles */
   .splitting {
     display: inline-block;
+  }
+
+  /* Splitting.js char-level animation support */
+  [data-splitting] .word {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  [data-splitting] .char {
+    display: inline-block;
+    will-change: transform, opacity;
   }
 </style>

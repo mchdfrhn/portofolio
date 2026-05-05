@@ -19,9 +19,14 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
 <section id="hero" class="min-h-[100svh] flex flex-col justify-center relative overflow-hidden pt-28 pb-16 md:pt-24 md:pb-20">
-    <!-- Subtle Background Depth & Seamless Orbs -->
-    <div class="absolute top-[-10%] right-[10%] w-[500px] h-[500px] bg-primary-neon/10 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
-    <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary-neon/10 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
+    <!-- Aurora Background -->
+    <div class="aurora-container absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="aurora-orb aurora-orb--1"></div>
+        <div class="aurora-orb aurora-orb--2"></div>
+        <div class="aurora-orb aurora-orb--3"></div>
+        <div class="aurora-orb aurora-orb--4"></div>
+        <div class="aurora-orb aurora-orb--5"></div>
+    </div>
 
     <div class="w-full max-w-none md:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
         <div class="flex-1 space-y-8 md:space-y-10 relative z-10 w-full pl-0">
@@ -76,12 +81,12 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 
             <!-- CTA Section -->
             <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
-                <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide">
+                <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide magnetic">
                     <span data-lang="en">{en?.ctaContact ?? "Hire Me"}</span>
                     <span data-lang="id" hidden>{id?.ctaContact ?? "Mari Bekerja Bersama"}</span>
                     <Mail className="ml-2 w-[18px] h-[18px]" />
                 </a>
-                <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] border border-border text-foreground hover:bg-secondary hover:border-primary-neon/50 hover:-translate-y-1 transition-all duration-300 shadow-sm font-medium bg-card/50 backdrop-blur-sm">
+                <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] border border-border text-foreground hover:bg-secondary hover:border-primary-neon/50 hover:-translate-y-1 transition-all duration-300 shadow-sm font-medium bg-card/50 backdrop-blur-sm magnetic">
                     <span data-lang="en">{en?.ctaProjects ?? "Projects"}</span>
                     <span data-lang="id" hidden>{id?.ctaProjects ?? "Proyek"}</span>
                     <ArrowRight className="ml-2 w-[18px] h-[18px]" />
@@ -211,4 +216,99 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 </script>
 
 <style>
+    /* Aurora orb base */
+    .aurora-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        will-change: transform, opacity;
+        pointer-events: none;
+    }
+
+    /* Orb 1 — large blue, top-right */
+    .aurora-orb--1 {
+        width: 700px;
+        height: 700px;
+        top: -20%;
+        right: -5%;
+        background: radial-gradient(ellipse, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+        animation: aurora-float-1 18s ease-in-out infinite alternate;
+    }
+
+    /* Orb 2 — purple, bottom-left */
+    .aurora-orb--2 {
+        width: 600px;
+        height: 600px;
+        bottom: -15%;
+        left: -10%;
+        background: radial-gradient(ellipse, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+        animation: aurora-float-2 22s ease-in-out infinite alternate;
+    }
+
+    /* Orb 3 — cyan small, center-right */
+    .aurora-orb--3 {
+        width: 350px;
+        height: 350px;
+        top: 30%;
+        right: 15%;
+        background: radial-gradient(ellipse, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+        animation: aurora-float-3 14s ease-in-out infinite alternate;
+    }
+
+    /* Orb 4 — blue-purple blend, top-left */
+    .aurora-orb--4 {
+        width: 450px;
+        height: 450px;
+        top: 5%;
+        left: 5%;
+        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+        animation: aurora-float-4 25s ease-in-out infinite alternate;
+    }
+
+    /* Orb 5 — deep cyan, bottom-right */
+    .aurora-orb--5 {
+        width: 300px;
+        height: 300px;
+        bottom: 10%;
+        right: 25%;
+        background: radial-gradient(ellipse, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+        animation: aurora-float-5 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes aurora-float-1 {
+        0%   { transform: translate(0, 0) scale(1); }
+        33%  { transform: translate(-40px, 30px) scale(1.1); }
+        66%  { transform: translate(20px, -20px) scale(0.95); }
+        100% { transform: translate(-20px, 40px) scale(1.05); }
+    }
+
+    @keyframes aurora-float-2 {
+        0%   { transform: translate(0, 0) scale(1); }
+        40%  { transform: translate(50px, -30px) scale(1.08); }
+        70%  { transform: translate(-20px, 20px) scale(0.97); }
+        100% { transform: translate(30px, -40px) scale(1.04); }
+    }
+
+    @keyframes aurora-float-3 {
+        0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+        50%  { transform: translate(-30px, -40px) scale(1.15) rotate(10deg); }
+        100% { transform: translate(20px, 30px) scale(0.9) rotate(-5deg); }
+    }
+
+    @keyframes aurora-float-4 {
+        0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
+        50%  { transform: translate(40px, 20px) scale(1.2); opacity: 1; }
+        100% { transform: translate(-10px, 40px) scale(0.85); opacity: 0.6; }
+    }
+
+    @keyframes aurora-float-5 {
+        0%   { transform: translate(0, 0) scale(1); }
+        60%  { transform: translate(-25px, -35px) scale(1.1); }
+        100% { transform: translate(15px, 20px) scale(0.92); }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .aurora-orb { animation: none; }
+    }
 </style>

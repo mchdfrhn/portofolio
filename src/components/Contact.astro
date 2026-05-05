@@ -6,13 +6,15 @@ import { ContactForm } from "./ContactForm";
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[420px] h-[280px] md:w-[600px] md:h-[400px] bg-primary-neon/10 blur-[120px] md:blur-[150px] -z-10 opacity-30 pointer-events-none animate-pulse shadow-neon"></div>
 
     <div class="max-w-4xl mx-auto text-center px-4">
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-foreground" data-i18n-key="contact.title">Let's Work Together</h2>
-        <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)] mx-auto mb-8"></div>
-        <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed" data-i18n-key="contact.description">
-            Currently interested in freelance opportunities or full-time positions. 
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-foreground" data-i18n-key="contact.title" data-reveal>Let's Work Together</h2>
+        <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)] mx-auto mb-8" data-reveal data-reveal-delay="0.08"></div>
+        <p class="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed" data-i18n-key="contact.description" data-reveal data-reveal-delay="0.15">
+            Currently interested in freelance opportunities or full-time positions.
             Have a project in mind or just want to say hi? Hit me up.
         </p>
 
-        <ContactForm client:visible />
+        <div data-reveal data-reveal-delay="0.2">
+            <ContactForm client:visible />
+        </div>
     </div>
 </section>

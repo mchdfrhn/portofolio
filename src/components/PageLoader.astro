@@ -1,0 +1,85 @@
+---
+// PageLoader — shown once per session, animates out with a slide-up reveal
+---
+
+<div id="page-loader" aria-hidden="true">
+  <div id="loader-content">
+    <div id="loader-initials">FA</div>
+    <div id="loader-line"></div>
+  </div>
+</div>
+
+<style>
+  #page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: hsl(222, 47%, 8%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+  }
+  #loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  #loader-initials {
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: rgb(56, 189, 248);
+    opacity: 0;
+    text-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
+    font-family: 'Geist', sans-serif;
+  }
+  #loader-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgb(56, 189, 248), transparent);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const loader = document.getElementById('page-loader');
+  if (!loader) throw new Error('PageLoader: #page-loader element not found');
+
+  const initials = document.getElementById('loader-initials');
+  const line = document.getElementById('loader-line');
+
+  // Skip if already shown this session
+  if (sessionStorage.getItem('loader-played')) {
+    loader.style.display = 'none';
+    document.documentElement.classList.add('loader-done');
+  } else {
+    // Prevent scroll during loader
+    document.body.style.overflow = 'hidden';
+
+    // Set initial state before animating in
+    gsap.set(initials, { opacity: 0, y: 20 });
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        sessionStorage.setItem('loader-played', '1');
+        document.body.style.overflow = '';
+        loader.remove();
+        document.documentElement.classList.add('loader-done');
+      }
+    });
+
+    tl
+      .to(initials, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' })
+      .to(line, { width: 120, duration: 0.4, ease: 'power2.out' }, '-=0.1')
+      .to(loader, { yPercent: -100, duration: 0.7, ease: 'power4.inOut', delay: 0.5 });
+  }
+
+  // On Astro view transitions: never show loader again in the session
+  document.addEventListener('astro:before-swap', () => {
+    const l = document.getElementById('page-loader');
+    if (l) l.remove();
+  });
+</script>

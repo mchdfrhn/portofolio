@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import {
   Briefcase,
   Building2,
@@ -49,6 +49,12 @@ interface Props {
   profile: ProfileData;
   techStack: string[];
   interests: InterestItem[];
+}
+
+function parseCount(val: string): { num: number; suffix: string } {
+  const m = val.match(/^(\d+(?:\.\d+)?)(.*)/);
+  if (!m) return { num: 0, suffix: val };
+  return { num: parseFloat(m[1]), suffix: m[2] };
 }
 
 const iconMap = { Globe, LineChart, Trophy } as const;
@@ -119,6 +125,23 @@ export const AboutBentoGrid = ({
   const [lang, setLang] = React.useState<Lang>("en");
   const shouldReduceMotion = useReducedMotion();
   const copy = about[lang];
+
+  const yearsRef = React.useRef<HTMLDivElement>(null);
+  const isYearsInView = useInView(yearsRef, { once: true, amount: 0.8 });
+  const [yearsDisplay, setYearsDisplay] = React.useState(0);
+  const { num: yearsTarget, suffix: yearsSuffix } = parseCount(profile.yearsExp);
+
+  React.useEffect(() => {
+    if (!isYearsInView) return;
+    if (shouldReduceMotion) { setYearsDisplay(yearsTarget); return; }
+    const controls = animate(0, yearsTarget, {
+      duration: 1.4,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      onUpdate: (v) => setYearsDisplay(Math.floor(v)),
+      onComplete: () => setYearsDisplay(yearsTarget),
+    });
+    return () => controls.stop();
+  }, [isYearsInView, yearsTarget, shouldReduceMotion]);
 
   React.useEffect(() => {
     const stored = window.localStorage.getItem("lang");
@@ -372,15 +395,12 @@ export const AboutBentoGrid = ({
         <Card className="group relative h-full overflow-hidden rounded-2xl border border-primary-neon/20 bg-card shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-md transition-all duration-300 hover:border-primary-neon/40 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] dark:border-primary-neon/10 dark:bg-primary-neon/5 dark:shadow-none">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary-neon/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <CardContent className="relative z-10 flex h-full flex-col justify-center p-5 text-center sm:p-6">
-            <motion.div
-              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.85 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            <div
+              ref={yearsRef}
               className="mb-3 text-5xl font-extrabold tracking-tighter text-primary-neon"
             >
-              {profile.yearsExp}
-            </motion.div>
+              {yearsDisplay}{yearsSuffix}
+            </div>
             <p className="text-sm font-bold uppercase tracking-widest text-secondary-neon">
               {copy.yearsLabel}
             </p>
