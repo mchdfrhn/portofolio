@@ -1,0 +1,36 @@
+title: Automation Workflow Toolkit
+order: 0
+icon: Terminal
+image: ''
+github: ''
+demo: ''
+tech:
+  - Python
+  - Playwright
+  - Pandas
+  - Telegram Bot
+  - Google Sheets
+en:
+  tagline: Web Scraping, Chatbot & Report Automation
+  problem: >-
+    Small teams often spend hours copying data, cleaning spreadsheets, and
+    answering the same customer questions manually.
+  solution: >-
+    Built reusable automation patterns for extracting public website data,
+    cleaning CSV/Excel files, sending Telegram notifications, and structuring
+    FAQ/lead-capture chatbot flows.
+  impact: >-
+    Turns repetitive admin workflows into faster, repeatable processes that can
+    be adapted for freelance clients.
+id:
+  tagline: Web Scraping, Chatbot & Otomasi Laporan
+  problem: >-
+    Tim kecil sering menghabiskan waktu untuk copy-paste data, membersihkan
+    spreadsheet, dan menjawab pertanyaan customer yang berulang.
+  solution: >-
+    Membuat pola automation reusable untuk mengambil data website publik,
+    membersihkan CSV/Excel, mengirim notifikasi Telegram, dan menyusun flow
+    chatbot FAQ/lead capture.
+  impact: >-
+    Mengubah pekerjaan admin repetitif menjadi proses yang lebih cepat,
+    konsisten, dan siap diadaptasi untuk kebutuhan klien freelance.

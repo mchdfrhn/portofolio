@@ -3,7 +3,7 @@ order: 2
 icon: LayoutTemplate
 image: /images/projects/website-kampus/image.jpeg
 github: https://github.com/mchdfrhn/website-kampus
-demo: https://sttpu.mochamadfarhanali.my.id/
+demo: https://sttpu.ac.id
 tech:
   - Next.js
   - PostgreSQL

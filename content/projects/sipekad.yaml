@@ -3,7 +3,7 @@ order: 1
 icon: Database
 image: /images/projects/sipekad/image.jpeg
 github: https://github.com/mchdfrhn/sipekad-fe
-demo: https://app.sipekad.web.id
+demo: https://sipekad.sttpu.ac.id
 tech:
   - React
   - Express.js

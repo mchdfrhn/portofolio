@@ -9,6 +9,7 @@ import { LanguageToggle } from "./LanguageToggle";
 const navLinks = [
   { key: "nav.about", name: "About", href: "#about" },
   { key: "nav.expertise", name: "Expertise", href: "#about-description" },
+  { key: "nav.services", name: "Services", href: "#services" },
   { key: "nav.projects", name: "Projects", href: "#projects" },
   { key: "nav.experience", name: "Experience", href: "#experience" },
   { key: "nav.contact", name: "Contact", href: "#contact" },

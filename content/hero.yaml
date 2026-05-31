@@ -1,33 +1,33 @@
 stats:
-  - emoji: 🚀
-    label: 3+ Production Projects
-  - emoji: 🇳
-    label: Next.js
-  - emoji: 🐘
-    label: PostgreSQL
+  - emoji: 🤖
+    label: Automation & Chatbots
+  - emoji: 🐍
+    label: Python
+  - emoji: 📊
+    label: Data Workflows
   - emoji: 🐳
     label: Docker
 en:
-  badge: Available for new opportunities
-  title1: Fullstack Developer
-  title2: (Next + Laravel)
-  subtitle: I Build Scalable Backend Systems That Handle Real-World Traffic.
-  ctaContact: Hire Me
-  ctaProjects: Projects
-  codeRole: '"Solving architecture bottlenecks"'
-  codeSkill1: '"Fullstack"'
-  codeSkill2: '"Cloud Deployments"'
-  codeImpact: '"Faster business operations"'
-  codeDelivery: '"On Time & Robust"'
+  badge: Available for freelance automation projects
+  title1: Python Automation
+  title2: '& AI Chatbot Developer'
+  subtitle: I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.
+  ctaContact: Discuss a Workflow
+  ctaProjects: View Work
+  codeRole: '"Automating repetitive workflows"'
+  codeSkill1: '"Python"'
+  codeSkill2: '"Chatbots"'
+  codeImpact: '"Hours saved weekly"'
+  codeDelivery: '"Practical & reliable"'
 id:
-  badge: Terbuka untuk kolaborasi
-  title1: Fullstack Developer
-  title2: (Next + Laravel)
-  subtitle: Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi.
-  ctaContact: Mari Bekerja Bersama
-  ctaProjects: Proyek
-  codeRole: '"Menyelesaikan bottleneck arsitektur"'
-  codeSkill1: '"Fullstack"'
-  codeSkill2: '"Cloud Deployments"'
-  codeImpact: '"Proses bisnis lebih cepat"'
-  codeDelivery: '"Tepat Waktu & Tangguh"'
+  badge: Terbuka untuk proyek freelance automation
+  title1: Python Automation
+  title2: '& AI Chatbot Developer'
+  subtitle: Saya membuat web scraper, chatbot, dan workflow data untuk mengurangi kerja admin repetitif.
+  ctaContact: Diskusikan Workflow
+  ctaProjects: Lihat Proyek
+  codeRole: '"Mengotomasi kerja repetitif"'
+  codeSkill1: '"Python"'
+  codeSkill2: '"Chatbots"'
+  codeImpact: '"Hemat jam kerja tiap minggu"'
+  codeDelivery: '"Praktis & reliable"'

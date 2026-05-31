@@ -1,0 +1,117 @@
+---
+const services = {
+  en: {
+    badge: "Freelance Services",
+    title: "Automation that saves hours of manual work",
+    description:
+      "I help small businesses and teams turn repetitive tasks into reliable Python scripts, data workflows, and chatbots.",
+    cta: "Discuss a workflow",
+    items: [
+      {
+        title: "Web Scraping to CSV/Excel",
+        description:
+          "Extract structured data from public websites, clean it, and deliver ready-to-use CSV, Excel, or Google Sheets output.",
+        points: ["Public website data", "CSV/Excel delivery", "Reusable script option"],
+      },
+      {
+        title: "Telegram & WhatsApp Chatbot",
+        description:
+          "Build simple FAQ, lead-capture, and customer-support flows that reduce repeated admin replies.",
+        points: ["FAQ/menu flow", "Lead capture", "Admin handoff"],
+      },
+      {
+        title: "Report & Admin Automation",
+        description:
+          "Automate spreadsheet cleanup, recurring reports, API syncs, and notifications for daily business operations.",
+        points: ["Data cleaning", "Scheduled reports", "API/Sheets integration"],
+      },
+    ],
+  },
+  id: {
+    badge: "Jasa Freelance",
+    title: "Automation untuk menghemat kerja manual",
+    description:
+      "Saya membantu bisnis kecil dan tim mengubah pekerjaan repetitif menjadi script Python, workflow data, dan chatbot yang praktis.",
+    cta: "Diskusikan workflow",
+    items: [
+      {
+        title: "Web Scraping ke CSV/Excel",
+        description:
+          "Mengambil data terstruktur dari website publik, membersihkan hasilnya, lalu mengirim output CSV, Excel, atau Google Sheets.",
+        points: ["Data website publik", "Output CSV/Excel", "Opsi script reusable"],
+      },
+      {
+        title: "Chatbot Telegram & WhatsApp",
+        description:
+          "Membuat flow FAQ, lead capture, dan customer support sederhana agar admin tidak menjawab pertanyaan yang sama berulang kali.",
+        points: ["Flow FAQ/menu", "Lead capture", "Handoff ke admin"],
+      },
+      {
+        title: "Otomasi Laporan & Admin",
+        description:
+          "Mengotomasi cleaning spreadsheet, laporan rutin, sinkronisasi API, dan notifikasi untuk operasional harian.",
+        points: ["Cleaning data", "Laporan terjadwal", "Integrasi API/Sheets"],
+      },
+    ],
+  },
+};
+---
+
+<section id="services" class="relative py-20 md:py-32">
+  <div class="absolute left-0 top-1/3 -z-10 h-[280px] w-[280px] rounded-full bg-secondary-neon/10 blur-[120px] pointer-events-none md:h-[520px] md:w-[520px]"></div>
+
+  <div class="mb-10 max-w-3xl md:mb-16">
+    <div class="inline-block mb-4">
+      <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-secondary-neon/10 text-secondary-neon border border-secondary-neon/20">
+        <span data-lang="en">{services.en.badge}</span>
+        <span data-lang="id" hidden>{services.id.badge}</span>
+      </span>
+    </div>
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-6 text-foreground tracking-tight">
+      <span data-lang="en">{services.en.title}</span>
+      <span data-lang="id" hidden>{services.id.title}</span>
+    </h2>
+    <div class="mb-6 h-1.5 w-24 rounded-full bg-secondary-neon shadow-[0_0_15px_rgba(167,139,250,0.5)] md:mb-8"></div>
+    <p class="text-muted-foreground text-lg md:text-xl leading-relaxed">
+      <span data-lang="en">{services.en.description}</span>
+      <span data-lang="id" hidden>{services.id.description}</span>
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-8">
+    {services.en.items.map((service, index) => {
+      const serviceId = services.id.items[index];
+      return (
+        <article class="group flex h-full flex-col rounded-xl border border-border bg-card/80 p-6 shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-secondary-neon/40 hover:shadow-[0_10px_40px_-10px_rgba(167,139,250,0.28)] lg:p-8 dark:bg-card/50">
+          <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-neon/10 text-xl font-black text-primary-neon shadow-[0_0_18px_rgba(56,189,248,0.15)]">
+            0{index + 1}
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-foreground transition-colors group-hover:text-secondary-neon sm:text-2xl">
+            <span data-lang="en">{service.title}</span>
+            <span data-lang="id" hidden>{serviceId.title}</span>
+          </h3>
+          <p class="mb-6 text-sm leading-relaxed text-muted-foreground">
+            <span data-lang="en">{service.description}</span>
+            <span data-lang="id" hidden>{serviceId.description}</span>
+          </p>
+          <ul class="mt-auto space-y-2 border-t border-border pt-5">
+            {service.points.map((point, pointIndex) => (
+              <li class="flex items-center gap-2 text-sm font-medium text-foreground/80">
+                <span class="h-1.5 w-1.5 rounded-full bg-secondary-neon shadow-[0_0_8px_rgba(167,139,250,0.7)]"></span>
+                <span data-lang="en">{point}</span>
+                <span data-lang="id" hidden>{serviceId.points[pointIndex]}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      );
+    })}
+  </div>
+
+  <div class="mt-10 flex justify-center md:mt-14">
+    <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex h-[52px] items-center justify-center rounded-md px-8 text-[15px] font-extrabold tracking-wide text-white btn-gradient-glow magnetic">
+      <span data-lang="en">{services.en.cta}</span>
+      <span data-lang="id" hidden>{services.id.cta}</span>
+    </a>
+  </div>
+</section>

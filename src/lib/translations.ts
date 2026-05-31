@@ -3,6 +3,7 @@ export const translations = {
     // Navigation
     "nav.about": "About",
     "nav.expertise": "Expertise",
+    "nav.services": "Services",
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
@@ -58,7 +59,7 @@ export const translations = {
     // Contact
     "contact.title": "Let's Work Together",
     "contact.description":
-      "Currently interested in freelance opportunities or full-time positions. Have a project in mind or just want to say hi? Hit me up.",
+      "Need web scraping, a chatbot, or automation for repetitive admin work? Send your workflow and I will help scope a practical solution.",
     "contact.name.label": "Name",
     "contact.email.label": "Email",
     "contact.message.label": "Message",
@@ -75,6 +76,7 @@ export const translations = {
     // Navigation
     "nav.about": "Tentang",
     "nav.expertise": "Keahlian",
+    "nav.services": "Jasa",
     "nav.projects": "Proyek",
     "nav.experience": "Pengalaman",
     "nav.contact": "Kontak",
@@ -131,7 +133,7 @@ export const translations = {
     // Contact
     "contact.title": "Mari Bekerja Bersama",
     "contact.description":
-      "Lagi terbuka untuk freelance maupun posisi full-time. Ada proyek atau cuma mau ngobrol? Reach out aja.",
+      "Butuh web scraping, chatbot, atau automation untuk pekerjaan admin yang repetitif? Kirim workflow-nya, nanti saya bantu cek solusi praktisnya.",
     "contact.name.label": "Nama",
     "contact.email.label": "Email",
     "contact.message.label": "Pesan",
