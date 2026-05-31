@@ -26,14 +26,14 @@ export const translations = {
     "about.badge": "Who I Am",
     "about.title": "About Me",
     "about.description":
-      "Fullstack Developer passionate about building efficient, scalable systems and managing entire development lifecycles. Experienced in cloud infrastructure, CI/CD automation, and high-performance applications. Currently contributing at Kementerian PU while pursuing informatics studies.",
+      "Fullstack Developer and DevOps Engineer focused on building scalable web applications, academic systems, automation workflows, and reliable backend infrastructure.",
     "about.profile.name": "Mochamad Farhan Ali",
     "about.profile.title": "Backend & DevOps Engineer",
     "about.current": "Currently",
-    "about.experience.title": "Intern Fullstack Developer",
-    "about.experience.company": "Pusdatin, Kementerian PU",
+    "about.experience.title": "Junior Software Engineer",
+    "about.experience.company": "STT Pekerjaan Umum Jakarta",
     "about.experience.description":
-      "Managing CI/CD pipelines, cloud infrastructure (AWS), containerization (Docker, Kubernetes), and building enterprise-grade administrative systems with modern web technologies.",
+      "Designed and engineered SIPEKAD, an integrated academic and student information system built with Next.js and PostgreSQL, digitalizing campus services and automating previously manual bureaucratic processes.",
     "about.tech.title": "Tech Stack",
     "about.interest.cloud": "Cloud Infrastructure",
     "about.interest.cicd": "CI/CD Automation",
@@ -46,7 +46,7 @@ export const translations = {
     "aboutDescription.lead":
       "As a dedicated Fullstack Developer, I am passionate about building efficient and scalable digital solutions. I have extensive experience managing the entire development lifecycle, from code to production, ensuring systems run reliably and optimally.",
     "aboutDescription.note":
-      "I am always open to discussing emerging technologies and exciting challenges. Feel free to reach out to explore how I can bring value to your team through efficient development practices, robust infrastructure, and innovative solutions.",
+      "I am always open to discussing emerging technologies and exciting challenges. Feel free to reach out to explore how I can bring value to your team through efficient development practices, robust infrastructure, and practical automation solutions.",
 
     // Experience section header (items managed by CMS)
     "experience.section.title": "Experience & Education",
@@ -100,14 +100,14 @@ export const translations = {
     "about.badge": "Siapa Saya",
     "about.title": "Tentang Saya",
     "about.description":
-      "Fullstack Developer yang senang membangun sistem efisien, skalabel, dan tahan banting — mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil kuliah informatika.",
+      "Fullstack Developer dan DevOps Engineer yang fokus membangun aplikasi web skalabel, sistem akademik, workflow automation, dan infrastruktur backend yang reliable.",
     "about.profile.name": "Mochamad Farhan Ali",
     "about.profile.title": "Backend & DevOps Engineer",
     "about.current": "Saat ini",
-    "about.experience.title": "Magang Fullstack Developer",
-    "about.experience.company": "Pusdatin, Kementerian PU",
+    "about.experience.title": "Junior Software Engineer",
+    "about.experience.company": "STT Pekerjaan Umum Jakarta",
     "about.experience.description":
-      "Ngelola pipeline CI/CD, infrastruktur AWS, containerisasi Docker & Kubernetes, plus bangun sistem administrasi internal berbasis web modern.",
+      "Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan terintegrasi berbasis Next.js dan PostgreSQL, yang mendigitalisasi layanan kampus dan mengotomasi proses birokrasi manual.",
     "about.tech.title": "Stack Teknologi",
     "about.interest.cloud": "Infrastruktur Cloud",
     "about.interest.cicd": "Otomatisasi CI/CD",
@@ -120,7 +120,7 @@ export const translations = {
     "aboutDescription.lead":
       "Saya percaya bahwa software yang baik bukan cuma soal fitur, tapi juga soal bagaimana dia jalan di produksi — stabil, cepat, dan mudah di-maintain. Dari nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya.",
     "aboutDescription.note":
-      "Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti dari sisi code sekaligus infrastruktur — yuk ngobrol.",
+      "Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti dari sisi code, infrastruktur, dan automation — yuk ngobrol.",
 
     // Experience section header (items managed by CMS)
     "experience.section.title": "Pengalaman & Pendidikan",
