@@ -1,31 +1,35 @@
-title: Sistem Pengajuan Akademik
+title: SIPEKAD — Integrated Academic Information System
 order: 1
 icon: Database
 image: /images/projects/sipekad/image.jpeg
 github: https://github.com/mchdfrhn/sipekad-fe
 demo: https://sipekad.sttpu.ac.id
 tech:
-  - React
-  - Express.js
-  - Redis
-  - Postgres
+  - Next.js
+  - PostgreSQL
+  - REST API
+  - Docker
 en:
-  tagline: Administrative System & WA Notification
+  tagline: Academic & Student Information System
   problem: >-
-    Inefficient manual administrative handling and lack of instant feedback for
-    users.
+    Manual academic administration made student services, data updates, and
+    document workflows slower and harder to track.
   solution: >-
-    Built a robust information system connected to a WhatsApp gateway (Baileys)
-    via Redis.
-  impact: Automated 10k+ notifications and deployed high-availability microservices.
-id:
-  tagline: Sistem Informasi Manajemen
-  problem: >-
-    Penanganan administrasi manual yang tidak efisien dan tidak adanya
-    notifikasi instan untuk pengguna.
-  solution: >-
-    Membangun sistem informasi yang terhubung dengan gateway WhatsApp (Baileys)
-    melalui Redis.
+    Built an integrated academic and student information system with structured
+    data models, responsive interfaces, and workflow-focused modules for campus
+    services.
   impact: >-
-    Mengotomatiskan 10k+ notifikasi dan men-deploy microservice dengan
-    ketersediaan tinggi.
+    Helped digitalize campus services, improve academic data management, and
+    reduce repetitive manual administration.
+id:
+  tagline: Sistem Informasi Akademik & Kemahasiswaan
+  problem: >-
+    Administrasi akademik manual membuat layanan mahasiswa, pembaruan data, dan
+    workflow dokumen lebih lambat serta sulit dilacak.
+  solution: >-
+    Membangun sistem informasi akademik dan kemahasiswaan terintegrasi dengan
+    model data terstruktur, antarmuka responsif, dan modul yang fokus pada
+    workflow layanan kampus.
+  impact: >-
+    Membantu digitalisasi layanan kampus, memperbaiki pengelolaan data akademik,
+    dan mengurangi administrasi manual yang repetitif.

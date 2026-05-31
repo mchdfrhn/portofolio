@@ -12,12 +12,12 @@ tech:
 en:
   title: Fullstack Development
   description: >-
-    Engineered robust end-to-end applications handling 10k+ daily requests.
-    Bridged high-performance backends (Go, Express, Laravel) with responsive
-    interfaces, focusing on database optimization and tight security.
+    Building end-to-end web applications that connect maintainable backend
+    services with responsive, user-friendly interfaces. Focused on database
+    design, API reliability, performance, and security.
 id:
   title: Pengembangan Fullstack
   description: >-
-    Membangun aplikasi end-to-end tangguh dengan beban 10rb+ permintaan harian.
-    Mengintegrasikan backend performa tinggi (Go, Express, Laravel) dengan
-    antarmuka responsif, fokus pada optimasi database dan keamanan ketat.
+    Membangun aplikasi web end-to-end yang menghubungkan backend maintainable
+    dengan antarmuka responsif dan mudah digunakan. Fokus pada desain database,
+    reliabilitas API, performa, dan keamanan.

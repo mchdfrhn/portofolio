@@ -2,10 +2,9 @@ en:
   badge: Who I Am
   title: About Me
   description: >-
-    Fullstack Developer passionate about building efficient, scalable systems
-    and managing entire development lifecycles. Experienced in cloud
-    infrastructure, CI/CD automation, and high-performance applications.
-    Currently contributing at Kementerian PU while pursuing informatics studies.
+    Fullstack Developer and DevOps Engineer focused on building scalable web
+    applications, academic systems, automation workflows, and reliable backend
+    infrastructure.
   currentLabel: Currently
   currentTitle: Junior Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
@@ -26,22 +25,21 @@ en:
     I am always open to discussing emerging technologies and exciting
     challenges. Feel free to reach out to explore how I can bring value to your
     team through efficient development practices, robust infrastructure, and
-    innovative solutions.
+    practical automation solutions.
 id:
   badge: Siapa Saya
   title: Tentang Saya
   description: >-
-    Fullstack Developer yang senang membangun sistem efisien, skalabel, dan
-    tahan banting - mulai dari infrastruktur cloud, CI/CD, sampai aplikasi yang
-    benar-benar jalan di produksi. Saat ini magang di Kementerian PU sambil
-    kuliah informatika.
+    Fullstack Developer dan DevOps Engineer yang fokus membangun aplikasi web
+    skalabel, sistem akademik, workflow automation, dan infrastruktur backend
+    yang reliable.
   currentLabel: Saat ini
   currentTitle: Junior Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
     Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan
-    terintegrasi berbasis Next.js dan PostgreSQL, yang mengdigitalkan seluruh
-    layanan kampus dan mengotomasi proses birokrasi manual.
+    terintegrasi berbasis Next.js dan PostgreSQL, yang mendigitalisasi layanan
+    kampus dan mengotomasi proses birokrasi manual.
   techTitle: Stack Teknologi
   yearsLabel: Tahun Coding
   expertiseBadge: Keahlian
@@ -52,7 +50,7 @@ id:
     nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya.
   expertiseNote: >-
     Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti
-    dari sisi code sekaligus infrastruktur - yuk ngobrol.
+    dari sisi code, infrastruktur, dan automation - yuk ngobrol.
 interests:
   - icon: Globe
     colorTheme: primary

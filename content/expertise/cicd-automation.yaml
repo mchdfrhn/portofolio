@@ -9,10 +9,12 @@ tech:
 en:
   title: CI/CD & Automation
   description: >-
-    Reducing deployment time by 40% through automated testing and continuous
-    delivery pipelines utilizing Jenkins and GitLab CI.
+    Designing automated testing, build, backup, and deployment workflows using
+    GitHub Actions, scripting, and practical DevOps processes so releases stay
+    consistent and repeatable.
 id:
   title: CI/CD & Otomatisasi
   description: >-
-    Setup dan maintain pipeline CI/CD untuk otomatisasi testing, build, dan
-    deployment — supaya rilis lebih cepat dan konsisten tanpa drama.
+    Merancang workflow otomatis untuk testing, build, backup, dan deployment
+    menggunakan GitHub Actions, scripting, dan proses DevOps praktis supaya
+    rilis lebih konsisten dan repeatable.
