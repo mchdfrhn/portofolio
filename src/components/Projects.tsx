@@ -137,7 +137,7 @@ export const Projects = ({ projects }: { projects: ProjectData[] }) => {
 
           return (
             <TiltCard key={project.slug} delay={index * 0.1}>
-              <SpotlightCard className="group flex h-full flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary-neon/40 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)] sm:p-6 lg:p-8 dark:bg-card/50 dark:shadow-lg">
+              <SpotlightCard data-cursor="view" data-cursor-label="VIEW" className="group flex h-full flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-[0_14px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary-neon/40 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.2)] sm:p-6 lg:p-8 dark:bg-card/50 dark:shadow-lg">
                 <div>
                   {project.image && (
                     <div className="relative mb-6 h-40 w-full overflow-hidden rounded-xl border border-border bg-muted/20 md:h-48 lg:mb-8">

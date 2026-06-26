@@ -8,219 +8,248 @@
   import 'splitting/dist/splitting.css';
   import 'splitting/dist/splitting-cells.css';
 
-  // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Initialize Splitting for text animations
-  const initSplitting = () => {
-    Splitting();
-  };
+  let lenis: Lenis | null = null;
+  let ctx: gsap.Context | null = null;
+  let anchorHandler: ((e: Event) => void) | null = null;
 
+  const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Smooth Scroll ── */
   const initSmoothScroll = (): Lenis => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.1,
-      touchMultiplier: 1.5,
+    const l = new Lenis({
+      lerp: isReduced ? 1 : 0.1,        // instant if reduced motion
+      smoothWheel: !isReduced,
+      wheelMultiplier: 1.0,
     });
 
-    // Synchronize Lenis with ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-
+    // Single ticker loop — GSAP drives Lenis
     gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
+      l.raf(time * 1000);
     });
-
     gsap.ticker.lagSmoothing(0);
 
-    // Global smooth scroll for navigation anchors
-    const handleAnchorClick = (e: any) => {
-      const target = e.target.closest('a');
-      if (target) {
-        const href = target.getAttribute('href');
-        if (href && href.startsWith('#') && href !== '#') {
-          e.preventDefault();
-          lenis.scrollTo(href, { offset: -80 });
-        }
+    // ScrollTrigger ↔ Lenis sync
+    l.on('scroll', ScrollTrigger.update);
+
+    // Anchor click delegation
+    anchorHandler = (e: Event) => {
+      const target = (e.target as Element).closest('a');
+      if (!target) return;
+      const href = target.getAttribute('href');
+      if (href?.startsWith('#') && href !== '#') {
+        e.preventDefault();
+        l.scrollTo(href, { offset: -80 });
       }
     };
+    document.addEventListener('click', anchorHandler);
 
-    document.addEventListener('click', handleAnchorClick);
-
-    // Reset scroll to top only on initial load
-    const isInitialVisit = !document.documentElement.classList.contains('is-loaded');
-    if (isInitialVisit) {
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
+    // Reset scroll on first visit only
+    if (!document.documentElement.classList.contains('is-loaded')) {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
-      lenis.scrollTo(0, { immediate: true });
+      l.scrollTo(0, { immediate: true });
       document.documentElement.classList.add('is-loaded');
     }
 
-    return lenis;
+    return l;
   };
 
-  // Phase 1a — Scroll reveal
-  const initScrollReveal = (): void => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* ── GSAP Animations (wrapped in context for cleanup) ── */
+  const initAnimations = (): gsap.Context => {
+    return gsap.context(() => {
+      if (isReduced) return; // skip all animations
 
-    // Individual [data-reveal] elements
-    gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
-      const delay = parseFloat(el.dataset.revealDelay ?? '0');
-      gsap.from(el, {
-        y: 50,
-        opacity: 0,
-        duration: 0.85,
-        delay,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
-
-    // [data-reveal-stagger] containers with [data-reveal-item] children
-    gsap.utils.toArray<HTMLElement>('[data-reveal-stagger]').forEach((container) => {
-      const items = container.querySelectorAll<HTMLElement>('[data-reveal-item]');
-      if (!items.length) return;
-      gsap.from(items, {
-        y: 40,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
-  };
-
-  // Phase 1b — Text split char animation
-  const initTextSplitAnim = (): void => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    gsap.utils.toArray<HTMLElement>('[data-splitting]').forEach((el) => {
-      const chars = el.querySelectorAll<HTMLElement>('.char');
-      if (!chars.length) return;
-      gsap.from(chars, {
-        opacity: 0,
-        y: 18,
-        duration: 0.55,
-        stagger: 0.018,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 92%',
-          toggleActions: 'play none none none',
-        },
-      });
-    });
-  };
-
-  // Phase 1c — Magnetic buttons
-  const initMagneticButtons = (): void => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    gsap.utils.toArray<HTMLElement>('.magnetic').forEach((btn) => {
-      const handleMouseMove = (e: MouseEvent): void => {
-        const rect = btn.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const offsetX = e.clientX - centerX;
-        const offsetY = e.clientY - centerY;
-        gsap.to(btn, {
-          x: offsetX * 0.4,
-          y: offsetY * 0.4,
-          duration: 0.3,
-          ease: 'power2.out',
+      // Scroll reveal — individual [data-reveal] elements
+      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+        const delay = parseFloat(el.dataset.revealDelay ?? '0');
+        gsap.from(el, {
+          y: 50,
+          opacity: 0,
+          duration: 0.85,
+          delay,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
         });
-      };
+      });
 
-      const handleMouseLeave = (): void => {
-        gsap.to(btn, {
-          x: 0,
-          y: 0,
-          duration: 0.6,
-          ease: 'elastic.out(1, 0.5)',
+      // Stagger reveal — [data-reveal-stagger] containers
+      gsap.utils.toArray<HTMLElement>('[data-reveal-stagger]').forEach((container) => {
+        const items = container.querySelectorAll<HTMLElement>('[data-reveal-item]');
+        if (!items.length) return;
+        gsap.from(items, {
+          y: 40,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
         });
-      };
+      });
 
-      btn.addEventListener('mousemove', handleMouseMove);
-      btn.addEventListener('mouseleave', handleMouseLeave);
+      // Text split char animation — [data-splitting] elements
+      gsap.utils.toArray<HTMLElement>('[data-splitting]').forEach((el) => {
+        const chars = el.querySelectorAll<HTMLElement>('.char');
+        if (!chars.length) return;
+        gsap.from(chars, {
+          opacity: 0,
+          y: 18,
+          duration: 0.55,
+          stagger: 0.018,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 92%',
+            toggleActions: 'play none none none',
+          },
+        });
+      });
+
+      // Magnetic buttons — .magnetic elements
+      gsap.utils.toArray<HTMLElement>('.magnetic').forEach((btn) => {
+        const onMove = (e: MouseEvent) => {
+          const rect = btn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          gsap.to(btn, {
+            x: (e.clientX - cx) * 0.4,
+            y: (e.clientY - cy) * 0.4,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        };
+        const onLeave = () => {
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.5)',
+          });
+        };
+        btn.addEventListener('mousemove', onMove);
+        btn.addEventListener('mouseleave', onLeave);
+      });
+
+      // ── Section gradient background shift ──
+      const sections = gsap.utils.toArray<HTMLElement>('section[id]');
+      sections.forEach((section) => {
+        gsap.to(section, {
+          '--section-progress': 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      });
+
+      // ── Project showcase: staggered scale-in + parallax images ──
+      const projectCards = gsap.utils.toArray<HTMLElement>('#projects [data-cursor="view"]');
+      if (projectCards.length) {
+        projectCards.forEach((card, i) => {
+          // Scale-in entrance
+          gsap.from(card, {
+            scale: 0.92,
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            delay: i * 0.12,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+            },
+          });
+
+          // Parallax on project images
+          const img = card.querySelector('img');
+          if (img) {
+            gsap.to(img, {
+              y: -20,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.5,
+              },
+            });
+          }
+        });
+      }
     });
   };
 
-  // Initial load — boot sequence
-  initSplitting();
-  let lenis = initSmoothScroll();
-  initScrollReveal();
-  initTextSplitAnim();
-  initMagneticButtons();
+  /* ── Boot Sequence ── */
+  const boot = () => {
+    Splitting();
+    lenis = initSmoothScroll();
+    ctx = initAnimations();
+    (window as any).lenis = lenis;
+  };
 
-  // Handle Astro View Transitions (life cycle management)
+  // Initial load
+  boot();
+
+  // Astro View Transitions — full cleanup + re-init
   document.addEventListener('astro:after-swap', () => {
-    // Kill all active ScrollTrigger instances
-    ScrollTrigger.getAll().forEach((t) => t.kill());
+    // Kill all GSAP animations + ScrollTrigger instances
+    ctx?.revert();
+    ctx = null;
 
-    // Destroy the existing Lenis instance
+    // Destroy Lenis
     if (lenis) {
+      if (anchorHandler) document.removeEventListener('click', anchorHandler);
       lenis.destroy();
+      lenis = null;
     }
 
-    // Re-run the full boot sequence
-    initSplitting();
-    lenis = initSmoothScroll();
-    initScrollReveal();
-    initTextSplitAnim();
-    initMagneticButtons();
-
+    // Re-boot
+    boot();
     ScrollTrigger.refresh();
   });
 
-  // Expose Lenis to window for global access if needed
-  (window as any).lenis = lenis;
+  document.addEventListener('astro:before-swap', () => {
+    ctx?.revert();
+    ctx = null;
+  });
 </script>
 
 <style is:global>
-  /* Base styles for Smooth Scrolling */
   html.lenis {
     height: auto;
   }
-
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
-
   .lenis.lenis-smooth [data-lenis-prevent] {
     overscroll-behavior: contain;
   }
-
   .lenis.lenis-stopped {
     overflow: hidden;
   }
-
   .lenis.lenis-scrolling iframe {
     pointer-events: none;
   }
-
-  /* Splitting.js basic styles */
   .splitting {
     display: inline-block;
   }
-
-  /* Splitting.js char-level animation support */
   [data-splitting] .word {
     display: inline-block;
     overflow: hidden;
   }
-
   [data-splitting] .char {
     display: inline-block;
     will-change: transform, opacity;

@@ -1,49 +1,43 @@
 ---
-// CustomCursor — pointer: fine devices only (skipped on touch)
+// CustomCursor — Minimal ring cursor. Tight lerp, scale on hover.
+// Skipped on touch devices (pointer: coarse)
 ---
 
-<div id="cursor-dot" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
 
 <style>
-  #cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    background: rgb(56 189 248);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    mix-blend-mode: difference;
-  }
-
   #cursor-ring {
     position: fixed;
     top: 0;
     left: 0;
-    width: 36px;
-    height: 36px;
-    border: 2px solid rgb(56 189 248 / 0.6);
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgb(255 255 255 / 0.25);
     background: transparent;
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    mix-blend-mode: normal;
+    transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.25s ease,
+                background 0.25s ease;
+    will-change: transform;
+  }
+
+  #cursor-ring.hover {
+    width: 48px;
+    height: 48px;
+    border-color: rgb(56 189 248 / 0.5);
+    background: rgb(56 189 248 / 0.04);
   }
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-
   function initCursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
-    const dot = document.getElementById('cursor-dot') as HTMLElement;
     const ring = document.getElementById('cursor-ring') as HTMLElement;
-
-    if (!dot || !ring) return;
+    if (!ring) return;
 
     let mouseX = 0;
     let mouseY = 0;
@@ -52,63 +46,47 @@
     let rafId: number;
     let visible = false;
 
-    // Set initial state — hidden, centered on transform origin
-    gsap.set([dot, ring], { xPercent: -50, yPercent: -50, opacity: 0 });
-
-    // RAF loop: ring lerps toward mouse
+    // Tight lerp — 0.15 feels responsive without lag
     function tick() {
-      ringX += (mouseX - ringX) * 0.1;
-      ringY += (mouseY - ringY) * 0.1;
-      gsap.set(ring, { x: ringX, y: ringY });
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
       rafId = requestAnimationFrame(tick);
     }
-
     rafId = requestAnimationFrame(tick);
 
-    // Dot follows immediately
     function onMouseMove(e: MouseEvent) {
       mouseX = e.clientX;
       mouseY = e.clientY;
-
-      gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.08, ease: 'none' });
-
       if (!visible) {
         visible = true;
-        gsap.to([dot, ring], { opacity: 1, duration: 0.3 });
+        ring.style.opacity = '1';
       }
     }
 
-    // Hide when mouse leaves the viewport
     function onMouseLeave() {
-      gsap.to([dot, ring], { opacity: 0, duration: 0.2 });
+      ring.style.opacity = '0';
       visible = false;
     }
 
     function onMouseEnter() {
       if (visible) return;
       visible = true;
-      gsap.to([dot, ring], { opacity: 1, duration: 0.3 });
+      ring.style.opacity = '1';
     }
 
-    // Hover enlargement via event delegation
-    const interactiveSelector = 'a, button, [role="button"], .magnetic';
-
-    function getInteractiveTarget(el: EventTarget | null): Element | null {
-      if (!(el instanceof Element)) return null;
-      return el.closest(interactiveSelector);
-    }
+    // Scale up on interactive elements
+    const interactiveSelector = 'a, button, [role="button"], .magnetic, [data-cursor]';
 
     function onMouseOver(e: MouseEvent) {
-      if (getInteractiveTarget(e.target)) {
-        gsap.to(ring, { scale: 2.2, duration: 0.25, ease: 'power2.out' });
-        gsap.to(dot, { opacity: 0, duration: 0.2 });
+      if (e.target instanceof Element && e.target.closest(interactiveSelector)) {
+        ring.classList.add('hover');
       }
     }
 
     function onMouseOut(e: MouseEvent) {
-      if (getInteractiveTarget(e.target)) {
-        gsap.to(ring, { scale: 1, duration: 0.25, ease: 'power2.out' });
-        gsap.to(dot, { opacity: 1, duration: 0.2 });
+      if (e.target instanceof Element && e.target.closest(interactiveSelector)) {
+        ring.classList.remove('hover');
       }
     }
 
@@ -118,7 +96,6 @@
     document.addEventListener('mouseover', onMouseOver);
     document.addEventListener('mouseout', onMouseOut);
 
-    // Clean up RAF on view transitions to avoid duplicate loops
     document.addEventListener('astro:before-swap', () => {
       cancelAnimationFrame(rafId);
     });
@@ -128,7 +105,6 @@
     });
   }
 
-  // Run on initial load and after every view-transition navigation
   initCursor();
   document.addEventListener('astro:after-swap', initCursor);
 </script>

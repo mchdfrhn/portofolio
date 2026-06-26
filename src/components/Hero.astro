@@ -1,6 +1,7 @@
 ---
 import { ArrowRight, Building2, Mail } from "lucide-react";
 import { reader } from "@/lib/reader";
+import { HeroIsland } from "./HeroIsland";
 
 const hero = await reader.singletons.hero.read();
 const profile = await reader.singletons.profile.read();
@@ -18,7 +19,10 @@ const softwareHouseShortName = profile?.softwareHouseShortName ?? "SSH";
 const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
-<section id="hero" class="min-h-[100svh] flex flex-col justify-center relative overflow-hidden pt-28 pb-16 md:pt-24 md:pb-20">
+<section id="hero" class="hero-wrapper min-h-[100svh] flex flex-col justify-center relative overflow-hidden pt-28 pb-16 md:pt-24 md:pb-20">
+    <!-- R3F Island (hardware-gated, falls back to CSS) -->
+    <HeroIsland client:only="react" />
+
     <!-- Aurora Background -->
     <div class="aurora-container absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
         <div class="aurora-orb aurora-orb--1"></div>
@@ -28,7 +32,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
         <div class="aurora-orb aurora-orb--5"></div>
     </div>
 
-    <div class="w-full max-w-none md:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
+    <div class="hero-inner w-full max-w-none md:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
         <div class="flex-1 space-y-8 md:space-y-10 relative z-10 w-full pl-0">
             <!-- Role / Tagline Badges -->
             <div class="hero-badges flex flex-wrap items-center gap-2.5 md:gap-3">
@@ -63,7 +67,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
                     </span>
                 </h1>
 
-                <p class="text-lg md:text-2xl text-muted-foreground max-w-2xl leading-relaxed font-light">
+                <p class="hero-subtitle text-lg md:text-2xl text-muted-foreground max-w-2xl leading-relaxed font-light">
                     <span data-lang="en">{en?.subtitle ?? "I Build Scalable Backend Systems That Handle Real-World Traffic."}</span>
                     <span data-lang="id" hidden>{id?.subtitle ?? "Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi."}</span>
                 </p>
@@ -158,17 +162,31 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
             </div>
         </div>
     </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+        <span class="text-[10px] font-medium tracking-widest uppercase text-muted-foreground">Scroll</span>
+        <div class="w-5 h-8 rounded-full border-2 border-muted-foreground/40 flex justify-center pt-1.5">
+            <div class="w-1 h-2 rounded-full bg-primary-neon animate-bounce"></div>
+        </div>
+    </div>
 </section>
 
 <script>
     import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const initHeroAnim = () => {
         const heroEl = document.querySelector("#hero");
         if (!heroEl) return;
 
+        // ── Entrance animation timeline ──
         const targets = heroEl.querySelectorAll(
-            ".hero-badge, h1 > span, h1 + p, .hero-stats > div, .hero-ctas > a, .hero-visual"
+            ".hero-badge, h1 > span, .hero-subtitle, .hero-stats > div, .hero-ctas > a, .hero-visual"
         );
 
         gsap.killTweensOf(targets);
@@ -188,7 +206,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
             duration: 1,
             stagger: 0.2
         }, "-=0.2")
-        .from(heroEl.querySelector("h1 + p"), {
+        .from(heroEl.querySelector(".hero-subtitle"), {
             y: 20,
             opacity: 0,
             duration: 0.8
@@ -208,10 +226,49 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
             duration: 1.2,
             ease: "back.out(1.4)"
         }, "-=0.8");
+
+        // ── Scroll-pinned exit animation ──
+        if (!isReduced) {
+            const scrollTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: heroEl,
+                    start: "top top",
+                    end: "+=40%",
+                    pin: true,
+                    pinSpacing: true,
+                    scrub: 0.8,
+                    // Don't pin on mobile — too janky
+                    ...(window.innerWidth < 768 ? { pin: false } : {}),
+                },
+            });
+
+            // Fade out content as user scrolls
+            scrollTl
+                .to(heroEl.querySelector(".hero-inner"), {
+                    opacity: 0,
+                    y: -60,
+                    scale: 0.97,
+                    ease: "power2.in",
+                }, 0)
+                .to(heroEl.querySelector(".hero-scroll-indicator"), {
+                    opacity: 0,
+                    y: 20,
+                    ease: "power2.in",
+                }, 0)
+                // Parallax aurora orbs
+                .to(heroEl.querySelector(".aurora-orb--1"), {
+                    y: -100,
+                    ease: "none",
+                }, 0)
+                .to(heroEl.querySelector(".aurora-orb--2"), {
+                    y: 60,
+                    ease: "none",
+                }, 0);
+        }
     };
 
     // Run on mount
-    document.addEventListener('DOMContentLoaded', initHeroAnim);
+    initHeroAnim();
     document.addEventListener('astro:after-swap', initHeroAnim);
 </script>
 
@@ -309,6 +366,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 
     /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
-        .aurora-orb { animation: none; }
+      .aurora-orb { animation: none; }
+      .hero-scroll-indicator { display: none; }
     }
 </style>

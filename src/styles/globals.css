@@ -226,3 +226,26 @@ body::after {
 html:not(.dark) body::after {
   opacity: 0.025;
 }
+
+/* ── Reduced Motion Kill Switch ──
+   Activated by early inline script via html.reduced-motion class.
+   Disables all CSS animations, transitions, and scroll behaviors.
+   JS components also check prefersReducedMotion() from lib/reduced-motion.ts. */
+html.reduced-motion *,
+html.reduced-motion *::before,
+html.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html.reduced-motion .aurora-orb,
+html.reduced-motion .animate-marquee,
+html.reduced-motion .animate-pulse,
+html.reduced-motion .animate-ping {
+  animation: none !important;
+}
+html.reduced-motion .lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}

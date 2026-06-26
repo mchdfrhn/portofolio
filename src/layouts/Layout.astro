@@ -6,7 +6,8 @@ import { ScrollProgress } from '../components/ScrollProgress';
 import LanguageLoader from '../components/LanguageLoader';
 import CustomCursor from '../components/CustomCursor.astro';
 import PageLoader from '../components/PageLoader.astro';
-import { SITE_DESCRIPTION, OG_IMAGE } from '../lib/config';
+import SectionTransitions from '../components/SectionTransitions.astro';
+import { SITE_DESCRIPTION, OG_IMAGE, SITE_URL } from '../lib/config';
 
 interface Props {
 	title: string;
@@ -37,17 +38,25 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 			}
 
 			window.localStorage.setItem('theme', theme);
+
+			// Early reduced-motion detection — runs before first paint
+			(() => {
+				const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				window.__reducedMotion = rm;
+				if (rm) document.documentElement.classList.add('reduced-motion');
+			})();
 		</script>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
+        <meta property="og:url" content={`${SITE_URL}${Astro.url.pathname}`} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={OG_IMAGE} />
@@ -80,6 +89,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 	</head>
 	<body class="bg-background text-foreground antialiased selection:bg-primary-neon selection:text-black font-sans">
 		<PageLoader />
+		<SectionTransitions />
 		<div class="relative flex min-h-screen flex-col">
             <ScrollProgress client:load />
             <CustomCursor />

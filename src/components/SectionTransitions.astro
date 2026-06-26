@@ -1,0 +1,58 @@
+---
+// SectionTransitions — scroll-driven background gradient shifts
+// Creates a full-viewport fixed overlay that changes color based on scroll position.
+// Adds "mood" transitions between sections without touching section markup.
+---
+
+<div id="section-gradient" class="fixed inset-0 -z-20 pointer-events-none transition-opacity duration-300" aria-hidden="true"></div>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const initGradientShifts = () => {
+    if (isReduced) return;
+
+    const overlay = document.getElementById('section-gradient');
+    if (!overlay) return;
+
+    // Color palette per section phase (dark mode values; light mode handled separately)
+    const phases = [
+      { trigger: '#hero',              color: 'rgba(56, 189, 248, 0.03)',  lightColor: 'rgba(56, 189, 248, 0.02)' },
+      { trigger: '#about',             color: 'rgba(167, 139, 250, 0.04)', lightColor: 'rgba(167, 139, 250, 0.02)' },
+      { trigger: '#about-description', color: 'rgba(99, 102, 241, 0.03)',  lightColor: 'rgba(99, 102, 241, 0.015)' },
+      { trigger: '#services',          color: 'rgba(167, 139, 250, 0.03)', lightColor: 'rgba(167, 139, 250, 0.015)' },
+      { trigger: '#projects',          color: 'rgba(56, 189, 248, 0.04)',  lightColor: 'rgba(56, 189, 248, 0.02)' },
+      { trigger: '#experience',        color: 'rgba(34, 211, 238, 0.03)',  lightColor: 'rgba(34, 211, 238, 0.015)' },
+      { trigger: '#contact',           color: 'rgba(56, 189, 248, 0.05)',  lightColor: 'rgba(56, 189, 248, 0.025)' },
+    ];
+
+    const isDark = document.documentElement.classList.contains('dark');
+
+    phases.forEach(({ trigger, color, lightColor }) => {
+      const el = document.querySelector(trigger);
+      if (!el) return;
+
+      const bgColor = isDark ? color : lightColor;
+
+      gsap.to(overlay, {
+        backgroundColor: bgColor,
+        duration: 0.3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 60%',
+          end: 'bottom 40%',
+          toggleActions: 'play reverse play reverse',
+        },
+      });
+    });
+  };
+
+  initGradientShifts();
+  document.addEventListener('astro:after-swap', initGradientShifts);
+</script>

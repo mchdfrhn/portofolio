@@ -40,3 +40,6 @@ pnpm-debug.log*
 .roo/
 .trae/
 .windsurf/
+
+# vercel build output
+.vercel/
