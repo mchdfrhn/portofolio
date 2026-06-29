@@ -105,7 +105,11 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 </style>
 
 <script>
-  // Section reveal via IntersectionObserver
+  // Section reveal via IntersectionObserver (progressive enhancement)
+  // Step 1: Add 'reveal-ready' to set initial hidden state via CSS
+  // Step 2: IntersectionObserver adds 'revealed' when element enters viewport
+  // If JS fails, elements stay visible (default CSS state)
+
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -123,10 +127,15 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
   );
 
   function initReveals() {
-    document.querySelectorAll('[data-reveal]').forEach((el) => {
-      if (!el.classList.contains('revealed')) {
-        revealObserver.observe(el);
+    const viewportH = window.innerHeight;
+    document.querySelectorAll('[data-reveal], .hero-stagger').forEach((el) => {
+      if (el.classList.contains('revealed')) return;
+      const rect = el.getBoundingClientRect();
+      // Only hide elements below viewport — above-fold stays visible
+      if (rect.top > viewportH) {
+        el.classList.add('reveal-ready');
       }
+      revealObserver.observe(el);
     });
   }
 
