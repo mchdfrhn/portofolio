@@ -22,8 +22,8 @@ export interface ExperienceTimelineItem {
 }
 
 const itemVariants = {
-  hidden: { opacity: 1, x: -18, y: 18 },
-  visible: { opacity: 1, x: 0, y: 0 },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
 };
 
 export const ExperienceTimeline = ({
@@ -65,9 +65,11 @@ export const ExperienceTimeline = ({
       className="relative ml-3 space-y-10 text-foreground md:ml-12 md:space-y-12"
       aria-label="Experience timeline"
     >
-      <div className="absolute left-0 top-0 h-full w-px bg-primary-neon/25 dark:bg-primary-neon/10" />
+      {/* Background line */}
+      <div className="absolute left-0 top-0 h-full w-px bg-border" />
+      {/* Animated progress line */}
       <motion.div
-        className="absolute left-0 top-0 h-full w-px origin-top bg-gradient-to-b from-primary-neon via-secondary-neon to-primary-neon shadow-[0_0_12px_rgba(14,116,144,0.25)] dark:shadow-[0_0_18px_rgba(56,189,248,0.45)]"
+        className="absolute left-0 top-0 h-full w-px origin-top bg-primary"
         style={{ scaleY: shouldReduceMotion ? 1 : lineScale }}
       />
 
@@ -75,12 +77,12 @@ export const ExperienceTimeline = ({
         const isWork = entry.type === "work";
         const content = entry[lang];
         const dotClass = isWork
-          ? "bg-primary-neon shadow-[0_0_16px_rgba(56,189,248,0.55)]"
-          : "bg-secondary-neon shadow-[0_0_16px_rgba(167,139,250,0.55)]";
+          ? "bg-primary"
+          : "bg-accent";
         const periodClass = isWork
-          ? "text-primary-neon bg-primary-neon/10 border-primary-neon/20"
-          : "text-secondary-neon bg-secondary-neon/10 border-secondary-neon/20";
-        const companyClass = isWork ? "text-primary-neon" : "text-secondary-neon";
+          ? "text-primary bg-primary/10 border-primary/20"
+          : "text-accent bg-accent/10 border-accent/20";
+        const companyClass = isWork ? "text-primary" : "text-accent";
 
         return (
           <motion.article
@@ -96,27 +98,22 @@ export const ExperienceTimeline = ({
             }}
             className="group relative pl-6 md:pl-12"
           >
-            <motion.div
+            {/* Timeline dot */}
+            <div
               className={`absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full ring-4 ring-background ${dotClass}`}
-              initial={shouldReduceMotion ? false : { scale: 0.7, opacity: 0.35 }}
-              whileInView={shouldReduceMotion ? undefined : { scale: 1, opacity: 1 }}
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.35 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ type: "spring", stiffness: 360, damping: 20 }}
             />
 
-            <div className="rounded-xl border border-transparent p-0 transition-colors duration-300 group-hover:border-primary-neon/20 group-hover:bg-card/60 md:-m-4 md:p-4 dark:group-hover:border-primary-neon/10 dark:group-hover:bg-card/20">
+            {/* Card */}
+            <div className="rounded-xl border border-transparent p-0 transition-colors duration-300 group-hover:border-border group-hover:bg-card/60 md:-m-4 md:p-4">
               <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
-                <h3 className="text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary-neon sm:text-2xl">
+                <h3 className="text-xl font-bold text-foreground transition-colors duration-300 sm:text-2xl">
                   {content.title}
                 </h3>
-                <motion.span
-                  className={`w-fit rounded-full border px-3 py-1 font-mono text-xs shadow-[0_0_10px_rgba(56,189,248,0.1)] ${periodClass}`}
-                  whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                  transition={{ type: "spring", stiffness: 380, damping: 24 }}
+                <span
+                  className={`w-fit rounded-full border px-3 py-1 font-mono text-xs ${periodClass}`}
                 >
                   {entry.period}
-                </motion.span>
+                </span>
               </div>
 
               <div className={`mb-3 text-base font-bold opacity-90 sm:mb-4 sm:text-lg ${companyClass}`}>
