@@ -173,6 +173,14 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 </section>
 
 <script>
+    import { haptic } from '../utils/haptic';
+    // Add haptic to all CTA buttons in hero
+    document.querySelectorAll('#hero a[href^="#"], #hero a[href*="wa.me"]').forEach(el => {
+        el.addEventListener('click', () => haptic('medium'));
+    });
+</script>
+
+<script>
     import gsap from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 

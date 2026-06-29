@@ -11,6 +11,8 @@ import Experience from '@/components/Experience.astro';
 import StackMarquee from '@/components/StackMarquee.astro';
 import Contact from '@/components/Contact.astro';
 import Footer from '@/components/Footer.astro';
+import ExitIntentPopup from '@/components/ExitIntentPopup';
+import StickyCTA from '@/components/StickyCTA';
 import { reader } from '@/lib/reader';
 
 const rawProjects = await reader.collections.projects.all();
@@ -66,4 +68,6 @@ const projectsData: ProjectData[] = rawProjects.map(({ slug, entry }) => ({
         </div>
     	<Footer />
     </div>
+	<ExitIntentPopup client:only="react" />
+	<StickyCTA client:only="react" />
 </Layout>

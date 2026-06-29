@@ -86,6 +86,23 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
         `}></script>
         
 		<ClientRouter />
+	
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mochamad Farhan Ali",
+      "url": "https://frhn.dev",
+      "jobTitle": "DevOps Engineer & Fullstack Developer",
+      "description": "I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
+      "email": "mochamadfarhanali@gmail.com",
+      "sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
+      "knowsAbout": ["Python", "Automation", "Chatbots", "Next.js", "React", "Docker", "PostgreSQL", "DevOps"],
+      "hasCredential": [],
+      "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan-dev.vercel.app/" }
+    })} />
+
 	</head>
 	<body class="bg-background text-foreground antialiased selection:bg-primary-neon selection:text-black font-sans">
 		<PageLoader />
