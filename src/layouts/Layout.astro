@@ -2,11 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/globals.css';
 import SmoothScroll from '../components/SmoothScroll.astro';
-import { ScrollProgress } from '../components/ScrollProgress';
 import LanguageLoader from '../components/LanguageLoader';
-import CustomCursor from '../components/CustomCursor.astro';
-import PageLoader from '../components/PageLoader.astro';
-import SectionTransitions from '../components/SectionTransitions.astro';
 import { SITE_DESCRIPTION, OG_IMAGE, SITE_URL } from '../lib/config';
 
 interface Props {
@@ -39,7 +35,6 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 			window.localStorage.setItem('theme', theme);
 
-			// Early reduced-motion detection — runs before first paint
 			(() => {
 				const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 				window.__reducedMotion = rm;
@@ -74,42 +69,25 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"></noscript>
         
         <!-- JSON-LD Structured Data Schema -->
-        <script type="application/ld+json" set:html={`
-        {
+        <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "url": "${Astro.url.origin}",
           "name": "Mochamad Farhan Ali",
-          "jobTitle": "Fullstack Developer",
-          "knowsAbout": ["Next.js", "Laravel", "Go", "PostgreSQL", "React", "Docker"]
-        }
-        `}></script>
+          "url": "https://frhn.dev",
+          "jobTitle": "DevOps Engineer & Fullstack Developer",
+          "description": "I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.",
+          "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
+          "email": "mochamadfarhanali@gmail.com",
+          "sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
+          "knowsAbout": ["Python", "Automation", "Chatbots", "Next.js", "React", "Docker", "PostgreSQL", "DevOps"],
+          "hasCredential": [],
+          "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan-dev.vercel.app/" }
+        })} />
         
 		<ClientRouter />
-	
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mochamad Farhan Ali",
-      "url": "https://frhn.dev",
-      "jobTitle": "DevOps Engineer & Fullstack Developer",
-      "description": "I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.",
-      "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
-      "email": "mochamadfarhanali@gmail.com",
-      "sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
-      "knowsAbout": ["Python", "Automation", "Chatbots", "Next.js", "React", "Docker", "PostgreSQL", "DevOps"],
-      "hasCredential": [],
-      "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan-dev.vercel.app/" }
-    })} />
-
 	</head>
-	<body class="bg-background text-foreground antialiased selection:bg-primary-neon selection:text-black font-sans">
-		<PageLoader />
-		<SectionTransitions />
+	<body class="bg-background text-foreground antialiased selection:bg-primary selection:text-white font-sans">
 		<div class="relative flex min-h-screen flex-col">
-            <ScrollProgress client:load />
-            <CustomCursor />
             <LanguageLoader client:load />
 			<slot />
 		</div>
@@ -125,3 +103,33 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
         font-family: var(--font-sans);
     }
 </style>
+
+<script>
+  // Section reveal via IntersectionObserver
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-reveal-delay');
+          if (delay) {
+            (entry.target as HTMLElement).style.transitionDelay = `${delay}s`;
+          }
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  function initReveals() {
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (!el.classList.contains('revealed')) {
+        revealObserver.observe(el);
+      }
+    });
+  }
+
+  initReveals();
+  document.addEventListener('astro:after-swap', initReveals);
+</script>

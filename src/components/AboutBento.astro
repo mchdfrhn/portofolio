@@ -84,11 +84,11 @@ const profileGridData = {
 };
 ---
 
-<section id="about" class="pb-6 md:pb-12">
+<section id="about" class="pb-6 md:pb-12" data-reveal>
     <div class="mb-12 md:mb-16 max-w-3xl">
         <div class="space-y-6">
-            <div class="inline-block" data-reveal>
-                <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary-neon/10 text-primary-neon border border-primary-neon/20">
+            <div class="inline-block">
+                <span class="text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                     <span data-lang="en">{about?.en.badge ?? "Who I Am"}</span>
                     <span data-lang="id" hidden>{about?.id.badge ?? "Siapa Saya"}</span>
                 </span>
@@ -97,7 +97,7 @@ const profileGridData = {
                 <span data-lang="en">{about?.en.title ?? "About Me"}</span>
                 <span data-lang="id" hidden>{about?.id.title ?? "Tentang Saya"}</span>
             </h2>
-            <div class="h-1.5 w-24 bg-primary-neon rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)]" data-reveal data-reveal-delay="0.15"></div>
+            <div class="h-1 w-20 bg-primary rounded-full" data-reveal data-reveal-delay="0.15"></div>
             <p class="text-lg md:text-xl text-muted-foreground leading-relaxed font-light" data-reveal data-reveal-delay="0.2">
                 <span data-lang="en">{about?.en.description ?? "Fullstack Developer and DevOps Engineer focused on building scalable web applications, academic systems, automation workflows, and reliable backend infrastructure."}</span>
                 <span data-lang="id" hidden>{about?.id.description ?? "Fullstack Developer dan DevOps Engineer yang fokus membangun aplikasi web skalabel, sistem akademik, workflow automation, dan infrastruktur backend yang reliable."}</span>

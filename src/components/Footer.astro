@@ -8,15 +8,8 @@ const softwareHouseName = profile?.softwareHouseName ?? "Surupan Software House"
 const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
-<footer class="bg-background border-t border-border py-16 mt-20 relative overflow-hidden">
-  <!-- Background Pattern -->
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute top-10 left-10 w-32 h-32 border border-primary/20 rounded-full"></div>
-    <div class="absolute bottom-10 right-10 w-24 h-24 border border-primary/20 rounded-full"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-primary/20 rounded-full"></div>
-  </div>
-
-  <div class="container mx-auto px-6 relative z-10">
+<footer class="bg-background border-t border-border py-16 mt-20">
+  <div class="container mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
       <!-- Brand Section -->
       <div class="md:col-span-2">
@@ -108,7 +101,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
           href={softwareHouseUrl}
           target={softwareHouseUrl === "#" ? undefined : "_blank"}
           rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"}
-          class="font-semibold text-foreground/80 hover:text-primary-neon transition-colors"
+          class="font-semibold text-foreground/80 hover:text-primary transition-colors"
         >
           {softwareHouseName}
         </a>
@@ -127,7 +120,6 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 </footer>
 
 <script>
-  // Show/hide back to top button
   const backToTopBtn = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {

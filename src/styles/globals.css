@@ -1,82 +1,110 @@
+/* ── Section reveal via IntersectionObserver ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero stagger children */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.hero-stagger.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-stagger.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+.hero-stagger.revealed > *:nth-child(2) { transition-delay: 0.12s; }
+.hero-stagger.revealed > *:nth-child(3) { transition-delay: 0.20s; }
+.hero-stagger.revealed > *:nth-child(4) { transition-delay: 0.28s; }
+.hero-stagger.revealed > *:nth-child(5) { transition-delay: 0.36s; }
+.hero-stagger.revealed > *:nth-child(6) { transition-delay: 0.44s; }
+.hero-stagger.revealed > *:nth-child(7) { transition-delay: 0.52s; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Light Mode - Arctic Porcelain */
-    --background: 210 40% 98%;      /* #F8FAFC */
-    --foreground: 220 25% 12%;      /* Very dark navy-slate for maximum contrast */
+    /* Light Mode — clean white */
+    --background: 0 0% 100%;         /* #FFFFFF */
+    --foreground: 220 15% 12%;       /* #1a1a1a */
 
-    --card: 0 0% 98%;              /* Off-white cards — subtle depth on white bg */
-    --card-foreground: 220 25% 12%;
+    --card: 0 0% 98%;               /* Off-white cards */
+    --card-foreground: 220 15% 12%;
 
-    --popover: 210 40% 98%;
-    --popover-foreground: 220 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 12%;
 
-    --primary: 199 80% 42%;        /* Sky blue, slightly darkened for contrast on white */
+    --primary: 221 83% 53%;          /* #2563eb */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 60% 97%;      /* Very light icy blue — almost white, not gray */
-    --secondary-foreground: 220 25% 12%;
+    --secondary: 220 14% 96%;        /* #f5f5f6 */
+    --secondary-foreground: 220 15% 12%;
 
-    --muted: 215 15% 50%;          /* Medium gray — readable muted text */
-    --muted-foreground: 215 15% 50%;
+    --muted: 220 9% 46%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 255 70% 60%;         /* Purple — desaturated/darker for light legibility */
-    --accent-foreground: 220 25% 12%;
+    --accent: 221 83% 53%;           /* Same clean blue */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 88%;         /* Subtle cool-gray border */
-    --input: 215 20% 88%;
-    --ring: 199 80% 42%;
+    --border: 220 13% 91%;           /* Subtle gray border */
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
 
     --radius: 0.75rem;
-    --spotlight-color: rgba(56, 189, 248, 0.06);  /* Very subtle spotlight */
+    --spotlight-color: rgba(0,0,0,0);
 
-    /* Neon Colors — reduced saturation/opacity for light mode appropriateness */
-    --primary-neon: 199 80% 42%;    /* Matches primary — darker sky blue */
-    --secondary-neon: 255 70% 60%;  /* Matches accent — slightly muted purple */
-    --accent-neon: 255 70% 60%;
+    /* ponytail: kept neon var names so Tailwind utilities still resolve */
+    --primary-neon: 221 83% 53%;     /* #2563eb — clean blue */
+    --secondary-neon: 221 83% 53%;   /* same — no more purple */
+    --accent-neon: 221 83% 53%;
   }
 
   .dark {
-    /* Dark Mode - Arctic Porcelain */
-    --background: 222 47% 8%;      /* #070C16 */
-    --foreground: 210 40% 98%;
+    /* Dark Mode — near-black */
+    --background: 0 0% 4%;           /* #0a0a0a */
+    --foreground: 0 0% 90%;          /* #e5e5e5 */
 
-    --card: 222 47% 13%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 90%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 90%;
 
-    --primary: 198 93% 60%;       /* #38BDF8 */
-    --primary-foreground: 222.2 47.4% 11.2%; 
+    --primary: 217 91% 60%;          /* #3b82f6 */
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 222 47% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 215 20% 65%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 55%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 255 92% 76%;        /* #A78BFA */
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 217 91% 60%;           /* #3b82f6 */
+    --accent-foreground: 0 0% 4%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 90%;
 
-    --border: 222 47% 20%;
-    --input: 222 47% 20%;
-    --ring: 198 93% 60%;
-    --spotlight-color: rgba(255, 255, 255, 0.1);
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 217 91% 60%;
+    --spotlight-color: rgba(0,0,0,0);
 
-    /* Same neon colors but could be tweaked if needed */
-    --primary-neon: 198 93% 60%;
-    --secondary-neon: 255 92% 76%;
-    --accent-neon: 255 92% 76%;
+    --primary-neon: 217 91% 60%;     /* #3b82f6 */
+    --secondary-neon: 217 91% 60%;
+    --accent-neon: 217 91% 60%;
   }
 }
 
@@ -96,25 +124,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-attachment: fixed;
-  }
-
-  /* Light mode: extremely subtle tints so pure white doesn't feel flat */
-  html:not(.dark) body {
-    background-image:
-      radial-gradient(at 0% 0%, hsla(199, 80%, 60%, 0.04) 0, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(255, 70%, 65%, 0.03) 0, transparent 50%);
-  }
-
-  /* Dark mode: the original richer gradients */
-  html.dark body {
-    background-image:
-      radial-gradient(at 0% 0%, hsla(217, 91%, 60%, 0.05) 0, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(280, 80%, 50%, 0.05) 0, transparent 50%);
-  }
-
-  @media (pointer: fine) {
-    * { cursor: none !important; }
   }
 }
 
@@ -124,113 +133,38 @@
 }
 
 @keyframes gradient-x {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @layer utilities {
-  /* Dark mode: full neon glow intensity */
-  .dark .neon-glow-blue {
-    text-shadow:
-      0 0 7px rgba(0, 136, 255, 0.5),
-      0 0 10px rgba(0, 136, 255, 0.3);
-  }
-  .dark .neon-glow-purple {
-    text-shadow:
-      0 0 7px rgba(188, 19, 254, 0.5),
-      0 0 10px rgba(188, 19, 254, 0.3);
-  }
-  .dark .text-glow-primary {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  }
-
-  /* Light mode: very subtle glow so text stays crisp on white */
-  html:not(.dark) .neon-glow-blue {
-    text-shadow:
-      0 0 4px rgba(0, 100, 200, 0.15),
-      0 0 8px rgba(0, 100, 200, 0.08);
-  }
-  html:not(.dark) .neon-glow-purple {
-    text-shadow:
-      0 0 4px rgba(110, 50, 180, 0.15),
-      0 0 8px rgba(110, 50, 180, 0.08);
-  }
-  html:not(.dark) .text-glow-primary {
-    text-shadow: 0 0 12px rgba(10, 110, 170, 0.12);
-  }
-
   .btn-gradient-glow {
-    background: linear-gradient(135deg, #3b82f6, #06b6d4);
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    transition: all 0.2s ease;
   }
   .btn-gradient-glow:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-  }
-  .neon-border-blue {
-    @apply border-primary-neon/50 shadow-[0_0_15px_rgba(0,136,255,0.2)];
-  }
-  .neon-border-purple {
-    @apply border-secondary-neon/50 shadow-[0_0_15px_rgba(188,19,254,0.2)];
-  }
-  /* Dark mode: semi-transparent glass effect with white border tint */
-  .dark .neon-card {
-    @apply bg-background/40 backdrop-blur-xl border border-white/10 hover:border-primary-neon/50 transition-all duration-300;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   }
 
-  /* Light mode: opaque card surface with proper border so it's visible on white */
-  html:not(.dark) .neon-card {
-    @apply bg-card backdrop-blur-xl border border-border hover:border-primary-neon/50 transition-all duration-300;
-  }
-
-  /*
-   * Light mode card surface fix:
-   * bg-card/40 on a pure white background is nearly transparent (off-white @ 40% opacity).
-   * Override all semi-transparent card/background surfaces to be solid in light mode.
-   */
+  /* Light mode card surface overrides */
   html:not(.dark) .bg-card\/40,
   html:not(.dark) .bg-card\/50,
   html:not(.dark) .bg-card\/60,
   html:not(.dark) .bg-card\/70 {
     background-color: hsl(var(--card));
   }
-
   html:not(.dark) .bg-background\/40,
   html:not(.dark) .bg-background\/50,
   html:not(.dark) .bg-background\/60 {
     background-color: hsl(var(--background));
   }
-
   html:not(.dark) .bg-background\/95 {
     background-color: hsl(var(--background) / 0.97);
   }
 }
 
-/* Film grain / noise overlay */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 99998;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 192px 192px;
-  background-repeat: repeat;
-  opacity: 0.04;
-}
-html:not(.dark) body::after {
-  opacity: 0.025;
-}
-
-/* ── Reduced Motion Kill Switch ──
-   Activated by early inline script via html.reduced-motion class.
-   Disables all CSS animations, transitions, and scroll behaviors.
-   JS components also check prefersReducedMotion() from lib/reduced-motion.ts. */
+/* ── Reduced Motion ── */
 html.reduced-motion *,
 html.reduced-motion *::before,
 html.reduced-motion *::after {
@@ -240,20 +174,16 @@ html.reduced-motion *::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
-html.reduced-motion .aurora-orb,
-html.reduced-motion .animate-marquee,
-html.reduced-motion .animate-pulse,
-html.reduced-motion .animate-ping {
+html.reduced-motion .animate-marquee {
   animation: none !important;
 }
 html.reduced-motion .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
 
-
 /* ── Focus ring — keyboard nav only ── */
 :focus-visible {
-  outline: 2px solid hsl(var(--primary-neon));
+  outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
   border-radius: 4px;
 }

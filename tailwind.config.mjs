@@ -55,15 +55,6 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      boxShadow: {
-        neon: '0 0 5px theme("colors.primary.neon"), 0 4px 20px theme("colors.primary.neon")',
-        "neon-strong":
-          '0 0 10px theme("colors.primary.neon"), 0 4px 40px theme("colors.primary.neon")',
-        "neon-purple":
-          '0 0 5px theme("colors.accent.neon"), 0 4px 20px theme("colors.accent.neon")',
-        "neon-pink":
-          '0 0 5px theme("colors.accent.neon"), 0 4px 20px theme("colors.accent.neon")',
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

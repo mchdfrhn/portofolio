@@ -1,7 +1,6 @@
 ---
 import { ArrowRight, Building2, Mail } from "lucide-react";
 import { reader } from "@/lib/reader";
-import { HeroIsland } from "./HeroIsland";
 
 const hero = await reader.singletons.hero.read();
 const profile = await reader.singletons.profile.read();
@@ -19,49 +18,42 @@ const softwareHouseShortName = profile?.softwareHouseShortName ?? "SSH";
 const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 ---
 
-<section id="hero" class="hero-wrapper min-h-[100svh] flex flex-col justify-center relative overflow-hidden pt-28 pb-16 md:pt-24 md:pb-20">
-    <!-- R3F Island (hardware-gated, falls back to CSS) -->
-    <HeroIsland client:only="react" />
-
-    <!-- Aurora Background -->
-    <div class="aurora-container absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div class="aurora-orb aurora-orb--1"></div>
-        <div class="aurora-orb aurora-orb--2"></div>
-        <div class="aurora-orb aurora-orb--3"></div>
-        <div class="aurora-orb aurora-orb--4"></div>
-        <div class="aurora-orb aurora-orb--5"></div>
+<section id="hero" class="min-h-[100svh] flex flex-col justify-center relative overflow-hidden pt-28 pb-16 md:pt-24 md:pb-20">
+    <!-- Subtle gradient orb -->
+    <div class="hero-orb absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="orb"></div>
     </div>
 
-    <div class="hero-inner w-full max-w-none md:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
+    <div class="hero-stagger hero-inner w-full max-w-none md:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
         <div class="flex-1 space-y-8 md:space-y-10 relative z-10 w-full pl-0">
             <!-- Role / Tagline Badges -->
-            <div class="hero-badges flex flex-wrap items-center gap-2.5 md:gap-3">
-                <div class="hero-badge inline-flex max-w-full items-center gap-2 px-3 py-2 sm:px-4 rounded-full bg-primary-neon/10 border border-primary-neon/30 hover:bg-primary-neon/25 hover:border-primary-neon/70 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] transition-all duration-300 cursor-default">
-                    <span class="w-2 h-2 rounded-full bg-primary-neon animate-pulse shadow-[0_0_8px_rgba(56,189,248,0.6)]"></span>
-                    <span class="text-[11px] sm:text-sm font-bold tracking-widest text-primary-neon uppercase drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]">
+            <div class="flex flex-wrap items-center gap-2.5 md:gap-3">
+                <div class="inline-flex max-w-full items-center gap-2 px-3 py-2 sm:px-4 rounded-full bg-primary/10 border border-primary/20 transition-all duration-300 cursor-default">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="text-[11px] sm:text-sm font-bold tracking-widest text-primary uppercase">
                         <span data-lang="en">{en?.badge ?? "Available for new opportunities"}</span>
                         <span data-lang="id" hidden>{id?.badge ?? "Terbuka untuk kolaborasi"}</span>
                     </span>
                 </div>
-                <a href={softwareHouseUrl} target={softwareHouseUrl === "#" ? undefined : "_blank"} rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"} class="hero-badge inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-2 sm:px-3.5 text-xs sm:text-sm font-semibold text-foreground/80 shadow-sm backdrop-blur-xl hover:border-secondary-neon/40 hover:text-foreground hover:shadow-[0_10px_30px_-18px_rgba(167,139,250,0.55)] transition-all duration-300">
-                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-secondary-neon/10 text-secondary-neon">
+                <a href={softwareHouseUrl} target={softwareHouseUrl === "#" ? undefined : "_blank"} rel={softwareHouseUrl === "#" ? undefined : "noopener noreferrer"} class="inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-2 sm:px-3.5 text-xs sm:text-sm font-semibold text-foreground/80 shadow-sm backdrop-blur-xl hover:border-border hover:text-foreground transition-all duration-300">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10 text-accent">
                         <Building2 className="h-3.5 w-3.5" />
                     </span>
-                    <span class="font-extrabold text-secondary-neon">{softwareHouseShortName}</span>
+                    <span class="font-extrabold text-accent">{softwareHouseShortName}</span>
                     <span class="hidden h-1 w-1 rounded-full bg-muted-foreground/40 sm:block"></span>
                     <span class="truncate" data-lang="en">Founder, {softwareHouseName}</span>
                     <span class="truncate" data-lang="id" hidden>Founder, {softwareHouseName}</span>
                 </a>
             </div>
 
-            <!-- Main Headline (Hierarchy) -->
+            <!-- Main Headline -->
             <div class="space-y-6">
-                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1] text-glow-primary">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
                     <span class="block">
                         <span data-lang="en">{en?.title1 ?? "Fullstack Developer"}</span>
                         <span data-lang="id" hidden>{id?.title1 ?? "Fullstack Developer"}</span>
                     </span>
-                    <span class="block text-primary-neon mt-2 text-3xl sm:text-4xl md:text-5xl">
+                    <span class="block text-primary mt-2 text-3xl sm:text-4xl md:text-5xl">
                         <span data-lang="en">{en?.title2 ?? "(Next.js + Laravel + Go)"}</span>
                         <span data-lang="id" hidden>{id?.title2 ?? "(Next.js + Laravel + Go)"}</span>
                     </span>
@@ -72,10 +64,10 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
                     <span data-lang="id" hidden>{id?.subtitle ?? "Saya Membangun Sistem Backend Skalabel yang Tahan Beban Produksi."}</span>
                 </p>
 
-                <!-- Quick Impact / Stats (from CMS) -->
-                <div class="hero-stats flex flex-wrap gap-2.5 sm:gap-4 pt-1 pb-2 md:pt-2 md:pb-4">
+                <!-- Quick Stats -->
+                <div class="flex flex-wrap gap-2.5 sm:gap-4 pt-1 pb-2 md:pt-2 md:pb-4">
                     {stats.map((stat) => (
-                        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card border border-border backdrop-blur-sm">
+                        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-card border border-border">
                             <span class="text-sm">{stat.emoji}</span>
                             <span class="text-xs font-medium text-foreground/70">{stat.label}</span>
                         </div>
@@ -84,13 +76,13 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
             </div>
 
             <!-- CTA Section -->
-            <div class="hero-ctas flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
-                <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold border-none tracking-wide magnetic">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
+                <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md h-[52px] w-full sm:w-auto px-8 text-[15px] btn-gradient-glow text-white font-extrabold tracking-wide">
                     <span data-lang="en">{en?.ctaContact ?? "Hire Me"}</span>
                     <span data-lang="id" hidden>{id?.ctaContact ?? "Mari Bekerja Bersama"}</span>
                     <Mail className="ml-2 w-[18px] h-[18px]" />
                 </a>
-                <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background disabled:pointer-events-none disabled:opacity-50 h-[52px] w-full sm:w-auto px-8 text-[15px] border border-border text-foreground hover:bg-secondary hover:border-primary-neon/50 hover:-translate-y-1 transition-all duration-300 shadow-sm font-medium bg-card/50 backdrop-blur-sm magnetic">
+                <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex items-center justify-center whitespace-nowrap rounded-md h-[52px] w-full sm:w-auto px-8 text-[15px] border border-border text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-300 shadow-sm font-medium bg-card/50">
                     <span data-lang="en">{en?.ctaProjects ?? "Projects"}</span>
                     <span data-lang="id" hidden>{id?.ctaProjects ?? "Proyek"}</span>
                     <ArrowRight className="ml-2 w-[18px] h-[18px]" />
@@ -98,9 +90,9 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
             </div>
         </div>
 
-        <!-- Right Side Visual / Hero Card -->
-        <div class="hidden lg:block flex-1 w-full max-w-xl relative hero-visual opacity-90 overflow-hidden">
-            <div class="bg-card/70 backdrop-blur-3xl border border-border rounded-2xl p-8 shadow-2xl rotate-2 hover:rotate-0 hover:scale-[1.02] transition-all duration-500 group hover:border-primary-neon/30">
+        <!-- Right Side Code Card -->
+        <div class="hidden lg:block flex-1 w-full max-w-xl relative opacity-90 overflow-hidden" data-reveal data-reveal-delay="0.3">
+            <div class="bg-card/70 border border-border rounded-2xl p-8 shadow-lg rotate-2 hover:rotate-0 hover:scale-[1.01] transition-all duration-500 group">
                 <div class="flex items-center justify-between mb-8 border-b border-border pb-4">
                     <div class="flex gap-2">
                         <div class="w-3.5 h-3.5 rounded-full bg-red-500/80"></div>
@@ -112,8 +104,8 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
 
                 <div class="space-y-4 font-mono text-sm sm:text-base leading-relaxed text-foreground/70">
                     <div class="flex">
-                        <span class="text-secondary-neon mr-2">const</span>
-                        <span class="text-primary-neon">fokusUtama</span>
+                        <span class="text-accent mr-2">const</span>
+                        <span class="text-primary">fokusUtama</span>
                         <span class="mx-2 text-muted-foreground/30">=</span>
                         <span class="text-foreground/60">{`{`}</span>
                     </div>
@@ -144,7 +136,7 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
                         </div>
                         <div>
                             <span class="text-muted-foreground mr-2">delivery:</span>
-                            <span class="text-secondary-neon/80">
+                            <span class="text-accent/80">
                                 <span data-lang="en">{en?.codeDelivery ?? '"On Time & Robust"'}</span>
                                 <span data-lang="id" hidden>{id?.codeDelivery ?? '"Tepat Waktu & Tangguh"'}</span>
                             </span>
@@ -155,8 +147,8 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
                     </div>
 
                     <div class="flex mt-6 items-center gap-3 pt-6 border-t border-border opacity-50 group-hover:opacity-100 transition-opacity">
-                        <span class="w-2 h-2 rounded-full bg-primary-neon animate-ping"></span>
-                        <span class="text-xs text-primary-neon uppercase tracking-widest font-semibold flex-1">System is running securely</span>
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        <span class="text-xs text-foreground/60 uppercase tracking-widest font-semibold flex-1">System is running securely</span>
                     </div>
                 </div>
             </div>
@@ -164,217 +156,45 @@ const softwareHouseUrl = profile?.softwareHouseUrl ?? "#";
     </div>
 
     <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
         <span class="text-[10px] font-medium tracking-widest uppercase text-muted-foreground">Scroll</span>
         <div class="w-5 h-8 rounded-full border-2 border-muted-foreground/40 flex justify-center pt-1.5">
-            <div class="w-1 h-2 rounded-full bg-primary-neon animate-bounce"></div>
+            <div class="w-1 h-2 rounded-full bg-primary animate-bounce"></div>
         </div>
     </div>
 </section>
 
 <script>
     import { haptic } from '../utils/haptic';
-    // Add haptic to all CTA buttons in hero
     document.querySelectorAll('#hero a[href^="#"], #hero a[href*="wa.me"]').forEach(el => {
         el.addEventListener('click', () => haptic('medium'));
     });
 </script>
 
-<script>
-    import gsap from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const initHeroAnim = () => {
-        const heroEl = document.querySelector("#hero");
-        if (!heroEl) return;
-
-        // ── Entrance animation timeline ──
-        const targets = heroEl.querySelectorAll(
-            ".hero-badge, h1 > span, .hero-subtitle, .hero-stats > div, .hero-ctas > a, .hero-visual"
-        );
-
-        gsap.killTweensOf(targets);
-        gsap.set(targets, { clearProps: "opacity,transform" });
-
-        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-        tl.from(heroEl.querySelector(".hero-badge"), {
-            y: 16,
-            opacity: 0,
-            duration: 0.6,
-            delay: 0.1
-        })
-        .from(heroEl.querySelectorAll("h1 > span"), {
-            y: 40,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2
-        }, "-=0.2")
-        .from(heroEl.querySelector(".hero-subtitle"), {
-            y: 20,
-            opacity: 0,
-            duration: 0.8
-        }, "-=0.6")
-        .from(heroEl.querySelectorAll(".hero-stats > div"), {
-            opacity: 0,
-            scale: 0.5,
-            y: 10,
-            duration: 0.25,
-            stagger: 0.12,
-            ease: "back.out(2.5)"
-        }, "-=0.3")
-        .from(heroEl.querySelector(".hero-visual"), {
-            opacity: 0,
-            x: 20,
-            scale: 0.95,
-            duration: 1.2,
-            ease: "back.out(1.4)"
-        }, "-=0.8");
-
-        // ── Scroll-pinned exit animation ──
-        if (!isReduced) {
-            const scrollTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: heroEl,
-                    start: "top top",
-                    end: "+=40%",
-                    pin: true,
-                    pinSpacing: true,
-                    scrub: 0.8,
-                    // Don't pin on mobile — too janky
-                    ...(window.innerWidth < 768 ? { pin: false } : {}),
-                },
-            });
-
-            // Fade out content as user scrolls
-            scrollTl
-                .to(heroEl.querySelector(".hero-inner"), {
-                    opacity: 0,
-                    y: -60,
-                    scale: 0.97,
-                    ease: "power2.in",
-                }, 0)
-                .to(heroEl.querySelector(".hero-scroll-indicator"), {
-                    opacity: 0,
-                    y: 20,
-                    ease: "power2.in",
-                }, 0)
-                // Parallax aurora orbs
-                .to(heroEl.querySelector(".aurora-orb--1"), {
-                    y: -100,
-                    ease: "none",
-                }, 0)
-                .to(heroEl.querySelector(".aurora-orb--2"), {
-                    y: 60,
-                    ease: "none",
-                }, 0);
-        }
-    };
-
-    // Run on mount
-    initHeroAnim();
-    document.addEventListener('astro:after-swap', initHeroAnim);
-</script>
-
 <style>
-    /* Aurora orb base */
-    .aurora-orb {
+    .hero-orb {
         position: absolute;
-        border-radius: 50%;
-        filter: blur(120px);
-        will-change: transform, opacity;
-        pointer-events: none;
+        inset: 0;
     }
-
-    /* Orb 1 — large blue, top-right */
-    .aurora-orb--1 {
-        width: 700px;
-        height: 700px;
-        top: -20%;
-        right: -5%;
-        background: radial-gradient(ellipse, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-        animation: aurora-float-1 18s ease-in-out infinite alternate;
-    }
-
-    /* Orb 2 — purple, bottom-left */
-    .aurora-orb--2 {
+    .orb {
+        position: absolute;
         width: 600px;
         height: 600px;
-        bottom: -15%;
-        left: -10%;
-        background: radial-gradient(ellipse, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
-        animation: aurora-float-2 22s ease-in-out infinite alternate;
+        top: -15%;
+        right: -5%;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.12;
+        background: radial-gradient(ellipse, rgba(59, 130, 246, 0.6) 0%, transparent 70%);
+        animation: orb-drift 20s ease-in-out infinite alternate;
+        will-change: transform;
     }
-
-    /* Orb 3 — cyan small, center-right */
-    .aurora-orb--3 {
-        width: 350px;
-        height: 350px;
-        top: 30%;
-        right: 15%;
-        background: radial-gradient(ellipse, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
-        animation: aurora-float-3 14s ease-in-out infinite alternate;
-    }
-
-    /* Orb 4 — blue-purple blend, top-left */
-    .aurora-orb--4 {
-        width: 450px;
-        height: 450px;
-        top: 5%;
-        left: 5%;
-        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
-        animation: aurora-float-4 25s ease-in-out infinite alternate;
-    }
-
-    /* Orb 5 — deep cyan, bottom-right */
-    .aurora-orb--5 {
-        width: 300px;
-        height: 300px;
-        bottom: 10%;
-        right: 25%;
-        background: radial-gradient(ellipse, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
-        animation: aurora-float-5 16s ease-in-out infinite alternate;
-    }
-
-    @keyframes aurora-float-1 {
+    @keyframes orb-drift {
         0%   { transform: translate(0, 0) scale(1); }
-        33%  { transform: translate(-40px, 30px) scale(1.1); }
-        66%  { transform: translate(20px, -20px) scale(0.95); }
-        100% { transform: translate(-20px, 40px) scale(1.05); }
+        50%  { transform: translate(-30px, 20px) scale(1.05); }
+        100% { transform: translate(10px, -15px) scale(0.97); }
     }
-
-    @keyframes aurora-float-2 {
-        0%   { transform: translate(0, 0) scale(1); }
-        40%  { transform: translate(50px, -30px) scale(1.08); }
-        70%  { transform: translate(-20px, 20px) scale(0.97); }
-        100% { transform: translate(30px, -40px) scale(1.04); }
-    }
-
-    @keyframes aurora-float-3 {
-        0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
-        50%  { transform: translate(-30px, -40px) scale(1.15) rotate(10deg); }
-        100% { transform: translate(20px, 30px) scale(0.9) rotate(-5deg); }
-    }
-
-    @keyframes aurora-float-4 {
-        0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
-        50%  { transform: translate(40px, 20px) scale(1.2); opacity: 1; }
-        100% { transform: translate(-10px, 40px) scale(0.85); opacity: 0.6; }
-    }
-
-    @keyframes aurora-float-5 {
-        0%   { transform: translate(0, 0) scale(1); }
-        60%  { transform: translate(-25px, -35px) scale(1.1); }
-        100% { transform: translate(15px, 20px) scale(0.92); }
-    }
-
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .aurora-orb { animation: none; }
-      .hero-scroll-indicator { display: none; }
+      .orb { animation: none; }
     }
 </style>
