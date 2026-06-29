@@ -1,56 +1,56 @@
 ---
 const services = {
   en: {
-    badge: "Freelance Services",
-    title: "Automation that saves hours of manual work",
+    badge: "What I Offer",
+    title: "Fullstack development from code to production",
     description:
-      "I help small businesses and teams turn repetitive tasks into reliable Python scripts, data workflows, and chatbots.",
-    cta: "Discuss a workflow",
+      "I build complete web applications — from database design and backend APIs to frontend UI and cloud deployment.",
+    cta: "Get in Touch",
     items: [
       {
-        title: "Web Scraping to CSV/Excel",
+        title: "Web Application Development",
         description:
-          "Extract structured data from public websites, clean it, and deliver ready-to-use CSV, Excel, or Google Sheets output.",
-        points: ["Public website data", "CSV/Excel delivery", "Reusable script option"],
+          "Build scalable fullstack apps with Next.js, React, or Laravel — complete with authentication, database, and responsive UI.",
+        points: ["Fullstack (Next.js, React, Laravel)", "PostgreSQL, MySQL, MongoDB", "Responsive & accessible UI"],
       },
       {
-        title: "Telegram & WhatsApp Chatbot",
+        title: "Backend & API Development",
         description:
-          "Build simple FAQ, lead-capture, and customer-support flows that reduce repeated admin replies.",
-        points: ["FAQ/menu flow", "Lead capture", "Admin handoff"],
+          "Design and build REST APIs with Go (Gin), Node.js, or Express — structured, validated, and production-ready.",
+        points: ["Go (Gin), Node.js, Express.js", "JWT auth & input validation", "Database schema design"],
       },
       {
-        title: "Report & Admin Automation",
+        title: "DevOps & Deployment",
         description:
-          "Automate spreadsheet cleanup, recurring reports, API syncs, and notifications for daily business operations.",
-        points: ["Data cleaning", "Scheduled reports", "API/Sheets integration"],
+          "Set up Docker environments, CI/CD pipelines, and cloud infrastructure so your app runs reliably in production.",
+        points: ["Docker & containerization", "GitHub Actions, Jenkins CI/CD", "AWS, Vercel, cloud deployment"],
       },
     ],
   },
   id: {
-    badge: "Jasa Freelance",
-    title: "Automation untuk menghemat kerja manual",
+    badge: "Yang Saya Tawarkan",
+    title: "Fullstack development dari kode ke produksi",
     description:
-      "Saya membantu bisnis kecil dan tim mengubah pekerjaan repetitif menjadi script Python, workflow data, dan chatbot yang praktis.",
-    cta: "Diskusikan workflow",
+      "Saya membangun aplikasi web lengkap — dari desain database dan backend API hingga frontend UI dan deployment ke cloud.",
+    cta: "Hubungi Saya",
     items: [
       {
-        title: "Web Scraping ke CSV/Excel",
+        title: "Pengembangan Aplikasi Web",
         description:
-          "Mengambil data terstruktur dari website publik, membersihkan hasilnya, lalu mengirim output CSV, Excel, atau Google Sheets.",
-        points: ["Data website publik", "Output CSV/Excel", "Opsi script reusable"],
+          "Membangun aplikasi fullstack yang skalabel dengan Next.js, React, atau Laravel — lengkap dengan autentikasi, database, dan UI responsif.",
+        points: ["Fullstack (Next.js, React, Laravel)", "PostgreSQL, MySQL, MongoDB", "UI responsif & aksesibel"],
       },
       {
-        title: "Chatbot Telegram & WhatsApp",
+        title: "Backend & API Development",
         description:
-          "Membuat flow FAQ, lead capture, dan customer support sederhana agar admin tidak menjawab pertanyaan yang sama berulang kali.",
-        points: ["Flow FAQ/menu", "Lead capture", "Handoff ke admin"],
+          "Merancang dan membangun REST API dengan Go (Gin), Node.js, atau Express — terstruktur, tervalidasi, dan siap produksi.",
+        points: ["Go (Gin), Node.js, Express.js", "Autentikasi JWT & validasi input", "Desain skema database"],
       },
       {
-        title: "Otomasi Laporan & Admin",
+        title: "DevOps & Deployment",
         description:
-          "Mengotomasi cleaning spreadsheet, laporan rutin, sinkronisasi API, dan notifikasi untuk operasional harian.",
-        points: ["Cleaning data", "Laporan terjadwal", "Integrasi API/Sheets"],
+          "Menyiapkan environment Docker, pipeline CI/CD, dan infrastruktur cloud agar aplikasi berjalan stabil di produksi.",
+        points: ["Docker & kontainerisasi", "GitHub Actions, Jenkins CI/CD", "AWS, Vercel, deployment cloud"],
       },
     ],
   },
@@ -107,7 +107,7 @@ const services = {
   </div>
 
   <div class="mt-10 flex justify-center md:mt-14">
-    <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex h-[52px] items-center justify-center rounded-md px-8 text-[15px] font-extrabold tracking-wide text-white btn-gradient-glow">
+    <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex h-[52px] items-center justify-center rounded-md px-8 text-[15px] font-extrabold tracking-wide text-white bg-primary hover:bg-primary/90 transition-colors">
       <span data-lang="en">{services.en.cta}</span>
       <span data-lang="id" hidden>{services.id.cta}</span>
     </a>

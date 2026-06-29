@@ -1,33 +1,33 @@
 stats:
-  - emoji: 🤖
-    label: Automation & Chatbots
-  - emoji: 🐍
-    label: Python
-  - emoji: 📊
-    label: Data Workflows
+  - emoji: 🚀
+    label: Fullstack Web Apps
+  - emoji: ⚙️
+    label: DevOps & CI/CD
+  - emoji: 🗄️
+    label: Database Design
   - emoji: 🐳
-    label: Docker
+    label: Docker & Cloud
 en:
-  badge: Available for freelance automation projects
-  title1: Python Automation
-  title2: '& AI Chatbot Developer'
-  subtitle: I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.
-  ctaContact: Discuss a Workflow
-  ctaProjects: View Work
-  codeRole: '"Automating repetitive workflows"'
-  codeSkill1: '"Python"'
-  codeSkill2: '"Chatbots"'
-  codeImpact: '"Hours saved weekly"'
-  codeDelivery: '"Practical & reliable"'
+  badge: Available for freelance & full-time opportunities
+  title1: Fullstack Developer
+  title2: '& DevOps Engineer'
+  subtitle: I build scalable web applications, academic systems, and reliable backend infrastructure from code to production.
+  ctaContact: Get in Touch
+  ctaProjects: View My Work
+  codeRole: '"Building scalable web systems"'
+  codeSkill1: '"Next.js"'
+  codeSkill2: '"Go & PostgreSQL"'
+  codeImpact: '"Full-stack delivery"'
+  codeDelivery: '"Code to production"'
 id:
-  badge: Terbuka untuk proyek freelance automation
-  title1: Python Automation
-  title2: '& AI Chatbot Developer'
-  subtitle: Saya membuat web scraper, chatbot, dan workflow data untuk mengurangi kerja admin repetitif.
-  ctaContact: Diskusikan Workflow
+  badge: Terbuka untuk peluang freelance & full-time
+  title1: Fullstack Developer
+  title2: '& DevOps Engineer'
+  subtitle: Saya membangun aplikasi web skalabel, sistem akademik, dan infrastruktur backend yang reliable dari kode hingga produksi.
+  ctaContact: Hubungi Saya
   ctaProjects: Lihat Proyek
-  codeRole: '"Mengotomasi kerja repetitif"'
-  codeSkill1: '"Python"'
-  codeSkill2: '"Chatbots"'
-  codeImpact: '"Hemat jam kerja tiap minggu"'
-  codeDelivery: '"Praktis & reliable"'
+  codeRole: '"Membangun sistem web skalabel"'
+  codeSkill1: '"Next.js"'
+  codeSkill2: '"Go & PostgreSQL"'
+  codeImpact: '"Full-stack delivery"'
+  codeDelivery: '"Dari kode ke produksi"'
