@@ -3,7 +3,7 @@ export const translations = {
     // Navigation
     "nav.about": "About",
     "nav.expertise": "Expertise",
-    "nav.services": "Services",
+    "nav.services": "What I Build",
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
@@ -26,11 +26,11 @@ export const translations = {
     "about.badge": "Who I Am",
     "about.title": "About Me",
     "about.description":
-      "Fullstack Developer and DevOps Engineer focused on building scalable web applications, academic systems, automation workflows, and reliable backend infrastructure.",
-    "about.profile.name": "Mochamad Farhan Ali",
-    "about.profile.title": "Backend & DevOps Engineer",
+      "Fullstack Developer focused on building scalable web applications, academic systems, and reliable backend infrastructure with strong cloud and DevOps skills.",
+    "about.profile.name": "Mochammad Farhan Ali",
+    "about.profile.title": "Backend & Cloud Infrastructure",
     "about.current": "Currently",
-    "about.experience.title": "Junior Software Engineer",
+    "about.experience.title": "Software Engineer",
     "about.experience.company": "STT Pekerjaan Umum Jakarta",
     "about.experience.description":
       "Designed and engineered SIPEKAD, an integrated academic and student information system built with Next.js and PostgreSQL, digitalizing campus services and automating previously manual bureaucratic processes.",
@@ -76,7 +76,7 @@ export const translations = {
     // Navigation
     "nav.about": "Tentang",
     "nav.expertise": "Keahlian",
-    "nav.services": "Jasa",
+    "nav.services": "Yang Saya Bangun",
     "nav.projects": "Proyek",
     "nav.experience": "Pengalaman",
     "nav.contact": "Kontak",
@@ -100,11 +100,11 @@ export const translations = {
     "about.badge": "Siapa Saya",
     "about.title": "Tentang Saya",
     "about.description":
-      "Fullstack Developer dan DevOps Engineer yang fokus membangun aplikasi web skalabel, sistem akademik, workflow automation, dan infrastruktur backend yang reliable.",
-    "about.profile.name": "Mochamad Farhan Ali",
-    "about.profile.title": "Backend & DevOps Engineer",
+      "Fullstack Developer yang fokus membangun aplikasi web skalabel, sistem akademik, dan infrastruktur backend yang reliable dengan keahlian cloud dan DevOps.",
+    "about.profile.name": "Mochammad Farhan Ali",
+    "about.profile.title": "Backend & Cloud Infrastructure",
     "about.current": "Saat ini",
-    "about.experience.title": "Junior Software Engineer",
+    "about.experience.title": "Software Engineer",
     "about.experience.company": "STT Pekerjaan Umum Jakarta",
     "about.experience.description":
       "Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan terintegrasi berbasis Next.js dan PostgreSQL, yang mendigitalisasi layanan kampus dan mengotomasi proses birokrasi manual.",

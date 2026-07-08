@@ -121,7 +121,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       'Membangun pipeline ETL Python + SQL yang memproses 5.000+ data pegawai pemerintah, memangkas migrasi dari minggu ke jam',
       'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
     ],
-    name: profile?.name ?? 'Mochamad Farhan Ali',
+    name: profile?.name ?? 'Mochammad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),
     location: profile?.location ?? '',
     phone: profile?.phone ?? '',

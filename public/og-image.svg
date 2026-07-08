@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0070f3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00a3ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)" />
+  <!-- Left accent bar -->
+  <rect x="80" y="180" width="4" height="120" rx="2" fill="url(#accent)" />
+  <!-- Name -->
+  <text x="100" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="800" fill="white" letter-spacing="-1">Mochammad Farhan Ali</text>
+  <!-- Title -->
+  <text x="100" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#0070f3" font-weight="600">Fullstack Developer &amp; Cloud Infrastructure</text>
+  <!-- Divider -->
+  <rect x="100" y="310" width="80" height="3" rx="1.5" fill="url(#accent)" />
+  <!-- Subtitle -->
+  <text x="100" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#94a3b8">Building scalable web applications with</text>
+  <text x="100" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#94a3b8">Next.js, TypeScript, PostgreSQL &amp; Docker</text>
+  <!-- URL -->
+  <text x="100" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#475569">frhn.dev</text>
+  <!-- Tech badges -->
+  <rect x="100" y="430" width="90" height="32" rx="16" fill="rgba(0,112,243,0.15)" stroke="rgba(0,112,243,0.3)" stroke-width="1"/>
+  <text x="145" y="451" font-family="system-ui, sans-serif" font-size="13" fill="#0070f3" text-anchor="middle">Next.js</text>
+  <rect x="200" y="430" width="72" height="32" rx="16" fill="rgba(0,112,243,0.15)" stroke="rgba(0,112,243,0.3)" stroke-width="1"/>
+  <text x="236" y="451" font-family="system-ui, sans-serif" font-size="13" fill="#0070f3" text-anchor="middle">Docker</text>
+  <rect x="282" y="430" width="106" height="32" rx="16" fill="rgba(0,112,243,0.15)" stroke="rgba(0,112,243,0.3)" stroke-width="1"/>
+  <text x="335" y="451" font-family="system-ui, sans-serif" font-size="13" fill="#0070f3" text-anchor="middle">PostgreSQL</text>
+  <rect x="398" y="430" width="98" height="32" rx="16" fill="rgba(0,112,243,0.15)" stroke="rgba(0,112,243,0.3)" stroke-width="1"/>
+  <text x="447" y="451" font-family="system-ui, sans-serif" font-size="13" fill="#0070f3" text-anchor="middle">TypeScript</text>
+</svg>

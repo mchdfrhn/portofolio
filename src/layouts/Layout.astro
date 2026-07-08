@@ -47,6 +47,8 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#0a0a1a" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 		<title>{title}</title>
 
         <!-- Open Graph / Facebook -->
@@ -72,16 +74,16 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
         <script type="application/ld+json" set:html={JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Mochamad Farhan Ali",
+          "name": "Mochammad Farhan Ali",
           "url": "https://frhn.dev",
-          "jobTitle": "DevOps Engineer & Fullstack Developer",
-          "description": "I build web scrapers, chatbots, and data workflows that reduce repetitive admin work.",
+          "jobTitle": "Fullstack Developer & Cloud Infrastructure",
+          "description": "Fullstack Developer focused on building scalable web applications, academic systems, and reliable backend infrastructure.",
           "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
           "email": "mochamadfarhanali@gmail.com",
           "sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
-          "knowsAbout": ["Python", "Automation", "Chatbots", "Next.js", "React", "Docker", "PostgreSQL", "DevOps"],
+          "knowsAbout": ["TypeScript", "Next.js", "React", "Laravel", "Golang", "PostgreSQL", "Docker", "AWS", "Tailwind"],
           "hasCredential": [],
-          "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan-dev.vercel.app/" }
+          "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan.tech" }
         })} />
         
 		<ClientRouter />

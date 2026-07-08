@@ -1,56 +1,56 @@
 ---
 const services = {
   en: {
-    badge: "What I Offer",
-    title: "Fullstack development from code to production",
+    badge: "What I Build",
+    title: "Systems I design and ship",
     description:
-      "I build complete web applications — from database design and backend APIs to frontend UI and cloud deployment.",
-    cta: "Get in Touch",
+      "Fullstack applications from database to deployment — here's what I focus on.",
+    cta: "See case studies",
     items: [
       {
-        title: "Web Application Development",
+        title: "Web Applications",
         description:
-          "Build scalable fullstack apps with Next.js, React, or Laravel — complete with authentication, database, and responsive UI.",
+          "Fullstack apps with Next.js, React, or Laravel — complete with authentication, database, and responsive UI.",
         points: ["Fullstack (Next.js, React, Laravel)", "PostgreSQL, MySQL, MongoDB", "Responsive & accessible UI"],
       },
       {
-        title: "Backend & API Development",
+        title: "Backend & APIs",
         description:
-          "Design and build REST APIs with Go (Gin), Node.js, or Express — structured, validated, and production-ready.",
+          "REST APIs with Go, Node.js, or Express — structured, validated, and production-ready.",
         points: ["Go (Gin), Node.js, Express.js", "JWT auth & input validation", "Database schema design"],
       },
       {
-        title: "DevOps & Deployment",
+        title: "Cloud & Infrastructure",
         description:
-          "Set up Docker environments, CI/CD pipelines, and cloud infrastructure so your app runs reliably in production.",
-        points: ["Docker & containerization", "GitHub Actions, Jenkins CI/CD", "AWS, Vercel, cloud deployment"],
+          "Docker environments, CI/CD pipelines, and cloud deployment so apps run reliably in production.",
+        points: ["Docker & containerization", "GitHub Actions CI/CD", "AWS, Vercel deployment"],
       },
     ],
   },
   id: {
-    badge: "Yang Saya Tawarkan",
-    title: "Fullstack development dari kode ke produksi",
+    badge: "Apa yang Saya Bangun",
+    title: "Sistem yang saya rancang dan kirim",
     description:
-      "Saya membangun aplikasi web lengkap — dari desain database dan backend API hingga frontend UI dan deployment ke cloud.",
-    cta: "Hubungi Saya",
+      "Aplikasi fullstack dari database hingga deployment — ini fokus saya.",
+    cta: "Lihat studi kasus",
     items: [
       {
-        title: "Pengembangan Aplikasi Web",
+        title: "Aplikasi Web",
         description:
-          "Membangun aplikasi fullstack yang skalabel dengan Next.js, React, atau Laravel — lengkap dengan autentikasi, database, dan UI responsif.",
+          "Aplikasi fullstack dengan Next.js, React, atau Laravel — lengkap dengan autentikasi, database, dan UI responsif.",
         points: ["Fullstack (Next.js, React, Laravel)", "PostgreSQL, MySQL, MongoDB", "UI responsif & aksesibel"],
       },
       {
-        title: "Backend & API Development",
+        title: "Backend & API",
         description:
-          "Merancang dan membangun REST API dengan Go (Gin), Node.js, atau Express — terstruktur, tervalidasi, dan siap produksi.",
+          "REST API dengan Go, Node.js, atau Express — terstruktur, tervalidasi, dan siap produksi.",
         points: ["Go (Gin), Node.js, Express.js", "Autentikasi JWT & validasi input", "Desain skema database"],
       },
       {
-        title: "DevOps & Deployment",
+        title: "Cloud & Infrastruktur",
         description:
-          "Menyiapkan environment Docker, pipeline CI/CD, dan infrastruktur cloud agar aplikasi berjalan stabil di produksi.",
-        points: ["Docker & kontainerisasi", "GitHub Actions, Jenkins CI/CD", "AWS, Vercel, deployment cloud"],
+          "Environment Docker, pipeline CI/CD, dan deployment cloud agar aplikasi berjalan stabil di produksi.",
+        points: ["Docker & kontainerisasi", "GitHub Actions CI/CD", "Deployment AWS, Vercel"],
       },
     ],
   },
@@ -107,7 +107,7 @@ const services = {
   </div>
 
   <div class="mt-10 flex justify-center md:mt-14">
-    <a href="#contact" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#contact', {offset: -80});" class="inline-flex h-[52px] items-center justify-center rounded-md px-8 text-[15px] font-extrabold tracking-wide text-white bg-primary hover:bg-primary/90 transition-colors">
+    <a href="#projects" onclick="event.preventDefault(); window.lenis && window.lenis.scrollTo('#projects', {offset: -80});" class="inline-flex h-[52px] items-center justify-center rounded-md px-8 text-[15px] font-extrabold tracking-wide text-white bg-primary hover:bg-primary/90 transition-colors">
       <span data-lang="en">{services.en.cta}</span>
       <span data-lang="id" hidden>{services.id.cta}</span>
     </a>

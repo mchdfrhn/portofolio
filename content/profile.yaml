@@ -1,9 +1,9 @@
-name: Mochamad Farhan Ali
+name: Mochammad Farhan Ali
 profileImage: /images/profile/profileImage.jpeg
-titleEn: Fullstack Developer & DevOps Engineer
-titleId: Fullstack Developer & DevOps Engineer
+titleEn: Fullstack Developer & Cloud Infrastructure
+titleId: Fullstack Developer & Cloud Infrastructure
 location: Jakarta, ID (Remote Ready)
-yearsExp: 3+
+yearsExp: 1.5+
 availability: true
 techStack:
   - TypeScript
@@ -23,7 +23,6 @@ techStack:
 github: https://github.com/mchdfrhn
 linkedin: https://www.linkedin.com/in/mchdfrhn
 email: mochamadfarhanali@gmail.com
-phone: '085771826637'
 softwareHouseName: Surupan Software House
 softwareHouseShortName: SSH
-softwareHouseUrl: https://surupan-dev.vercel.app/
+softwareHouseUrl: https://surupan.tech

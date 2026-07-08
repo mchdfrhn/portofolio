@@ -2,18 +2,18 @@ stats:
   - emoji: 🚀
     label: Fullstack Web Apps
   - emoji: ⚙️
-    label: DevOps & CI/CD
+    label: Cloud & CI/CD
   - emoji: 🗄️
     label: Database Design
   - emoji: 🐳
-    label: Docker & Cloud
+    label: Docker & AWS
 en:
   badge: Available for freelance & full-time opportunities
   title1: Fullstack Developer
-  title2: '& DevOps Engineer'
+  title2: '& Cloud Infrastructure'
   subtitle: I build scalable web applications, academic systems, and reliable backend infrastructure from code to production.
-  ctaContact: Get in Touch
-  ctaProjects: View My Work
+  ctaContact: Let's discuss your project
+  ctaProjects: See case studies
   codeRole: '"Building scalable web systems"'
   codeSkill1: '"Next.js"'
   codeSkill2: '"Go & PostgreSQL"'
@@ -22,10 +22,10 @@ en:
 id:
   badge: Terbuka untuk peluang freelance & full-time
   title1: Fullstack Developer
-  title2: '& DevOps Engineer'
+  title2: '& Cloud Infrastructure'
   subtitle: Saya membangun aplikasi web skalabel, sistem akademik, dan infrastruktur backend yang reliable dari kode hingga produksi.
-  ctaContact: Hubungi Saya
-  ctaProjects: Lihat Proyek
+  ctaContact: Diskusikan proyek Anda
+  ctaProjects: Lihat studi kasus
   codeRole: '"Membangun sistem web skalabel"'
   codeSkill1: '"Next.js"'
   codeSkill2: '"Go & PostgreSQL"'

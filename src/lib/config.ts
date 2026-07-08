@@ -11,4 +11,4 @@ export const LINKEDIN_URL =
 export const EMAIL =
   import.meta.env.PUBLIC_EMAIL ?? "mochamadfarhanali@gmail.com";
 export const WHATSAPP_URL =
-  import.meta.env.PUBLIC_WHATSAPP_URL ?? "https://wa.me/6281234567890";
+  import.meta.env.PUBLIC_WHATSAPP_URL ?? "https://wa.me/6285771826637";
