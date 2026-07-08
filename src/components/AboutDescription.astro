@@ -1,6 +1,7 @@
 ---
 import { reader } from "@/lib/reader";
 import { ExpertiseGrid } from "./ExpertiseGrid";
+import { Testimonials } from "./Testimonials";
 import { GithubActivity } from "./GithubActivity";
 
 const about = await reader.singletons.about.read();
@@ -45,4 +46,6 @@ const expertise = rawExpertise
     </div>
 
     <GithubActivity client:visible />
+
+    <Testimonials client:visible />
 </section>
