@@ -1,6 +1,7 @@
 ---
 import { reader } from "@/lib/reader";
 import { ExpertiseGrid } from "./ExpertiseGrid";
+import { GithubActivity } from "./GithubActivity";
 
 const about = await reader.singletons.about.read();
 const rawExpertise = await reader.collections.expertise.all();
@@ -42,4 +43,6 @@ const expertise = rawExpertise
             <span data-lang="id" hidden>{about?.id.expertiseNote ?? "Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti dari sisi code, infrastruktur, dan automation - yuk ngobrol."}</span>
         </p>
     </div>
+
+    <GithubActivity client:visible />
 </section>
