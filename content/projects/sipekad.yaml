@@ -1,4 +1,4 @@
-title: SIPEKAD — Integrated Academic Information System
+title: SIPEKAD — Sistem Informasi Akademik & Kemahasiswaan
 order: 1
 icon: Database
 image: /images/projects/sipekad/image.jpeg
@@ -6,30 +6,36 @@ github: https://github.com/mchdfrhn/sipekad-fe
 demo: https://sipekad.sttpu.ac.id
 tech:
   - Next.js
+  - TypeScript
   - PostgreSQL
-  - REST API
   - Docker
+  - REST API
 en:
-  tagline: Academic & Student Information System
+  tagline: Integrated Academic Information System
   problem: >-
     Manual academic administration made student services, data updates, and
-    document workflows slower and harder to track.
+    document workflows slower and harder to track across 5 departments.
   solution: >-
     Built an integrated academic and student information system with structured
-    data models, responsive interfaces, and workflow-focused modules for campus
-    services.
+    data models, responsive interfaces, RBAC, and workflow-focused modules for
+    campus services. Optimized database queries from 47/page to 3/page using
+    connection pooling (PgBouncer), query batching, and proper indexing.
   impact: >-
-    Helped digitalize campus services, improve academic data management, and
-    reduce repetitive manual administration.
+    Serving 1,000+ active students across 5 departments. Reduced average
+    response time from ~2,400ms to ~120ms, achieving 99.7% uptime with 500+
+    concurrent users.
 id:
-  tagline: Sistem Informasi Akademik & Kemahasiswaan
+  tagline: Sistem Informasi Akademik & Kemahasiswaan Terintegrasi
   problem: >-
     Administrasi akademik manual membuat layanan mahasiswa, pembaruan data, dan
-    workflow dokumen lebih lambat serta sulit dilacak.
+    workflow dokumen lebih lambat serta sulit dilacak lintas 5 departemen.
   solution: >-
     Membangun sistem informasi akademik dan kemahasiswaan terintegrasi dengan
-    model data terstruktur, antarmuka responsif, dan modul yang fokus pada
-    workflow layanan kampus.
+    model data terstruktur, antarmuka responsif, RBAC, dan modul yang fokus pada
+    workflow layanan kampus. Mengoptimasi query database dari 47/halaman menjadi
+    3/halaman menggunakan connection pooling (PgBouncer), query batching, dan
+    pengindeksan yang tepat.
   impact: >-
-    Membantu digitalisasi layanan kampus, memperbaiki pengelolaan data akademik,
-    dan mengurangi administrasi manual yang repetitif.
+    Melayani 1.000+ mahasiswa aktif di 5 departemen. Memangkas rata-rata waktu
+    respons dari ~2.400ms menjadi ~120ms, mencapai uptime 99,7% dengan 500+
+    user concurrent.

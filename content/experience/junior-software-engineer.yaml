@@ -1,23 +1,26 @@
-name: Junior Software Engineer
+name: Software Engineer
 type: work
 period: Aug 2024 - Present
 order: 1
 en:
-  title: Junior Software Engineer
+  title: Software Engineer
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
-    Designed and engineered SIPEKAD, an integrated academic and student
-    information system built with Next.js and PostgreSQL, achieving comprehensive
-    digitalization of campus services and automating previously manual bureaucratic
-    processes. Also developed the official institution website and authored
-    complete technical documentation and system schemas to ensure long-term
-    scalability and maintainability of the application ecosystem.
+    Designed and shipped SIPEKAD, an integrated academic information system
+    serving 1,000+ students across 5 departments. Built with Next.js, TypeScript,
+    and PostgreSQL — featuring RBAC, automated document workflows, and REST API
+    integrations. Reduced manual academic processing time from days to hours.
+    Also developed the official institutional website with Payload CMS and
+    authored complete technical documentation and system architecture diagrams
+    to ensure long-term maintainability.
 id:
-  title: Junior Software Engineer
+  title: Software Engineer
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
-    Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan
-    terintegrasi berbasis Next.js dan PostgreSQL, yang mengdigitalkan seluruh
-    layanan kampus dan mengotomasi proses birokrasi yang sebelumnya dilakukan
-    secara manual. Mengembangkan website resmi institusi dan menyusun dokumentasi
-    teknis lengkap beserta skema sistem untuk menjamin skalabilitas jangka panjang.
+    Merancang dan mengembangkan SIPEKAD, sistem informasi akademik terintegrasi
+    yang melayani 1.000+ mahasiswa di 5 departemen. Dibangun dengan Next.js,
+    TypeScript, dan PostgreSQL — dilengkapi RBAC, workflow dokumen otomatis, dan
+    integrasi REST API. Memangkas waktu pemrosesan akademik manual dari hitungan
+    hari menjadi jam. Juga mengembangkan website resmi institusi dengan Payload
+    CMS dan menyusun dokumentasi teknis lengkap beserta diagram arsitektur sistem
+    untuk memastikan maintainabilitas jangka panjang.

@@ -1,0 +1,44 @@
+title: Sistem Kepegawaian & Jabatan Fungsional Pusdatin
+order: 2
+icon: Database
+image: /images/projects/dashboard-pegawai/image.jpeg
+github: https://github.com/mchdfrhn/pusdatin-karyawan
+demo: https://pegawai-pusdatin.vercel.app
+tech:
+  - Next.js
+  - TypeScript
+  - PostgreSQL
+  - Supabase
+  - Tailwind
+en:
+  tagline: HR Management & Functional Position System
+  problem: >-
+    Manual processing of 5,000+ bureaucratic employee records, hierarchy
+    changes, and complex functional credit tracking causing assessment and
+    promotion delays across 10+ departments.
+  solution: >-
+    Built an integrated HR platform with automated XLSX data ingestion,
+    granular RBAC, and SSR-powered performance credit point calculation —
+    covering both employee management and functional position tracking.
+    Implemented Python + SQL ETL pipelines reducing data migration from
+    manual weeks to automated hours.
+  impact: >-
+    Centralized tracking for 5,000+ active civil servants, serving 200+
+    government users. Reduced data processing time by 90% and eliminated
+    manual calculation errors in credit point assessments.
+id:
+  tagline: Sistem Manajemen Kepegawaian & Jabatan Fungsional
+  problem: >-
+    Pengolahan manual 5.000+ data kepegawaian, perubahan hierarki, dan
+    pelacakan angka kredit jabatan fungsional yang kompleks menyebabkan
+    keterlambatan penilaian dan promosi lintas 10+ departemen.
+  solution: >-
+    Membangun platform HR terintegrasi dengan fitur impor data XLSX otomatis,
+    RBAC berbasis peran, dan perhitungan angka kredit kinerja berbasis SSR —
+    mencakup manajemen pegawai dan pelacakan jabatan fungsional.
+    Mengimplementasikan pipeline ETL Python + SQL yang memangkas migrasi data
+    dari hitungan minggu manual menjadi hitungan jam.
+  impact: >-
+    Sentralisasi data 5.000+ ASN aktif, melayani 200+ pengguna pemerintah.
+    Memangkas waktu pemrosesan data 90% dan menghilangkan kesalahan perhitungan
+    manual dalam penilaian angka kredit.

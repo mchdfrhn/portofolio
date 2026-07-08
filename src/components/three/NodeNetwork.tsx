@@ -82,7 +82,7 @@ export function NodeNetwork() {
       <FloatingShape
         position={[2.8, 1.2, -1]}
         rotationSpeed={[0.12, 0.18, 0.05]}
-        color="#38BDF8"
+        color="#3B82F6"
         solidOpacity={0.04}
         wireOpacity={0.2}
         scale={1.6}
@@ -94,7 +94,7 @@ export function NodeNetwork() {
       <FloatingShape
         position={[-2.8, -1.5, 0.5]}
         rotationSpeed={[0.1, -0.15, 0.08]}
-        color="#A78BFA"
+        color="#60A5FA"
         solidOpacity={0.03}
         wireOpacity={0.18}
         scale={1.3}
@@ -106,7 +106,7 @@ export function NodeNetwork() {
       <FloatingShape
         position={[0.8, -2.2, -0.5]}
         rotationSpeed={[-0.08, 0.12, -0.1]}
-        color="#22D3EE"
+        color="#93C5FD"
         solidOpacity={0.03}
         wireOpacity={0.15}
         scale={1.1}

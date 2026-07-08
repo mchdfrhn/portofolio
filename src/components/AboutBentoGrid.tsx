@@ -211,7 +211,7 @@ export const AboutBentoGrid = ({
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
             </div>
             <div className="relative flex flex-1 flex-col px-6 pb-5 pt-0">
-              <div className="relative z-20 -mt-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-4 border-card bg-muted shadow-sm grayscale transition-all duration-500 hover:grayscale-0">
+              <div className="relative z-20 -mt-8 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-4 border-card bg-muted shadow-sm dark:shadow-none grayscale transition-all duration-500 hover:grayscale-0">
                 {profile.profileImage ? (
                   <img
                     src={profile.profileImage}

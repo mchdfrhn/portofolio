@@ -27,9 +27,11 @@ export interface ProjectItem {
 }
 
 export interface CvData {
+  keyAchievements: string[]
   name: string
   jobTitle: string
   location: string
+  phone: string
   email: string
   github: string
   linkedin: string
@@ -110,9 +112,19 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
   const aboutLang = about ? pickLang(about, lang) : undefined
 
   return {
+    keyAchievements: lang === 'en' ? [
+      'Architected and shipped SIPEKAD academic information system serving 1,000+ students across 5 departments',
+      'Built Python + SQL ETL pipeline processing 5,000+ government employee records, reducing migration from weeks to hours',
+      'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
+    ] : [
+      'Mengarsiteki dan mengirimkan sistem informasi akademik SIPEKAD yang melayani 1.000+ mahasiswa di 5 departemen',
+      'Membangun pipeline ETL Python + SQL yang memproses 5.000+ data pegawai pemerintah, memangkas migrasi dari minggu ke jam',
+      'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
+    ],
     name: profile?.name ?? 'Mochamad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),
     location: profile?.location ?? '',
+    phone: profile?.phone ?? '',
     email: profile?.email ?? '',
     github: profile?.github ?? '',
     linkedin: profile?.linkedin ?? '',

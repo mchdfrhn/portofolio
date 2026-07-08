@@ -243,6 +243,7 @@ export default config({
         github: fields.text({ label: 'GitHub URL' }),
         linkedin: fields.text({ label: 'LinkedIn URL' }),
         email: fields.text({ label: 'Email Address' }),
+        phone: fields.text({ label: 'Phone Number' }),
         softwareHouseName: fields.text({ label: 'Software House Name' }),
         softwareHouseShortName: fields.text({ label: 'Software House Short Name' }),
         softwareHouseUrl: fields.text({ label: 'Software House URL' }),

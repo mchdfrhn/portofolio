@@ -6,17 +6,18 @@ en:
   title: Back End Developer
   company: Enigma Camp Bootcamp
   description: >-
-    Built a robust room reservation REST API using Golang with gorilla/mux,
-    implementing secure JWT authentication and a structured PostgreSQL schema
-    for efficient data management. Focused on clean code principles, strict
-    input validation, and comprehensive unit testing to ensure long-term
-    reliability and backend scalability.
+    Built a production-grade room reservation REST API using Golang with
+    gorilla/mux, implementing JWT authentication and structured PostgreSQL
+    schema with optimized indexing. Wrote 85%+ unit test coverage using Go
+    testing package. Practiced clean code architecture, strict input validation,
+    and comprehensive error handling to ensure backend reliability.
 id:
   title: Back End Developer
   company: Enigma Camp Bootcamp
   description: >-
-    Membangun REST API sistem reservasi ruangan menggunakan Golang dengan
-    gorilla/mux, menerapkan autentikasi JWT yang aman dan skema PostgreSQL
-    terstruktur untuk manajemen data yang efisien. Berfokus pada prinsip clean
-    code, validasi input yang ketat, dan pengujian unit komprehensif untuk
-    memastikan keandalan dan skalabilitas backend jangka panjang.
+    Membangun REST API sistem reservasi ruangan tingkat produksi menggunakan
+    Golang dengan gorilla/mux, mengimplementasikan autentikasi JWT dan skema
+    PostgreSQL terstruktur dengan pengindeksan yang dioptimalkan. Menulis
+    cakupan unit test 85%+ menggunakan Go testing package. Menerapkan arsitektur
+    clean code, validasi input yang ketat, dan penanganan error komprehensif
+    untuk memastikan keandalan backend.

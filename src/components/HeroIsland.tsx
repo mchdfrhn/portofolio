@@ -16,7 +16,7 @@ function CSSFallback() {
         style={{
           top: '10%',
           right: '10%',
-          background: 'radial-gradient(ellipse, rgba(56, 189, 248, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(59, 130, 246, 0.3) 0%, transparent 70%)',
           filter: 'blur(80px)',
           animation: 'aurora-float-1 18s ease-in-out infinite alternate',
         }}
@@ -26,7 +26,7 @@ function CSSFallback() {
         style={{
           bottom: '20%',
           left: '15%',
-          background: 'radial-gradient(ellipse, rgba(167, 139, 250, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(96, 165, 250, 0.25) 0%, transparent 70%)',
           filter: 'blur(80px)',
           animation: 'aurora-float-2 22s ease-in-out infinite alternate',
         }}

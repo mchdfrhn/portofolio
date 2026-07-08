@@ -4,17 +4,18 @@ icon: Shield
 colorTheme: green
 fullWidth: false
 tech:
-  - Jenkins
   - GitHub Actions
+  - Docker
+  - Shell Scripting
 en:
   title: CI/CD & Automation
   description: >-
     Designing automated testing, build, backup, and deployment workflows using
-    GitHub Actions, scripting, and practical DevOps processes so releases stay
+    GitHub Actions, Docker pipelines, and shell scripting so releases stay
     consistent and repeatable.
 id:
   title: CI/CD & Otomatisasi
   description: >-
     Merancang workflow otomatis untuk testing, build, backup, dan deployment
-    menggunakan GitHub Actions, scripting, dan proses DevOps praktis supaya
+    menggunakan GitHub Actions, pipeline Docker, dan shell scripting supaya
     rilis lebih konsisten dan repeatable.

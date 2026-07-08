@@ -167,7 +167,7 @@ export const ContactForm = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       onSubmit={handleSubmit}
-      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border bg-card p-5 text-left shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:space-y-6 sm:p-8 dark:bg-card/40 dark:shadow-2xl"
+      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border bg-card p-5 text-left shadow-sm backdrop-blur-xl sm:space-y-6 sm:p-8 dark:bg-card/40 dark:shadow-none"
     >
       <input
         type="text"

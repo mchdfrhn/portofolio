@@ -4,6 +4,8 @@ icon: Layout
 colorTheme: primary
 fullWidth: false
 tech:
+  - TypeScript
+  - Node.js
   - Express.js
   - Laravel
   - Next.js
@@ -12,12 +14,13 @@ tech:
 en:
   title: Fullstack Development
   description: >-
-    Building end-to-end web applications that connect maintainable backend
-    services with responsive, user-friendly interfaces. Focused on database
-    design, API reliability, performance, and security.
+    Building end-to-end web applications with TypeScript and Node.js that connect
+    maintainable backend services with responsive, user-friendly interfaces.
+    Focused on database design, API reliability, performance, and security.
 id:
   title: Pengembangan Fullstack
   description: >-
-    Membangun aplikasi web end-to-end yang menghubungkan backend maintainable
-    dengan antarmuka responsif dan mudah digunakan. Fokus pada desain database,
-    reliabilitas API, performa, dan keamanan.
+    Membangun aplikasi web end-to-end dengan TypeScript dan Node.js yang
+    menghubungkan backend maintainable dengan antarmuka responsif dan mudah
+    digunakan. Fokus pada desain database, reliabilitas API, performa, dan
+    keamanan.

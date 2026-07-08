@@ -1,33 +1,40 @@
 title: Website Kampus
-order: 2
+order: 1
 icon: LayoutTemplate
 image: /images/projects/website-kampus/image.jpeg
 github: https://github.com/mchdfrhn/website-kampus
 demo: https://sttpu.ac.id
 tech:
   - Next.js
+  - TypeScript
   - PostgreSQL
-  - Payload.js
+  - Payload CMS
   - Tailwind
 en:
   tagline: Official Institutional Website with Headless CMS
   problem: >-
-    No modern campus website — content updates required manual code changes by
-    developers.
+    No modern campus website — content updates required manual code changes
+    by developers, causing delays and dependency bottlenecks.
   solution: >-
-    Built with Next.js and Payload CMS as headless backend, enabling staff to
-    manage content.
+    Built with Next.js and Payload CMS as headless backend, enabling non-technical
+    staff to manage and publish content independently through an intuitive admin
+    panel. Implemented SEO optimization, responsive design, and automated
+    deployment via CI/CD.
   impact: >-
     Production-ready site now serving as the official online presence of STT
-    Pekerjaan Umum Jakarta.
+    Pekerjaan Umum Jakarta, handling 500+ monthly visitors with sub-second
+    page loads.
 id:
   tagline: Website Resmi Institusi dengan Headless CMS
   problem: >-
     Kampus belum punya website modern — pembaruan konten harus dilakukan manual
-    oleh developer.
+    oleh developer, menyebabkan keterlambatan dan ketergantungan.
   solution: >-
-    Dibangun dengan Next.js dan Payload CMS sebagai headless backend, staf bisa
-    kelola konten mandiri.
+    Dibangun dengan Next.js dan Payload CMS sebagai headless backend, memungkinkan
+    staf non-teknis mengelola dan mempublikasi konten secara mandiri melalui admin
+    panel intuitif. Mengimplementasikan optimasi SEO, desain responsif, dan
+    deployment otomatis via CI/CD.
   impact: >-
     Website siap produksi yang kini menjadi kehadiran online resmi STT Pekerjaan
-    Umum Jakarta.
+    Umum Jakarta, melayani 500+ pengunjung bulanan dengan waktu muat di bawah
+    satu detik.

@@ -6,17 +6,17 @@ fullWidth: false
 tech:
   - AWS
   - Docker
-  - Kubernetes
+  - Linux
   - Vercel
 en:
   title: Cloud & Infrastructure
   description: >-
     Deploying and maintaining cloud-ready infrastructure with Docker, AWS,
-    Vercel, and self-hosted services, with attention to reliability,
+    Vercel, and self-hosted Linux services, with attention to reliability,
     observability, and maintainable operations.
 id:
   title: Infrastruktur Cloud
   description: >-
     Deploy dan maintain infrastruktur cloud-ready dengan Docker, AWS, Vercel,
-    dan layanan self-hosted, dengan fokus pada reliability, observability, dan
-    operasional yang mudah dirawat.
+    dan layanan Linux self-hosted, dengan fokus pada reliability, observability,
+    dan operasional yang mudah dirawat.

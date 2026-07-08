@@ -3,19 +3,23 @@ type: work
 period: Jan 2026 - Apr 2026
 order: 2
 en:
-  title: Fullstack Developer Intern
+  title: Fullstack Developer
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
-    Developed an integrated personnel and functional position management
-    dashboard to digitalize HR data monitoring across departments. Engineered
-    Python and SQL automation scripts to accurately clean and import thousands
-    of employee records, ensuring data integrity and real-time synchronization.
+    Built an integrated HR dashboard to digitalize personnel and functional
+    position management across 10+ departments. Engineered Python and SQL ETL
+    pipelines to clean and import 5,000+ employee records, reducing data
+    migration from manual weeks to automated hours. Implemented granular RBAC
+    and real-time data synchronization with Supabase, serving 200+ active
+    government users.
 id:
-  title: Magang Fullstack Developer
+  title: Fullstack Developer
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
-    Membangun dashboard manajemen kepegawaian dan jabatan fungsional untuk
-    mendigitalkan proses monitoring data SDM lintas departemen. Merancang skrip
-    otomasi Python dan SQL untuk membersihkan dan mengimpor ribuan data
-    pegawai secara akurat, memastikan integritas data dan sinkronisasi
-    real-time.
+    Membangun dashboard HR terintegrasi untuk mendigitalkan manajemen
+    kepegawaian dan jabatan fungsional lintas 10+ departemen. Merancang
+    pipeline ETL menggunakan Python dan SQL untuk membersihkan dan mengimpor
+    5.000+ data pegawai, memangkas migrasi data dari hitungan minggu secara
+    manual menjadi hitungan jam. Mengimplementasikan RBAC granular dan
+    sinkronisasi data real-time dengan Supabase, melayani 200+ pengguna
+    pemerintah aktif.

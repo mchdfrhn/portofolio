@@ -26,12 +26,14 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
       divider: '#cccccc',
     }
 
+    // ── Header ──
     doc.fontSize(20).font('Helvetica-Bold').fillColor(C.black).text(data.name)
     doc.fontSize(11).font('Helvetica').fillColor(C.accent).text(data.jobTitle)
     doc.moveDown(0.3)
 
     const contactLine = [
       data.location,
+      data.phone,
       data.email,
       data.github.replace('https://', ''),
       data.linkedin.replace('https://', ''),
@@ -45,6 +47,7 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
       .strokeColor(C.divider).lineWidth(0.5).stroke()
     doc.moveDown(0.6)
 
+    // ── Helpers ──
     const section = (title: string) => {
       doc.fontSize(10).font('Helvetica-Bold').fillColor(C.black)
         .text(title.toUpperCase(), { characterSpacing: 0.8 })
@@ -61,7 +64,7 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
     }
 
     const descBullets = (description: string) => {
-      const parts = description.split(/\.\s+/).filter(Boolean)
+      const parts = description.split(/\\.\\s+/).filter(Boolean)
       for (const part of parts) {
         const s = part.trim()
         bullet(s.endsWith('.') ? s : `${s}.`)
@@ -75,44 +78,30 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
       doc.font('Helvetica').fillColor(C.dark).text(text)
     }
 
+    // ── Profile ──
     if (data.summary) {
       section(lang === 'en' ? 'Profile' : 'Profil')
       doc.fontSize(9).font('Helvetica').fillColor(C.dark)
         .text(data.summary, { lineGap: 1 })
       if (data.softwareHouseName) {
         doc.moveDown(0.25)
-        compactBullet(
-          lang === 'en' ? 'Software House' : 'Software House',
+        compactBullet('Software House',
           [data.softwareHouseName, data.softwareHouseUrl ? data.softwareHouseUrl.replace('https://', '') : '']
-            .filter(Boolean)
-            .join(' - '),
-        )
+            .filter(Boolean).join(' - '))
       }
       doc.moveDown(0.6)
     }
 
-    section(lang === 'en' ? 'Work Experience' : 'Pengalaman Kerja')
-
-    for (const job of data.workExperience) {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(job.title)
-      doc.fontSize(9).font('Helvetica').fillColor(C.light)
-        .text(`${job.company}  •  ${job.period}`)
-      doc.moveDown(0.25)
-      descBullets(job.description)
+    // ── Key Achievements ──
+    if (data.keyAchievements?.length) {
+      section(lang === 'en' ? 'Key Achievements' : 'Pencapaian Utama')
+      for (const a of data.keyAchievements) {
+        bullet(a)
+      }
       doc.moveDown(0.6)
     }
 
-    section(lang === 'en' ? 'Education' : 'Pendidikan')
-
-    for (const edu of data.education) {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(edu.title)
-      doc.fontSize(9).font('Helvetica').fillColor(C.light)
-        .text(`${edu.company}  •  ${edu.period}`)
-      doc.moveDown(0.25)
-      descBullets(edu.description)
-      doc.moveDown(0.6)
-    }
-
+    // ── Technical Skills (moved above work experience) ──
     section(lang === 'en' ? 'Technical Skills' : 'Keahlian Teknis')
 
     if (data.techStack.length) {
@@ -126,14 +115,24 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
       doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)
         .text(`${exp.name}: `, { continued: true })
       doc.font('Helvetica').fillColor(C.gray).text(exp.tech.join(', '))
-      if (exp.description) {
-        doc.fontSize(8).font('Helvetica').fillColor(C.gray)
-          .text(exp.description, { indent: 8, lineGap: 1 })
-      }
+      // ponytail: skip expertise description in PDF to save space; add when multi-page CV needed
     }
 
     doc.moveDown(0.6)
 
+    // ── Work Experience ──
+    section(lang === 'en' ? 'Work Experience' : 'Pengalaman Kerja')
+
+    for (const job of data.workExperience) {
+      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(job.title)
+      doc.fontSize(9).font('Helvetica').fillColor(C.light)
+        .text(`${job.company}  •  ${job.period}`)
+      doc.moveDown(0.25)
+      descBullets(job.description)
+      doc.moveDown(0.6)
+    }
+
+    // ── Projects ──
     section(lang === 'en' ? 'Projects' : 'Proyek')
 
     for (const proj of data.projects) {
@@ -155,6 +154,18 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
           .text(links.join('  |  '), { indent: 8 })
       }
       doc.moveDown(0.5)
+    }
+
+    // ── Education (at bottom) ──
+    section(lang === 'en' ? 'Education' : 'Pendidikan')
+
+    for (const edu of data.education) {
+      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(edu.title)
+      doc.fontSize(9).font('Helvetica').fillColor(C.light)
+        .text(`${edu.company}  •  ${edu.period}`)
+      doc.moveDown(0.25)
+      descBullets(edu.description)
+      doc.moveDown(0.6)
     }
 
     doc.end()

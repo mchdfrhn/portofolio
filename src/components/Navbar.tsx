@@ -74,9 +74,9 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#")}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="group flex items-center gap-1.5 rounded-lg px-2 py-1.5 transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] sm:gap-2 sm:px-3"
+          className="group flex items-center gap-1.5 rounded-lg px-2 py-1.5 transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-[0_0_20px_rgba(37,99,235,0.15)] sm:gap-2 sm:px-3"
         >
-          <span className="font-mono text-lg font-bold text-primary-neon tracking-tight drop-shadow-[0_0_8px_rgba(56,189,248,0.6)] sm:text-xl">
+          <span className="font-mono text-lg font-bold text-primary-neon tracking-tight drop-shadow-[0_0_8px_rgba(59,130,246,0.6)] sm:text-xl">
             &gt;_
           </span>
           <div className="flex items-baseline">
@@ -108,7 +108,7 @@ export const Navbar = () => {
                 {hoveredNav === link.key && (
                   <motion.span
                     layoutId="desktop-nav-hover-line"
-                    className="absolute inset-x-1.5 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+                    className="absolute inset-x-1.5 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(59,130,246,0.8)]"
                     initial={{ opacity: 0, scaleX: 0.35 }}
                     animate={{ opacity: 1, scaleX: 1 }}
                     exit={{ opacity: 0, scaleX: 0.35 }}
@@ -174,7 +174,7 @@ export const Navbar = () => {
                     {hoveredMobileNav === link.key && (
                       <motion.span
                         layoutId="mobile-nav-hover-line"
-                        className="absolute inset-x-0 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(56,189,248,0.8)]"
+                        className="absolute inset-x-0 bottom-0 h-px rounded-full bg-primary-neon shadow-[0_0_10px_rgba(59,130,246,0.8)]"
                         initial={{ opacity: 0, scaleX: 0.25 }}
                         animate={{ opacity: 1, scaleX: 1 }}
                         exit={{ opacity: 0, scaleX: 0.25 }}

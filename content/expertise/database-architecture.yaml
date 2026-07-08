@@ -10,7 +10,13 @@ tech:
   - Redis
 en:
   title: Database Architecture
-  description: Ensuring sub-second queries by optimizing indexing and architectures in relational (PostgreSQL, MySQL) and NoSQL (MongoDB) data stores.
+  description: >-
+    Designing and optimizing database architectures — relational (PostgreSQL,
+    MySQL) and NoSQL (MongoDB) — with proper indexing, query optimization, and
+    caching strategies (Redis) for sub-second response times.
 id:
-  title: Desain Database
-  description: Rancang dan optimalkan arsitektur database — baik relasional (PostgreSQL, MySQL) maupun NoSQL (MongoDB), disesuaikan dengan kebutuhan sistem.
+  title: Arsitektur Database
+  description: >-
+    Merancang dan mengoptimalkan arsitektur database — relasional (PostgreSQL,
+    MySQL) dan NoSQL (MongoDB) — dengan pengindeksan yang tepat, optimasi query,
+    dan strategi caching (Redis) untuk waktu respons di bawah satu detik.

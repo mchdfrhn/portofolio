@@ -27,18 +27,18 @@ const iconMap = { Layout, Cloud, Shield, Database, Zap } as const;
 const themeMap = {
   primary: {
     cardHover:
-      "hover:border-primary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(56,189,248,0.25)]",
+      "hover:border-primary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(37,99,235,0.25)]",
     gradient: "from-primary-neon/5",
     iconWrap:
-      "bg-primary-neon/10 text-primary-neon border-primary-neon/20 group-hover:bg-primary-neon/20 shadow-[0_0_15px_rgba(56,189,248,0.1)]",
+      "bg-primary-neon/10 text-primary-neon border-primary-neon/20 group-hover:bg-primary-neon/20 shadow-[0_0_15px_rgba(37,99,235,0.1)]",
     tag: "bg-primary-neon/10 text-primary-neon border-primary-neon/20",
   },
   secondary: {
     cardHover:
-      "hover:border-secondary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(167,139,250,0.25)]",
+      "hover:border-secondary-neon/40 hover:shadow-[0_15px_40px_-5px_rgba(59,130,246,0.25)]",
     gradient: "from-secondary-neon/5",
     iconWrap:
-      "bg-secondary-neon/10 text-secondary-neon border-secondary-neon/20 group-hover:bg-secondary-neon/20 shadow-[0_0_15px_rgba(167,139,250,0.1)]",
+      "bg-secondary-neon/10 text-secondary-neon border-secondary-neon/20 group-hover:bg-secondary-neon/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]",
     tag: "bg-secondary-neon/10 text-secondary-neon border-secondary-neon/20",
   },
   green: {
