@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- Dark rounded background -->
-  <rect width="32" height="32" rx="7" fill="#0f1117"/>
-  <!-- Neon glow layer -->
-  <rect width="32" height="32" rx="7" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.25"/>
-  <!-- Letter F (bold, centered) using path for consistent rendering -->
-  <!-- Vertical bar -->
-  <rect x="9" y="7" width="3.5" height="18" rx="1" fill="#38bdf8"/>
-  <!-- Top horizontal bar -->
-  <rect x="9" y="7" width="13" height="3.5" rx="1" fill="#38bdf8"/>
-  <!-- Middle horizontal bar -->
-  <rect x="9" y="14.25" width="10" height="3" rx="1" fill="#38bdf8"/>
-  <!-- Subtle dot/cursor accent bottom-right -->
-  <rect x="21" y="22" width="3" height="3" rx="0.75" fill="#7dd3fc" opacity="0.8"/>
+  <!-- Drawing sheet: paper, ink frame, monogram F and the orange "frhn." dot -->
+  <rect width="32" height="32" fill="#F5F2EB"/>
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#1E1C19" stroke-width="2"/>
+  <path d="M8 7h14v3.5H11.5v4H20V18h-8.5v7H8z" fill="#1E1C19"/>
+  <rect x="20" y="21" width="4" height="4" fill="#C2410C"/>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      rect:first-of-type { fill: #121110 }
+      rect:nth-of-type(2) { stroke: #E5E1D6 }
+      path { fill: #E5E1D6 }
+      rect:last-of-type { fill: #FF8A47 }
+    }
+  </style>
 </svg>

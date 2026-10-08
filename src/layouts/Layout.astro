@@ -36,7 +36,9 @@ const fonts =
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)" />
@@ -44,6 +46,7 @@ const fonts =
 		<title>{title}</title>
 
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="frhn.dev" />
 		<meta property="og:url" content={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
