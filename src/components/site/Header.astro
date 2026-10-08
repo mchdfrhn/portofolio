@@ -47,7 +47,7 @@ const nav = [
     const lang = root.classList.toggle('lang-id') ? 'id' : 'en'
     root.lang = lang
     save('lang', lang)
-    // GithubActivity (React island) listens for this
+    // Kept for any client script that needs to react to language changes
     window.dispatchEvent(new CustomEvent('languagechange', { detail: lang }))
   })
 

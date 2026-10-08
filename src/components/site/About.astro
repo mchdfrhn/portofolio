@@ -1,7 +1,7 @@
 ---
 import Bi from './Bi.astro'
 import Sheet from './Sheet.astro'
-import { GithubActivity } from '../GithubActivity'
+import CommitLog from './CommitLog.astro'
 import { reader } from '@/lib/reader'
 
 const expertise = (await reader.collections.expertise.all())
@@ -66,5 +66,11 @@ const principles = [
     ))}
   </dl>
 
-  <GithubActivity client:visible />
+  <h3 class="mt-14 font-serif text-2xl"><Bi en="Commit log" id="Log commit" /></h3>
+  <p class="mb-4 mt-1 text-sm text-muted-foreground"><Bi en="Contributions on GitHub over the past year" id="Kontribusi di GitHub selama setahun terakhir" /></p>
+  <div class="border-y border-border py-5">
+    <CommitLog server:defer>
+      <p slot="fallback" class="h-[115px] font-mono text-xs text-muted-foreground"><Bi en="Loading…" id="Memuat…" /></p>
+    </CommitLog>
+  </div>
 </Sheet>

@@ -119,3 +119,10 @@ html.lang-id [data-lang="en"] {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Commit log (CommitLog.astro): paper → safety orange */
+.commit-l0 { fill: hsl(var(--border) / 0.6); }
+.commit-l1 { fill: hsl(var(--primary) / 0.25); }
+.commit-l2 { fill: hsl(var(--primary) / 0.5); }
+.commit-l3 { fill: hsl(var(--primary) / 0.75); }
+.commit-l4 { fill: hsl(var(--primary)); }

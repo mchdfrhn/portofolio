@@ -1,0 +1,60 @@
+---
+// Server island: fetched per request (cached at the CDN), drawn as plain SVG with no client JS.
+import Bi from './Bi.astro'
+import { getContributions } from '@/lib/contributions'
+import { GITHUB_URL } from '@/lib/config'
+
+const data = await getContributions('mchdfrhn')
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400')
+
+const CELL = 11
+const GAP = 3
+const STEP = CELL + GAP
+const TOP = 16
+
+// Pad the first week so each column runs Sunday → Saturday, like GitHub's graph
+const days = data?.days ?? []
+const lead = days.length ? new Date(`${days[0].date}T00:00:00Z`).getUTCDay() : 0
+const weeks = Math.ceil((lead + days.length) / 7)
+const cells = days.map((d, i) => ({ ...d, x: Math.floor((lead + i) / 7) * STEP, y: TOP + ((lead + i) % 7) * STEP }))
+
+const monthFmt = { en: new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }), id: new Intl.DateTimeFormat('id', { month: 'short', timeZone: 'UTC' }) }
+const width = weeks * STEP - GAP
+// Skip a label that would be clipped at the right edge
+const months = cells
+  .filter((c, i) => c.date.endsWith('-01') && i > 0 && c.x < width - 24)
+  .map((c) => ({ x: c.x, date: new Date(`${c.date}T00:00:00Z`) }))
+const height = TOP + 7 * STEP - GAP
+---
+{data ? (
+  <div>
+    {/* rtl scroller so narrow screens open on the most recent months */}
+    <div class="overflow-x-auto" dir="rtl">
+      <svg dir="ltr" viewBox={`0 0 ${width} ${height}`} width={width} height={height} class="max-w-none font-mono" role="img" aria-label={`${data.total} GitHub contributions in the last year`}>
+        {months.map((m) => (
+          <text x={m.x} y="10" class="fill-muted-foreground text-[9px]">
+            <tspan data-lang="en">{monthFmt.en.format(m.date)}</tspan><tspan data-lang="id">{monthFmt.id.format(m.date)}</tspan>
+          </text>
+        ))}
+        {cells.map((c) => (
+          <rect x={c.x} y={c.y} width={CELL} height={CELL} class={`commit-l${c.level}`}>
+            <title>{c.date}: {c.count}</title>
+          </rect>
+        ))}
+      </svg>
+    </div>
+    <p class="mt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-muted-foreground">
+      <span><Bi en={`${data.total} contributions in the last year`} id={`${data.total} kontribusi dalam setahun terakhir`} /></span>
+      <span class="flex items-center gap-1">
+        <Bi en="Less" id="Sedikit" />
+        {[0, 1, 2, 3, 4].map((l) => <svg width="10" height="10" aria-hidden="true"><rect width="10" height="10" class={`commit-l${l}`} /></svg>)}
+        <Bi en="More" id="Banyak" />
+      </span>
+    </p>
+  </div>
+) : (
+  <p class="text-sm text-muted-foreground">
+    <Bi en="The contribution graph is unavailable right now — " id="Grafik kontribusi sedang tidak tersedia — " />
+    <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="link text-foreground"><Bi en="see it on GitHub ↗︎" id="lihat di GitHub ↗︎" /></a>
+  </p>
+)}

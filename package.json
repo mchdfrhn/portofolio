@@ -20,7 +20,6 @@
     "pdfkit": "^0.18.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-github-calendar": "^5.0.6",
     "resend": "^6.12.2",
     "tailwindcss": "^3.4.19"
   },
