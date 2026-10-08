@@ -1,8 +1,5 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import '../styles/globals.css';
-import SmoothScroll from '../components/SmoothScroll.astro';
-import LanguageLoader from '../components/LanguageLoader';
 import { SITE_DESCRIPTION, OG_IMAGE, SITE_URL } from '../lib/config';
 
 interface Props {
@@ -11,136 +8,75 @@ interface Props {
 }
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
+const fonts =
+	'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<script is:inline>
-			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
-			})();
-
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark');
-			} else {
-				document.documentElement.classList.add('dark');
-			}
-
-			window.localStorage.setItem('theme', theme);
-
+			// Theme + language are applied before paint so neither flashes.
 			(() => {
-				const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-				window.__reducedMotion = rm;
-				if (rm) document.documentElement.classList.add('reduced-motion');
+				const root = document.documentElement;
+				let theme = null;
+				let lang = null;
+				try {
+					theme = localStorage.getItem('theme');
+					lang = localStorage.getItem('lang');
+				} catch {}
+				if (!theme) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				root.classList.toggle('dark', theme === 'dark');
+				if (lang === 'id') {
+					root.classList.add('lang-id');
+					root.lang = 'id';
+				}
 			})();
 		</script>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="canonical" href={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#0a0a1a" media="(prefers-color-scheme: dark)" />
-		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)" />
 		<title>{title}</title>
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${SITE_URL}${Astro.url.pathname}`} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={OG_IMAGE} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Mochammad Farhan Ali" />
+		<meta property="og:url" content={`${SITE_URL}${Astro.url.pathname}`} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={OG_IMAGE} />
 
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={OG_IMAGE} />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={`${SITE_URL}${Astro.url.pathname}`} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={OG_IMAGE} />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap"></noscript>
-        
-        <!-- JSON-LD Structured Data Schema -->
-        <script type="application/ld+json" set:html={JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Mochammad Farhan Ali",
-          "url": "https://frhn.dev",
-          "jobTitle": "Fullstack Developer & Cloud Infrastructure",
-          "description": "Fullstack Developer focused on building scalable web applications, academic systems, and reliable backend infrastructure.",
-          "address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
-          "email": "mochamadfarhanali@gmail.com",
-          "sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
-          "knowsAbout": ["TypeScript", "Next.js", "React", "Laravel", "Golang", "PostgreSQL", "Docker", "AWS", "Tailwind"],
-          "hasCredential": [],
-          "worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan.tech" }
-        })} />
-        
-		<ClientRouter />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href={fonts} />
+
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Mochammad Farhan Ali",
+			"url": SITE_URL,
+			"jobTitle": "Fullstack Developer",
+			"description": "Fullstack Developer building end-to-end web applications with TypeScript, React, Next.js, Node.js, and Golang, with experience in REST API design, PostgreSQL, CI/CD, and cloud deployment on Docker and AWS.",
+			"address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
+			"email": "mochamadfarhanali@gmail.com",
+			"sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
+			"knowsAbout": ["Fullstack Development", "TypeScript", "React", "Next.js", "Node.js", "Laravel", "Golang", "REST API", "PostgreSQL", "Docker", "AWS", "CI/CD", "GitHub Actions", "Tailwind"],
+			"worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan.tech" }
+		})} />
 	</head>
-	<body class="bg-background text-foreground antialiased selection:bg-primary selection:text-white font-sans">
-		<div class="relative flex min-h-screen flex-col">
-            <LanguageLoader client:load />
-			<slot />
-		</div>
-		<SmoothScroll />
+	<body class="min-h-screen">
+		<slot />
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--font-sans: 'Geist', sans-serif;
-	}
-    html {
-        font-family: var(--font-sans);
-    }
-</style>
-
-<script>
-  // Section reveal via IntersectionObserver (progressive enhancement)
-  // Step 1: Add 'reveal-ready' to set initial hidden state via CSS
-  // Step 2: IntersectionObserver adds 'revealed' when element enters viewport
-  // If JS fails, elements stay visible (default CSS state)
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const delay = entry.target.getAttribute('data-reveal-delay');
-          if (delay) {
-            (entry.target as HTMLElement).style.transitionDelay = `${delay}s`;
-          }
-          entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  function initReveals() {
-    const viewportH = window.innerHeight;
-    document.querySelectorAll('[data-reveal], .hero-stagger').forEach((el) => {
-      if (el.classList.contains('revealed')) return;
-      const rect = el.getBoundingClientRect();
-      // Only hide elements below viewport — above-fold stays visible
-      if (rect.top > viewportH) {
-        el.classList.add('reveal-ready');
-      }
-      revealObserver.observe(el);
-    });
-  }
-
-  initReveals();
-  document.addEventListener('astro:after-swap', initReveals);
-</script>

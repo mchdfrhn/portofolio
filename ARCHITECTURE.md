@@ -1,91 +1,40 @@
-# 📱 Architecture Design: Mobile-First Vibe Coder Portfolio
+# Architecture & Design Notes
 
-This document outlines the architectural decisions focusing on **Mobile-First Design**, performance, and a premium adaptive aesthetic for the **Vibe Coder** portfolio.
+## Concept: "public works"
 
-## 🚀 1. Mobile-First System Design
+Most of what Farhan builds is software for public institutions: an academic system for STT Pekerjaan Umum and an HR system for Pusdatin, Kementerian Pekerjaan Umum. The site borrows from the visual language of public-works engineering drawings instead of generic developer-portfolio patterns.
 
-The application follows a strictly mobile-first approach. All layouts are designed for small viewports as the "baseline," with progressive enhancement (Astro Islands) and layout expansion (Tailwind Breakpoints) for larger screens.
+- **Drafting paper and ink.** Warm off-white background with a faint 24px grid, near-black text. Dark mode is the same drawing at night.
+- **One accent.** Safety orange (`--primary`), used for numbers, links on hover, and selection. No gradients and no second accent colour.
+- **Sheets.** Each section is a numbered "sheet" (`01 ABOUT`, `02 SELECTED WORK`, …) with a ruled label, rendered by `Sheet.astro`.
+- **Title block.** The footer is drawn as the title block in the corner of an engineering drawing. This is the site's one signature detail; don't add others.
 
-```mermaid
-graph TD
-    A[Astro Router] --> B{Mobile-First Layout}
-    B --> C[Core Content (Stacked)]
-    B --> D[React Islands]
-    
-    C --> C1[Hero (Text-First)]
-    C --> C2[Bento Grid (Auto-Reflow)]
-    C --> C3[Experience Timeline]
-    
-    D --> D1[Adaptive Theme System]
-    D --> D2[Interactive Mobile Menu]
-    D --> D3[Premium Animations]
-    
-    subgraph "Progressive Enhancement"
-        C
-        D
-    end
-```
+### Rules
 
----
+1. Character comes from content and consistent choices, not from effects. Don't add loaders, custom cursors, marquees, scroll-jacking, 3D scenes, glow buttons, or bento grids.
+2. Motion is limited to colour transitions and a slight image zoom on hover. `prefers-reduced-motion` disables both.
+3. Copy is first person and specific. Numbers must be ones Farhan can defend in an interview.
 
-## 🛠️ 2. Core Technology Stack
+## Typography
 
-| Technology | Purpose | Rationale |
-| :--- | :--- | :--- |
-| **Astro v5** | SSG Framework | Zero-JS by default for lightning-fast mobile loads. |
-| **React 19** | Adaptive UI | used for the Theme Toggle and the Mobile Navigation. |
-| **Tailwind CSS** | Styling | **Mobile-First Utility Classes** (e.g., `grid-cols-1 md:grid-cols-3`). |
-| **GSAP & Splitting** | High-End Motion | Precise entrance animations synchronized with smooth scrolling. |
-| **Lenis & ScrollTrigger**| Gesture-First Scroll | Professional smooth scrolling that works natively with touch. |
-| **Simple Icons** | Official Branding | Crisp, high-fidelity SVGs for the Tech Stack marquee. |
+| Role | Font | Usage |
+| --- | --- | --- |
+| Display | Instrument Serif | `h1`, section sub-headings, project titles |
+| Body | IBM Plex Sans | paragraphs, UI |
+| Annotation | IBM Plex Mono | labels, periods, tech lists, sheet numbers |
 
----
+## Layout
 
-## 🌓 3. Adaptive Theming System
+Single column, `max-w-3xl`, sticky header. Order: Intro → About (story, how I work, toolbox, commit log) → Selected work → Experience → Contact → title-block footer.
 
-The portfolio implements a robust **Dark/Light/Auto** theme system:
-1.  **Flicker-Free Initialization**: A blocking `is:inline` script in the HTML `<head>` reads `localStorage` or `prefers-color-scheme` *before* the first paint.
-2.  **State Management**: Theme persistence is handled via `localStorage` to ensure a consistent experience across sessions.
-3.  **UI/UX Integration**: A dedicated `ThemeToggle` component in the Navbar provides a seamless bridge between user preferences.
+Each project also gets a pre-rendered case study page at `/projects/[slug]`, built from the `problem`, `solution`, and `impact` fields in `content/projects/*.yaml`.
 
----
+## Bilingual content and theming
 
-## 📁 4. Project Organization
+- `Bi.astro` renders both languages: `<span data-lang="en">` and `<span data-lang="id">`.
+- An inline script in `Layout.astro` reads `localStorage` before paint and sets `.dark` and `.lang-id` on `<html>`. CSS in `globals.css` hides the inactive language.
+- The header toggles flip those classes, persist them, and dispatch a `languagechange` event that the GitHub calendar island listens for.
 
-```text
-src/
-├── components/
-│   ├── theme/          # Theme switching logic and UI
-│   ├── ui/             # Mobile-optimized primitives
-│   ├── AboutBento.astro # Bento grid with fluid auto-rows
-│   └── SmoothScroll.astro # Global scroll & animation proxy
-├── layouts/
-│   └── Layout.astro    # Base HTML with Theme-Blocking script
-├── pages/
-│   └── index.astro     # Mobile-first section stacking
-└── styles/
-    └── globals.css     # Design tokens with HSL theme overrides
-```
+## Content
 
----
-
-## ✨ 5. Engineering Patterns (Mobile Focus)
-
-### 🍱 Responsive Bento Grid
-Our bento layouts use `grid-cols-1` for mobile and only expand to `md:grid-cols-2` or `md:grid-cols-3` once screen space permits. Rows use `auto-rows` with minimum height constraints instead of fixed pixels.
-
-### 📜 Touch-Native Scrolling
-Animations are specifically adjusted for touch gestures using Lenis's `touchMultiplier`, ensuring that GSAP triggers feel responsive and fluid on mobile browsers.
-
----
-
-## 🏗️ 6. Build & Optimization pipeline
-
-1. **JIT Compilation**: Only shipping the minimal required mobile-first CSS.
-2. **Pre-Rendering**: All pages are pre-rendered to static HTML for instant mobile access.
-3. **Asset Optimization**: Adaptive loading for images where necessary (WebP/AVIF).
-
----
-
-> [!IMPORTANT]
-> **Mobile-First Mantra**: If it doesn't look stunning on a phone, it shouldn't be on the portfolio. Standard desktop-to-mobile conversion is prohibited; all features must be conceived mobile-first.
+All content lives in `content/` as YAML and is read at build time through `src/lib/reader.ts` (Keystatic). The same data feeds the CV PDFs (`src/lib/cv-data.ts`, `src/lib/cv-pdf.ts`).

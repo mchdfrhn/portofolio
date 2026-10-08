@@ -11,7 +11,7 @@ en:
   badge: Available for freelance & full-time opportunities
   title1: Fullstack Developer
   title2: '& Cloud Infrastructure'
-  subtitle: I build scalable web applications, academic systems, and reliable backend infrastructure from code to production.
+  subtitle: I build scalable web applications with TypeScript, Next.js, and Golang — from REST APIs and databases to CI/CD and cloud deployment.
   ctaContact: Let's discuss your project
   ctaProjects: See case studies
   codeRole: '"Building scalable web systems"'
@@ -23,7 +23,7 @@ id:
   badge: Terbuka untuk peluang freelance & full-time
   title1: Fullstack Developer
   title2: '& Cloud Infrastructure'
-  subtitle: Saya membangun aplikasi web skalabel, sistem akademik, dan infrastruktur backend yang reliable dari kode hingga produksi.
+  subtitle: Saya membangun aplikasi web skalabel dengan TypeScript, Next.js, dan Golang — dari REST API dan database hingga CI/CD dan cloud deployment.
   ctaContact: Diskusikan proyek Anda
   ctaProjects: Lihat studi kasus
   codeRole: '"Membangun sistem web skalabel"'

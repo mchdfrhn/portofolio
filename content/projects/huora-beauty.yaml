@@ -1,0 +1,34 @@
+title: Huora Beauty × Twenty Eight
+order: 4
+icon: LayoutTemplate
+image: /images/projects/huora-beauty/cover.png
+year: '2026'
+inCv: false
+github: ''
+demo: ''
+tech:
+  - Next.js
+  - Tailwind CSS
+  - Vercel
+en:
+  tagline: Clinic landing page · client project at Surupan Software House
+  problem: >-
+    A premium beauty clinic needed a website that matched its brand and made
+    it easy for visitors to book a treatment.
+  solution: >-
+    Designed and built a landing page with Next.js and Tailwind CSS: an
+    elegant layout, fluid animations, and a booking flow that hands visitors
+    straight to WhatsApp. Deployed on Vercel.
+  impact: >-
+    The clinic's landing page, with WhatsApp as the single booking channel.
+id:
+  tagline: Landing page klinik · proyek klien Surupan Software House
+  problem: >-
+    Klinik kecantikan premium membutuhkan website yang sesuai dengan brand-nya
+    dan memudahkan pengunjung untuk booking treatment.
+  solution: >-
+    Merancang dan membangun landing page dengan Next.js dan Tailwind CSS:
+    layout elegan, animasi halus, dan alur booking yang langsung mengarahkan
+    pengunjung ke WhatsApp. Di-deploy di Vercel.
+  impact: >-
+    Landing page klinik dengan WhatsApp sebagai satu-satunya kanal booking.

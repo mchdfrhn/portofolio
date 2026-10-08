@@ -1,0 +1,76 @@
+---
+import Bi from './Bi.astro'
+import Sheet from './Sheet.astro'
+import CommitLog from './CommitLog.astro'
+import { reader } from '@/lib/reader'
+
+const expertise = (await reader.collections.expertise.all())
+  .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
+
+// ponytail: draft principles — Farhan should rewrite these in his own words
+const principles = [
+  {
+    en: ['Learn the paperwork first.', 'Before modelling a process I sit with the people who do it by hand. The spreadsheet usually knows edge cases the spec doesn\'t.'],
+    id: ['Pahami kertasnya dulu.', 'Sebelum memodelkan proses, saya duduk dengan orang yang mengerjakannya secara manual. Spreadsheet-nya biasanya tahu edge case yang tidak ada di spesifikasi.'],
+  },
+  {
+    en: ['Pick boring tools.', 'PostgreSQL, Next.js and Go — things I can debug when they break in production.'],
+    id: ['Pilih tools yang membosankan.', 'PostgreSQL, Next.js, dan Go — tools yang bisa saya debug saat rusak di produksi.'],
+  },
+  {
+    en: ['Leave a map.', 'Every system I hand over ships with documentation and an architecture diagram.'],
+    id: ['Tinggalkan peta.', 'Setiap sistem yang saya serahkan disertai dokumentasi dan diagram arsitektur.'],
+  },
+  {
+    en: ['Ship, then tighten.', 'Get a working version in front of real users, then fix what they actually run into.'],
+    id: ['Rilis, lalu rapikan.', 'Taruh versi yang berjalan di depan pengguna sungguhan, lalu perbaiki yang benar-benar mereka alami.'],
+  },
+]
+---
+<Sheet id="about" no="01" en="About" idLabel="Tentang">
+  <div class="max-w-2xl space-y-5 text-[1.0625rem] leading-relaxed">
+    <p>
+      <Bi
+        en="Most of what I've built replaces a spreadsheet, a stack of paper, or a WhatsApp group. At STT PU that meant SIPEKAD, the system around 300 active students now use to submit academic requests. At Pusdatin it meant moving the records of 140+ employees out of Excel files and into one dashboard."
+        id="Sebagian besar yang saya bangun menggantikan spreadsheet, tumpukan kertas, atau grup WhatsApp. Di STT PU itu berarti SIPEKAD, sistem yang kini dipakai sekitar 300 mahasiswa aktif untuk pengajuan akademik. Di Pusdatin itu berarti memindahkan data 140+ pegawai dari file Excel ke satu dashboard."
+      />
+    </p>
+    <p>
+      <Bi
+        en="I like the unglamorous parts: data models that survive real-world mess, migrations that don't lose rows, and documentation the next developer will actually read. I'm still finishing my informatics degree, so I'm learning as I ship."
+        id="Saya suka bagian yang tidak glamor: model data yang tahan dengan data dunia nyata yang berantakan, migrasi yang tidak kehilangan baris, dan dokumentasi yang benar-benar dibaca developer berikutnya. Saya masih menyelesaikan kuliah informatika, jadi saya belajar sambil merilis."
+      />
+    </p>
+  </div>
+
+  <h3 class="mb-4 mt-14 font-serif text-2xl"><Bi en="How I work" id="Cara saya bekerja" /></h3>
+  <ol class="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+    {principles.map((p, i) => (
+      <li class="border-t border-border pt-3">
+        <p class="font-medium">
+          <span class="mr-2 font-mono text-xs text-primary">{String(i + 1).padStart(2, '0')}</span>
+          <Bi en={p.en[0]} id={p.id[0]} />
+        </p>
+        <p class="mt-1 text-sm leading-relaxed text-muted-foreground"><Bi en={p.en[1]} id={p.id[1]} /></p>
+      </li>
+    ))}
+  </ol>
+
+  <h3 class="mb-4 mt-14 font-serif text-2xl"><Bi en="Toolbox" id="Peralatan" /></h3>
+  <dl class="divide-y divide-border border-y border-border text-sm">
+    {expertise.map(({ entry }) => (
+      <div class="grid gap-1 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
+        <dt class="font-medium"><Bi en={entry.en.title ?? entry.name} id={entry.id.title ?? entry.name} /></dt>
+        <dd class="font-mono text-[13px] text-muted-foreground">{entry.tech.join(' · ')}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <h3 class="mt-14 font-serif text-2xl"><Bi en="Commit log" id="Log commit" /></h3>
+  <p class="mb-4 mt-1 text-sm text-muted-foreground"><Bi en="Contributions on GitHub over the past year" id="Kontribusi di GitHub selama setahun terakhir" /></p>
+  <div class="border-y border-border py-5">
+    <CommitLog server:defer>
+      <p slot="fallback" class="h-[115px] font-mono text-xs text-muted-foreground"><Bi en="Loading…" id="Memuat…" /></p>
+    </CommitLog>
+  </div>
+</Sheet>

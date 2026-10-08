@@ -1,69 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Navbar } from '@/components/Navbar';
-import Hero from '@/components/Hero.astro';
-import AboutBento from '@/components/AboutBento.astro';
-import AboutDescription from '@/components/AboutDescription.astro';
-import { Projects, type ProjectData } from '@/components/Projects';
-
-import Services from '@/components/Services.astro';
-import Experience from '@/components/Experience.astro';
-import StackMarquee from '@/components/StackMarquee.astro';
-import Contact from '@/components/Contact.astro';
-import Footer from '@/components/Footer.astro';
-
-import StickyCTA from '@/components/StickyCTA';
-import { reader } from '@/lib/reader';
-
-const rawProjects = await reader.collections.projects.all();
-rawProjects.sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99));
-
-const projectsData: ProjectData[] = rawProjects.map(({ slug, entry }) => ({
-  slug,
-  title: entry.title,
-  icon: entry.icon,
-  image: entry.image ?? null,
-  github: entry.github,
-  demo: entry.demo,
-  tech: [...entry.tech],
-  en: { ...entry.en },
-  id: { ...entry.id },
-}));
+import Header from '@/components/site/Header.astro';
+import Intro from '@/components/site/Intro.astro';
+import About from '@/components/site/About.astro';
+import Work from '@/components/site/Work.astro';
+import Experience from '@/components/site/Experience.astro';
+import Contact from '@/components/site/Contact.astro';
+import Footer from '@/components/site/Footer.astro';
 ---
 
-<Layout title="Mochammad Farhan Ali | Fullstack Developer | Vibe Coder">
-	<Navbar client:visible />
-	
-	<main class="w-full mx-auto overflow-x-hidden">
-        <Hero />
-        
-        <!-- About Section -->
-        <div class="w-full bg-secondary/30 dark:bg-white/[0.02] border-y border-border">
-            <div class="max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 py-16 md:py-32 space-y-16 md:space-y-40">
-                <AboutBento />
-                <AboutDescription />
-            </div>
-        </div>
-
-        <!-- Projects & Experience -->
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 py-16 md:py-32 space-y-16 md:space-y-40">
-            <Services />
-            <Projects client:visible projects={projectsData} />
-
-            <Experience />
-        </div>
+<Layout title="Mochammad Farhan Ali · Fullstack Developer in Jakarta">
+	<Header />
+	<main class="mx-auto max-w-3xl px-4 sm:px-6">
+		<Intro />
+		<About />
+		<Work />
+		<Experience />
+		<Contact />
 	</main>
-    
-    <div class="w-full">
-        <StackMarquee />
-    </div>
-
-    <!-- Contact & Footer -->
-    <div class="bg-secondary/30 dark:bg-white/[0.02] border-t border-border">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-10 lg:px-16 pb-10 pt-14 md:pb-12 md:pt-24">
-            <Contact />
-        </div>
-    	<Footer />
-    </div>
-	<StickyCTA client:only="react" />
+	<Footer />
 </Layout>

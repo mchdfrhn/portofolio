@@ -28,6 +28,20 @@ export default config({
           directory: 'public/images/projects',
           publicPath: '/images/projects/',
         }),
+        gallery: fields.array(
+          fields.object({
+            image: fields.image({
+              label: 'Screenshot',
+              directory: 'public/images/projects',
+              publicPath: '/images/projects/',
+            }),
+            captionEn: fields.text({ label: 'Caption (EN)' }),
+            captionId: fields.text({ label: 'Caption (ID)' }),
+          }),
+          { label: 'Gallery', itemLabel: (props) => props.fields.captionEn.value || 'Screenshot' }
+        ),
+        year: fields.text({ label: 'Year', description: 'e.g. 2025' }),
+        inCv: fields.checkbox({ label: 'Show in CV PDF', defaultValue: true }),
         github: fields.text({ label: 'GitHub URL' }),
         demo: fields.text({ label: 'Demo URL' }),
         tech: fields.array(

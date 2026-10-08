@@ -1,12 +1,19 @@
 import PDFDocument from 'pdfkit'
 import type { CvData, Lang } from './cv-data'
 
+// ATS notes: single column, standard section names, real text (no images/tables),
+// standard fonts, and every link written out as plain text.
 export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({
       size: 'A4',
-      margins: { top: 50, bottom: 50, left: 60, right: 60 },
-      info: { Title: `CV - ${data.name}`, Author: data.name },
+      margins: { top: 48, bottom: 48, left: 56, right: 56 },
+      info: {
+        Title: `${data.name} - ${data.jobTitle} - CV`,
+        Author: data.name,
+        Subject: data.jobTitle,
+        Keywords: data.skillGroups.flatMap((g) => g.items).join(', '),
+      },
     })
 
     const chunks: Buffer[] = []
@@ -16,156 +23,126 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
 
     const CONTENT_WIDTH = doc.page.width - doc.page.margins.left - doc.page.margins.right
     const X = doc.page.margins.left
+    const en = lang === 'en'
 
     const C = {
-      black: '#111111',
-      dark: '#333333',
-      gray: '#555555',
-      light: '#888888',
-      accent: '#0070f3',
-      divider: '#cccccc',
+      ink: '#111111',
+      body: '#2b2b2b',
+      meta: '#555555',
+      rule: '#999999',
     }
 
+    const stripProtocol = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')
+
     // ── Header ──
-    doc.fontSize(20).font('Helvetica-Bold').fillColor(C.black).text(data.name)
-    doc.fontSize(11).font('Helvetica').fillColor(C.accent).text(data.jobTitle)
+    doc.font('Helvetica-Bold').fontSize(20).fillColor(C.ink).text(data.name)
+    doc.font('Helvetica').fontSize(11).fillColor(C.body).text(data.jobTitle)
     doc.moveDown(0.3)
 
-    const contactLine = [
-      data.location,
-      data.phone,
-      data.email,
-      data.github.replace('https://', ''),
-      data.linkedin.replace('https://', ''),
-      data.softwareHouseUrl ? data.softwareHouseUrl.replace('https://', '') : '',
-    ].filter(Boolean).join('  |  ')
-
-    doc.fontSize(9).fillColor(C.gray).text(contactLine)
-    doc.moveDown(0.6)
-
-    doc.moveTo(X, doc.y).lineTo(X + CONTENT_WIDTH, doc.y)
-      .strokeColor(C.divider).lineWidth(0.5).stroke()
-    doc.moveDown(0.6)
+    // Short lines so no URL gets wrapped mid-way
+    const contactLines = [
+      [data.location, data.phone, data.email],
+      [data.linkedin, data.github, data.softwareHouseUrl].filter(Boolean).map(stripProtocol),
+    ]
+    doc.fontSize(9).fillColor(C.meta)
+    for (const line of contactLines) {
+      const text = line.filter(Boolean).join('  |  ')
+      if (text) doc.text(text)
+    }
+    doc.moveDown(0.8)
 
     // ── Helpers ──
     const section = (title: string) => {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.black)
-        .text(title.toUpperCase(), { characterSpacing: 0.8 })
-      doc.moveDown(0.15)
-      doc.moveTo(X, doc.y).lineTo(X + CONTENT_WIDTH, doc.y)
-        .strokeColor(C.accent).lineWidth(1).stroke()
-      doc.moveDown(0.4)
-      doc.lineWidth(0.5)
+      keepWithNext(90)
+      doc.moveDown(0.2)
+      doc.font('Helvetica-Bold').fontSize(10.5).fillColor(C.ink).text(title.toUpperCase(), { characterSpacing: 0.6 })
+      const y = doc.y + 1
+      doc.moveTo(X, y).lineTo(X + CONTENT_WIDTH, y).strokeColor(C.rule).lineWidth(0.6).stroke()
+      doc.moveDown(0.45)
     }
 
+    // Hanging indent: wrapped lines align with the text, not the bullet
     const bullet = (text: string) => {
-      doc.fontSize(9).font('Helvetica').fillColor(C.dark)
-        .text(`•  ${text}`, { indent: 8, lineGap: 1 })
+      doc.font('Helvetica').fontSize(9.5).fillColor(C.body)
+      const y = doc.y
+      doc.text('•', X + 6, y, { lineBreak: false })
+      doc.text(text, X + 16, y, { width: CONTENT_WIDTH - 16, lineGap: 1.2 })
+      doc.x = X
     }
 
-    const descBullets = (description: string) => {
-      const parts = description.split(/\\.\\s+/).filter(Boolean)
-      for (const part of parts) {
-        const s = part.trim()
-        bullet(s.endsWith('.') ? s : `${s}.`)
-      }
+    // Start a new page instead of leaving a heading stranded at the bottom
+    const keepWithNext = (space = 70) => {
+      if (doc.y + space > doc.page.height - doc.page.margins.bottom) doc.addPage()
     }
 
-    const compactBullet = (label: string, text: string) => {
-      if (!text) return
-      doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)
-        .text(`${label}: `, { continued: true, indent: 8 })
-      doc.font('Helvetica').fillColor(C.dark).text(text)
+    const sentences = (text: string) =>
+      text.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean)
+
+    const labelLine = (label: string, value: string) => {
+      doc.font('Helvetica-Bold').fontSize(9.5).fillColor(C.ink).text(`${label}: `, { continued: true })
+      doc.font('Helvetica').fillColor(C.body).text(value, { lineGap: 1.2 })
     }
 
-    // ── Profile ──
+    const entryHeading = (title: string, org: string, period: string) => {
+      keepWithNext()
+      // Kept in reading order (title, then org | period) so parsers attach dates to the right job
+      doc.font('Helvetica-Bold').fontSize(10).fillColor(C.ink).text(title)
+      doc.font('Helvetica').fontSize(9.5).fillColor(C.meta).text([org, period].filter(Boolean).join('  |  '))
+      doc.moveDown(0.2)
+    }
+
+    // ── Summary ──
     if (data.summary) {
-      section(lang === 'en' ? 'Profile' : 'Profil')
-      doc.fontSize(9).font('Helvetica').fillColor(C.dark)
-        .text(data.summary, { lineGap: 1 })
-      if (data.softwareHouseName) {
-        doc.moveDown(0.25)
-        compactBullet('Software House',
-          [data.softwareHouseName, data.softwareHouseUrl ? data.softwareHouseUrl.replace('https://', '') : '']
-            .filter(Boolean).join(' - '))
-      }
+      section(en ? 'Summary' : 'Ringkasan')
+      doc.font('Helvetica').fontSize(9.5).fillColor(C.body).text(data.summary, { lineGap: 1.2 })
       doc.moveDown(0.6)
     }
 
-    // ── Key Achievements ──
-    if (data.keyAchievements?.length) {
-      section(lang === 'en' ? 'Key Achievements' : 'Pencapaian Utama')
-      for (const a of data.keyAchievements) {
-        bullet(a)
-      }
-      doc.moveDown(0.6)
+    // ── Skills ──
+    section(en ? 'Skills' : 'Keahlian')
+    if (data.coreCompetencies.length) {
+      labelLine(en ? 'Core Competencies' : 'Kompetensi Inti', data.coreCompetencies.join(', '))
     }
-
-    // ── Technical Skills (moved above work experience) ──
-    section(lang === 'en' ? 'Technical Skills' : 'Keahlian Teknis')
-
-    if (data.techStack.length) {
-      doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)
-        .text(`${lang === 'en' ? 'Core Stack' : 'Stack Utama'}: `, { continued: true })
-      doc.font('Helvetica').fillColor(C.gray).text(data.techStack.join(', '))
-      doc.moveDown(0.25)
+    for (const group of data.skillGroups) {
+      labelLine(group.label, group.items.join(', '))
     }
-
-    for (const exp of data.expertise) {
-      doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)
-        .text(`${exp.name}: `, { continued: true })
-      doc.font('Helvetica').fillColor(C.gray).text(exp.tech.join(', '))
-      // ponytail: skip expertise description in PDF to save space; add when multi-page CV needed
-    }
-
     doc.moveDown(0.6)
 
     // ── Work Experience ──
-    section(lang === 'en' ? 'Work Experience' : 'Pengalaman Kerja')
-
+    section(en ? 'Work Experience' : 'Pengalaman Kerja')
     for (const job of data.workExperience) {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(job.title)
-      doc.fontSize(9).font('Helvetica').fillColor(C.light)
-        .text(`${job.company}  •  ${job.period}`)
-      doc.moveDown(0.25)
-      descBullets(job.description)
-      doc.moveDown(0.6)
+      entryHeading(job.title, job.company, job.period)
+      sentences(job.description).forEach(bullet)
+      doc.moveDown(0.55)
     }
 
     // ── Projects ──
-    section(lang === 'en' ? 'Projects' : 'Proyek')
-
-    for (const proj of data.projects) {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(proj.title)
-      if (proj.tagline) {
-        doc.fontSize(9).font('Helvetica').fillColor(C.light).text(proj.tagline)
+    if (data.projects.length) {
+      section(en ? 'Projects' : 'Proyek')
+      for (const proj of data.projects) {
+        keepWithNext()
+        doc.font('Helvetica-Bold').fontSize(10).fillColor(C.ink)
+          .text(proj.title, { continued: !!proj.tagline })
+        if (proj.tagline) doc.font('Helvetica').fillColor(C.meta).text(` - ${proj.tagline}`)
+        doc.font('Helvetica').fontSize(9.5).fillColor(C.meta).text(proj.tech.join(', '))
+        doc.moveDown(0.15)
+        // Work Experience already tells the story; one bullet keeps this section from repeating it
+        if (proj.solution) bullet(proj.solution)
+        const links = [proj.demo, proj.github].filter(Boolean).map((l) => stripProtocol(l!))
+        if (links.length) {
+          doc.font('Helvetica').fontSize(9).fillColor(C.meta).text(links.join('  |  '), X + 8)
+          doc.x = X
+        }
+        doc.moveDown(0.55)
       }
-      doc.fontSize(9).font('Helvetica').fillColor(C.gray)
-        .text(`Tech: ${proj.tech.join(', ')}`)
-      doc.moveDown(0.2)
-      if (proj.problem) compactBullet(lang === 'en' ? 'Problem' : 'Masalah', proj.problem)
-      if (proj.solution) compactBullet(lang === 'en' ? 'Solution' : 'Solusi', proj.solution)
-      if (proj.impact) compactBullet(lang === 'en' ? 'Impact' : 'Dampak', proj.impact)
-      const links = [proj.github, proj.demo]
-        .filter(Boolean)
-        .map((link) => link?.replace('https://', ''))
-      if (links.length) {
-        doc.fontSize(9).font('Helvetica').fillColor(C.accent)
-          .text(links.join('  |  '), { indent: 8 })
-      }
-      doc.moveDown(0.5)
     }
 
-    // ── Education (at bottom) ──
-    section(lang === 'en' ? 'Education' : 'Pendidikan')
-
+    // ── Education ──
+    section(en ? 'Education & Training' : 'Pendidikan & Pelatihan')
     for (const edu of data.education) {
-      doc.fontSize(10).font('Helvetica-Bold').fillColor(C.dark).text(edu.title)
-      doc.fontSize(9).font('Helvetica').fillColor(C.light)
-        .text(`${edu.company}  •  ${edu.period}`)
-      doc.moveDown(0.25)
-      descBullets(edu.description)
-      doc.moveDown(0.6)
+      entryHeading(edu.title, edu.company, edu.period)
+      sentences(edu.description).forEach(bullet)
+      doc.moveDown(0.4)
     }
 
     doc.end()

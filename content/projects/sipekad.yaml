@@ -1,41 +1,46 @@
-title: SIPEKAD — Sistem Informasi Akademik & Kemahasiswaan
+title: SIPEKAD — Sistem Pengajuan Akademik
 order: 1
 icon: Database
-image: /images/projects/sipekad/image.jpeg
+image: /images/projects/sipekad/cover.jpeg
+gallery:
+  - image: /images/projects/sipekad/detail-pengajuan.jpeg
+    captionEn: Submission detail — admin reviews the request and updates its status in one click
+    captionId: Detail pengajuan — admin meninjau permohonan dan memperbarui statusnya dengan sekali klik
+  - image: /images/projects/sipekad/whatsapp-bot.jpeg
+    captionEn: WhatsApp manager — status changes are sent to students automatically
+    captionId: Manajer WhatsApp — perubahan status dikirim otomatis ke mahasiswa
+year: '2025'
 github: https://github.com/mchdfrhn/sipekad-fe
 demo: https://sipekad.sttpu.ac.id
 tech:
-  - Next.js
-  - TypeScript
-  - PostgreSQL
-  - Docker
-  - REST API
+  - React
+  - Node.js
+  - WhatsApp API
 en:
-  tagline: Integrated Academic Information System
+  tagline: Academic Workflow System
   problem: >-
-    Manual academic administration made student services, data updates, and
-    document workflows slower and harder to track across 5 departments.
+    Students submitted academic letters and requests on paper and had to queue
+    for them. Staff had no single place to see what was pending, and students
+    had no way to know when their request was done.
   solution: >-
-    Built an integrated academic and student information system with structured
-    data models, responsive interfaces, RBAC, and workflow-focused modules for
-    campus services. Optimized database queries from 47/page to 3/page using
-    connection pooling (PgBouncer), query batching, and proper indexing.
+    Built a digital submission system with React and Node.js. Students submit
+    requests online, admins review them from one dashboard with a single click,
+    and every status change is sent to the student over WhatsApp.
   impact: >-
-    Serving 1,000+ active students across 5 departments. Reduced average
-    response time from ~2,400ms to ~120ms, achieving 99.7% uptime with 500+
-    concurrent users.
+    Replaced the paper queue for around 300 active students across 3 study
+    programs. Every submission is now tracked in one place and students are
+    notified automatically.
 id:
-  tagline: Sistem Informasi Akademik & Kemahasiswaan Terintegrasi
+  tagline: Sistem Alur Pengajuan Akademik
   problem: >-
-    Administrasi akademik manual membuat layanan mahasiswa, pembaruan data, dan
-    workflow dokumen lebih lambat serta sulit dilacak lintas 5 departemen.
+    Mahasiswa mengajukan surat dan permohonan akademik di atas kertas dan harus
+    mengantre. Staf tidak punya satu tempat untuk melihat pengajuan yang belum
+    diproses, dan mahasiswa tidak tahu kapan pengajuannya selesai.
   solution: >-
-    Membangun sistem informasi akademik dan kemahasiswaan terintegrasi dengan
-    model data terstruktur, antarmuka responsif, RBAC, dan modul yang fokus pada
-    workflow layanan kampus. Mengoptimasi query database dari 47/halaman menjadi
-    3/halaman menggunakan connection pooling (PgBouncer), query batching, dan
-    pengindeksan yang tepat.
+    Membangun sistem pengajuan digital dengan React dan Node.js. Mahasiswa
+    mengajukan secara online, admin meninjau dari satu dashboard dengan sekali
+    klik, dan setiap perubahan status dikirim ke mahasiswa lewat WhatsApp.
   impact: >-
-    Melayani 1.000+ mahasiswa aktif di 5 departemen. Memangkas rata-rata waktu
-    respons dari ~2.400ms menjadi ~120ms, mencapai uptime 99,7% dengan 500+
-    user concurrent.
+    Menggantikan antrean kertas untuk sekitar 300 mahasiswa aktif di 3 program
+    studi. Semua pengajuan kini tercatat di satu tempat dan mahasiswa mendapat
+    notifikasi otomatis.

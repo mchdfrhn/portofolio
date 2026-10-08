@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://frhn.dev/sitemap.xml
+Sitemap: https://www.mochamadfarhanali.my.id/sitemap.xml

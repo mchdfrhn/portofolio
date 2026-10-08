@@ -1,0 +1,57 @@
+---
+import Bi from './Bi.astro'
+
+interface Props {
+  home?: boolean
+}
+const { home = true } = Astro.props
+const base = home ? '' : '/'
+const nav = [
+  { href: `${base}#work`, en: 'Work', id: 'Proyek' },
+  { href: `${base}#experience`, en: 'Experience', id: 'Pengalaman' },
+  { href: `${base}#contact`, en: 'Contact', id: 'Kontak' },
+]
+---
+<header class="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur-sm">
+  <div class="mx-auto flex h-14 max-w-3xl items-center justify-between gap-4 px-4 sm:px-6">
+    <a href="/" class="font-mono text-sm font-medium tracking-tight">
+      frhn<span class="text-primary">.</span>
+    </a>
+    <nav class="flex items-center gap-4 text-sm sm:gap-6">
+      {nav.map((item) => (
+        <a href={item.href} class="hidden text-muted-foreground transition-colors hover:text-foreground sm:inline">
+          <Bi en={item.en} id={item.id} />
+        </a>
+      ))}
+      <div class="flex items-center gap-1 font-mono text-xs">
+        <button type="button" data-toggle-lang class="rounded-sm px-2 py-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground" aria-label="Switch language / Ganti bahasa">
+          <span data-lang="en">EN<span class="text-border"> / </span><span class="opacity-50">ID</span></span>
+          <span data-lang="id"><span class="opacity-50">EN</span><span class="text-border"> / </span>ID</span>
+        </button>
+        <button type="button" data-toggle-theme class="rounded-sm px-2 py-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground" aria-label="Toggle dark mode">
+          <span class="dark:hidden"><Bi en="Dark" id="Gelap" /></span>
+          <span class="hidden dark:inline"><Bi en="Light" id="Terang" /></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement
+  const save = (key: string, value: string) => {
+    try { localStorage.setItem(key, value) } catch {}
+  }
+
+  document.querySelector('[data-toggle-lang]')?.addEventListener('click', () => {
+    const lang = root.classList.toggle('lang-id') ? 'id' : 'en'
+    root.lang = lang
+    save('lang', lang)
+    // Kept for any client script that needs to react to language changes
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: lang }))
+  })
+
+  document.querySelector('[data-toggle-theme]')?.addEventListener('click', () => {
+    save('theme', root.classList.toggle('dark') ? 'dark' : 'light')
+  })
+</script>

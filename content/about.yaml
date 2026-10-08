@@ -2,16 +2,17 @@ en:
   badge: Who I Am
   title: About Me
   description: >-
-    Fullstack Developer focused on building scalable web applications,
-    academic systems, and reliable backend infrastructure with strong
-    cloud and DevOps skills.
+    Fullstack Developer building end-to-end web applications with TypeScript,
+    React, Next.js, Node.js, and Golang. Experienced in REST API design,
+    database architecture (PostgreSQL), CI/CD with GitHub Actions, and cloud
+    deployment with Docker and AWS for academic and government systems.
+    Founder of Surupan Software House.
   currentLabel: Currently
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Designed and engineered SIPEKAD, an integrated academic and student
-    information system built with Next.js and PostgreSQL, digitalizing campus
-    services and automating previously manual bureaucratic processes.
+    Designed and engineered SIPEKAD, an academic submission system built with
+    React, Node.js, and the WhatsApp API that replaced the campus paper queue.
   techTitle: Tech Stack
   yearsLabel: Years Coding
   expertiseBadge: Expertise
@@ -30,16 +31,17 @@ id:
   badge: Siapa Saya
   title: Tentang Saya
   description: >-
-    Fullstack Developer yang fokus membangun aplikasi web skalabel,
-    sistem akademik, dan infrastruktur backend yang reliable dengan
-    keahlian cloud dan DevOps.
+    Fullstack Developer yang membangun aplikasi web end-to-end dengan
+    TypeScript, React, Next.js, Node.js, dan Golang. Berpengalaman dalam desain
+    REST API, arsitektur database (PostgreSQL), CI/CD dengan GitHub Actions,
+    serta cloud deployment dengan Docker dan AWS untuk sistem akademik dan
+    pemerintahan. Founder Surupan Software House.
   currentLabel: Saat ini
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan
-    terintegrasi berbasis Next.js dan PostgreSQL, yang mendigitalisasi layanan
-    kampus dan mengotomasi proses birokrasi manual.
+    Merancang dan membangun SIPEKAD, sistem pengajuan akademik berbasis React,
+    Node.js, dan WhatsApp API yang menggantikan antrean kertas di kampus.
   techTitle: Stack Teknologi
   yearsLabel: Tahun Coding
   expertiseBadge: Keahlian

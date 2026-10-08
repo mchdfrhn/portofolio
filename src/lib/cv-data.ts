@@ -26,8 +26,14 @@ export interface ProjectItem {
   demo?: string
 }
 
+export interface SkillGroup {
+  label: string
+  items: string[]
+}
+
 export interface CvData {
-  keyAchievements: string[]
+  skillGroups: SkillGroup[]
+  coreCompetencies: string[]
   name: string
   jobTitle: string
   location: string
@@ -44,6 +50,15 @@ export interface CvData {
   education: ExperienceItem[]
   expertise: ExpertiseItem[]
   projects: ProjectItem[]
+}
+
+const ID_MONTHS: Record<string, string> = { May: 'Mei', Aug: 'Agu', Oct: 'Okt', Dec: 'Des' }
+
+function localizePeriod(period: string, lang: Lang) {
+  if (lang === 'en') return period
+  return period
+    .replace(/\bPresent\b/, 'Sekarang')
+    .replace(/\b(May|Aug|Oct|Dec)\b/g, (m) => ID_MONTHS[m])
 }
 
 export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
@@ -66,7 +81,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       return {
         title: l.title ?? '',
         company: l.company ?? '',
-        period: e.entry.period ?? '',
+        period: localizePeriod(e.entry.period ?? '', lang),
         description: l.description ?? '',
       }
     })
@@ -79,7 +94,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       return {
         title: l.title ?? '',
         company: l.company ?? '',
-        period: e.entry.period ?? '',
+        period: localizePeriod(e.entry.period ?? '', lang),
         description: l.description ?? '',
       }
     })
@@ -95,7 +110,10 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       }
     })
 
-  const projects: ProjectItem[] = projectEntries.map((p) => {
+  const projects: ProjectItem[] = projectEntries
+    .filter((p) => p.entry.inCv !== false)
+    .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
+    .map((p) => {
     const l = pickLang(p.entry, lang)
     return {
       title: p.entry.title ?? '',
@@ -112,14 +130,33 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
   const aboutLang = about ? pickLang(about, lang) : undefined
 
   return {
-    keyAchievements: lang === 'en' ? [
-      'Architected and shipped SIPEKAD academic information system serving 1,000+ students across 5 departments',
-      'Built Python + SQL ETL pipeline processing 5,000+ government employee records, reducing migration from weeks to hours',
-      'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
+    // Plain "Label: a, b, c" lines parse cleanly in ATS keyword extraction
+    skillGroups: [
+      { label: lang === 'en' ? 'Languages' : 'Bahasa Pemrograman', items: ['TypeScript', 'JavaScript', 'Go', 'PHP', 'Python', 'SQL'] },
+      { label: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
+      { label: 'Backend', items: ['Node.js', 'Express.js', 'Laravel', 'Go (Gin)', 'REST API', 'JWT', 'WhatsApp API'] },
+      { label: 'Database', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase'] },
+      { label: 'Cloud & DevOps', items: ['Docker', 'AWS', 'Vercel', 'Linux', 'GitHub Actions', 'Shell Scripting', 'Git'] },
+      { label: 'CMS', items: ['Payload CMS', 'Keystatic'] },
+    ],
+    coreCompetencies: lang === 'en' ? [
+      'Fullstack End-to-End Development',
+      'REST API Design',
+      'Database Architecture',
+      'CI/CD',
+      'Cloud Deployment',
+      'Unit Testing (Go testing, 85%+ coverage)',
+      'Role-Based Access Control (RBAC)',
+      'ETL & Data Migration',
     ] : [
-      'Mengarsiteki dan mengirimkan sistem informasi akademik SIPEKAD yang melayani 1.000+ mahasiswa di 5 departemen',
-      'Membangun pipeline ETL Python + SQL yang memproses 5.000+ data pegawai pemerintah, memangkas migrasi dari minggu ke jam',
-      'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
+      'Pengembangan Fullstack End-to-End',
+      'Desain REST API',
+      'Arsitektur Database',
+      'CI/CD',
+      'Cloud Deployment',
+      'Unit Testing (Go testing, cakupan 85%+)',
+      'Role-Based Access Control (RBAC)',
+      'ETL & Migrasi Data',
     ],
     name: profile?.name ?? 'Mochammad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),

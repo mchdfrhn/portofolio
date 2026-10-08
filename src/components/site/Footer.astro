@@ -1,0 +1,36 @@
+---
+// Footer drawn as the title block found in the corner of an engineering drawing.
+import Bi from './Bi.astro'
+
+const year = new Date().getFullYear()
+const rev = new Date().toISOString().slice(0, 7).replace('-', '.')
+const cell = 'border-border px-3 py-2'
+const label = 'block font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground'
+---
+<footer class="mx-auto max-w-3xl px-4 pb-10 pt-6 sm:px-6">
+  <div class="grid grid-cols-2 border border-foreground/80 text-sm sm:grid-cols-4">
+    <div class={`${cell} col-span-2 border-b sm:border-r`}>
+      <span class={label}><Bi en="Project" id="Proyek" /></span>
+      <span class="font-serif text-lg leading-tight">Mochammad Farhan Ali — <Bi en="Portfolio" id="Portofolio" /></span>
+    </div>
+    <div class={`${cell} border-b border-r`}>
+      <span class={label}><Bi en="Drawn by" id="Digambar oleh" /></span>
+      M. F. Ali
+    </div>
+    <div class={`${cell} border-b`}>
+      <span class={label}>Rev.</span>
+      <span class="font-mono">{rev}</span>
+    </div>
+    <div class={`${cell} col-span-2 border-r sm:col-span-2`}>
+      <span class={label}><Bi en="Built with" id="Dibuat dengan" /></span>
+      Astro · Tailwind
+    </div>
+    <div class={`${cell} col-span-2`}>
+      <span class={label}><Bi en="Studio" id="Studio" /></span>
+      <a href="https://surupan.tech" target="_blank" rel="noopener noreferrer" class="link">Surupan Software House</a>
+    </div>
+  </div>
+  <p class="mt-4 font-mono text-[11px] text-muted-foreground">
+    © {year} · <Bi en="Scale 1:1. Do not measure from this drawing." id="Skala 1:1. Jangan mengukur dari gambar ini." />
+  </p>
+</footer>

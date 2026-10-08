@@ -1,58 +1,44 @@
-# 📱 frhn.dev - Mobile-First Vibe Coder Portfolio
+# Mochammad Farhan Ali — Portfolio
 
-A modern, high-performance portfolio built with **Astro**, **React**, **Tailwind CSS**, and premium animations. Mobile-first design with smooth scrolling, adaptive theming, and optimized build pipeline.
+Portfolio of Mochammad Farhan Ali, Fullstack Developer. Built with **Astro**, **Tailwind CSS**, and **Keystatic** for content. Design notes live in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-## ✨ Features
+## Features
 
-- **Mobile-First Design**: Progressive enhancement from mobile baseline to desktop
-- **Zero-JS by Default**: Astro SSG for lightning-fast static site generation
-- **React Islands**: Interactive components (Theme Toggle, Navbar, Projects) only when needed
-- **Premium Animations**: GSAP + Splitting.js for text animations
-- **Smooth Scrolling**: Lenis + ScrollTrigger for gesture-native scroll experience
-- **Adaptive Theming**: Dark/Light/Auto theme with flicker-free initialization
-- **Responsive Layouts**: Tailwind CSS with mobile-first utility classes
-- **Docker Ready**: Multi-stage build for production deployment
+- **Mostly zero-JS**: every section is a static Astro component; the only React island is the GitHub contribution calendar
+- **Case study pages**: one pre-rendered page per project at `/projects/[slug]`
+- **Bilingual (EN/ID)**: both languages render server-side; a class on `<html>` picks one before paint
+- **Light/dark theme**: applied before paint, no flash
+- **CMS-driven content**: profile, experience, expertise, and projects are YAML files under `content/`, editable via Keystatic in dev
+- **CV as PDF**: `/cv-en.pdf` and `/cv-id.pdf` are generated from the same content with pdfkit
 
-## 🛠 Tech Stack
+## Tech Stack
 
-| Technology         | Purpose                             |
-| ------------------ | ----------------------------------- |
-| **Astro 5**        | SSG framework with zero-JS default  |
-| **React 19**       | Interactive UI components (islands) |
-| **Tailwind CSS 3** | Mobile-first utility styling        |
-| **GSAP 3**         | High-end motion graphics            |
-| **Lenis 1**        | Gesture-native smooth scrolling     |
-| **Splitting.js**   | Text animation support              |
-| **TypeScript**     | Type-safe development               |
-| **Tailwind UI**    | Premium UI components               |
+| Technology         | Purpose                               |
+| ------------------ | ------------------------------------- |
+| **Astro 5**        | Framework, static + server rendering  |
+| **Tailwind CSS 3** | Styling via design tokens             |
+| **Keystatic**      | Local, Git-based content editing      |
+| **React 19**       | GitHub calendar island                |
+| **pdfkit**         | CV PDF generation                     |
+| **Resend**         | Contact form email delivery           |
+| **TypeScript**     | Type-safe development                 |
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
+content/                        # YAML content (Keystatic)
 src/
 ├── components/
-│   ├── Hero.astro              # Hero section with text animations
-│   ├── AboutBento.astro        # Bento grid about section
-│   ├── Projects.tsx            # Portfolio projects showcase
-│   ├── Experience.astro        # Experience timeline
-│   ├── Navbar.tsx              # Navigation with theme toggle
-│   ├── Footer.astro            # Footer with social links
-│   ├── SmoothScroll.astro      # Lenis + ScrollTrigger setup
-│   ├── Contact.astro           # Contact form
-│   ├── StackMarquee.astro      # Tech stack marquee
-│   ├── ThemeToggle.tsx         # Dark/light theme switcher
-│   └── ui/                     # Reusable UI components
-├── layouts/
-│   └── Layout.astro            # Base layout with theme initialization
+│   ├── site/                   # Page sections: Header, Intro, About, Work, Experience, Contact, Footer
+│   └── GithubActivity.tsx      # Contribution calendar (React island)
+├── layouts/Layout.astro        # <head>, theme + language bootstrap
+├── lib/                        # Content reader, CV data + PDF builder, config
 ├── pages/
-│   └── index.astro             # Homepage
-├── lib/
-│   └── config.ts               # Configuration from .env
-└── styles/
-    └── globals.css             # Global design tokens
-
-public/
-└── [static assets]
+│   ├── index.astro             # Homepage
+│   ├── projects/[slug].astro   # Case study pages
+│   ├── cv-{en,id}.pdf.ts       # CV PDFs
+│   └── api/contact.ts          # Contact form endpoint
+└── styles/globals.css          # Design tokens
 ```
 
 ## 🚀 Getting Started
@@ -67,8 +53,8 @@ public/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/mchdfrhn/my-portofolio.git
-   cd my-portofolio
+   git clone https://github.com/mchdfrhn/portofolio.git
+   cd portofolio
    ```
 
 2. **Install dependencies**
@@ -128,7 +114,7 @@ docker-compose up
 Create `.env` file with:
 
 ```env
-PUBLIC_SITE_TITLE=frhn.dev
+PUBLIC_SITE_TITLE=Mochammad Farhan Ali
 PUBLIC_SITE_DESCRIPTION=Your description
 PUBLIC_OG_IMAGE=/og-image.png
 PUBLIC_GITHUB_URL=https://github.com/your-username
@@ -143,7 +129,7 @@ See `.env.example` for template.
 Theme is managed via:
 
 1. **Initialization**: Blocking script in `<head>` reads localStorage/prefers-color-scheme
-2. **Toggle**: `ThemeToggle` component in Navbar
+2. **Toggle**: button in `src/components/site/Header.astro`
 3. **Persistence**: localStorage
 
 ## 📊 Performance
@@ -157,10 +143,9 @@ Theme is managed via:
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed design decisions, including:
 
-- Mobile-first system design
-- Adaptive theming implementation
-- Smooth scrolling integration
-- Build & optimization pipeline
+- The "public works" design concept
+- Colour, type, and layout rules
+- How bilingual content and theming work
 
 ## 🤝 Contributing
 
@@ -172,7 +157,7 @@ MIT License - feel free to use this as a template for your portfolio.
 
 ## 🔗 Links
 
-- **Portfolio**: https://frhn.dev
+- **Portfolio**: https://www.mochamadfarhanali.my.id
 - **GitHub**: https://github.com/mchdfrhn
 - **LinkedIn**: https://www.linkedin.com/in/mchdfrhn
 - **Email**: mochamadfarhanali@gmail.com

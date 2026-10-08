@@ -1,0 +1,37 @@
+---
+import Bi from './Bi.astro'
+import Sheet from './Sheet.astro'
+import { getProjects } from '@/lib/projects'
+
+const projects = await getProjects()
+---
+<Sheet id="work" no="02" en="Selected work" idLabel="Proyek pilihan">
+  <ol class="space-y-12">
+    {projects.map(({ slug, entry }, i) => (
+      <li class="group grid gap-4 sm:grid-cols-[3rem_1fr]">
+        <p class="font-mono text-sm">
+          <span class="text-primary">{String(i + 1).padStart(2, '0')}</span>
+          {entry.year && <span class="block text-xs text-muted-foreground sm:mt-1">{entry.year}</span>}
+        </p>
+        <div>
+          <h3 class="font-serif text-3xl leading-tight">
+            <a href={`/projects/${slug}`} class="transition-colors hover:text-primary">{entry.title}</a>
+          </h3>
+          <p class="mt-1 text-muted-foreground"><Bi en={entry.en.tagline} id={entry.id.tagline} /></p>
+          {entry.image && (
+            <a href={`/projects/${slug}`} class="mt-5 block overflow-hidden rounded-sm border border-border">
+              <img src={entry.image} alt="" loading="lazy" class="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
+            </a>
+          )}
+          <p class="mt-5 max-w-2xl leading-relaxed"><Bi en={entry.en.impact} id={entry.id.impact} /></p>
+          <p class="mt-3 font-mono text-xs text-muted-foreground">{entry.tech.join(' · ')}</p>
+          <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <a href={`/projects/${slug}`} class="link font-medium"><Bi en="Read the case study →" id="Baca studi kasus →" /></a>
+            {entry.demo && <a href={entry.demo} target="_blank" rel="noopener noreferrer" class="link text-muted-foreground">Live ↗︎</a>}
+            {entry.github && <a href={entry.github} target="_blank" rel="noopener noreferrer" class="link text-muted-foreground"><Bi en="Code ↗︎" id="Kode ↗︎" /></a>}
+          </div>
+        </div>
+      </li>
+    ))}
+  </ol>
+</Sheet>
