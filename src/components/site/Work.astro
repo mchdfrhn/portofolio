@@ -9,7 +9,10 @@ const projects = await getProjects()
   <ol class="space-y-12">
     {projects.map(({ slug, entry }, i) => (
       <li class="group grid gap-4 sm:grid-cols-[3rem_1fr]">
-        <span class="font-mono text-sm text-primary">{String(i + 1).padStart(2, '0')}</span>
+        <p class="font-mono text-sm">
+          <span class="text-primary">{String(i + 1).padStart(2, '0')}</span>
+          {entry.year && <span class="block text-xs text-muted-foreground sm:mt-1">{entry.year}</span>}
+        </p>
         <div>
           <h3 class="font-serif text-3xl leading-tight">
             <a href={`/projects/${slug}`} class="transition-colors hover:text-primary">{entry.title}</a>

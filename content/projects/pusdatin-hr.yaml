@@ -1,7 +1,18 @@
 title: Sistem Kepegawaian & Jabatan Fungsional Pusdatin
 order: 2
 icon: Database
-image: /images/projects/dashboard-pegawai/image.jpeg
+image: /images/projects/pusdatin-hr/cover.jpeg
+gallery:
+  - image: /images/projects/pusdatin-hr/detail-pegawai.jpeg
+    captionEn: Employee profile — training history, years of service and pay grade on one screen
+    captionId: Profil pegawai — riwayat diklat, masa kerja, dan grade tukin dalam satu layar
+  - image: /images/projects/pusdatin-hr/statistik-pendidikan.jpeg
+    captionEn: Statistics by education level and employment status
+    captionId: Statistik berdasarkan tingkat pendidikan dan status kepegawaian
+  - image: /images/projects/pusdatin-hr/login.jpeg
+    captionEn: Admin login
+    captionId: Halaman login admin
+year: '2025'
 github: https://github.com/mchdfrhn/pusdatin-karyawan
 demo: https://pegawai-pusdatin.vercel.app
 tech:
@@ -14,7 +25,7 @@ en:
   tagline: HR Management & Functional Position System
   problem: >-
     Employee records, hierarchy changes, and functional credit points for
-    around 200 Pusdatin employees were tracked manually in spreadsheets,
+    140+ Pusdatin employees were tracked manually in spreadsheets,
     slowing down assessments and promotions.
   solution: >-
     Built an integrated HR platform with automated XLSX data ingestion,
@@ -23,14 +34,14 @@ en:
     Implemented Python + SQL ETL pipelines to migrate the existing
     spreadsheet data.
   impact: >-
-    Centralized personnel and functional position data for around 200
+    Centralized personnel and functional position data for 140+
     Pusdatin employees in one dashboard, with credit points calculated
     automatically instead of by hand.
 id:
   tagline: Sistem Manajemen Kepegawaian & Jabatan Fungsional
   problem: >-
     Data kepegawaian, perubahan hierarki, dan angka kredit jabatan fungsional
-    untuk sekitar 200 pegawai Pusdatin dikelola manual di spreadsheet,
+    untuk 140+ pegawai Pusdatin dikelola manual di spreadsheet,
     sehingga penilaian dan promosi sering terlambat.
   solution: >-
     Membangun platform HR terintegrasi dengan fitur impor data XLSX otomatis,
@@ -39,6 +50,6 @@ id:
     Mengimplementasikan pipeline ETL Python + SQL untuk memigrasikan data
     spreadsheet yang sudah ada.
   impact: >-
-    Data kepegawaian dan jabatan fungsional sekitar 200 pegawai Pusdatin kini
+    Data kepegawaian dan jabatan fungsional 140+ pegawai Pusdatin kini
     terpusat dalam satu dashboard, dengan angka kredit dihitung otomatis, bukan
     manual.

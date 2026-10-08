@@ -1,7 +1,15 @@
 title: Website Kampus
 order: 1
 icon: LayoutTemplate
-image: /images/projects/website-kampus/image.jpeg
+image: /images/projects/website-kampus/cover.jpeg
+gallery:
+  - image: /images/projects/website-kampus/berita.jpeg
+    captionEn: News listing with category filters
+    captionId: Daftar berita dengan filter kategori
+  - image: /images/projects/website-kampus/program-studi.jpeg
+    captionEn: Profiles of the 3 study programs
+    captionId: Profil 3 program studi
+year: '2026'
 github: https://github.com/mchdfrhn/website-kampus
 demo: https://sttpu.ac.id
 tech:

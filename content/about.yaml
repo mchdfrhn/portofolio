@@ -10,9 +10,8 @@ en:
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Designed and engineered SIPEKAD, an integrated academic and student
-    information system built with Next.js and PostgreSQL, digitalizing campus
-    services and automating previously manual bureaucratic processes.
+    Designed and engineered SIPEKAD, an academic submission system built with
+    React, Node.js, and the WhatsApp API that replaced the campus paper queue.
   techTitle: Tech Stack
   yearsLabel: Years Coding
   expertiseBadge: Expertise
@@ -40,9 +39,8 @@ id:
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
   currentDescription: >-
-    Merancang dan membangun SIPEKAD, sistem informasi akademik dan kemahasiswaan
-    terintegrasi berbasis Next.js dan PostgreSQL, yang mendigitalisasi layanan
-    kampus dan mengotomasi proses birokrasi manual.
+    Merancang dan membangun SIPEKAD, sistem pengajuan akademik berbasis React,
+    Node.js, dan WhatsApp API yang menggantikan antrean kertas di kampus.
   techTitle: Stack Teknologi
   yearsLabel: Tahun Coding
   expertiseBadge: Keahlian

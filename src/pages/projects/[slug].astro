@@ -38,6 +38,12 @@ const sections = [
 			<p class="mt-4 text-lg text-muted-foreground"><Bi en={entry.en.tagline} id={entry.id.tagline} /></p>
 
 			<dl class="mt-8 grid grid-cols-[6.5rem_1fr] gap-y-2 border-y border-border py-4 text-sm">
+				{entry.year && (
+					<>
+						<dt class="pt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground"><Bi en="Year" id="Tahun" /></dt>
+						<dd class="font-mono text-[13px]">{entry.year}</dd>
+					</>
+				)}
 				<dt class="pt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">Stack</dt>
 				<dd class="font-mono text-[13px]">{entry.tech.join(' · ')}</dd>
 				{entry.demo && (
@@ -58,6 +64,22 @@ const sections = [
 				<figure class="mt-10 overflow-hidden rounded-sm border border-border">
 					<img src={entry.image} alt={`${entry.title} screenshot`} class="w-full" />
 				</figure>
+			)}
+
+			{entry.gallery.length > 0 && (
+				<div class="mt-6 grid gap-6 sm:grid-cols-2">
+					{entry.gallery.map((shot, i) => (
+						<figure>
+							<a href={shot.image} target="_blank" rel="noopener" class="block overflow-hidden rounded-sm border border-border">
+								<img src={shot.image} alt={shot.captionEn} loading="lazy" class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 hover:scale-[1.02]" />
+							</a>
+							<figcaption class="mt-2 text-sm text-muted-foreground">
+								<span class="mr-1.5 font-mono text-xs text-primary">FIG. {String(i + 2).padStart(2, '0')}</span>
+								<Bi en={shot.captionEn} id={shot.captionId} />
+							</figcaption>
+						</figure>
+					))}
+				</div>
 			)}
 
 			<div class="mt-12 space-y-10">

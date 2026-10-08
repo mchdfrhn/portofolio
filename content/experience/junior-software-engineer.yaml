@@ -6,10 +6,10 @@ en:
   title: Software Engineer (Fullstack)
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
-    Designed and shipped SIPEKAD, an integrated academic information system
-    used by around 300 active students across 5 departments. Built with Next.js, TypeScript,
-    and PostgreSQL — featuring RBAC, automated document workflows, and REST API
-    integrations. Reduced manual academic processing time from days to hours.
+    Designed and shipped SIPEKAD, an academic submission system used by around
+    300 active students across 3 study programs. Built with React, Node.js, and
+    the WhatsApp API — students submit requests online, admins review them in
+    one click, and status updates reach students on WhatsApp.
     Also developed the official institutional website with Payload CMS and
     authored complete technical documentation and system architecture diagrams
     to ensure long-term maintainability.
@@ -17,10 +17,9 @@ id:
   title: Software Engineer (Fullstack)
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
-    Merancang dan mengembangkan SIPEKAD, sistem informasi akademik terintegrasi
-    yang dipakai sekitar 300 mahasiswa aktif di 5 departemen. Dibangun dengan Next.js,
-    TypeScript, dan PostgreSQL — dilengkapi RBAC, workflow dokumen otomatis, dan
-    integrasi REST API. Memangkas waktu pemrosesan akademik manual dari hitungan
-    hari menjadi jam. Juga mengembangkan website resmi institusi dengan Payload
+    Merancang dan mengembangkan SIPEKAD, sistem pengajuan akademik yang dipakai
+    sekitar 300 mahasiswa aktif di 3 program studi. Dibangun dengan React,
+    Node.js, dan WhatsApp API — mahasiswa mengajukan secara online, admin
+    meninjau dengan sekali klik, dan update status dikirim lewat WhatsApp. Juga mengembangkan website resmi institusi dengan Payload
     CMS dan menyusun dokumentasi teknis lengkap beserta diagram arsitektur sistem
     untuk memastikan maintainabilitas jangka panjang.

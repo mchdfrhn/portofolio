@@ -1,0 +1,38 @@
+title: Metland Cikarang — Rumah Impian
+order: 5
+icon: LayoutTemplate
+image: /images/projects/metland-cikarang/cover.png
+year: '2026'
+github: ''
+demo: ''
+tech:
+  - Next.js
+  - Tailwind CSS
+  - GSAP
+  - Vercel
+en:
+  tagline: Property landing page · client project at Surupan Software House
+  problem: >-
+    A housing development for young families in Cikarang needed a landing
+    page that presents the project and connects prospective buyers directly
+    with the developer.
+  solution: >-
+    Built with Next.js, Tailwind CSS and GSAP: a modern design with smooth
+    animations, interactive project statistics, and a WhatsApp contact flow
+    that goes straight to the developer. Deployed on Vercel.
+  impact: >-
+    A landing page that works as a direct lead channel between buyers and the
+    developer.
+id:
+  tagline: Landing page properti · proyek klien Surupan Software House
+  problem: >-
+    Perumahan untuk keluarga muda di Cikarang membutuhkan landing page yang
+    menampilkan proyeknya dan menghubungkan calon pembeli langsung dengan
+    developer.
+  solution: >-
+    Dibangun dengan Next.js, Tailwind CSS, dan GSAP: desain modern dengan
+    animasi halus, statistik proyek yang interaktif, dan alur kontak WhatsApp
+    yang langsung terhubung ke developer. Di-deploy di Vercel.
+  impact: >-
+    Landing page yang berfungsi sebagai kanal lead langsung antara pembeli dan
+    developer.

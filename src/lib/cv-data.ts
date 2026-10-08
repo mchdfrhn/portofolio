@@ -96,7 +96,9 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       }
     })
 
-  const projects: ProjectItem[] = projectEntries.map((p) => {
+  const projects: ProjectItem[] = [...projectEntries]
+    .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
+    .map((p) => {
     const l = pickLang(p.entry, lang)
     return {
       title: p.entry.title ?? '',
@@ -114,12 +116,12 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
 
   return {
     keyAchievements: lang === 'en' ? [
-      'Architected and shipped SIPEKAD, a Next.js + TypeScript academic information system used by ~300 active students across 5 departments',
-      'Built a Python + SQL ETL pipeline migrating spreadsheet records of ~200 Pusdatin employees into a centralized HR dashboard',
+      'Architected and shipped SIPEKAD, an academic submission system (React, Node.js, WhatsApp API) used by ~300 active students across 3 study programs',
+      'Built a Python + SQL ETL pipeline migrating spreadsheet records of 140+ Pusdatin employees into a centralized HR dashboard',
       'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
     ] : [
-      'Mengarsiteki dan mengirimkan SIPEKAD, sistem informasi akademik berbasis Next.js + TypeScript yang dipakai ~300 mahasiswa aktif di 5 departemen',
-      'Membangun pipeline ETL Python + SQL untuk memigrasikan data spreadsheet ~200 pegawai Pusdatin ke dashboard HR terpusat',
+      'Mengarsiteki dan mengirimkan SIPEKAD, sistem pengajuan akademik (React, Node.js, WhatsApp API) yang dipakai ~300 mahasiswa aktif di 3 program studi',
+      'Membangun pipeline ETL Python + SQL untuk memigrasikan data spreadsheet 140+ pegawai Pusdatin ke dashboard HR terpusat',
       'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
     ],
     coreCompetencies: lang === 'en' ? [
