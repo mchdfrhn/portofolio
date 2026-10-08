@@ -3,6 +3,7 @@ order: 5
 icon: LayoutTemplate
 image: /images/projects/metland-cikarang/cover.png
 year: '2026'
+inCv: false
 github: ''
 demo: ''
 tech:

@@ -3,6 +3,7 @@ order: 4
 icon: LayoutTemplate
 image: /images/projects/huora-beauty/cover.png
 year: '2026'
+inCv: false
 github: ''
 demo: ''
 tech:

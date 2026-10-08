@@ -26,8 +26,13 @@ export interface ProjectItem {
   demo?: string
 }
 
+export interface SkillGroup {
+  label: string
+  items: string[]
+}
+
 export interface CvData {
-  keyAchievements: string[]
+  skillGroups: SkillGroup[]
   coreCompetencies: string[]
   name: string
   jobTitle: string
@@ -45,6 +50,15 @@ export interface CvData {
   education: ExperienceItem[]
   expertise: ExpertiseItem[]
   projects: ProjectItem[]
+}
+
+const ID_MONTHS: Record<string, string> = { May: 'Mei', Aug: 'Agu', Oct: 'Okt', Dec: 'Des' }
+
+function localizePeriod(period: string, lang: Lang) {
+  if (lang === 'en') return period
+  return period
+    .replace(/\bPresent\b/, 'Sekarang')
+    .replace(/\b(May|Aug|Oct|Dec)\b/g, (m) => ID_MONTHS[m])
 }
 
 export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
@@ -67,7 +81,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       return {
         title: l.title ?? '',
         company: l.company ?? '',
-        period: e.entry.period ?? '',
+        period: localizePeriod(e.entry.period ?? '', lang),
         description: l.description ?? '',
       }
     })
@@ -80,7 +94,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       return {
         title: l.title ?? '',
         company: l.company ?? '',
-        period: e.entry.period ?? '',
+        period: localizePeriod(e.entry.period ?? '', lang),
         description: l.description ?? '',
       }
     })
@@ -96,7 +110,8 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       }
     })
 
-  const projects: ProjectItem[] = [...projectEntries]
+  const projects: ProjectItem[] = projectEntries
+    .filter((p) => p.entry.inCv !== false)
     .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
     .map((p) => {
     const l = pickLang(p.entry, lang)
@@ -115,14 +130,14 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
   const aboutLang = about ? pickLang(about, lang) : undefined
 
   return {
-    keyAchievements: lang === 'en' ? [
-      'Architected and shipped SIPEKAD, an academic submission system (React, Node.js, WhatsApp API) used by ~300 active students across 3 study programs',
-      'Built a Python + SQL ETL pipeline migrating spreadsheet records of 140+ Pusdatin employees into a centralized HR dashboard',
-      'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
-    ] : [
-      'Mengarsiteki dan mengirimkan SIPEKAD, sistem pengajuan akademik (React, Node.js, WhatsApp API) yang dipakai ~300 mahasiswa aktif di 3 program studi',
-      'Membangun pipeline ETL Python + SQL untuk memigrasikan data spreadsheet 140+ pegawai Pusdatin ke dashboard HR terpusat',
-      'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
+    // Plain "Label: a, b, c" lines parse cleanly in ATS keyword extraction
+    skillGroups: [
+      { label: lang === 'en' ? 'Languages' : 'Bahasa Pemrograman', items: ['TypeScript', 'JavaScript', 'Go', 'PHP', 'Python', 'SQL'] },
+      { label: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
+      { label: 'Backend', items: ['Node.js', 'Express.js', 'Laravel', 'Go (gorilla/mux)', 'REST API', 'JWT', 'WhatsApp API'] },
+      { label: 'Database', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase'] },
+      { label: 'Cloud & DevOps', items: ['Docker', 'AWS', 'Vercel', 'Linux', 'GitHub Actions', 'Shell Scripting', 'Git'] },
+      { label: 'CMS', items: ['Payload CMS', 'Keystatic'] },
     ],
     coreCompetencies: lang === 'en' ? [
       'Fullstack End-to-End Development',

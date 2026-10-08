@@ -1,9 +1,9 @@
 name: Intern Fullstack Developer
 type: work
 period: Jan 2026 - Apr 2026
-order: 2
+order: 3
 en:
-  title: Fullstack Developer
+  title: Fullstack Developer Intern
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
     Built an integrated HR dashboard with Next.js and TypeScript to digitalize personnel and functional
@@ -12,7 +12,7 @@ en:
     replacing manual data entry. Implemented granular RBAC and real-time data
     synchronization with Supabase.
 id:
-  title: Fullstack Developer
+  title: Fullstack Developer (Magang)
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
     Membangun dashboard HR terintegrasi dengan Next.js dan TypeScript untuk mendigitalkan manajemen

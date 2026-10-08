@@ -1,23 +1,21 @@
 name: Backend Developer Bootcamp
-type: work
+type: education
 period: Jan 2024 - May 2024
 order: 3
 en:
-  title: Back End Developer
+  title: Backend Developer Bootcamp (Golang)
   company: Enigma Camp Bootcamp
   description: >-
-    Built a production-grade room reservation REST API using Golang with
-    gorilla/mux, implementing JWT authentication and structured PostgreSQL
-    schema with optimized indexing. Wrote 85%+ unit test coverage using Go
-    testing package. Practiced clean code architecture, strict input validation,
+    Built a room reservation REST API in Golang with gorilla/mux, JWT
+    authentication, and a PostgreSQL schema with indexing. Reached 85%+ unit
+    test coverage with Go's testing package. Practiced clean code architecture, strict input validation,
     and comprehensive error handling to ensure backend reliability.
 id:
-  title: Back End Developer
+  title: Bootcamp Backend Developer (Golang)
   company: Enigma Camp Bootcamp
   description: >-
-    Membangun REST API sistem reservasi ruangan tingkat produksi menggunakan
-    Golang dengan gorilla/mux, mengimplementasikan autentikasi JWT dan skema
-    PostgreSQL terstruktur dengan pengindeksan yang dioptimalkan. Menulis
-    cakupan unit test 85%+ menggunakan Go testing package. Menerapkan arsitektur
+    Membangun REST API sistem reservasi ruangan dengan Golang dan gorilla/mux,
+    autentikasi JWT, serta skema PostgreSQL dengan pengindeksan. Mencapai
+    cakupan unit test 85%+ dengan package testing bawaan Go. Menerapkan arsitektur
     clean code, validasi input yang ketat, dan penanganan error komprehensif
     untuk memastikan keandalan backend.

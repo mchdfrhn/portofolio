@@ -3,9 +3,6 @@ order: 2
 icon: Database
 image: /images/projects/pusdatin-hr/cover.jpeg
 gallery:
-  - image: /images/projects/pusdatin-hr/detail-pegawai.jpeg
-    captionEn: Employee profile — training history, years of service and pay grade on one screen
-    captionId: Profil pegawai — riwayat diklat, masa kerja, dan grade tukin dalam satu layar
   - image: /images/projects/pusdatin-hr/statistik-pendidikan.jpeg
     captionEn: Statistics by education level and employment status
     captionId: Statistik berdasarkan tingkat pendidikan dan status kepegawaian

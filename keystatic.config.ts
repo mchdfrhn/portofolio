@@ -41,6 +41,7 @@ export default config({
           { label: 'Gallery', itemLabel: (props) => props.fields.captionEn.value || 'Screenshot' }
         ),
         year: fields.text({ label: 'Year', description: 'e.g. 2025' }),
+        inCv: fields.checkbox({ label: 'Show in CV PDF', defaultValue: true }),
         github: fields.text({ label: 'GitHub URL' }),
         demo: fields.text({ label: 'Demo URL' }),
         tech: fields.array(
