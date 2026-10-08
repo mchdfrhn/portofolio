@@ -1,4 +1,4 @@
-# frhn.dev
+# Mochammad Farhan Ali — Portfolio
 
 Portfolio of Mochammad Farhan Ali, Fullstack Developer. Built with **Astro**, **Tailwind CSS**, and **Keystatic** for content. Design notes live in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
@@ -53,8 +53,8 @@ src/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/mchdfrhn/my-portofolio.git
-   cd my-portofolio
+   git clone https://github.com/mchdfrhn/portofolio.git
+   cd portofolio
    ```
 
 2. **Install dependencies**
@@ -114,7 +114,7 @@ docker-compose up
 Create `.env` file with:
 
 ```env
-PUBLIC_SITE_TITLE=frhn.dev
+PUBLIC_SITE_TITLE=Mochammad Farhan Ali
 PUBLIC_SITE_DESCRIPTION=Your description
 PUBLIC_OG_IMAGE=/og-image.png
 PUBLIC_GITHUB_URL=https://github.com/your-username
@@ -157,7 +157,7 @@ MIT License - feel free to use this as a template for your portfolio.
 
 ## 🔗 Links
 
-- **Portfolio**: https://frhn.dev
+- **Portfolio**: https://www.mochamadfarhanali.my.id
 - **GitHub**: https://github.com/mchdfrhn
 - **LinkedIn**: https://www.linkedin.com/in/mchdfrhn
 - **Email**: mochamadfarhanali@gmail.com
