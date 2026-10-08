@@ -64,7 +64,7 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
     }
 
     const descBullets = (description: string) => {
-      const parts = description.split(/\\.\\s+/).filter(Boolean)
+      const parts = description.split(/\.\s+/).filter(Boolean)
       for (const part of parts) {
         const s = part.trim()
         bullet(s.endsWith('.') ? s : `${s}.`)
@@ -103,6 +103,13 @@ export function buildCvPdf(data: CvData, lang: Lang): Promise<Buffer> {
 
     // ── Technical Skills (moved above work experience) ──
     section(lang === 'en' ? 'Technical Skills' : 'Keahlian Teknis')
+
+    if (data.coreCompetencies?.length) {
+      doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)
+        .text(`${lang === 'en' ? 'Core Competencies' : 'Kompetensi Inti'}: `, { continued: true })
+      doc.font('Helvetica').fillColor(C.gray).text(data.coreCompetencies.join(', '))
+      doc.moveDown(0.25)
+    }
 
     if (data.techStack.length) {
       doc.fontSize(9).font('Helvetica-Bold').fillColor(C.dark)

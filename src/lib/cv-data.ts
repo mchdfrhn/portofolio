@@ -28,6 +28,7 @@ export interface ProjectItem {
 
 export interface CvData {
   keyAchievements: string[]
+  coreCompetencies: string[]
   name: string
   jobTitle: string
   location: string
@@ -113,13 +114,32 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
 
   return {
     keyAchievements: lang === 'en' ? [
-      'Architected and shipped SIPEKAD academic information system serving 1,000+ students across 5 departments',
+      'Architected and shipped SIPEKAD, a Next.js + TypeScript academic information system serving 1,000+ students across 5 departments',
       'Built Python + SQL ETL pipeline processing 5,000+ government employee records, reducing migration from weeks to hours',
       'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
     ] : [
-      'Mengarsiteki dan mengirimkan sistem informasi akademik SIPEKAD yang melayani 1.000+ mahasiswa di 5 departemen',
+      'Mengarsiteki dan mengirimkan SIPEKAD, sistem informasi akademik berbasis Next.js + TypeScript yang melayani 1.000+ mahasiswa di 5 departemen',
       'Membangun pipeline ETL Python + SQL yang memproses 5.000+ data pegawai pemerintah, memangkas migrasi dari minggu ke jam',
       'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
+    ],
+    coreCompetencies: lang === 'en' ? [
+      'Fullstack End-to-End Development',
+      'REST API Design',
+      'Database Architecture',
+      'CI/CD',
+      'Cloud Deployment',
+      'Unit Testing (Go testing, 85%+ coverage)',
+      'Role-Based Access Control (RBAC)',
+      'ETL & Data Migration',
+    ] : [
+      'Pengembangan Fullstack End-to-End',
+      'Desain REST API',
+      'Arsitektur Database',
+      'CI/CD',
+      'Cloud Deployment',
+      'Unit Testing (Go testing, cakupan 85%+)',
+      'Role-Based Access Control (RBAC)',
+      'ETL & Migrasi Data',
     ],
     name: profile?.name ?? 'Mochammad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),

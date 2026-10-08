@@ -1,7 +1,6 @@
 ---
 import { reader } from "@/lib/reader";
 import { ExpertiseGrid } from "./ExpertiseGrid";
-import { Testimonials } from "./Testimonials";
 import { GithubActivity } from "./GithubActivity";
 
 const about = await reader.singletons.about.read();
@@ -47,5 +46,6 @@ const expertise = rawExpertise
 
     <GithubActivity client:visible />
 
-    <Testimonials client:visible />
+    {/* Hidden until real testimonials are available — current data is placeholder */}
+    {/* <Testimonials client:visible /> */}
 </section>
