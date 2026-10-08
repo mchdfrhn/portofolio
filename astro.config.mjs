@@ -25,7 +25,6 @@ export default defineConfig({
       rollupOptions: {
         output: {
           manualChunks(id) {
-            if (id.includes('node_modules/three/')) return 'three-core';
             // Keep React in shared chunk so all islands use same instance
             if (id.includes('node_modules/react-dom/')) return 'react-vendor';
             if (id.includes('node_modules/react/') && !id.includes('react-dom')) return 'react-vendor';

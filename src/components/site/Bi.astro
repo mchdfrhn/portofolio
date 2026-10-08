@@ -1,0 +1,9 @@
+---
+// Renders both languages; CSS in globals.css shows the active one.
+interface Props {
+  en: string
+  id: string
+}
+const { en, id } = Astro.props
+---
+<span data-lang="en">{en}</span><span data-lang="id">{id}</span>

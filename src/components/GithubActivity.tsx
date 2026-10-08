@@ -4,43 +4,54 @@ import { GitHubCalendar } from 'react-github-calendar';
 type Lang = 'en' | 'id';
 
 const labels = {
-  en: { title: 'GitHub Activity', subtitle: 'Open source contributions & project commits' },
-  id: { title: 'Aktivitas GitHub', subtitle: 'Kontribusi open source & commit proyek' },
+  en: { title: 'Commit log', subtitle: 'Contributions on GitHub over the past year' },
+  id: { title: 'Log commit', subtitle: 'Kontribusi di GitHub selama setahun terakhir' },
 };
+
+const readLang = (): Lang =>
+  document.documentElement.classList.contains('lang-id') ? 'id' : 'en';
+
+const readScheme = () =>
+  document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 
 export function GithubActivity() {
   const [lang, setLang] = useState<Lang>('en');
+  const [scheme, setScheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const stored = window.localStorage.getItem('lang');
-    if (stored === 'id') setLang('id');
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent<string>).detail;
-      if (detail === 'en' || detail === 'id') setLang(detail);
+    setLang(readLang());
+    setScheme(readScheme());
+    const onLang = () => setLang(readLang());
+    window.addEventListener('languagechange', onLang);
+    // Theme is a class on <html>; watch it so the calendar follows the toggle
+    const observer = new MutationObserver(() => setScheme(readScheme()));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => {
+      window.removeEventListener('languagechange', onLang);
+      observer.disconnect();
     };
-    window.addEventListener('languagechange', handler);
-    return () => window.removeEventListener('languagechange', handler);
   }, []);
 
   const t = labels[lang];
 
   return (
-    <div class="mt-8 md:mt-10" data-reveal data-reveal-delay="0.15">
-      <h3 class="text-lg font-bold text-foreground mb-1">{t.title}</h3>
-      <p class="text-sm text-muted-foreground mb-4">{t.subtitle}</p>
-      <div class="overflow-x-auto rounded-xl border border-border bg-card p-4 md:p-6">
+    <div className="mt-14">
+      <h3 className="font-serif text-2xl">{t.title}</h3>
+      <p className="mb-4 mt-1 text-sm text-muted-foreground">{t.subtitle}</p>
+      <div className="overflow-x-auto border-y border-border py-5 font-mono text-xs">
         <GitHubCalendar
           username="mchdfrhn"
-          colorScheme="dark"
-          style={{ width: '100%' }}
+          colorScheme={scheme}
+          blockRadius={0}
           theme={{
-            dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-            light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+            light: ['#E6E1D5', '#F5C4A4', '#EE9157', '#D9631E', '#A8410C'],
+            dark: ['#1F1D1A', '#5A2E15', '#934619', '#D0621F', '#FF8A47'],
           }}
           labels={{
-           totalCount: lang === 'en'
-              ? '{{count}} contributions in the last year'
-              : '{{count}} kontribusi dalam setahun terakhir',
+            totalCount:
+              lang === 'en'
+                ? '{{count}} contributions in the last year'
+                : '{{count}} kontribusi dalam setahun terakhir',
           }}
         />
       </div>

@@ -1,0 +1,35 @@
+---
+import Bi from './Bi.astro'
+import Sheet from './Sheet.astro'
+import { reader } from '@/lib/reader'
+
+const entries = (await reader.collections.experience.all())
+  .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
+const groups = [
+  { type: 'work', en: 'Work', id: 'Kerja' },
+  { type: 'education', en: 'Education', id: 'Pendidikan' },
+].map((g) => ({ ...g, items: entries.filter((e) => e.entry.type === g.type) }))
+---
+<Sheet id="experience" no="03" en="Experience" idLabel="Pengalaman">
+  {groups.map((group) => (
+    <div class="mb-12 last:mb-0">
+      <h3 class="mb-2 font-serif text-2xl"><Bi en={group.en} id={group.id} /></h3>
+      <ol class="divide-y divide-border border-t border-border">
+        {group.items.map(({ entry }) => (
+          <li class="grid gap-2 py-5 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+            <p class="font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground sm:pt-1">{entry.period}</p>
+            <div>
+              <p class="font-medium">
+                <Bi en={entry.en.title} id={entry.id.title} />
+                <span class="text-muted-foreground"> — <Bi en={entry.en.company} id={entry.id.company} /></span>
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-muted-foreground"><Bi en={entry.en.description} id={entry.id.description} /></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  ))}
+  <a href="/cv-en.pdf" data-lang="en" download class="link mt-8 inline-block text-sm font-medium">Full résumé (PDF) ↓</a>
+  <a href="/cv-id.pdf" data-lang="id" download class="link mt-8 inline-block text-sm font-medium">CV lengkap (PDF) ↓</a>
+</Sheet>
