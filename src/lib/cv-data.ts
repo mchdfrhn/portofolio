@@ -114,12 +114,12 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
 
   return {
     keyAchievements: lang === 'en' ? [
-      'Architected and shipped SIPEKAD, a Next.js + TypeScript academic information system serving 1,000+ students across 5 departments',
-      'Built Python + SQL ETL pipeline processing 5,000+ government employee records, reducing migration from weeks to hours',
+      'Architected and shipped SIPEKAD, a Next.js + TypeScript academic information system used by ~300 active students across 5 departments',
+      'Built a Python + SQL ETL pipeline migrating spreadsheet records of ~200 Pusdatin employees into a centralized HR dashboard',
       'Deployed 3 production Next.js applications with Docker + CI/CD, serving institutional and government clients',
     ] : [
-      'Mengarsiteki dan mengirimkan SIPEKAD, sistem informasi akademik berbasis Next.js + TypeScript yang melayani 1.000+ mahasiswa di 5 departemen',
-      'Membangun pipeline ETL Python + SQL yang memproses 5.000+ data pegawai pemerintah, memangkas migrasi dari minggu ke jam',
+      'Mengarsiteki dan mengirimkan SIPEKAD, sistem informasi akademik berbasis Next.js + TypeScript yang dipakai ~300 mahasiswa aktif di 5 departemen',
+      'Membangun pipeline ETL Python + SQL untuk memigrasikan data spreadsheet ~200 pegawai Pusdatin ke dashboard HR terpusat',
       'Mendeploy 3 aplikasi Next.js produksi dengan Docker + CI/CD, melayani klien institusi dan pemerintah',
     ],
     coreCompetencies: lang === 'en' ? [

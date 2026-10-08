@@ -7,7 +7,7 @@ en:
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
     Designed and shipped SIPEKAD, an integrated academic information system
-    serving 1,000+ students across 5 departments. Built with Next.js, TypeScript,
+    used by around 300 active students across 5 departments. Built with Next.js, TypeScript,
     and PostgreSQL — featuring RBAC, automated document workflows, and REST API
     integrations. Reduced manual academic processing time from days to hours.
     Also developed the official institutional website with Payload CMS and
@@ -18,7 +18,7 @@ id:
   company: Sekolah Tinggi Teknologi Pekerjaan Umum Jakarta
   description: >-
     Merancang dan mengembangkan SIPEKAD, sistem informasi akademik terintegrasi
-    yang melayani 1.000+ mahasiswa di 5 departemen. Dibangun dengan Next.js,
+    yang dipakai sekitar 300 mahasiswa aktif di 5 departemen. Dibangun dengan Next.js,
     TypeScript, dan PostgreSQL — dilengkapi RBAC, workflow dokumen otomatis, dan
     integrasi REST API. Memangkas waktu pemrosesan akademik manual dari hitungan
     hari menjadi jam. Juga mengembangkan website resmi institusi dengan Payload

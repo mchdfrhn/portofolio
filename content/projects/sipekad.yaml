@@ -21,9 +21,8 @@ en:
     campus services. Optimized database queries from 47/page to 3/page using
     connection pooling (PgBouncer), query batching, and proper indexing.
   impact: >-
-    Serving 1,000+ active students across 5 departments. Reduced average
-    response time from ~2,400ms to ~120ms, achieving 99.7% uptime with 500+
-    concurrent users.
+    Used by around 300 active students across 5 departments. Reduced average
+    response time from ~2,400ms to ~120ms.
 id:
   tagline: Sistem Informasi Akademik & Kemahasiswaan Terintegrasi
   problem: >-
@@ -36,6 +35,5 @@ id:
     3/halaman menggunakan connection pooling (PgBouncer), query batching, dan
     pengindeksan yang tepat.
   impact: >-
-    Melayani 1.000+ mahasiswa aktif di 5 departemen. Memangkas rata-rata waktu
-    respons dari ~2.400ms menjadi ~120ms, mencapai uptime 99,7% dengan 500+
-    user concurrent.
+    Dipakai sekitar 300 mahasiswa aktif di 5 departemen. Memangkas rata-rata
+    waktu respons dari ~2.400ms menjadi ~120ms.

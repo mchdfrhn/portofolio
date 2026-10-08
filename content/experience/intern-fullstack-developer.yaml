@@ -7,19 +7,17 @@ en:
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
     Built an integrated HR dashboard with Next.js and TypeScript to digitalize personnel and functional
-    position management across 10+ departments. Engineered Python and SQL ETL
-    pipelines to clean and import 5,000+ employee records, reducing data
-    migration from manual weeks to automated hours. Implemented granular RBAC
-    and real-time data synchronization with Supabase, serving 200+ active
-    government users.
+    position management for around 200 Pusdatin employees. Engineered Python
+    and SQL ETL pipelines to clean and import employee records from Excel files,
+    replacing manual data entry. Implemented granular RBAC and real-time data
+    synchronization with Supabase.
 id:
   title: Fullstack Developer
   company: Pusdatin, Kementerian Pekerjaan Umum
   description: >-
     Membangun dashboard HR terintegrasi dengan Next.js dan TypeScript untuk mendigitalkan manajemen
-    kepegawaian dan jabatan fungsional lintas 10+ departemen. Merancang
-    pipeline ETL menggunakan Python dan SQL untuk membersihkan dan mengimpor
-    5.000+ data pegawai, memangkas migrasi data dari hitungan minggu secara
-    manual menjadi hitungan jam. Mengimplementasikan RBAC granular dan
-    sinkronisasi data real-time dengan Supabase, melayani 200+ pengguna
-    pemerintah aktif.
+    kepegawaian dan jabatan fungsional untuk sekitar 200 pegawai Pusdatin.
+    Merancang pipeline ETL menggunakan Python dan SQL untuk membersihkan dan
+    mengimpor data pegawai dari file Excel, menggantikan input data manual.
+    Mengimplementasikan RBAC granular dan sinkronisasi data real-time dengan
+    Supabase.

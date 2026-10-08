@@ -13,32 +13,32 @@ tech:
 en:
   tagline: HR Management & Functional Position System
   problem: >-
-    Manual processing of 5,000+ bureaucratic employee records, hierarchy
-    changes, and complex functional credit tracking causing assessment and
-    promotion delays across 10+ departments.
+    Employee records, hierarchy changes, and functional credit points for
+    around 200 Pusdatin employees were tracked manually in spreadsheets,
+    slowing down assessments and promotions.
   solution: >-
     Built an integrated HR platform with automated XLSX data ingestion,
     granular RBAC, and SSR-powered performance credit point calculation —
     covering both employee management and functional position tracking.
-    Implemented Python + SQL ETL pipelines reducing data migration from
-    manual weeks to automated hours.
+    Implemented Python + SQL ETL pipelines to migrate the existing
+    spreadsheet data.
   impact: >-
-    Centralized tracking for 5,000+ active civil servants, serving 200+
-    government users. Reduced data processing time by 90% and eliminated
-    manual calculation errors in credit point assessments.
+    Centralized personnel and functional position data for around 200
+    Pusdatin employees in one dashboard, with credit points calculated
+    automatically instead of by hand.
 id:
   tagline: Sistem Manajemen Kepegawaian & Jabatan Fungsional
   problem: >-
-    Pengolahan manual 5.000+ data kepegawaian, perubahan hierarki, dan
-    pelacakan angka kredit jabatan fungsional yang kompleks menyebabkan
-    keterlambatan penilaian dan promosi lintas 10+ departemen.
+    Data kepegawaian, perubahan hierarki, dan angka kredit jabatan fungsional
+    untuk sekitar 200 pegawai Pusdatin dikelola manual di spreadsheet,
+    sehingga penilaian dan promosi sering terlambat.
   solution: >-
     Membangun platform HR terintegrasi dengan fitur impor data XLSX otomatis,
     RBAC berbasis peran, dan perhitungan angka kredit kinerja berbasis SSR —
     mencakup manajemen pegawai dan pelacakan jabatan fungsional.
-    Mengimplementasikan pipeline ETL Python + SQL yang memangkas migrasi data
-    dari hitungan minggu manual menjadi hitungan jam.
+    Mengimplementasikan pipeline ETL Python + SQL untuk memigrasikan data
+    spreadsheet yang sudah ada.
   impact: >-
-    Sentralisasi data 5.000+ ASN aktif, melayani 200+ pengguna pemerintah.
-    Memangkas waktu pemrosesan data 90% dan menghilangkan kesalahan perhitungan
-    manual dalam penilaian angka kredit.
+    Data kepegawaian dan jabatan fungsional sekitar 200 pegawai Pusdatin kini
+    terpusat dalam satu dashboard, dengan angka kredit dihitung otomatis, bukan
+    manual.
