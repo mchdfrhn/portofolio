@@ -134,7 +134,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
     skillGroups: [
       { label: lang === 'en' ? 'Languages' : 'Bahasa Pemrograman', items: ['TypeScript', 'JavaScript', 'Go', 'PHP', 'Python', 'SQL'] },
       { label: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
-      { label: 'Backend', items: ['Node.js', 'Express.js', 'Laravel', 'Go (gorilla/mux)', 'REST API', 'JWT', 'WhatsApp API'] },
+      { label: 'Backend', items: ['Node.js', 'Express.js', 'Laravel', 'Go (Gin)', 'REST API', 'JWT', 'WhatsApp API'] },
       { label: 'Database', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase'] },
       { label: 'Cloud & DevOps', items: ['Docker', 'AWS', 'Vercel', 'Linux', 'GitHub Actions', 'Shell Scripting', 'Git'] },
       { label: 'CMS', items: ['Payload CMS', 'Keystatic'] },
