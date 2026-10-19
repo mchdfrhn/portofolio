@@ -4,7 +4,7 @@ titleEn: Fullstack Developer
 titleId: Fullstack Developer
 location: Jakarta, Indonesia (open to remote)
 phone: +62 857-7182-6637
-yearsExp: 1.5+
+yearsExp: 2+
 availability: true
 techStack:
   - TypeScript
@@ -12,6 +12,8 @@ techStack:
   - Next.js
   - Laravel
   - Golang
+  - FastAPI
+  - Python
   - Tailwind
   - PostgreSQL
   - MySQL

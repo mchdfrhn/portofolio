@@ -9,7 +9,7 @@ gallery:
   - image: /images/projects/pusdatin-hr/login.jpeg
     captionEn: Admin login
     captionId: Halaman login admin
-year: '2025'
+year: '2026'
 github: https://github.com/mchdfrhn/pusdatin-karyawan
 demo: https://pegawai-pusdatin.vercel.app
 tech:
