@@ -1,0 +1,65 @@
+title: RuangSDM STT Pekerjaan Umum Jakarta
+order: 1
+icon: Database
+image: /images/projects/ruang-sdm/absensi.jpeg
+gallery:
+  - image: /images/projects/ruang-sdm/profil-pegawai.jpeg
+    captionEn: Employee profile — career data, masked ID numbers, and data completeness (personal details redacted)
+    captionId: Profil pegawai — data kepegawaian, nomor identitas tersamarkan, dan kelengkapan data (data pribadi disensor)
+  - image: /images/projects/ruang-sdm/login.jpeg
+    captionEn: Sign-in — staff log in with an email or their employee ID number
+    captionId: Halaman masuk — pegawai login dengan email atau nomor induk
+year: '2026'
+github: ''
+demo: ''
+tech:
+  - React
+  - TypeScript
+  - Hono
+  - PostgreSQL
+  - Drizzle ORM
+  - Docker
+en:
+  tagline: HR Information System
+  problem: >-
+    Lecturer and staff records were spread across several Excel sheets in
+    inconsistent formats, with no change history and contract reminders that
+    depended on spreadsheet formulas. Fingerprint attendance, leave, and
+    part-time lecturer honoraria were tallied by hand and then recalculated
+    for monthly payroll.
+  solution: >-
+    Built a TypeScript monorepo with a Hono API, a React 19 SPA, and
+    PostgreSQL. It covers employee records with career history, contract and
+    retirement reminders, SK documents in private S3-compatible storage, and
+    Excel import with a dry-run preview. Fingerprint attendance import, leave
+    tracking, and payroll with PDF payslips cover the monthly cycle, and
+    part-time lecturer honoraria are pulled from SIAKAD. Access is role-based
+    with an audit log, and ID numbers and bank accounts are masked by default.
+    Employees get a mobile-friendly self-service portal for payslips, leave
+    requests, and data changes. Deployed as a single Docker image.
+  impact: >-
+    Migrated 68 employee records from the legacy Excel file with 0 import
+    errors, and brought records, attendance, leave, and payroll into one
+    system with a full audit trail.
+id:
+  tagline: Sistem Informasi Kepegawaian
+  problem: >-
+    Data dosen dan tenaga kependidikan tersebar di beberapa sheet Excel dengan
+    format yang tidak konsisten, tanpa riwayat perubahan, dan pengingat kontrak
+    bergantung pada rumus spreadsheet. Kehadiran fingerprint, cuti, dan honor
+    dosen tidak tetap direkap manual lalu dihitung ulang untuk gaji bulanan.
+  solution: >-
+    Membangun monorepo TypeScript dengan API Hono, SPA React 19, dan
+    PostgreSQL. Mencakup data pegawai beserta riwayat karier, pengingat kontrak
+    dan purna tugas, dokumen SK di object storage S3-compatible yang privat,
+    serta impor Excel dengan pratinjau dry-run. Impor absensi fingerprint,
+    pencatatan cuti, dan penggajian dengan slip PDF mencakup siklus bulanan,
+    sedangkan honor dosen tidak tetap ditarik dari SIAKAD. Akses berbasis peran
+    dengan log audit, dan nomor identitas serta rekening disamarkan secara
+    default. Pegawai mendapat portal self-service yang ramah ponsel untuk slip
+    gaji, pengajuan cuti, dan perubahan data. Di-deploy sebagai satu image
+    Docker.
+  impact: >-
+    Memigrasikan 68 data pegawai dari file Excel lama tanpa satu pun error
+    impor, dan menyatukan data pegawai, absensi, cuti, dan penggajian dalam
+    satu sistem dengan jejak audit lengkap.
