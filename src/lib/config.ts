@@ -1,7 +1,7 @@
 export const SITE_TITLE = import.meta.env.PUBLIC_SITE_TITLE ?? "Mochammad Farhan Ali";
 export const SITE_DESCRIPTION =
   import.meta.env.PUBLIC_SITE_DESCRIPTION ??
-  "Fullstack Developer (TypeScript, Next.js, Golang) based in Jakarta — building web apps, REST APIs, and cloud deployments.";
+  "Fullstack Developer in Jakarta building academic, HR, and internal business systems with TypeScript, Next.js, PostgreSQL, and FastAPI.";
 export const SITE_URL = (import.meta.env.PUBLIC_SITE_URL ?? "https://www.mochamadfarhanali.my.id").replace(/\/$/, "");
 // Link previews (WhatsApp, LinkedIn) need an absolute og:image URL
 const ogImage = import.meta.env.PUBLIC_OG_IMAGE ?? "/og-image.png";

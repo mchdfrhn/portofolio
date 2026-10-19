@@ -2,11 +2,12 @@ en:
   badge: Who I Am
   title: About Me
   description: >-
-    Fullstack Developer building end-to-end web applications with TypeScript,
-    React, Next.js, Node.js, and Golang. Experienced in REST API design,
-    database architecture (PostgreSQL), CI/CD with GitHub Actions, and cloud
-    deployment with Docker and AWS for academic and government systems.
-    Founder of Surupan Software House.
+    Fullstack Developer building academic, HR, and internal business systems
+    with TypeScript, React, Next.js, Node.js, FastAPI, and PostgreSQL.
+    Experienced in REST API design, database architecture, CI/CD with GitHub
+    Actions, and deployment with Docker and AWS for campus and government
+    systems. Currently a Fullstack Engineer at Hino Motors Sales Indonesia and
+    founder of Surupan Software House.
   currentLabel: Currently
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
@@ -30,11 +31,12 @@ id:
   badge: Siapa Saya
   title: Tentang Saya
   description: >-
-    Fullstack Developer yang membangun aplikasi web end-to-end dengan
-    TypeScript, React, Next.js, Node.js, dan Golang. Berpengalaman dalam desain
-    REST API, arsitektur database (PostgreSQL), CI/CD dengan GitHub Actions,
-    serta cloud deployment dengan Docker dan AWS untuk sistem akademik dan
-    pemerintahan. Founder Surupan Software House.
+    Fullstack Developer yang membangun sistem akademik, kepegawaian, dan bisnis
+    internal dengan TypeScript, React, Next.js, Node.js, FastAPI, dan
+    PostgreSQL. Berpengalaman dalam desain REST API, arsitektur database, CI/CD
+    dengan GitHub Actions, serta deployment dengan Docker dan AWS untuk sistem
+    kampus dan pemerintahan. Saat ini Fullstack Engineer di Hino Motors Sales
+    Indonesia dan founder Surupan Software House.
   currentLabel: Saat ini
   currentTitle: Software Engineer
   currentCompany: STT Pekerjaan Umum Jakarta
