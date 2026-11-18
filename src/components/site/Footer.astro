@@ -1,6 +1,10 @@
 ---
 // Footer drawn as the title block found in the corner of an engineering drawing.
 import Bi from './Bi.astro'
+import { getProfile } from '@/lib/site-content'
+import { initials } from '@/lib/identity'
+
+const profile = await getProfile()
 
 const year = new Date().getFullYear()
 const rev = new Date().toISOString().slice(0, 7).replace('-', '.')
@@ -11,11 +15,11 @@ const label = 'block font-mono text-[10px] uppercase tracking-[0.14em] text-mute
   <div class="grid grid-cols-2 border border-foreground/80 text-sm sm:grid-cols-4">
     <div class={`${cell} col-span-2 border-b sm:border-r`}>
       <span class={label}><Bi en="Project" id="Proyek" /></span>
-      <span class="font-serif text-lg leading-tight">Mochammad Farhan Ali — <Bi en="Portfolio" id="Portofolio" /></span>
+      <span class="font-serif text-lg leading-tight">{profile?.name} — <Bi en="Portfolio" id="Portofolio" /></span>
     </div>
     <div class={`${cell} border-b border-r`}>
       <span class={label}><Bi en="Drawn by" id="Digambar oleh" /></span>
-      M. F. Ali
+      {initials(profile?.name ?? '')}
     </div>
     <div class={`${cell} border-b`}>
       <span class={label}>Rev.</span>
@@ -27,7 +31,7 @@ const label = 'block font-mono text-[10px] uppercase tracking-[0.14em] text-mute
     </div>
     <div class={`${cell} col-span-2`}>
       <span class={label}><Bi en="Studio" id="Studio" /></span>
-      <a href="https://surupan.tech" target="_blank" rel="noopener noreferrer" class="link">Surupan Software House</a>
+      <a href={profile?.softwareHouseUrl} target="_blank" rel="noopener noreferrer" class="link">{profile?.softwareHouseName}</a>
     </div>
   </div>
   <p class="mt-4 font-mono text-[11px] text-muted-foreground">

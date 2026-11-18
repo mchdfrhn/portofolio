@@ -1,13 +1,15 @@
 ---
 import '../styles/globals.css';
-import { SITE_DESCRIPTION, OG_IMAGE, SITE_URL } from '../lib/config';
+import { OG_IMAGE, SITE_URL } from '../lib/config';
+import { getProfile, getAbout } from '../lib/site-content';
 
 interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = SITE_DESCRIPTION } = Astro.props;
+const [profile, about] = await Promise.all([getProfile(), getAbout()]);
+const { title, description = profile?.siteDescription ?? '' } = Astro.props;
 const fonts =
 	'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap';
 ---
@@ -46,7 +48,7 @@ const fonts =
 		<title>{title}</title>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Mochammad Farhan Ali" />
+		<meta property="og:site_name" content={profile?.name ?? ""} />
 		<meta property="og:url" content={`${SITE_URL}${Astro.url.pathname}`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
@@ -65,15 +67,15 @@ const fonts =
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "Person",
-			"name": "Mochammad Farhan Ali",
+			"name": profile?.name,
 			"url": SITE_URL,
-			"jobTitle": "Fullstack Developer",
-			"description": "Fullstack Developer building academic, HR, and internal business systems with TypeScript, React, Next.js, Node.js, FastAPI, and PostgreSQL, with experience in REST API design, CI/CD, and deployment on Docker and AWS.",
-			"address": { "@type": "PostalAddress", "addressLocality": "Jakarta", "addressCountry": "ID" },
-			"email": "mochamadfarhanali@gmail.com",
-			"sameAs": ["https://github.com/mchdfrhn", "https://www.linkedin.com/in/mchdfrhn"],
-			"knowsAbout": ["Fullstack Development", "TypeScript", "React", "Next.js", "Node.js", "FastAPI", "Python", "Laravel", "Golang", "REST API", "PostgreSQL", "Docker", "AWS", "CI/CD", "GitHub Actions", "Tailwind"],
-			"worksFor": { "@type": "Organization", "name": "Surupan Software House", "url": "https://surupan.tech" }
+			"jobTitle": profile?.titleEn,
+			"description": about?.en.description,
+			"address": { "@type": "PostalAddress", "addressLocality": profile?.location.split(",")[0].trim(), "addressCountry": "ID" },
+			"email": profile?.email,
+			"sameAs": [profile?.github, profile?.linkedin].filter(Boolean),
+			"knowsAbout": profile?.techStack,
+			"worksFor": { "@type": "Organization", "name": profile?.softwareHouseName, "url": profile?.softwareHouseUrl }
 		})} />
 	</head>
 	<body class="min-h-screen">

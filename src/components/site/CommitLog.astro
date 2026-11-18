@@ -2,9 +2,13 @@
 // Server island: fetched per request (cached at the CDN), drawn as plain SVG with no client JS.
 import Bi from './Bi.astro'
 import { getContributions } from '@/lib/contributions'
-import { GITHUB_URL } from '@/lib/config'
+import { getProfile } from '@/lib/site-content'
+import { githubUsername } from '@/lib/identity'
 
-const data = await getContributions('mchdfrhn')
+const profile = await getProfile()
+const githubUrl = profile?.github ?? ''
+const username = githubUsername(githubUrl)
+const data = username ? await getContributions(username) : null
 Astro.response.headers.set('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400')
 
 const CELL = 11
@@ -55,6 +59,6 @@ const height = TOP + 7 * STEP - GAP
 ) : (
   <p class="text-sm text-muted-foreground">
     <Bi en="The contribution graph is unavailable right now — " id="Grafik kontribusi sedang tidak tersedia — " />
-    <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="link text-foreground"><Bi en="see it on GitHub ↗︎" id="lihat di GitHub ↗︎" /></a>
+    <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="link text-foreground"><Bi en="see it on GitHub ↗︎" id="lihat di GitHub ↗︎" /></a>
   </p>
 )}

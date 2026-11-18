@@ -114,13 +114,11 @@ docker-compose up
 Create `.env` file with:
 
 ```env
-PUBLIC_SITE_TITLE=Mochammad Farhan Ali
-PUBLIC_SITE_DESCRIPTION=Your description
+PUBLIC_SITE_URL=https://www.your-domain.com
 PUBLIC_OG_IMAGE=/og-image.png
-PUBLIC_GITHUB_URL=https://github.com/your-username
-PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/your-username
-PUBLIC_EMAIL=you@example.com
 ```
+
+Name, links, contact details and the site description are not environment variables: edit them in Keystatic under **Profile**.
 
 See `.env.example` for template.
 
