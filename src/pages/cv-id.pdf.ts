@@ -8,7 +8,8 @@ export const GET: APIRoute = async () => {
   const data = await getCvData('id')
   const pdfBuffer = await buildCvPdf(data, 'id')
 
-  return new Response(pdfBuffer, {
+  // Copy into a plain Uint8Array: Response does not type-accept a Node Buffer
+  return new Response(new Uint8Array(pdfBuffer), {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="cv-mochamad-farhan-ali-id.pdf"',

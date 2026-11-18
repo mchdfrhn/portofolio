@@ -15,7 +15,8 @@ export const GET: APIRoute = async ({ request }) => {
 
   const filename = `cv-${data.name.toLowerCase().replace(/\s+/g, '-')}.pdf`
 
-  return new Response(pdfBuffer, {
+  // Copy into a plain Uint8Array: Response does not type-accept a Node Buffer
+  return new Response(new Uint8Array(pdfBuffer), {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': `attachment; filename="${filename}"`,

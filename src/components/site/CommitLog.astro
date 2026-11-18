@@ -34,7 +34,7 @@ const height = TOP + 7 * STEP - GAP
   <div>
     {/* rtl scroller so narrow screens open on the most recent months */}
     <div class="overflow-x-auto" dir="rtl">
-      <svg dir="ltr" viewBox={`0 0 ${width} ${height}`} width={width} height={height} class="max-w-none font-mono" role="img" aria-label={`${data.total} GitHub contributions in the last year`}>
+      <svg style="direction: ltr" viewBox={`0 0 ${width} ${height}`} width={width} height={height} class="max-w-none font-mono" role="img" aria-label={`${data.total} GitHub contributions in the last year`}>
         {months.map((m) => (
           <text x={m.x} y="10" class="fill-muted-foreground text-[9px]">
             <tspan data-lang="en">{monthFmt.en.format(m.date)}</tspan><tspan data-lang="id">{monthFmt.id.format(m.date)}</tspan>

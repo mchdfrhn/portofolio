@@ -72,8 +72,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
     reader.collections.projects.all(),
   ])
 
-  const pickLang = <T extends { en: U; id: U }, U>(entry: T, l: Lang): U =>
-    l === 'en' ? entry.en : entry.id
+  const pickLang = <U,>(entry: { en: U; id: U }, l: Lang): U => (l === 'en' ? entry.en : entry.id)
 
   const workExperience: ExperienceItem[] = experienceEntries
     .filter((e) => e.entry.type === 'work')
