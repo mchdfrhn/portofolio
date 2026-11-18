@@ -3,7 +3,7 @@ order: 6
 tags:
   - landing-page
   - client
-image: /images/projects/metland-cikarang/image.png
+image: /src/assets/projects/metland-cikarang/image.png
 gallery: []
 year: '2026'
 inCv: false

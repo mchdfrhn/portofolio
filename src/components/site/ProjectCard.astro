@@ -1,6 +1,8 @@
 ---
 // One project tile, used by the homepage gallery and the /projects archive.
+import { Image } from 'astro:assets'
 import Bi from './Bi.astro'
+import { projectImage } from '@/lib/images'
 import { PROJECT_TAGS } from '@/lib/tags'
 import type { ProjectEntry } from '@/lib/projects'
 
@@ -9,13 +11,14 @@ interface Props {
   entry: ProjectEntry
 }
 const { slug, entry } = Astro.props
+const image = projectImage(entry.image)
 const tags = entry.tags.filter((t): t is keyof typeof PROJECT_TAGS => t in PROJECT_TAGS)
 ---
 <li data-m-reveal class="group" data-tags={tags.join(' ')}>
   <a href={`/projects/${slug}`} class="block">
-    {entry.image ? (
+    {image ? (
       <div data-m-img class="overflow-hidden rounded-sm border border-border" style={`view-transition-name: shot-${slug}`}>
-        <img src={entry.image} alt="" loading="lazy" class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
+        <Image src={image} alt="" widths={[400, 700, 1000]} sizes="(min-width: 768px) 348px, (min-width: 640px) calc(50vw - 36px), calc(100vw - 32px)" class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
       </div>
     ) : (
       <div class="flex aspect-[16/10] items-end rounded-sm border border-border bg-secondary p-3 font-mono text-xs text-muted-foreground">{entry.title}</div>

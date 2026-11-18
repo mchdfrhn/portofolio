@@ -2,12 +2,12 @@ title: Sistem Kepegawaian & Jabatan Fungsional Pusdatin
 order: 1
 tags:
   - internal-system
-image: /images/projects/pusdatin-hr/image.jpeg
+image: /src/assets/projects/pusdatin-hr/image.jpeg
 gallery:
-  - image: /images/projects/pusdatin-hr/gallery/0/image.jpeg
+  - image: /src/assets/projects/pusdatin-hr/gallery/0/image.jpeg
     captionEn: Statistics by education level and employment status
     captionId: Statistik berdasarkan tingkat pendidikan dan status kepegawaian
-  - image: /images/projects/pusdatin-hr/gallery/1/image.jpeg
+  - image: /src/assets/projects/pusdatin-hr/gallery/1/image.jpeg
     captionEn: Admin login
     captionId: Halaman login admin
 year: '2026'

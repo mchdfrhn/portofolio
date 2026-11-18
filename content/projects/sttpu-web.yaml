@@ -2,12 +2,12 @@ title: Website Kampus
 order: 2
 tags:
   - website
-image: /images/projects/sttpu-web/image.jpeg
+image: /src/assets/projects/sttpu-web/image.jpeg
 gallery:
-  - image: /images/projects/sttpu-web/gallery/0/image.jpeg
+  - image: /src/assets/projects/sttpu-web/gallery/0/image.jpeg
     captionEn: News listing with category filters
     captionId: Daftar berita dengan filter kategori
-  - image: /images/projects/sttpu-web/gallery/1/image.jpeg
+  - image: /src/assets/projects/sttpu-web/gallery/1/image.jpeg
     captionEn: Profiles of the 3 study programs
     captionId: Profil 3 program studi
 year: '2026'

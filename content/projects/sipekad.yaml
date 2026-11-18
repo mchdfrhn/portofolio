@@ -2,16 +2,16 @@ title: SIPEKAD — Sistem Pengajuan Akademik
 order: 3
 tags:
   - internal-system
-image: /images/projects/sipekad/image.jpeg
+image: /src/assets/projects/sipekad/image.jpeg
 gallery:
-  - image: /images/projects/sipekad/gallery/0/image.jpeg
+  - image: /src/assets/projects/sipekad/gallery/0/image.jpeg
     captionEn: >-
       Submission detail — admin reviews the request and updates its status in
       one click
     captionId: >-
       Detail pengajuan — admin meninjau permohonan dan memperbarui statusnya
       dengan sekali klik
-  - image: /images/projects/sipekad/gallery/1/image.jpeg
+  - image: /src/assets/projects/sipekad/gallery/1/image.jpeg
     captionEn: WhatsApp manager — status changes are sent to students automatically
     captionId: Manajer WhatsApp — perubahan status dikirim otomatis ke mahasiswa
 year: '2025'

@@ -3,7 +3,7 @@ order: 5
 tags:
   - landing-page
   - client
-image: /images/projects/huora-beauty/image.png
+image: /src/assets/projects/huora-beauty/image.png
 gallery: []
 year: '2026'
 inCv: false

@@ -24,15 +24,15 @@ export default config({
         }),
         image: fields.image({
           label: 'Project Image',
-          directory: 'public/images/projects',
-          publicPath: '/images/projects/',
+          directory: 'src/assets/projects',
+          publicPath: '/src/assets/projects/',
         }),
         gallery: fields.array(
           fields.object({
             image: fields.image({
               label: 'Screenshot',
-              directory: 'public/images/projects',
-              publicPath: '/images/projects/',
+              directory: 'src/assets/projects',
+              publicPath: '/src/assets/projects/',
             }),
             captionEn: fields.text({ label: 'Caption (EN)' }),
             captionId: fields.text({ label: 'Caption (ID)' }),

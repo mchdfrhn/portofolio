@@ -2,16 +2,16 @@ title: RuangSDM STT Pekerjaan Umum Jakarta
 order: 4
 tags:
   - internal-system
-image: /images/projects/ruang-sdm/image.jpeg
+image: /src/assets/projects/ruang-sdm/image.jpeg
 gallery:
-  - image: /images/projects/ruang-sdm/gallery/0/image.jpeg
+  - image: /src/assets/projects/ruang-sdm/gallery/0/image.jpeg
     captionEn: >-
       Employee profile — career data, masked ID numbers, and data completeness
       (personal details redacted)
     captionId: >-
       Profil pegawai — data kepegawaian, nomor identitas tersamarkan, dan
       kelengkapan data (data pribadi disensor)
-  - image: /images/projects/ruang-sdm/gallery/1/image.jpeg
+  - image: /src/assets/projects/ruang-sdm/gallery/1/image.jpeg
     captionEn: Sign-in — staff log in with an email or their employee ID number
     captionId: Halaman masuk — pegawai login dengan email atau nomor induk
 year: '2026'

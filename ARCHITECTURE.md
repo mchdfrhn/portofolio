@@ -40,3 +40,5 @@ Each project also gets a pre-rendered case study page at `/projects/[slug]`, bui
 ## Content
 
 All content about the person lives in `content/` as YAML and is read at build time through `src/lib/reader.ts` (Keystatic): `profile` (identity, links, contact, site description), `hero`, `about`, `contact`, `cv` (skills for the CV PDF), and the `projects`, `experience`, `expertise` collections. UI chrome (nav, buttons, form status text) stays in the components on purpose. Only `SITE_URL` and `OG_IMAGE` come from env (`src/lib/config.ts`). The same data feeds the CV PDFs (`src/lib/cv-data.ts`, `src/lib/cv-pdf.ts`).
+
+Project images are uploaded by Keystatic into `src/assets/projects/<slug>/` (not `public/`), so Astro's `<Image>` can resize them and serve WebP at the width each slot needs. YAML stores them as `/src/assets/projects/...`; `src/lib/images.ts` turns that path into the optimised image, and `src/lib/asset-path.ts` still accepts the old `/images/projects/...` form.
