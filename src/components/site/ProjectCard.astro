@@ -1,0 +1,34 @@
+---
+// One project tile, used by the homepage gallery and the /projects archive.
+import Bi from './Bi.astro'
+import { PROJECT_TAGS } from '@/lib/tags'
+import type { ProjectEntry } from '@/lib/projects'
+
+interface Props {
+  slug: string
+  entry: ProjectEntry
+}
+const { slug, entry } = Astro.props
+const tags = entry.tags.filter((t): t is keyof typeof PROJECT_TAGS => t in PROJECT_TAGS)
+---
+<li class="group" data-tags={tags.join(' ')}>
+  <a href={`/projects/${slug}`} class="block">
+    {entry.image ? (
+      <div class="overflow-hidden rounded-sm border border-border">
+        <img src={entry.image} alt="" loading="lazy" class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
+      </div>
+    ) : (
+      <div class="flex aspect-[16/10] items-end rounded-sm border border-border bg-secondary p-3 font-mono text-xs text-muted-foreground">{entry.title}</div>
+    )}
+    <h3 class="mt-4 font-serif text-2xl leading-tight transition-colors group-hover:text-primary">{entry.title}</h3>
+    <p class="mt-1 text-sm text-muted-foreground"><Bi en={entry.en.tagline} id={entry.id.tagline} /></p>
+    {(entry.year || tags.length > 0) && (
+      <p class="mt-2 font-mono text-xs text-muted-foreground">
+        {entry.year}
+        {tags.map((t, i) => (
+          <>{(entry.year || i > 0) && ' · '}<Bi en={PROJECT_TAGS[t].en} id={PROJECT_TAGS[t].id} /></>
+        ))}
+      </p>
+    )}
+  </a>
+</li>
