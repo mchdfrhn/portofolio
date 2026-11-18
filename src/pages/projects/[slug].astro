@@ -4,6 +4,7 @@ import Header from '@/components/site/Header.astro';
 import Footer from '@/components/site/Footer.astro';
 import Bi from '@/components/site/Bi.astro';
 import { getProjects } from '@/lib/projects';
+import { linkOrEmpty } from '@/lib/identity';
 
 export const prerender = true;
 
@@ -17,6 +18,8 @@ export async function getStaticPaths() {
 
 const { project, index, next } = Astro.props;
 const { entry } = project;
+const demo = linkOrEmpty(entry.demo);
+const github = linkOrEmpty(entry.github);
 const sections = [
 	{ en: 'Problem', id: 'Masalah', key: 'problem' },
 	{ en: 'What I built', id: 'Yang saya bangun', key: 'solution' },
@@ -46,16 +49,16 @@ const sections = [
 				)}
 				<dt class="pt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">Stack</dt>
 				<dd class="font-mono text-[13px]">{entry.tech.join(' · ')}</dd>
-				{entry.demo && (
+				{demo && (
 					<>
 						<dt class="pt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">Live</dt>
-						<dd class="min-w-0 break-words"><a href={entry.demo} target="_blank" rel="noopener noreferrer" class="link">{entry.demo.replace('https://', '')} ↗︎</a></dd>
+						<dd class="min-w-0 break-words"><a href={demo} target="_blank" rel="noopener noreferrer" class="link">{demo.replace('https://', '')} ↗︎</a></dd>
 					</>
 				)}
-				{entry.github && (
+				{github && (
 					<>
 						<dt class="pt-0.5 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground"><Bi en="Code" id="Kode" /></dt>
-						<dd class="min-w-0 break-words"><a href={entry.github} target="_blank" rel="noopener noreferrer" class="link">{entry.github.replace('https://', '')} ↗︎</a></dd>
+						<dd class="min-w-0 break-words"><a href={github} target="_blank" rel="noopener noreferrer" class="link">{github.replace('https://', '')} ↗︎</a></dd>
 					</>
 				)}
 			</dl>

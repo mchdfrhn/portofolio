@@ -1,4 +1,5 @@
 import { reader } from './reader'
+import { linkOrEmpty } from './identity'
 
 export type Lang = 'en' | 'id'
 
@@ -123,8 +124,8 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
       problem: l.problem ?? '',
       solution: l.solution ?? '',
       impact: l.impact ?? '',
-      github: p.entry.github || undefined,
-      demo: p.entry.demo || undefined,
+      github: linkOrEmpty(p.entry.github) || undefined,
+      demo: linkOrEmpty(p.entry.demo) || undefined,
     }
   })
 

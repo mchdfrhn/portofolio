@@ -18,3 +18,9 @@ export function whatsappUrl(phone: string): string {
   if (digits.startsWith('0')) digits = `62${digits.slice(1)}`
   return `https://wa.me/${digits}`
 }
+
+/** Treat blank or placeholder ('#') links as absent. */
+export function linkOrEmpty(url: string | null | undefined): string {
+  const u = (url ?? '').trim()
+  return u === '#' ? '' : u
+}
