@@ -1,16 +1,16 @@
 name: Informatics Engineering
 type: education
-period: '2023 - Present'
+period: 2023 - 2026
 order: 1
 en:
   title: Informatics Engineering
   company: STT Pekerjaan Umum
   description: >-
-    Focus: Software Engineering, Data Structures, Algorithm Design.
-    Relevant Coursework: Web Development, Database Systems, AI.
+    Focus: Software Engineering, Data Structures, Algorithm Design. Relevant
+    Coursework: Web Development, Database Systems, AI.
 id:
   title: Teknik Informatika
   company: STT Pekerjaan Umum
   description: >-
-    Fokus: Rekayasa Perangkat Lunak, Struktur Data, Desain Algoritma.
-    Mata kuliah relevan: Pengembangan Web, Sistem Basis Data, Kecerdasan Buatan.
+    Fokus: Rekayasa Perangkat Lunak, Struktur Data, Desain Algoritma. Mata
+    kuliah relevan: Pengembangan Web, Sistem Basis Data, Kecerdasan Buatan.
