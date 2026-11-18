@@ -1,6 +1,7 @@
 title: Sistem Kepegawaian & Jabatan Fungsional Pusdatin
 order: 4
-icon: Database
+tags:
+  - internal-system
 image: /images/projects/pusdatin-hr/cover.jpeg
 gallery:
   - image: /images/projects/pusdatin-hr/statistik-pendidikan.jpeg

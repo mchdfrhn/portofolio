@@ -1,6 +1,7 @@
 title: SIPEKAD — Sistem Pengajuan Akademik
 order: 2
-icon: Database
+tags:
+  - internal-system
 image: /images/projects/sipekad/cover.jpeg
 gallery:
   - image: /images/projects/sipekad/detail-pengajuan.jpeg

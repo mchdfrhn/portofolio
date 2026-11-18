@@ -1,6 +1,7 @@
 title: Website Kampus
 order: 3
-icon: LayoutTemplate
+tags:
+  - website
 image: /images/projects/website-kampus/cover.jpeg
 gallery:
   - image: /images/projects/website-kampus/berita.jpeg

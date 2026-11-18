@@ -1,6 +1,8 @@
 title: Huora Beauty × Twenty Eight
 order: 5
-icon: LayoutTemplate
+tags:
+  - landing-page
+  - client
 image: /images/projects/huora-beauty/cover.png
 year: '2026'
 inCv: false

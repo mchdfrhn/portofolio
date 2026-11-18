@@ -1,6 +1,7 @@
 title: RuangSDM STT Pekerjaan Umum Jakarta
 order: 1
-icon: Database
+tags:
+  - internal-system
 image: /images/projects/ruang-sdm/absensi.jpeg
 gallery:
   - image: /images/projects/ruang-sdm/profil-pegawai.jpeg

@@ -1,6 +1,8 @@
 title: Metland Cikarang — Rumah Impian
 order: 6
-icon: LayoutTemplate
+tags:
+  - landing-page
+  - client
 image: /images/projects/metland-cikarang/cover.png
 year: '2026'
 inCv: false
