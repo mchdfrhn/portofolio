@@ -1,46 +1,44 @@
 title: Sistem Kepegawaian & Jabatan Fungsional Pusdatin
-order: 4
+order: 1
 tags:
   - internal-system
-image: /images/projects/pusdatin-hr/cover.jpeg
+image: /images/projects/pusdatin-hr/image.jpeg
 gallery:
-  - image: /images/projects/pusdatin-hr/statistik-pendidikan.jpeg
+  - image: /images/projects/pusdatin-hr/gallery/0/image.jpeg
     captionEn: Statistics by education level and employment status
     captionId: Statistik berdasarkan tingkat pendidikan dan status kepegawaian
-  - image: /images/projects/pusdatin-hr/login.jpeg
+  - image: /images/projects/pusdatin-hr/gallery/1/image.jpeg
     captionEn: Admin login
     captionId: Halaman login admin
 year: '2026'
+inCv: true
 github: https://github.com/mchdfrhn/pusdatin-karyawan
-demo: https://pegawai-pusdatin.vercel.app
+demo: '#'
 tech:
   - Next.js
-  - TypeScript
-  - PostgreSQL
+  - Postgres
   - Supabase
-  - Tailwind
 en:
   tagline: HR Management & Functional Position System
   problem: >-
-    Employee records, hierarchy changes, and functional credit points for
-    140+ Pusdatin employees were tracked manually in spreadsheets,
-    slowing down assessments and promotions.
+    Employee records, hierarchy changes, and functional credit points for 140+
+    Pusdatin employees were tracked manually in spreadsheets, slowing down
+    assessments and promotions.
   solution: >-
-    Built an integrated HR platform with automated XLSX data ingestion,
-    granular RBAC, and SSR-powered performance credit point calculation —
-    covering both employee management and functional position tracking.
-    Implemented Python + SQL ETL pipelines to migrate the existing
-    spreadsheet data.
+    Built an integrated HR platform with automated XLSX data ingestion, granular
+    RBAC, and SSR-powered performance credit point calculation — covering both
+    employee management and functional position tracking. Implemented Python +
+    SQL ETL pipelines to migrate the existing spreadsheet data.
   impact: >-
-    Centralized personnel and functional position data for 140+
-    Pusdatin employees in one dashboard, with credit points calculated
-    automatically instead of by hand.
+    Centralized personnel and functional position data for 140+ Pusdatin
+    employees in one dashboard, with credit points calculated automatically
+    instead of by hand.
 id:
   tagline: Sistem Manajemen Kepegawaian & Jabatan Fungsional
   problem: >-
     Data kepegawaian, perubahan hierarki, dan angka kredit jabatan fungsional
-    untuk 140+ pegawai Pusdatin dikelola manual di spreadsheet,
-    sehingga penilaian dan promosi sering terlambat.
+    untuk 140+ pegawai Pusdatin dikelola manual di spreadsheet, sehingga
+    penilaian dan promosi sering terlambat.
   solution: >-
     Membangun platform HR terintegrasi dengan fitur impor data XLSX otomatis,
     RBAC berbasis peran, dan perhitungan angka kredit kinerja berbasis SSR —
@@ -48,6 +46,5 @@ id:
     Mengimplementasikan pipeline ETL Python + SQL untuk memigrasikan data
     spreadsheet yang sudah ada.
   impact: >-
-    Data kepegawaian dan jabatan fungsional 140+ pegawai Pusdatin kini
-    terpusat dalam satu dashboard, dengan angka kredit dihitung otomatis, bukan
-    manual.
+    Data kepegawaian dan jabatan fungsional 140+ pegawai Pusdatin kini terpusat
+    dalam satu dashboard, dengan angka kredit dihitung otomatis, bukan manual.

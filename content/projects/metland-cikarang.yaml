@@ -3,11 +3,12 @@ order: 6
 tags:
   - landing-page
   - client
-image: /images/projects/metland-cikarang/cover.png
+image: /images/projects/metland-cikarang/image.png
+gallery: []
 year: '2026'
 inCv: false
-github: ''
-demo: ''
+github: https://github.com/mchdfrhn/ssh-client-metland-cikarang
+demo: '#'
 tech:
   - Next.js
   - Tailwind CSS
@@ -16,13 +17,13 @@ tech:
 en:
   tagline: Property landing page · client project at Surupan Software House
   problem: >-
-    A housing development for young families in Cikarang needed a landing
-    page that presents the project and connects prospective buyers directly
-    with the developer.
+    A housing development for young families in Cikarang needed a landing page
+    that presents the project and connects prospective buyers directly with the
+    developer.
   solution: >-
     Built with Next.js, Tailwind CSS and GSAP: a modern design with smooth
-    animations, interactive project statistics, and a WhatsApp contact flow
-    that goes straight to the developer. Deployed on Vercel.
+    animations, interactive project statistics, and a WhatsApp contact flow that
+    goes straight to the developer. Deployed on Vercel.
   impact: >-
     A landing page that works as a direct lead channel between buyers and the
     developer.

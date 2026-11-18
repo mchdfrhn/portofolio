@@ -1,22 +1,28 @@
 title: SIPEKAD — Sistem Pengajuan Akademik
-order: 2
+order: 3
 tags:
   - internal-system
-image: /images/projects/sipekad/cover.jpeg
+image: /images/projects/sipekad/image.jpeg
 gallery:
-  - image: /images/projects/sipekad/detail-pengajuan.jpeg
-    captionEn: Submission detail — admin reviews the request and updates its status in one click
-    captionId: Detail pengajuan — admin meninjau permohonan dan memperbarui statusnya dengan sekali klik
-  - image: /images/projects/sipekad/whatsapp-bot.jpeg
+  - image: /images/projects/sipekad/gallery/0/image.jpeg
+    captionEn: >-
+      Submission detail — admin reviews the request and updates its status in
+      one click
+    captionId: >-
+      Detail pengajuan — admin meninjau permohonan dan memperbarui statusnya
+      dengan sekali klik
+  - image: /images/projects/sipekad/gallery/1/image.jpeg
     captionEn: WhatsApp manager — status changes are sent to students automatically
     captionId: Manajer WhatsApp — perubahan status dikirim otomatis ke mahasiswa
 year: '2025'
+inCv: true
 github: https://github.com/mchdfrhn/sipekad-fe
-demo: https://sipekad.sttpu.ac.id
+demo: https://sipekad-sttpu.surupan.tech/
 tech:
   - React
-  - Node.js
-  - WhatsApp API
+  - Express
+  - Redis
+  - Postgres
 en:
   tagline: Academic Workflow System
   problem: >-
