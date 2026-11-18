@@ -1,37 +1,28 @@
 ---
 import Bi from './Bi.astro'
-import { reader } from '@/lib/reader'
-import { GITHUB_URL, LINKEDIN_URL, EMAIL } from '@/lib/config'
+import { getProfile, getHero } from '@/lib/site-content'
 
-const profile = await reader.singletons.profile.read()
-const location = profile?.location ?? 'Jakarta'
+const [profile, hero] = await Promise.all([getProfile(), getHero()])
+const location = profile?.location ?? ''
 const links = [
-  { href: GITHUB_URL, label: 'GitHub' },
-  { href: LINKEDIN_URL, label: 'LinkedIn' },
-  { href: `mailto:${EMAIL}`, label: 'Email' },
-]
+  profile?.github && { href: profile.github, label: 'GitHub' },
+  profile?.linkedin && { href: profile.linkedin, label: 'LinkedIn' },
+  profile?.email && { href: `mailto:${profile.email}`, label: 'Email' },
+].filter((l): l is { href: string; label: string } => Boolean(l))
 const rows = [
-  { k: ['Now', 'Sekarang'], v: ['Fullstack Engineer, Hino Motors Sales Indonesia', 'Fullstack Engineer, Hino Motors Sales Indonesia'] },
-  { k: ['Also', 'Juga'], v: ['Founder, Surupan Software House', 'Founder, Surupan Software House'] },
-  { k: ['Studying', 'Kuliah'], v: ['Informatics Engineering, STT PU (2023–)', 'Teknik Informatika, STT PU (2023–)'] },
-  { k: ['Based', 'Lokasi'], v: [location, location] },
+  ...(hero?.facts ?? []).map((f) => ({ k: [f.en.label, f.id.label], v: [f.en.value, f.id.value] })),
+  ...(location ? [{ k: ['Based', 'Lokasi'], v: [location, location] }] : []),
 ]
 ---
 <section class="pb-8 pt-16 sm:pt-24">
   <p class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
-    Mochammad Farhan Ali — Fullstack Developer
+    {profile?.name ?? ''} — <Bi en={profile?.titleEn ?? ''} id={profile?.titleId ?? ''} />
   </p>
   <h1 class="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-6xl">
-    <Bi
-      en="I build the software public institutions run on."
-      id="Saya membangun software yang menjalankan institusi publik."
-    />
+    <Bi en={hero?.en.headline ?? ''} id={hero?.id.headline ?? ''} />
   </h1>
   <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-    <Bi
-      en="I'm Farhan. For the past two years I've been building academic and HR systems for a public-works college and the Ministry of Public Works — TypeScript, Next.js and PostgreSQL, from the database schema to the deploy. Right now I'm at Hino, modernizing and troubleshooting internal and dealer systems with FastAPI and Next.js."
-      id="Saya Farhan. Dua tahun terakhir saya membangun sistem akademik dan kepegawaian untuk kampus pekerjaan umum dan Kementerian Pekerjaan Umum — TypeScript, Next.js, dan PostgreSQL, dari skema database sampai deploy. Sekarang saya di Hino, memodernisasi dan men-troubleshoot sistem internal dan dealer dengan FastAPI dan Next.js."
-    />
+    <Bi en={hero?.en.intro ?? ''} id={hero?.id.intro ?? ''} />
   </p>
 
   <dl class="mt-10 grid max-w-xl grid-cols-[6.5rem_1fr] gap-y-2 border-t border-border pt-4 text-sm">
