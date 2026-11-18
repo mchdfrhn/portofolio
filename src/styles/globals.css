@@ -126,3 +126,38 @@ html.lang-id [data-lang="en"] {
 .commit-l2 { fill: hsl(var(--primary) / 0.5); }
 .commit-l3 { fill: hsl(var(--primary) / 0.75); }
 .commit-l4 { fill: hsl(var(--primary)); }
+
+/* Motion (src/scripts/motion.ts) */
+html.motion-pending [data-m-intro] [data-m-step],
+html.motion-pending [data-m-reveal],
+html.motion-pending [data-m-split],
+html.motion-pending [data-m-img],
+html.motion-pending [data-m-label] {
+  visibility: hidden;
+}
+[data-m-rule],
+[data-m-progress] {
+  transform-origin: left center;
+}
+/* SplitText masks clip descenders of the serif; give them room */
+.m-word-mask {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* Cross-page morph: a project card's image and title become the case study's */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-group(*) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.vt-header {
+  view-transition-name: site-header;
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

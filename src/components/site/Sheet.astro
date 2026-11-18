@@ -10,10 +10,11 @@ interface Props {
 }
 const { id, no, en, idLabel } = Astro.props
 ---
-<section id={id} class="scroll-mt-20 py-14 sm:py-20">
-  <div class="mb-8 flex items-baseline gap-3 border-b border-foreground/80 pb-2 font-mono text-xs uppercase tracking-[0.14em]">
-    <span class="text-primary">{no}</span>
-    <h2 class="text-foreground"><Bi en={en} id={idLabel} /></h2>
+<section id={id} data-m-sheet class="scroll-mt-20 py-14 sm:py-20">
+  <div class="relative mb-8 flex items-baseline gap-3 pb-2 font-mono text-xs uppercase tracking-[0.14em]">
+    <span data-m-rule aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-foreground/80"></span>
+    <span data-m-label class="text-primary">{no}</span>
+    <h2 data-m-label class="text-foreground"><Bi en={en} id={idLabel} /></h2>
   </div>
   <slot />
 </section>

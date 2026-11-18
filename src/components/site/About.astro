@@ -15,14 +15,14 @@ const principles = about?.principles ?? []
 <Sheet id="about" no="01" en="About" idLabel="Tentang">
   <div class="max-w-2xl space-y-5 text-[1.0625rem] leading-relaxed">
     {story.map((p) => (
-      <p><Bi en={p.en} id={p.id} /></p>
+      <p data-m-reveal><Bi en={p.en} id={p.id} /></p>
     ))}
   </div>
 
   <h3 class="mb-4 mt-14 font-serif text-2xl"><Bi en="How I work" id="Cara saya bekerja" /></h3>
   <ol class="grid gap-x-10 gap-y-6 sm:grid-cols-2">
     {principles.map((p, i) => (
-      <li class="border-t border-border pt-3">
+      <li data-m-reveal class="border-t border-border pt-3">
         <p class="font-medium">
           <span class="mr-2 font-mono text-xs text-primary">{String(i + 1).padStart(2, '0')}</span>
           <Bi en={p.en.title} id={p.id.title} />
@@ -35,7 +35,7 @@ const principles = about?.principles ?? []
   <h3 class="mb-4 mt-14 font-serif text-2xl"><Bi en="Toolbox" id="Peralatan" /></h3>
   <dl class="divide-y divide-border border-y border-border text-sm">
     {expertise.map(({ entry }) => (
-      <div class="grid gap-1 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
+      <div data-m-reveal class="grid gap-1 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
         <dt class="font-medium"><Bi en={entry.en.title ?? entry.name} id={entry.id.title ?? entry.name} /></dt>
         <dd class="font-mono text-[13px] text-muted-foreground">{entry.tech.join(' · ')}</dd>
       </div>

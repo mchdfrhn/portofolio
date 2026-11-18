@@ -48,7 +48,13 @@ const chip =
 </Layout>
 
 <script>
+	import { gsap } from 'gsap';
+	import { Flip } from 'gsap/Flip';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { resolveTag } from '../../lib/tags';
+
+	gsap.registerPlugin(Flip, ScrollTrigger);
+	const animate = matchMedia('(prefers-reduced-motion: no-preference)');
 
 	const bar = document.getElementById('tag-filter');
 	const buttons = [...document.querySelectorAll<HTMLButtonElement>('#tag-filter [data-tag]')];
@@ -58,11 +64,30 @@ const chip =
 		bar.hidden = false;
 		const available = buttons.map((b) => b.dataset.tag ?? '').filter(Boolean);
 
-		const apply = (tag: string | null) => {
+		const apply = (tag: string | null, flip = false) => {
 			for (const b of buttons) b.setAttribute('aria-pressed', String((b.dataset.tag || null) === tag));
+			// Cards slide to their new places instead of jumping
+			// Cards not yet scrolled into view are still at their reveal start state
+			if (flip && animate.matches) {
+				gsap.set(cards, { autoAlpha: 1, y: 0 });
+				const frames = cards.flatMap((c) => [...c.querySelectorAll('[data-m-img]')]);
+				gsap.killTweensOf(frames);
+				gsap.set(frames, { clearProps: 'clipPath' });
+			}
+			const state = flip && animate.matches ? Flip.getState(cards) : null;
 			for (const c of cards) {
 				const tags = (c.dataset.tags ?? '').split(' ');
 				c.classList.toggle('hidden', tag !== null && !tags.includes(tag));
+			}
+			if (state) {
+				Flip.from(state, {
+					duration: 0.55,
+					ease: 'power3.inOut',
+					absoluteOnLeave: true,
+					onEnter: (els) => gsap.fromTo(els, { autoAlpha: 0, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45 }),
+					onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.96, duration: 0.3 }),
+					onComplete: () => ScrollTrigger.refresh(),
+				});
 			}
 		};
 
@@ -71,7 +96,7 @@ const chip =
 		for (const b of buttons) {
 			b.addEventListener('click', () => {
 				const tag = b.dataset.tag || null;
-				apply(tag);
+				apply(tag, true);
 				const url = new URL(location.href);
 				if (tag) url.searchParams.set('tag', tag);
 				else url.searchParams.delete('tag');

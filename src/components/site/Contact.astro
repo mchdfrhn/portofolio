@@ -12,16 +12,16 @@ const field = 'w-full rounded-sm border border-input bg-background px-3 py-2 tex
 const label = 'mb-1 block font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground'
 ---
 <Sheet id="contact" no="04" en="Contact" idLabel="Kontak">
-  <p class="max-w-xl font-serif text-3xl leading-tight sm:text-4xl">
+  <p data-m-split class="max-w-xl font-serif text-3xl leading-tight sm:text-4xl">
     <Bi en={contact?.en.heading ?? ''} id={contact?.id.heading ?? ''} />
   </p>
-  <p class="mt-4 max-w-xl text-muted-foreground">
+  <p data-m-reveal class="mt-4 max-w-xl text-muted-foreground">
     <Bi en={contact?.en.intro ?? ''} id={contact?.id.intro ?? ''} />
     {' '}{email && <a href={`mailto:${email}`} class="link text-foreground">{email}</a>}
     {whatsapp && (<><Bi en=" — or " id=" — atau " /><a href={whatsapp} target="_blank" rel="noopener noreferrer" class="link text-foreground">WhatsApp</a></>)}.
   </p>
 
-  <form id="contact-form" action="/api/contact" method="POST" class="mt-10 grid max-w-xl gap-5">
+  <form data-m-reveal id="contact-form" action="/api/contact" method="POST" class="mt-10 grid max-w-xl gap-5">
     <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
     <div class="grid gap-5 sm:grid-cols-2">
       <label class="block">

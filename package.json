@@ -17,6 +17,7 @@
     "@keystatic/core": "^0.5.50",
     "@types/pdfkit": "^0.17.6",
     "astro": "^5.16.13",
+    "gsap": "^3.15.1",
     "pdfkit": "^0.18.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

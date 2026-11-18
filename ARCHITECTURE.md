@@ -12,7 +12,7 @@ Most of what Farhan builds is software for public institutions: an academic syst
 ### Rules
 
 1. Character comes from content and consistent choices, not from effects. Don't add loaders, custom cursors, marquees, scroll-jacking, 3D scenes, glow buttons, or bento grids.
-2. Motion is limited to colour transitions and a slight image zoom on hover. `prefers-reduced-motion` disables both.
+2. Motion follows the drawing-set idea: rules draw like a plotter pen, headings set in word by word, blocks and image frames settle in once as they scroll into view, a hairline in the header tracks scroll progress, filter changes slide cards into place, and a project card's image and title morph into its case study (native cross-document View Transitions). Each piece plays once and never blocks reading. No scroll-jacking, pinning, parallax or looping motion. It lives in `src/scripts/motion.ts` (GSAP: ScrollTrigger, SplitText, Flip) and is driven by `data-m-*` attributes. `prefers-reduced-motion` turns all of it off and shows the content as-is, and content stays visible if the script fails to load.
 3. Copy is first person and specific. Numbers must be ones Farhan can defend in an interview.
 
 ## Typography

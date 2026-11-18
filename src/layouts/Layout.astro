@@ -33,6 +33,12 @@ const fonts =
 					root.classList.add('lang-id');
 					root.lang = 'id';
 				}
+				// Hide animated blocks until motion.ts has set their start states.
+				// If it never runs, show everything after 3s.
+				if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+					root.classList.add('motion-pending');
+					setTimeout(() => root.classList.remove('motion-pending'), 3000);
+				}
 			})();
 		</script>
 		<meta charset="UTF-8" />
@@ -80,5 +86,8 @@ const fonts =
 	</head>
 	<body class="min-h-screen">
 		<slot />
+		<script>
+			import '../scripts/motion';
+		</script>
 	</body>
 </html>

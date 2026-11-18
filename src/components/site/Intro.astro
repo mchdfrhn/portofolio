@@ -14,18 +14,19 @@ const rows = [
   ...(location ? [{ k: ['Based', 'Lokasi'], v: [location, location] }] : []),
 ]
 ---
-<section class="pb-8 pt-16 sm:pt-24">
-  <p class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+<section data-m-intro class="pb-8 pt-16 sm:pt-24">
+  <p data-m-step class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
     {profile?.name ?? ''} — <Bi en={profile?.titleEn ?? ''} id={profile?.titleId ?? ''} />
   </p>
-  <h1 class="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-6xl">
+  <h1 data-m-step data-m-split class="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-6xl">
     <Bi en={hero?.en.headline ?? ''} id={hero?.id.headline ?? ''} />
   </h1>
-  <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+  <p data-m-step class="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
     <Bi en={hero?.en.intro ?? ''} id={hero?.id.intro ?? ''} />
   </p>
 
-  <dl class="mt-10 grid max-w-xl grid-cols-[6.5rem_1fr] gap-y-2 border-t border-border pt-4 text-sm">
+  <div data-m-step data-m-rule aria-hidden="true" class="mt-10 h-px max-w-xl bg-border"></div>
+  <dl data-m-step class="grid max-w-xl grid-cols-[6.5rem_1fr] gap-y-2 pt-4 text-sm">
     {rows.map((row) => (
       <>
         <dt class="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground pt-0.5"><Bi en={row.k[0]} id={row.k[1]} /></dt>
@@ -34,7 +35,7 @@ const rows = [
     ))}
   </dl>
 
-  <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+  <div data-m-step class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
     <a href="/cv-en.pdf" data-lang="en" download class="inline-flex items-center gap-2 rounded-sm bg-foreground px-4 py-2 font-medium text-background transition-colors hover:bg-primary hover:text-primary-foreground">
       Download CV ↓
     </a>
