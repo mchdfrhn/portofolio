@@ -1,75 +1,70 @@
 en:
-  badge: Who I Am
-  title: About Me
-  description: >-
-    Fullstack Developer building academic, HR, and internal business systems
-    with TypeScript, React, Next.js, Node.js, FastAPI, and PostgreSQL.
+  description: Fullstack Developer building academic, HR, and internal business
+    systems with TypeScript, React, Next.js, Node.js, FastAPI, and PostgreSQL.
     Experienced in REST API design, database architecture, CI/CD with GitHub
     Actions, and deployment with Docker and AWS for campus and government
     systems. Currently a Fullstack Engineer at Hino Motors Sales Indonesia and
     founder of Surupan Software House.
-  currentLabel: Currently
-  currentTitle: Software Engineer
-  currentCompany: STT Pekerjaan Umum Jakarta
-  currentDescription: >-
-    Designed and engineered SIPEKAD, an academic submission system built with
-    React, Node.js, and the WhatsApp API that replaced the campus paper queue.
-  techTitle: Tech Stack
-  yearsLabel: Years Coding
-  expertiseBadge: Expertise
-  expertiseHeading: What I Do
-  expertiseLead: >-
-    Good software isn't just about features, it's about how it runs in
-    production: stable, fast, and easy to maintain. From writing the code to
-    deploying it to the cloud, I take ownership of the whole process.
-  expertiseNote: >-
-    I am always open to discussing emerging technologies and exciting
-    challenges. Feel free to reach out to explore how I can bring value to your
-    team through efficient development practices, robust infrastructure, and
-    practical automation solutions.
+  story:
+    - Most of what I've built replaces a spreadsheet, a stack of paper, or a
+      WhatsApp group. At STT PU that meant SIPEKAD, the system around 300 active
+      students now use to submit academic requests. At Pusdatin it meant moving
+      the records of 140+ employees out of Excel files and into one dashboard.
+      Most recently, RuangSDM brought the college's HR records, attendance,
+      leave and payroll into one system.
+    - "I like the unglamorous parts: data models that survive real-world mess,
+      migrations that don't lose rows, and documentation the next developer will
+      actually read. I'm still finishing my informatics degree, so I'm learning
+      as I ship."
 id:
-  badge: Siapa Saya
-  title: Tentang Saya
-  description: >-
-    Fullstack Developer yang membangun sistem akademik, kepegawaian, dan bisnis
-    internal dengan TypeScript, React, Next.js, Node.js, FastAPI, dan
+  description: Fullstack Developer yang membangun sistem akademik, kepegawaian,
+    dan bisnis internal dengan TypeScript, React, Next.js, Node.js, FastAPI, dan
     PostgreSQL. Berpengalaman dalam desain REST API, arsitektur database, CI/CD
     dengan GitHub Actions, serta deployment dengan Docker dan AWS untuk sistem
     kampus dan pemerintahan. Saat ini Fullstack Engineer di Hino Motors Sales
     Indonesia dan founder Surupan Software House.
-  currentLabel: Saat ini
-  currentTitle: Software Engineer
-  currentCompany: STT Pekerjaan Umum Jakarta
-  currentDescription: >-
-    Merancang dan membangun SIPEKAD, sistem pengajuan akademik berbasis React,
-    Node.js, dan WhatsApp API yang menggantikan antrean kertas di kampus.
-  techTitle: Stack Teknologi
-  yearsLabel: Tahun Coding
-  expertiseBadge: Keahlian
-  expertiseHeading: Apa yang Saya Lakukan
-  expertiseLead: >-
-    Saya percaya bahwa software yang baik bukan cuma soal fitur, tapi juga soal
-    bagaimana dia jalan di produksi - stabil, cepat, dan mudah di-maintain. Dari
-    nulis kode sampai deploy ke cloud, saya ikut pegang semua prosesnya.
-  expertiseNote: >-
-    Kalau kamu punya tantangan teknis yang menarik atau butuh orang yang ngerti
-    dari sisi code, infrastruktur, dan automation - yuk ngobrol.
-interests:
-  - icon: Globe
-    colorTheme: primary
-    en:
-      label: Cloud Infrastructure
+  story:
+    - Sebagian besar yang saya bangun menggantikan spreadsheet, tumpukan kertas,
+      atau grup WhatsApp. Di STT PU itu berarti SIPEKAD, sistem yang kini
+      dipakai sekitar 300 mahasiswa aktif untuk pengajuan akademik. Di Pusdatin
+      itu berarti memindahkan data 140+ pegawai dari file Excel ke satu
+      dashboard. Yang terbaru, RuangSDM menyatukan data kepegawaian, absensi,
+      cuti, dan penggajian kampus dalam satu sistem.
+    - "Saya suka bagian yang tidak glamor: model data yang tahan dengan data
+      dunia nyata yang berantakan, migrasi yang tidak kehilangan baris, dan
+      dokumentasi yang benar-benar dibaca developer berikutnya. Saya masih
+      menyelesaikan kuliah informatika, jadi saya belajar sambil merilis."
+principles:
+  - en:
+      title: Learn the paperwork first.
+      body: Before modelling a process I sit with the people who do it by hand. The
+        spreadsheet usually knows edge cases the spec doesn't.
     id:
-      label: Infrastruktur Cloud
-  - icon: LineChart
-    colorTheme: secondary
-    en:
-      label: CI/CD Automation
+      title: Pahami kertasnya dulu.
+      body: Sebelum memodelkan proses, saya duduk dengan orang yang mengerjakannya
+        secara manual. Spreadsheet-nya biasanya tahu edge case yang tidak ada di
+        spesifikasi.
+  - en:
+      title: Pick boring tools.
+      body: PostgreSQL, Next.js and Docker — things I can debug when they break in
+        production.
     id:
-      label: Otomatisasi CI/CD
-  - icon: Trophy
-    colorTheme: green
-    en:
-      label: System Design
+      title: Pilih tools yang membosankan.
+      body: PostgreSQL, Next.js, dan Docker — tools yang bisa saya debug saat rusak di
+        produksi.
+  - en:
+      title: Leave a map.
+      body: Every system I hand over ships with documentation and an architecture
+        diagram.
     id:
-      label: Desain Sistem
+      title: Tinggalkan peta.
+      body: Setiap sistem yang saya serahkan disertai dokumentasi dan diagram
+        arsitektur.
+  - en:
+      title: Ship, then tighten.
+      body: Get a working version in front of real users, then fix what they actually
+        run into.
+    id:
+      title: Rilis, lalu rapikan.
+      body: Taruh versi yang berjalan di depan pengguna sungguhan, lalu perbaiki yang
+        benar-benar mereka alami.

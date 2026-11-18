@@ -1,11 +1,9 @@
 name: Mochammad Farhan Ali
-profileImage: /images/profile/profileImage.jpeg
 titleEn: Fullstack Developer
 titleId: Fullstack Developer
 location: Jakarta, Indonesia (open to remote)
 phone: +62 857-7182-6637
 yearsExp: 2+
-availability: true
 techStack:
   - TypeScript
   - React
@@ -27,5 +25,6 @@ github: https://github.com/mchdfrhn
 linkedin: https://www.linkedin.com/in/mchdfrhn
 email: mochamadfarhanali@gmail.com
 softwareHouseName: Surupan Software House
-softwareHouseShortName: SSH
 softwareHouseUrl: https://surupan.tech
+siteDescription: Fullstack Developer in Jakarta building academic, HR, and
+  internal business systems with TypeScript, Next.js, PostgreSQL, and FastAPI.

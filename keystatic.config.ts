@@ -1,4 +1,7 @@
 import { config, collection, singleton, fields } from '@keystatic/core'
+import { PROJECT_TAGS } from './src/lib/tags'
+
+const tagOptions = Object.entries(PROJECT_TAGS).map(([value, label]) => ({ value, label: label.en }))
 
 export default config({
   storage: { kind: 'local' },
@@ -14,14 +17,10 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: 'Project Title' } }),
         order: fields.integer({ label: 'Display Order', description: 'Lower number = shown first', defaultValue: 99 }),
-        icon: fields.select({
-          label: 'Icon',
-          options: [
-            { label: 'Database', value: 'Database' },
-            { label: 'Layout Template', value: 'LayoutTemplate' },
-            { label: 'Terminal', value: 'Terminal' },
-          ],
-          defaultValue: 'Database',
+        tags: fields.multiselect({
+          label: 'Tags',
+          description: 'Used by the filter on the /projects page',
+          options: tagOptions,
         }),
         image: fields.image({
           label: 'Project Image',
@@ -77,29 +76,6 @@ export default config({
       schema: {
         name: fields.slug({ name: { label: 'Name' } }),
         order: fields.integer({ label: 'Display Order', defaultValue: 1 }),
-        icon: fields.select({
-          label: 'Icon',
-          options: [
-            { label: 'Layout (Backend)', value: 'Layout' },
-            { label: 'Cloud', value: 'Cloud' },
-            { label: 'Shield (CI/CD)', value: 'Shield' },
-            { label: 'Database', value: 'Database' },
-            { label: 'Zap (Frontend)', value: 'Zap' },
-          ],
-          defaultValue: 'Layout',
-        }),
-        colorTheme: fields.select({
-          label: 'Color Theme',
-          options: [
-            { label: 'Primary (Blue)', value: 'primary' },
-            { label: 'Secondary (Purple)', value: 'secondary' },
-            { label: 'Green', value: 'green' },
-            { label: 'Orange', value: 'orange' },
-            { label: 'Accent (White)', value: 'accent' },
-          ],
-          defaultValue: 'primary',
-        }),
-        fullWidth: fields.checkbox({ label: 'Full Width (md:col-span-2)', defaultValue: false }),
         tech: fields.array(
           fields.text({ label: 'Technology' }),
           { label: 'Tech Tags', itemLabel: (props) => props.value }
@@ -159,77 +135,98 @@ export default config({
   },
 
   singletons: {
-    about: singleton({
-      label: 'About Section',
-      path: 'content/about',
+    hero: singleton({
+      label: 'Hero (Intro)',
+      path: 'content/hero',
       format: { data: 'yaml' },
       schema: {
         en: fields.object(
           {
-            badge: fields.text({ label: 'Badge Text' }),
-            title: fields.text({ label: 'Section Title' }),
-            description: fields.text({ label: 'Description', multiline: true }),
-            currentLabel: fields.text({ label: 'Current Card Label' }),
-            currentTitle: fields.text({ label: 'Current Role Title' }),
-            currentCompany: fields.text({ label: 'Current Company' }),
-            currentDescription: fields.text({ label: 'Current Description', multiline: true }),
-            techTitle: fields.text({ label: 'Tech Stack Title' }),
-            yearsLabel: fields.text({ label: 'Years Label' }),
-            expertiseBadge: fields.text({ label: 'Expertise Badge' }),
-            expertiseHeading: fields.text({ label: 'Expertise Heading' }),
-            expertiseLead: fields.text({ label: 'Expertise Lead', multiline: true }),
-            expertiseNote: fields.text({ label: 'Expertise Note', multiline: true }),
+            headline: fields.text({ label: 'Headline' }),
+            intro: fields.text({ label: 'Intro paragraph', multiline: true }),
           },
           { label: 'English Content' }
         ),
         id: fields.object(
           {
-            badge: fields.text({ label: 'Badge Text' }),
-            title: fields.text({ label: 'Section Title' }),
-            description: fields.text({ label: 'Description', multiline: true }),
-            currentLabel: fields.text({ label: 'Current Card Label' }),
-            currentTitle: fields.text({ label: 'Current Role Title' }),
-            currentCompany: fields.text({ label: 'Current Company' }),
-            currentDescription: fields.text({ label: 'Current Description', multiline: true }),
-            techTitle: fields.text({ label: 'Tech Stack Title' }),
-            yearsLabel: fields.text({ label: 'Years Label' }),
-            expertiseBadge: fields.text({ label: 'Expertise Badge' }),
-            expertiseHeading: fields.text({ label: 'Expertise Heading' }),
-            expertiseLead: fields.text({ label: 'Expertise Lead', multiline: true }),
-            expertiseNote: fields.text({ label: 'Expertise Note', multiline: true }),
+            headline: fields.text({ label: 'Headline' }),
+            intro: fields.text({ label: 'Intro paragraph', multiline: true }),
           },
           { label: 'Indonesian Content' }
         ),
-        interests: fields.array(
+        facts: fields.array(
           fields.object({
-            icon: fields.select({
-              label: 'Icon',
-              options: [
-                { label: 'Globe', value: 'Globe' },
-                { label: 'Line Chart', value: 'LineChart' },
-                { label: 'Trophy', value: 'Trophy' },
-              ],
-              defaultValue: 'Globe',
+            en: fields.object({ label: fields.text({ label: 'Label' }), value: fields.text({ label: 'Value' }) }, { label: 'English' }),
+            id: fields.object({ label: fields.text({ label: 'Label' }), value: fields.text({ label: 'Value' }) }, { label: 'Indonesian' }),
+          }),
+          {
+            label: 'Quick facts',
+            description: 'Rows under the intro. The "Based" row is added automatically from Profile → Location.',
+            itemLabel: (props) => props.fields.en.fields.label.value,
+          }
+        ),
+      },
+    }),
+
+    about: singleton({
+      label: 'About',
+      path: 'content/about',
+      format: { data: 'yaml' },
+      schema: {
+        en: fields.object(
+          {
+            description: fields.text({ label: 'Short summary', description: 'Used in the CV PDF and SEO data', multiline: true }),
+            story: fields.array(fields.text({ label: 'Paragraph', multiline: true }), {
+              label: 'Story paragraphs',
+              itemLabel: (props) => props.value.slice(0, 60),
             }),
-            colorTheme: fields.select({
-              label: 'Color Theme',
-              options: [
-                { label: 'Primary (Blue)', value: 'primary' },
-                { label: 'Secondary (Purple)', value: 'secondary' },
-                { label: 'Green', value: 'green' },
-              ],
-              defaultValue: 'primary',
+          },
+          { label: 'English Content' }
+        ),
+        id: fields.object(
+          {
+            description: fields.text({ label: 'Short summary', description: 'Used in the CV PDF and SEO data', multiline: true }),
+            story: fields.array(fields.text({ label: 'Paragraph', multiline: true }), {
+              label: 'Story paragraphs',
+              itemLabel: (props) => props.value.slice(0, 60),
             }),
+          },
+          { label: 'Indonesian Content' }
+        ),
+        principles: fields.array(
+          fields.object({
             en: fields.object(
-              { label: fields.text({ label: 'Label' }) },
-              { label: 'English Content' }
+              { title: fields.text({ label: 'Title' }), body: fields.text({ label: 'Body', multiline: true }) },
+              { label: 'English' }
             ),
             id: fields.object(
-              { label: fields.text({ label: 'Label' }) },
-              { label: 'Indonesian Content' }
+              { title: fields.text({ label: 'Title' }), body: fields.text({ label: 'Body', multiline: true }) },
+              { label: 'Indonesian' }
             ),
           }),
-          { label: 'Interest Items', itemLabel: (props) => props.fields.icon.value }
+          { label: 'How I work', itemLabel: (props) => props.fields.en.fields.title.value }
+        ),
+      },
+    }),
+
+    contact: singleton({
+      label: 'Contact',
+      path: 'content/contact',
+      format: { data: 'yaml' },
+      schema: {
+        en: fields.object(
+          {
+            heading: fields.text({ label: 'Heading' }),
+            intro: fields.text({ label: 'Intro (ends right before the email link)', multiline: true }),
+          },
+          { label: 'English Content' }
+        ),
+        id: fields.object(
+          {
+            heading: fields.text({ label: 'Heading' }),
+            intro: fields.text({ label: 'Intro (ends right before the email link)', multiline: true }),
+          },
+          { label: 'Indonesian Content' }
         ),
       },
     }),
@@ -240,16 +237,11 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         name: fields.text({ label: 'Full Name' }),
-        profileImage: fields.image({
-          label: 'Profile Photo',
-          directory: 'public/images/profile',
-          publicPath: '/images/profile/',
-        }),
         titleEn: fields.text({ label: 'Job Title (EN)' }),
         titleId: fields.text({ label: 'Job Title (ID)' }),
         location: fields.text({ label: 'Location' }),
         yearsExp: fields.text({ label: 'Years of Experience', description: 'e.g. 3+' }),
-        availability: fields.checkbox({ label: 'Available for Work', defaultValue: true }),
+        siteDescription: fields.text({ label: 'Site meta description', description: 'Default <meta description> for search and link previews', multiline: true }),
         techStack: fields.array(
           fields.text({ label: 'Technology' }),
           { label: 'Tech Stack', itemLabel: (props) => props.value }
@@ -257,56 +249,31 @@ export default config({
         github: fields.text({ label: 'GitHub URL' }),
         linkedin: fields.text({ label: 'LinkedIn URL' }),
         email: fields.text({ label: 'Email Address' }),
-        phone: fields.text({ label: 'Phone Number' }),
+        phone: fields.text({ label: 'Phone Number', description: 'Also used for the WhatsApp link' }),
         softwareHouseName: fields.text({ label: 'Software House Name' }),
-        softwareHouseShortName: fields.text({ label: 'Software House Short Name' }),
         softwareHouseUrl: fields.text({ label: 'Software House URL' }),
       },
     }),
 
-    hero: singleton({
-      label: 'Hero Section',
-      path: 'content/hero',
+    cv: singleton({
+      label: 'CV Extras',
+      path: 'content/cv',
       format: { data: 'yaml' },
       schema: {
-        stats: fields.array(
+        skillGroups: fields.array(
           fields.object({
-            emoji: fields.text({ label: 'Emoji' }),
-            label: fields.text({ label: 'Label' }),
+            en: fields.object({ label: fields.text({ label: 'Group label' }) }, { label: 'English' }),
+            id: fields.object({ label: fields.text({ label: 'Group label' }) }, { label: 'Indonesian' }),
+            items: fields.array(fields.text({ label: 'Skill' }), { label: 'Skills', itemLabel: (props) => props.value }),
           }),
-          { label: 'Stats Badges', itemLabel: (props) => props.fields.label.value }
+          { label: 'Skill groups (CV PDF)', itemLabel: (props) => props.fields.en.fields.label.value }
         ),
-        en: fields.object(
-          {
-            badge: fields.text({ label: 'Badge Text' }),
-            title1: fields.text({ label: 'Title Line 1' }),
-            title2: fields.text({ label: 'Title Line 2' }),
-            subtitle: fields.text({ label: 'Subtitle' }),
-            ctaContact: fields.text({ label: 'CTA: Contact' }),
-            ctaProjects: fields.text({ label: 'CTA: Projects' }),
-            codeRole: fields.text({ label: 'Code Block — role' }),
-            codeSkill1: fields.text({ label: 'Code Block — skillUtama[0]' }),
-            codeSkill2: fields.text({ label: 'Code Block — skillUtama[1]' }),
-            codeImpact: fields.text({ label: 'Code Block — impact' }),
-            codeDelivery: fields.text({ label: 'Code Block — delivery' }),
-          },
-          { label: 'English Content' }
-        ),
-        id: fields.object(
-          {
-            badge: fields.text({ label: 'Badge Text' }),
-            title1: fields.text({ label: 'Title Line 1' }),
-            title2: fields.text({ label: 'Title Line 2' }),
-            subtitle: fields.text({ label: 'Subtitle' }),
-            ctaContact: fields.text({ label: 'CTA: Contact' }),
-            ctaProjects: fields.text({ label: 'CTA: Projects' }),
-            codeRole: fields.text({ label: 'Code Block — role' }),
-            codeSkill1: fields.text({ label: 'Code Block — skillUtama[0]' }),
-            codeSkill2: fields.text({ label: 'Code Block — skillUtama[1]' }),
-            codeImpact: fields.text({ label: 'Code Block — impact' }),
-            codeDelivery: fields.text({ label: 'Code Block — delivery' }),
-          },
-          { label: 'Indonesian Content' }
+        coreCompetencies: fields.array(
+          fields.object({
+            en: fields.text({ label: 'English' }),
+            id: fields.text({ label: 'Indonesian' }),
+          }),
+          { label: 'Core competencies (CV PDF)', itemLabel: (props) => props.fields.en.value }
         ),
       },
     }),

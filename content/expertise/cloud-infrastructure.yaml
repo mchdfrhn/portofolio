@@ -1,8 +1,5 @@
 name: Cloud Infrastructure
 order: 2
-icon: Cloud
-colorTheme: secondary
-fullWidth: false
 tech:
   - AWS
   - Docker
@@ -10,13 +7,11 @@ tech:
   - Vercel
 en:
   title: Cloud & Infrastructure
-  description: >-
-    Deploying and maintaining cloud-ready infrastructure with Docker, AWS,
-    Vercel, and self-hosted Linux services, with attention to reliability,
+  description: Deploying and maintaining cloud-ready infrastructure with Docker,
+    AWS, Vercel, and self-hosted Linux services, with attention to reliability,
     observability, and maintainable operations.
 id:
   title: Infrastruktur Cloud
-  description: >-
-    Deploy dan maintain infrastruktur cloud-ready dengan Docker, AWS, Vercel,
-    dan layanan Linux self-hosted, dengan fokus pada reliability, observability,
-    dan operasional yang mudah dirawat.
+  description: Deploy dan maintain infrastruktur cloud-ready dengan Docker, AWS,
+    Vercel, dan layanan Linux self-hosted, dengan fokus pada reliability,
+    observability, dan operasional yang mudah dirawat.

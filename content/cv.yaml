@@ -1,0 +1,81 @@
+skillGroups:
+  - en:
+      label: Languages
+    id:
+      label: Bahasa Pemrograman
+    items:
+      - TypeScript
+      - JavaScript
+      - Go
+      - PHP
+      - Python
+      - SQL
+  - en:
+      label: Frontend
+    id:
+      label: Frontend
+    items:
+      - React
+      - Next.js
+      - Tailwind CSS
+      - HTML
+      - CSS
+  - en:
+      label: Backend
+    id:
+      label: Backend
+    items:
+      - Node.js
+      - Express.js
+      - FastAPI
+      - Laravel
+      - Go (Gin)
+      - REST API
+      - JWT
+      - WhatsApp API
+  - en:
+      label: Database
+    id:
+      label: Database
+    items:
+      - PostgreSQL
+      - MySQL
+      - MongoDB
+      - Redis
+      - Supabase
+  - en:
+      label: Cloud & DevOps
+    id:
+      label: Cloud & DevOps
+    items:
+      - Docker
+      - AWS
+      - Vercel
+      - Linux
+      - GitHub Actions
+      - Shell Scripting
+      - Git
+  - en:
+      label: CMS
+    id:
+      label: CMS
+    items:
+      - Payload CMS
+      - Keystatic
+coreCompetencies:
+  - en: Fullstack End-to-End Development
+    id: Pengembangan Fullstack End-to-End
+  - en: REST API Design
+    id: Desain REST API
+  - en: Database Architecture
+    id: Arsitektur Database
+  - en: CI/CD
+    id: CI/CD
+  - en: Cloud Deployment
+    id: Cloud Deployment
+  - en: Unit Testing (Go testing, 85%+ coverage)
+    id: Unit Testing (Go testing, cakupan 85%+)
+  - en: Role-Based Access Control (RBAC)
+    id: Role-Based Access Control (RBAC)
+  - en: ETL & Data Migration
+    id: ETL & Migrasi Data

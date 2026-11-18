@@ -1,8 +1,5 @@
 name: Database Architecture
 order: 4
-icon: Database
-colorTheme: orange
-fullWidth: false
 tech:
   - PostgreSQL
   - MySQL
@@ -10,13 +7,12 @@ tech:
   - Redis
 en:
   title: Database Architecture
-  description: >-
-    Designing and optimizing database architectures — relational (PostgreSQL,
-    MySQL) and NoSQL (MongoDB) — with proper indexing, query optimization, and
-    caching strategies (Redis) for sub-second response times.
+  description: Designing and optimizing database architectures — relational
+    (PostgreSQL, MySQL) and NoSQL (MongoDB) — with proper indexing, query
+    optimization, and caching strategies (Redis) for sub-second response times.
 id:
   title: Arsitektur Database
-  description: >-
-    Merancang dan mengoptimalkan arsitektur database — relasional (PostgreSQL,
-    MySQL) dan NoSQL (MongoDB) — dengan pengindeksan yang tepat, optimasi query,
-    dan strategi caching (Redis) untuk waktu respons di bawah satu detik.
+  description: Merancang dan mengoptimalkan arsitektur database — relasional
+    (PostgreSQL, MySQL) dan NoSQL (MongoDB) — dengan pengindeksan yang tepat,
+    optimasi query, dan strategi caching (Redis) untuk waktu respons di bawah
+    satu detik.
