@@ -25,7 +25,9 @@ Most of what Farhan builds is software for public institutions: an academic syst
 
 ## Layout
 
-Single column, `max-w-3xl`, sticky header. Order: Intro → About (story, how I work, toolbox, commit log) → Selected work → Experience → Contact → title-block footer.
+Single column, `max-w-3xl`, sticky header. Order: Intro → About (story, how I work, toolbox, commit log) → Selected work (a gallery of the first 4 projects by `order`, linking to `/projects`) → Experience → Contact → title-block footer.
+
+`/projects` is the archive: every project as a card, with a tag filter (`?tag=`). The tag list is fixed in `src/lib/tags.ts` and feeds both the Keystatic "Tags" field and the filter chips; add a tag there once and it is available in both. The filter is a small inline script and the page still shows every project without JS.
 
 Each project also gets a pre-rendered case study page at `/projects/[slug]`, built from the `problem`, `solution`, and `impact` fields in `content/projects/*.yaml`.
 
@@ -37,4 +39,4 @@ Each project also gets a pre-rendered case study page at `/projects/[slug]`, bui
 
 ## Content
 
-All content lives in `content/` as YAML and is read at build time through `src/lib/reader.ts` (Keystatic). The same data feeds the CV PDFs (`src/lib/cv-data.ts`, `src/lib/cv-pdf.ts`).
+All content about the person lives in `content/` as YAML and is read at build time through `src/lib/reader.ts` (Keystatic): `profile` (identity, links, contact, site description), `hero`, `about`, `contact`, `cv` (skills for the CV PDF), and the `projects`, `experience`, `expertise` collections. UI chrome (nav, buttons, form status text) stays in the components on purpose. Only `SITE_URL` and `OG_IMAGE` come from env (`src/lib/config.ts`). The same data feeds the CV PDFs (`src/lib/cv-data.ts`, `src/lib/cv-pdf.ts`).
