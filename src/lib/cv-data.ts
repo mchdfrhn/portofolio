@@ -62,9 +62,10 @@ function localizePeriod(period: string, lang: Lang) {
 }
 
 export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
-  const [profile, about, experienceEntries, expertiseEntries, projectEntries] = await Promise.all([
+  const [profile, about, cv, experienceEntries, expertiseEntries, projectEntries] = await Promise.all([
     reader.singletons.profile.read(),
     reader.singletons.about.read(),
+    reader.singletons.cv.read(),
     reader.collections.experience.all(),
     reader.collections.expertise.all(),
     reader.collections.projects.all(),
@@ -131,33 +132,8 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
 
   return {
     // Plain "Label: a, b, c" lines parse cleanly in ATS keyword extraction
-    skillGroups: [
-      { label: lang === 'en' ? 'Languages' : 'Bahasa Pemrograman', items: ['TypeScript', 'JavaScript', 'Go', 'PHP', 'Python', 'SQL'] },
-      { label: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS'] },
-      { label: 'Backend', items: ['Node.js', 'Express.js', 'FastAPI', 'Laravel', 'Go (Gin)', 'REST API', 'JWT', 'WhatsApp API'] },
-      { label: 'Database', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase'] },
-      { label: 'Cloud & DevOps', items: ['Docker', 'AWS', 'Vercel', 'Linux', 'GitHub Actions', 'Shell Scripting', 'Git'] },
-      { label: 'CMS', items: ['Payload CMS', 'Keystatic'] },
-    ],
-    coreCompetencies: lang === 'en' ? [
-      'Fullstack End-to-End Development',
-      'REST API Design',
-      'Database Architecture',
-      'CI/CD',
-      'Cloud Deployment',
-      'Unit Testing (Go testing, 85%+ coverage)',
-      'Role-Based Access Control (RBAC)',
-      'ETL & Data Migration',
-    ] : [
-      'Pengembangan Fullstack End-to-End',
-      'Desain REST API',
-      'Arsitektur Database',
-      'CI/CD',
-      'Cloud Deployment',
-      'Unit Testing (Go testing, cakupan 85%+)',
-      'Role-Based Access Control (RBAC)',
-      'ETL & Migrasi Data',
-    ],
+    skillGroups: (cv?.skillGroups ?? []).map((g) => ({ label: g[lang].label, items: [...g.items] })),
+    coreCompetencies: (cv?.coreCompetencies ?? []).map((c) => c[lang]),
     name: profile?.name ?? 'Mochammad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),
     location: profile?.location ?? '',
