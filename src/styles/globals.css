@@ -133,7 +133,8 @@ html.motion-pending [data-m-reveal],
 html.motion-pending [data-m-split],
 html.motion-pending [data-m-img],
 html.motion-pending [data-m-label] {
-  visibility: hidden;
+  /* opacity keeps waiting content readable by screen readers */
+  opacity: 0;
 }
 [data-m-rule],
 [data-m-progress] {

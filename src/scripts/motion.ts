@@ -38,9 +38,9 @@ function intro(container: HTMLElement) {
     } else if (step.hasAttribute('data-m-rule')) {
       tl.from(step, { scaleX: 0, duration: 0.9, ease: 'power2.inOut' }, '<0.25')
     } else if (step.tagName === 'DL') {
-      tl.from(step.children, { autoAlpha: 0, x: -10, duration: 0.5, stagger: 0.04 }, '<0.2')
+      tl.from(step.children, { opacity: 0, x: -10, duration: 0.5, stagger: 0.04 }, '<0.2')
     } else {
-      tl.from(step, { autoAlpha: 0, y: 14, duration: 0.6 }, '<0.12')
+      tl.from(step, { opacity: 0, y: 14, duration: 0.6 }, '<0.12')
     }
   }
 }
@@ -53,7 +53,7 @@ function sheets() {
     })
     const rule = sheet.querySelector('[data-m-rule]')
     if (rule) tl.from(rule, { scaleX: 0, duration: 1.1, ease: 'power2.inOut' })
-    tl.from(sheet.querySelectorAll('[data-m-label]'), { autoAlpha: 0, y: 10, duration: 0.6, stagger: 0.08 }, '<0.2')
+    tl.from(sheet.querySelectorAll('[data-m-label]'), { opacity: 0, y: 10, duration: 0.6, stagger: 0.08 }, '<0.2')
   }
 }
 
@@ -81,12 +81,12 @@ function onScreen(els: Element[], vars: gsap.TweenVars) {
 }
 
 function reveals() {
-  gsap.set('[data-m-reveal]', { autoAlpha: 0, y: 24 })
+  gsap.set('[data-m-reveal]', { opacity: 0, y: 24 })
   ScrollTrigger.batch('[data-m-reveal]', {
     start: 'top 92%',
     once: true,
     onEnter: (els) =>
-      onScreen(els, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.08, ease: EASE, overwrite: true }),
+      onScreen(els, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: EASE, overwrite: true }),
   })
 
   gsap.set('[data-m-img]', { clipPath: 'inset(0 0 100% 0)' })

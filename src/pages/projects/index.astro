@@ -69,7 +69,7 @@ const chip =
 			// Cards slide to their new places instead of jumping
 			// Cards not yet scrolled into view are still at their reveal start state
 			if (flip && animate.matches) {
-				gsap.set(cards, { autoAlpha: 1, y: 0 });
+				gsap.set(cards, { opacity: 1, y: 0 });
 				const frames = cards.flatMap((c) => [...c.querySelectorAll('[data-m-img]')]);
 				gsap.killTweensOf(frames);
 				gsap.set(frames, { clearProps: 'clipPath' });
@@ -84,8 +84,8 @@ const chip =
 					duration: 0.55,
 					ease: 'power3.inOut',
 					absoluteOnLeave: true,
-					onEnter: (els) => gsap.fromTo(els, { autoAlpha: 0, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45 }),
-					onLeave: (els) => gsap.to(els, { autoAlpha: 0, scale: 0.96, duration: 0.3 }),
+					onEnter: (els) => gsap.fromTo(els, { opacity: 0, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45 }),
+					onLeave: (els) => gsap.to(els, { opacity: 0, scale: 0.96, duration: 0.3 }),
 					onComplete: () => ScrollTrigger.refresh(),
 				});
 			}
