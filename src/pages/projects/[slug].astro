@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import { projectImage } from '@/lib/images';
 import Header from '@/components/site/Header.astro';
@@ -21,10 +21,17 @@ export async function getStaticPaths() {
 const { project, index, next } = Astro.props;
 const { entry } = project;
 const cover = projectImage(entry.image);
-const gallery = entry.gallery.flatMap((shot) => {
-	const img = projectImage(shot.image);
-	return img ? [{ ...shot, img }] : [];
-});
+const gallery = (
+	await Promise.all(
+		entry.gallery.map(async (shot) => {
+			const img = projectImage(shot.image);
+			if (!img) return [];
+			// Lightbox rendition: same widths/sizes as the cover so the popup matches the main image
+			const full = await getImage({ src: img, widths: [720, 1080, 1440], format: 'webp' });
+			return [{ ...shot, img, full }];
+		}),
+	)
+).flat();
 const demo = linkOrEmpty(entry.demo);
 const github = linkOrEmpty(entry.github);
 const sections = [
@@ -80,9 +87,21 @@ const sections = [
 				<div class="mt-6 grid gap-6 sm:grid-cols-2">
 					{gallery.map((shot, i) => (
 						<figure data-m-reveal>
-							<a href={shot.img.src} target="_blank" rel="noopener" class="block overflow-hidden rounded-sm border border-border">
+							<button
+								type="button"
+								data-lightbox
+								data-src={shot.full.src}
+								data-srcset={shot.full.srcSet.attribute}
+								data-w={shot.img.width}
+								data-h={shot.img.height}
+								data-en={shot.captionEn}
+								data-id={shot.captionId}
+								data-fig={`FIG. ${String(i + 2).padStart(2, '0')}`}
+								class="block w-full cursor-zoom-in overflow-hidden rounded-sm border border-border"
+								aria-haspopup="dialog"
+							>
 								<Image src={shot.img} alt={shot.captionEn} widths={[400, 700, 1000]} sizes="(min-width: 768px) 348px, (min-width: 640px) calc(50vw - 36px), calc(100vw - 32px)" class="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 hover:scale-[1.02]" />
-							</a>
+							</button>
 							<figcaption class="mt-2 text-sm text-muted-foreground">
 								<span class="mr-1.5 font-mono text-xs text-primary">FIG. {String(i + 2).padStart(2, '0')}</span>
 								<Bi en={shot.captionEn} id={shot.captionId} />
@@ -111,5 +130,53 @@ const sections = [
 			)}
 		</article>
 	</main>
+	{gallery.length > 0 && (
+		<dialog id="lightbox" class="lightbox m-auto w-[min(720px,calc(100vw-32px))] max-w-none bg-transparent p-0 text-foreground" aria-label="Image preview">
+			<figure>
+				<div class="relative overflow-hidden rounded-sm border border-border bg-background">
+					<img data-lightbox-img alt="" sizes="(min-width: 768px) 720px, calc(100vw - 32px)" class="block max-h-[80vh] w-full object-contain" />
+				</div>
+				<figcaption class="mt-2 flex items-start justify-between gap-4 text-sm text-white/90">
+					<span>
+						<span data-lightbox-fig class="mr-1.5 font-mono text-xs text-primary"></span>
+						<span data-lang="en" data-lightbox-en></span><span data-lang="id" data-lightbox-id></span>
+					</span>
+					<button type="button" data-lightbox-close class="shrink-0 font-mono text-xs uppercase tracking-[0.14em] hover:text-primary">
+						<Bi en="Close ✕" id="Tutup ✕" />
+					</button>
+				</figcaption>
+			</figure>
+		</dialog>
+	)}
 	<Footer />
 </Layout>
+
+<script>
+	const dialog = document.querySelector<HTMLDialogElement>('#lightbox');
+	if (dialog) {
+		const img = dialog.querySelector<HTMLImageElement>('[data-lightbox-img]')!;
+		const set = (sel: string, text = '') => (dialog.querySelector(sel)!.textContent = text);
+
+		document.querySelectorAll<HTMLButtonElement>('[data-lightbox]').forEach((btn) => {
+			btn.addEventListener('click', () => {
+				const d = btn.dataset;
+				img.removeAttribute('src');
+				img.srcset = d.srcset ?? '';
+				img.src = d.src ?? '';
+				img.width = Number(d.w);
+				img.height = Number(d.h);
+				img.alt = d.en ?? '';
+				set('[data-lightbox-fig]', d.fig);
+				set('[data-lightbox-en]', d.en);
+				set('[data-lightbox-id]', d.id);
+				dialog.showModal();
+			});
+		});
+
+		dialog.querySelector('[data-lightbox-close]')!.addEventListener('click', () => dialog.close());
+		// A click on the backdrop lands on the dialog element itself
+		dialog.addEventListener('click', (e) => {
+			if (e.target === dialog) dialog.close();
+		});
+	}
+</script>

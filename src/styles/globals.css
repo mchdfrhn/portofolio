@@ -162,3 +162,12 @@ html.motion-pending [data-m-label] {
     navigation: none;
   }
 }
+
+/* Project gallery lightbox ([slug].astro) */
+.lightbox::backdrop {
+  background: rgb(10 9 8 / 0.92);
+  backdrop-filter: blur(4px);
+}
+html:has(.lightbox[open]) {
+  overflow: hidden;
+}
