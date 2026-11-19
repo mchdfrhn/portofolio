@@ -2,11 +2,10 @@
 // Server island: fetched per request (cached at the CDN), drawn as plain SVG with no client JS.
 import Bi from './Bi.astro'
 import { getContributions } from '@/lib/contributions'
-import { getProfile } from '@/lib/site-content'
 import { githubUsername } from '@/lib/identity'
 
-const profile = await getProfile()
-const githubUrl = profile?.github ?? ''
+interface Props { githubUrl: string }
+const { githubUrl } = Astro.props
 const username = githubUsername(githubUrl)
 const data = username ? await getContributions(username) : null
 Astro.response.headers.set('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400')

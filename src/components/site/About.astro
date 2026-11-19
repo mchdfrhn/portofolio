@@ -3,12 +3,14 @@ import Bi from './Bi.astro'
 import Sheet from './Sheet.astro'
 import CommitLog from './CommitLog.astro'
 import { reader } from '@/lib/reader'
-import { getAbout } from '@/lib/site-content'
+import { getAbout, getProfile } from '@/lib/site-content'
 
 const expertise = (await reader.collections.expertise.all())
   .sort((a, b) => (a.entry.order ?? 99) - (b.entry.order ?? 99))
 
 const about = await getAbout()
+// Read at build time: the server island runs in a serverless function without the content/ files
+const githubUrl = (await getProfile())?.github ?? ''
 const story = (about?.en.story ?? []).map((en, i) => ({ en, id: about?.id.story[i] ?? en }))
 const principles = about?.principles ?? []
 ---
@@ -45,7 +47,7 @@ const principles = about?.principles ?? []
   <h3 class="mt-14 font-serif text-2xl"><Bi en="Commit log" id="Log commit" /></h3>
   <p class="mb-4 mt-1 text-sm text-muted-foreground"><Bi en="Contributions on GitHub over the past year" id="Kontribusi di GitHub selama setahun terakhir" /></p>
   <div class="border-y border-border py-5">
-    <CommitLog server:defer>
+    <CommitLog server:defer githubUrl={githubUrl}>
       <p slot="fallback" class="h-[115px] font-mono text-xs text-muted-foreground"><Bi en="Loading…" id="Memuat…" /></p>
     </CommitLog>
   </div>
