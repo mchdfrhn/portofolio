@@ -18,6 +18,11 @@ id:
   title: Fullstack Engineer
   company: Hino Motors Sales Indonesia
   description: >-
-    Memodernisasi dan men-troubleshoot sistem web yang sudah berjalan, dipakai
-    internal maupun dealer, dengan FastAPI dan Next.js. Sehari-hari mencari akar
-    masalah di kode lama lalu merapikannya agar lebih mudah dirawat.
+    Memodernisasi, merawat, dan men-troubleshoot aplikasi web enterprise yang
+    krusial untuk operasional internal, jaringan dealer, dan ekosistem
+    partner—termasuk platform manajemen karoseri dan Enterprise Integration
+    System inti—yang sebagian besar dibangun dengan FastAPI dan Next.js.
+    Sehari-hari melakukan pengujian API end-to-end dan validasi integrasi,
+    mendiagnosis serta mengatasi bottleneck produksi di kode lama, dan secara
+    sistematis merombak modul yang kompleks menjadi arsitektur yang lebih rapi,
+    scalable, dan mudah dirawat.

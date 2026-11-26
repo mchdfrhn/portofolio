@@ -13,8 +13,6 @@ id:
   title: Bootcamp Backend Developer (Golang)
   company: Enigma Camp Bootcamp
   description: >-
-    Membangun REST API sistem reservasi ruangan dengan Golang dan Gin,
-    autentikasi JWT, serta skema PostgreSQL dengan pengindeksan. Mencapai
-    cakupan unit test 85%+ dengan package testing bawaan Go. Menerapkan
-    arsitektur clean code, validasi input yang ketat, dan penanganan error
-    komprehensif untuk memastikan keandalan backend.
+    Membangun REST API sistem reservasi ruangan dengan Golang dan Gin.
+    Menerapkan arsitektur clean code, validasi input yang ketat, dan penanganan
+    error komprehensif untuk memastikan keandalan backend.
