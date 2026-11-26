@@ -1,6 +1,6 @@
-# Mochammad Farhan Ali — Portfolio
+# Mochamad Farhan Ali — Portfolio
 
-Portfolio of Mochammad Farhan Ali, Fullstack Developer. Built with **Astro**, **Tailwind CSS**, and **Keystatic** for content. Design notes live in [ARCHITECTURE.md](./ARCHITECTURE.md).
+Portfolio of Mochamad Farhan Ali, Fullstack Developer. Built with **Astro**, **Tailwind CSS**, and **Keystatic** for content. Design notes live in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Features
 

@@ -14,7 +14,7 @@ test('githubUsername returns empty string for non-GitHub or empty input', () => 
 })
 
 test('initials abbreviates all but the last name', () => {
-  assert.equal(initials('Mochammad Farhan Ali'), 'M. F. Ali')
+  assert.equal(initials('Mochamad Farhan Ali'), 'M. F. Ali')
   assert.equal(initials('Farhan Ali'), 'F. Ali')
   assert.equal(initials('Farhan'), 'Farhan')
   assert.equal(initials(''), '')

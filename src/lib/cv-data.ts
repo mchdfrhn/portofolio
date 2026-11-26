@@ -134,7 +134,7 @@ export async function getCvData(lang: Lang = 'en'): Promise<CvData> {
     // Plain "Label: a, b, c" lines parse cleanly in ATS keyword extraction
     skillGroups: (cv?.skillGroups ?? []).map((g) => ({ label: g[lang].label, items: [...g.items] })),
     coreCompetencies: (cv?.coreCompetencies ?? []).map((c) => c[lang]),
-    name: profile?.name ?? 'Mochammad Farhan Ali',
+    name: profile?.name ?? 'Mochamad Farhan Ali',
     jobTitle: lang === 'en' ? (profile?.titleEn ?? '') : (profile?.titleId ?? ''),
     location: profile?.location ?? '',
     phone: profile?.phone ?? '',
