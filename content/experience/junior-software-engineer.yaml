@@ -9,8 +9,11 @@ en:
     Designed and shipped SIPEKAD, an academic submission system used by around
     300 active students across 3 study programs. Built with React, Node.js, and
     the WhatsApp API — students submit requests online, admins review them in
-    one click, and status updates reach students on WhatsApp. Also developed the
-    official institutional website with Payload CMS and authored complete
+    one click, and status updates reach students on WhatsApp. Built RuangSDM, the
+    college's HR information system covering employee records, fingerprint
+    attendance, leave, and payroll with PDF payslips, and migrated 68 employee
+    records from Excel with 0 import errors. Also developed the official
+    institutional website with Payload CMS and authored complete
     technical documentation and system architecture diagrams to ensure long-term
     maintainability.
 id:
@@ -20,7 +23,10 @@ id:
     Merancang dan mengembangkan SIPEKAD, sistem pengajuan akademik yang dipakai
     sekitar 300 mahasiswa aktif di 3 program studi. Dibangun dengan React,
     Node.js, dan WhatsApp API — mahasiswa mengajukan secara online, admin
-    meninjau dengan sekali klik, dan update status dikirim lewat WhatsApp. Juga
+    meninjau dengan sekali klik, dan update status dikirim lewat WhatsApp.
+    Membangun RuangSDM, sistem informasi kepegawaian kampus yang mencakup data
+    pegawai, absensi fingerprint, cuti, dan penggajian dengan slip PDF, serta
+    memigrasikan 68 data pegawai dari Excel tanpa satu pun error impor. Juga
     mengembangkan website resmi institusi dengan Payload CMS dan menyusun
     dokumentasi teknis lengkap beserta diagram arsitektur sistem untuk
     memastikan maintainabilitas jangka panjang.

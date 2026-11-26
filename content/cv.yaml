@@ -73,8 +73,6 @@ coreCompetencies:
     id: CI/CD
   - en: Cloud Deployment
     id: Cloud Deployment
-  - en: Unit Testing (Go testing, 85%+ coverage)
-    id: Unit Testing (Go testing, cakupan 85%+)
   - en: Role-Based Access Control (RBAC)
     id: Role-Based Access Control (RBAC)
   - en: ETL & Data Migration
