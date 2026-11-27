@@ -10,9 +10,10 @@ const links = [
   profile?.email && { href: `mailto:${profile.email}`, label: 'Email' },
 ].filter((l): l is { href: string; label: string } => Boolean(l))
 const rows = [
-  ...(hero?.facts ?? []).map((f) => ({ k: [f.en.label, f.id.label], v: [f.en.value, f.id.value] })),
-  ...(location ? [{ k: ['Based', 'Lokasi'], v: [location, location] }] : []),
+  ...(hero?.facts ?? []).map((f) => ({ k: [f.en.label, f.id.label], v: [f.en.value, f.id.value], href: f.href ?? undefined })),
+  ...(location ? [{ k: ['Based', 'Lokasi'], v: [location, location], href: undefined }] : []),
 ]
+const domain = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
 ---
 <section data-m-intro class="pb-8 pt-16 sm:pt-24">
   <p data-m-step class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
@@ -30,7 +31,18 @@ const rows = [
     {rows.map((row) => (
       <>
         <dt class="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground pt-0.5"><Bi en={row.k[0]} id={row.k[1]} /></dt>
-        <dd><Bi en={row.v[0]} id={row.v[1]} /></dd>
+        <dd>
+          {row.href ? (
+            <a href={row.href} target="_blank" rel="noopener noreferrer" class="group inline-flex flex-wrap items-baseline gap-x-2">
+              <span class="link group-hover:text-primary group-hover:decoration-primary"><Bi en={row.v[0]} id={row.v[1]} /></span>
+              <span class="font-mono text-xs text-muted-foreground transition-colors group-hover:text-primary">
+                {domain(row.href)} <span aria-hidden="true" class="inline-block transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+              </span>
+            </a>
+          ) : (
+            <Bi en={row.v[0]} id={row.v[1]} />
+          )}
+        </dd>
       </>
     ))}
   </dl>

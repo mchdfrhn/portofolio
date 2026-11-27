@@ -21,7 +21,13 @@ const groups = [
             <div>
               <p class="font-medium">
                 <Bi en={entry.en.title} id={entry.id.title} />
-                <span class="text-muted-foreground"> — <Bi en={entry.en.company} id={entry.id.company} /></span>
+                <span class="text-muted-foreground"> — {entry.url ? (
+                  <a href={entry.url} target="_blank" rel="noopener noreferrer" class="link group">
+                    <Bi en={entry.en.company} id={entry.id.company} /><span aria-hidden="true" class="ml-0.5 inline-block text-xs transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+                  </a>
+                ) : (
+                  <Bi en={entry.en.company} id={entry.id.company} />
+                )}</span>
               </p>
               <p class="mt-2 text-sm leading-relaxed text-muted-foreground"><Bi en={entry.en.description} id={entry.id.description} /></p>
             </div>

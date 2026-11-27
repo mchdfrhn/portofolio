@@ -25,6 +25,7 @@ facts:
     id:
       label: Juga
       value: Founder, Surupan Software House
+    href: https://surupan.tech
   - en:
       label: Studying
       value: Informatics Engineering, STT PU (2023–)

@@ -114,6 +114,7 @@ export default config({
         }),
         period: fields.text({ label: 'Period', description: 'e.g. 2025 - Present' }),
         order: fields.integer({ label: 'Display Order', defaultValue: 1 }),
+        url: fields.url({ label: 'Company / School URL', description: 'Optional. Links the company name.' }),
         en: fields.object(
           {
             title: fields.text({ label: 'Title' }),
@@ -158,6 +159,7 @@ export default config({
           fields.object({
             en: fields.object({ label: fields.text({ label: 'Label' }), value: fields.text({ label: 'Value' }) }, { label: 'English' }),
             id: fields.object({ label: fields.text({ label: 'Label' }), value: fields.text({ label: 'Value' }) }, { label: 'Indonesian' }),
+            href: fields.url({ label: 'Link', description: 'Optional. Shows the domain next to the value.' }),
           }),
           {
             label: 'Quick facts',
